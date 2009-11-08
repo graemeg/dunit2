@@ -1,13 +1,13 @@
-	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 		<PropertyGroup>
-			<ProjectGuid>{27728e98-eb9f-4ab1-a6e0-6d175f6aef37}</ProjectGuid>
-			<MainSource>DUnit2.dpr</MainSource>
+			<ProjectGuid>{f21abaa5-2197-4703-b7b1-4a8d28eba776}</ProjectGuid>
+			<MainSource>MiniTestLibW32D.dpr</MainSource>
 			<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
 			<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
-			<DCC_DependencyCheckOutputName>DUnit2.exe</DCC_DependencyCheckOutputName>
+			<DCC_DependencyCheckOutputName>MiniTestLibW32D.dtl</DCC_DependencyCheckOutputName>
 			<ProjectVersion>12.0</ProjectVersion>
-			<Config Condition="'$(Config)'==''">NO_JEDI_JCL</Config>
+			<Config Condition="'$(Config)'==''">Debug</Config>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
 			<Base>true</Base>
@@ -28,64 +28,53 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
-			<DCC_DependencyCheckOutputName>DUnit2.exe</DCC_DependencyCheckOutputName>
+			<DCC_DependencyCheckOutputName>MiniTestLibW32D.dtl</DCC_DependencyCheckOutputName>
+			<GenDll>true</GenDll>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1)'!=''">
 			<Version>7.0</Version>
 			<DCC_DebugInformation>False</DCC_DebugInformation>
 			<DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+			<DCC_GenerateStackFrames>True</DCC_GenerateStackFrames>
 			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
-			<DCC_DcuOutput>LibDCUs</DCC_DcuOutput>
-			<DCC_ObjOutput>LibDCUs</DCC_ObjOutput>
-			<DCC_HppOutput>LibDCUs</DCC_HppOutput>
-			<DCC_UnitSearchPath>..\..\src;..\..\..\..\Externals\FastMM;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
-			<DCC_ResourcePath>..\..\src;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL\source\include;..\..\..\..\Externals\JCL\source\windows;..\..\..\..\Externals\JCL\source\common;$(DCC_ResourcePath)</DCC_ResourcePath>
-			<DCC_ObjPath>..\..\src;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL\source\include;..\..\..\..\Externals\JCL\source\windows;..\..\..\..\Externals\JCL\source\common;$(DCC_ObjPath)</DCC_ObjPath>
-			<DCC_IncludePath>..\..\src;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL\source\include;..\..\..\..\Externals\JCL\source\windows;..\..\..\..\Externals\JCL\source\common;$(DCC_IncludePath)</DCC_IncludePath>
-			<DCC_Define>FASTMM;RELEASE;$(DCC_Define)</DCC_Define>
-			<DCC_Description>GensDCUs</DCC_Description>
-			<DCC_UNSAFE_TYPE>True</DCC_UNSAFE_TYPE>
-			<DCC_UNSAFE_CODE>True</DCC_UNSAFE_CODE>
-			<DCC_UNSAFE_CAST>True</DCC_UNSAFE_CAST>
+			<DCC_MapFile>3</DCC_MapFile>
+			<DCC_DcuOutput>DCUs</DCC_DcuOutput>
+			<DCC_ObjOutput>DCUs</DCC_ObjOutput>
+			<DCC_HppOutput>DCUs</DCC_HppOutput>
+			<DCC_UnitSearchPath>..\..\src;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL\source\common;..\..\..\..\Externals\JCL\source\windows;..\..\..\..\Externals\JCL\source\include;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_ResourcePath>..\..\src;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL\source\common;..\..\..\..\Externals\JCL\source\windows;..\..\..\..\Externals\JCL\source\include;$(DCC_ResourcePath)</DCC_ResourcePath>
+			<DCC_ObjPath>..\..\src;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL\source\common;..\..\..\..\Externals\JCL\source\windows;..\..\..\..\Externals\JCL\source\include;$(DCC_ObjPath)</DCC_ObjPath>
+			<DCC_IncludePath>..\..\src;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL\source\common;..\..\..\..\Externals\JCL\source\windows;..\..\..\..\Externals\JCL\source\include;$(DCC_IncludePath)</DCC_IncludePath>
+			<DCC_Define>FASTMM;USE_JEDI_JCL;RELEASE;$(DCC_Define)</DCC_Define>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
 			<Version>7.0</Version>
-			<DCC_DebugInformation>False</DCC_DebugInformation>
-			<DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
-			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
-			<DCC_DcuOutput>LibDCUs</DCC_DcuOutput>
-			<DCC_ObjOutput>LibDCUs</DCC_ObjOutput>
-			<DCC_HppOutput>LibDCUs</DCC_HppOutput>
-			<DCC_UnitSearchPath>..\..\src;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL\source\include;..\..\..\..\Externals\JCL\source\windows;..\..\..\..\Externals\JCL\source\common;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
-			<DCC_ResourcePath>..\..\src;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL\source\include;..\..\..\..\Externals\JCL\source\windows;..\..\..\..\Externals\JCL\source\common;$(DCC_ResourcePath)</DCC_ResourcePath>
-			<DCC_ObjPath>..\..\src;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL\source\include;..\..\..\..\Externals\JCL\source\windows;..\..\..\..\Externals\JCL\source\common;$(DCC_ObjPath)</DCC_ObjPath>
-			<DCC_IncludePath>..\..\src;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL\source\include;..\..\..\..\Externals\JCL\source\windows;..\..\..\..\Externals\JCL\source\common;$(DCC_IncludePath)</DCC_IncludePath>
+			<DCC_GenerateStackFrames>True</DCC_GenerateStackFrames>
+			<DCC_MapFile>3</DCC_MapFile>
+			<DCC_DcuOutput>DCUs</DCC_DcuOutput>
+			<DCC_ObjOutput>DCUs</DCC_ObjOutput>
+			<DCC_HppOutput>DCUs</DCC_HppOutput>
+			<DCC_UnitSearchPath>..\..\src;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL\source\common;..\..\..\..\Externals\JCL\source\windows;..\..\..\..\Externals\JCL\source\include;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_ResourcePath>..\..\src;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL\source\common;..\..\..\..\Externals\JCL\source\windows;..\..\..\..\Externals\JCL\source\include;$(DCC_ResourcePath)</DCC_ResourcePath>
+			<DCC_ObjPath>..\..\src;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL\source\common;..\..\..\..\Externals\JCL\source\windows;..\..\..\..\Externals\JCL\source\include;$(DCC_ObjPath)</DCC_ObjPath>
+			<DCC_IncludePath>..\..\src;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL\source\common;..\..\..\..\Externals\JCL\source\windows;..\..\..\..\Externals\JCL\source\include;$(DCC_IncludePath)</DCC_IncludePath>
 			<DCC_Define>FASTMM;USE_JEDI_JCL;DEBUG;$(DCC_Define)</DCC_Define>
-			<DCC_Description>GensDCUs</DCC_Description>
 		</PropertyGroup>
 		<Import Project="No_JEDI_JCL.optset" Condition="'$(Cfg_3)'!='' And Exists('No_JEDI_JCL.optset')"/>
 		<PropertyGroup Condition="'$(Cfg_3)'!=''">
-			<DCC_DcuOutput>LibDCUs</DCC_DcuOutput>
 			<CfgDependentOn>No_JEDI_JCL.optset</CfgDependentOn>
 		</PropertyGroup>
 		<ItemGroup>
-			<DelphiCompile Include="DUnit2.dpr">
+			<DelphiCompile Include="MiniTestLibW32D.dpr">
 				<MainSource>MainSource</MainSource>
 			</DelphiCompile>
 			<DCCReference Include="..\..\src\TestFrameworkIfaces.pas"/>
+			<DCCReference Include="..\..\src\TestListenerIface.pas"/>
 			<DCCReference Include="..\..\src\TestFramework.pas"/>
 			<DCCReference Include="..\..\src\TestFrameworkProxyIfaces.pas"/>
-			<DCCReference Include="..\..\src\TestListenerIface.pas"/>
 			<DCCReference Include="..\..\src\ProjectsManagerIface.pas"/>
-			<DCCReference Include="..\..\src\XPVistaSupport.pas"/>
 			<DCCReference Include="..\..\src\ProjectsManager.pas"/>
-			<DCCReference Include="..\..\src\TestFrameworkProxy.pas"/>
-			<DCCReference Include="..\..\src\GUITestRunner.pas"/>
-			<DCCReference Include="..\..\src\TestExtensions.pas"/>
-			<DCCReference Include="..\..\src\TextTestRunner.pas"/>
-			<DCCReference Include="..\..\src\TestModules.pas"/>
-			<DCCReference Include="..\..\src\GUITesting.pas"/>
-			<DCCReference Include="..\..\src\XMLListener.pas"/>
+			<DCCReference Include="..\..\tests\MiniTestSuite2.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
@@ -115,9 +104,9 @@
 						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
 					</Parameters>
 					<VersionInfo>
-						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
 						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
-						<VersionInfo Name="MajorVer">10</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
 						<VersionInfo Name="MinorVer">0</VersionInfo>
 						<VersionInfo Name="Release">0</VersionInfo>
 						<VersionInfo Name="Build">0</VersionInfo>
@@ -132,7 +121,7 @@
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>
 						<VersionInfoKeys Name="FileDescription"/>
-						<VersionInfoKeys Name="FileVersion">10.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName"/>
 						<VersionInfoKeys Name="LegalCopyright"/>
 						<VersionInfoKeys Name="LegalTrademarks"/>
@@ -142,7 +131,7 @@
 						<VersionInfoKeys Name="Comments"/>
 					</VersionInfoKeys>
 					<Source>
-						<Source Name="MainSource">DUnit2.dpr</Source>
+						<Source Name="MainSource">MiniTestLibW32D.dpr</Source>
 					</Source>
 				</Delphi.Personality>
 			</BorlandProject>

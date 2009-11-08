@@ -3,7 +3,7 @@ The steps below will guide you through that process
 
 1) Open a command prompt window in the .\JCL folder
 
-2) Determine the JCLidentity for your Delphi compiler in .\JCL\packages
+2) Determine the JCL identity for your Delphi compiler in .\JCL\packages
    Examples:
    D2010 -> d14
    D2009 -> d12
