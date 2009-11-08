@@ -1,0 +1,1526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="fpcunit2.xsl"?>
+<TestResults>
+<!--Generated using DUnit2 on 2007-09-02 01:16:13-->
+<TestListing><TestSuite Name="DUnitTIOPFGui.exe" ElapsedTime="00:03:19.172" NumberOfErrors="0" NumberOfFailures="0" NumberOfRunTests="1440" NumberOfWarnings="196">
+<TestSuite Name="Non persistent tests" ElapsedTime="00:01:05.858" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="47" NumberOfRunTests="654">
+<TestSuite Name="TTestTIBaseObject" ElapsedTime="00:00:00.046" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="3" NumberOfRunTests="11">
+<Test Name="TObjectFree" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TtiBaseObjectFree" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TObjectNillFree" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TtiBaseObjectNillFree" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ValidNill" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ValidClass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ValidPass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ValidFail1" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ValidFail2" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiGetTotalObjectCount" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiDescribeLiveObjects" Result="OK" ElapsedTime="00:00:00.001"></Test>
+</TestSuite><TestSuite Name="TTestTIUtils" ElapsedTime="00:00:05.348" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="2" NumberOfRunTests="127">
+<Test Name="tiForceRemoveDir" Result="OK" ElapsedTime="00:00:00.048"></Test>
+<Test Name="_tiFloatToStr" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Cr" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CrLf" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Lf" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestCreateDir" Result="OK" ElapsedTime="00:00:00.052"></Test>
+<Test Name="TestCreateFile" Result="OK" ElapsedTime="00:00:00.047"></Test>
+<Test Name="tiAddEllipsis" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiAddTrailingAnd" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiAddTrailingComma" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiAddTrailingOr" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiAddTrailingSlash" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiAddTrailingSpace" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiAddTrailingValue" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiAppendStringToStream" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiApplicationName" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiAusFinancialYearToString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiBooleanToStr" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiCheckSum" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiCIStrTran" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiCopyFile" Result="OK" ElapsedTime="00:00:00.043"></Test>
+<Test Name="tiCopyStream" Result="OK" ElapsedTime="00:00:00.028"></Test>
+<Test Name="tiDateTimeAsIntlDateDisp" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiDateTimeAsIntlDateStor" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiDateTimeToStr" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiDateToAusFinancialYear" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiDateToPreviousWeekDayDate" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiDateToStr" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiDateWithinRange" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiRoundDateToPreviousMinute" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="tiDeleteFiles" Result="OK" ElapsedTime="00:00:00.028"></Test>
+<Test Name="tiDirectoryTreeToStringList" Result="OK" ElapsedTime="00:00:00.037"></Test>
+<Test Name="tiEncodeDecodeWordBase26" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="tiExtractDirToLevel" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiExtractExtension" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiExtractFileNameOnly" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiFilesToStringList" Result="OK" ElapsedTime="00:00:00.058"></Test>
+<Test Name="tiFileToStream" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiFileToString" Result="OK" ElapsedTime="00:00:00.028"></Test>
+<Test Name="tiFixPathDelim_Test" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiForceDirectories" Result="OK" ElapsedTime="00:00:00.025"></Test>
+<Test Name="tiGetAppDataDirPrivate" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiGetAppDataDirPublic" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiGetComputerName" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiGetFileSize" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="tiGetTempDir" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiGetTempFile" Result="OK" ElapsedTime="00:00:00.133"></Test>
+<Test Name="tiGetUserName" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="tiGetWindowsSysDir" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="tiHasRTTIOnClass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiHasRTTIOnObject" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiHasSubDirectory" Result="OK" ElapsedTime="00:00:00.071"></Test>
+<Test Name="tiIfInteger" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiIfReal" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiIfString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiInsertStringToStream" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiIntegerList" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="tiIntlDateDispAsDateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiIntlDateStorAsDateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiIntToCommaStr" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiIntToStrHide0" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiIsClassOfType" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiIsEMailAddressValid" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiIsFileNameValid" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiIsFileReadOnly" Result="OK" ElapsedTime="00:00:00.039"></Test>
+<Test Name="tiIsNearEnough" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiIsDateTimeNearEnough" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiIsVariantOfType" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiJoinPath" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiMixedCase" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiMoveFile" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="tiNormalizeStr" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiNumToken" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiPad0" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiPadC" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiPadL" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiPadR" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiPosR" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiReadFileDateSize" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiRemoveCrLf" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiRemoveDirectory" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiRemoveDrive" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiRemoveExtension" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiRemoveLeading0" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiRemoveLeadingSlash" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiRemoveTrailingSlash" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiRemoveTrailingValue" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiReplicate" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiRound" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiSafeDiv" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiSetFileDate" Result="OK" ElapsedTime="00:00:00.337"></Test>
+<Test Name="tiSetFileReadOnly" Result="OK" ElapsedTime="00:00:00.335"></Test>
+<Test Name="tiDecimalRoundSgl" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiDecimalRoundDbl" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiDecimalRoundExt" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiSetPrecision" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiFloatToCommaStr" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiFloatToCurrency" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiFloatToCurrencyHide0" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiFloatToStr" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiSpace" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiStreamToFile" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiStreamToString1" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiStreamToString2" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiStringToFile" Result="OK" ElapsedTime="00:00:00.331"></Test>
+<Test Name="tiStringToStream" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiStrPos" Result="OK" ElapsedTime="00:00:01.536"></Test>
+<Test Name="tiStrToBool" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiStrToFloat" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiStrToInt" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiStrTran" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiStrTran1" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiSubStr" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiSwapExt" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiTestStreamsIdentical" Result="OK" ElapsedTime="00:00:00.042"></Test>
+<Test Name="tiTimeToStr" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiToken" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiTrim" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiTrimL" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiTrimR" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiTrimTrailingWhiteSpace" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiVariantArrayToString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiWildcardMatch" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiXCopy" Result="OK" ElapsedTime="00:00:00.014"></Test>
+<Test Name="tiYear" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiYearToEndAusFinancialYear" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiYearToStartAusFinancialYear" Result="OK" ElapsedTime="00:00:00.001"></Test>
+</TestSuite><TestSuite Name="TTesttiRTTI" ElapsedTime="00:00:00.102" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="13">
+<Test Name="tiGetSimplePropType" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiVarSimplePropType" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiIsNumericProp" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiGetPropertyNamesObject" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiGetPropertyNamesClass" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiIsReadWritePropObject" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiIsReadWritePropClass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="SetProperty_Simple" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="SetProperty_PropertyPath" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="GetProperty_Simple" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="GetProperty_PropertyPath" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="GetPropertyClass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="PropertyInheritsFrom" Result="OK" ElapsedTime="00:00:00.000"></Test>
+</TestSuite><TestSuite Name="TTestTIVisitor" ElapsedTime="00:00:00.476" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="55">
+<Test Name="TouchedByVisitor_Create" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="TouchedByVisitorList_Add" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TouchedByVisitorList_AppendTopDown" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TouchedByVisitorList_AppendBottomUp" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visitor_AcceptVisitor" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visitor_Execute" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visitor_ContinueVisiting_BottomUpSinglePass" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visitor_ContinueVisiting_TopDownSinglePass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visitor_ContinueVisiting_TopDownRecurse" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visitor_VisitorControllerClass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visitor_Depth_TopDownRecurse" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visitor_Depth_TopDownSinglePass" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visitor_Depth_BottomUpSinglePass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_Caption" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_Terminated" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_ContinueVisitingFunction" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_Iterate_Single_TopDownRecurse" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_Iterate_Single_TopDownSinglePass" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_Iterate_Single_BottomUpSinglePass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_Iterate_List_TopDownRecurse" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_Iterate_List_TopDownSinglePass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_Iterate_List_BottomUpSinglePass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_Iterate_Owned_TopDownRecurse" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_Iterate_Owned_TopDownSinglePass" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_Iterate_Owned_BottomUpSinglePass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_Iterate_ListAndOwned_TopDownRecurse" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_Iterate_ListAndOwned_TopDownSinglePass" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_Iterate_ListAndOwned_BottomUpSinglePass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_Iterate_Override" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_IterateAssignTouched_TopDownRecurse" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_IterateAssignTouched_TopDownSinglePass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_IterateAssignTouched_BottomUpSinglePass" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_Recurse_TopDownRecurse" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_Recurse_TopDownSinglePass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_Recurse_BottomUpSinglePass" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_AcceptVisitor_TopDownRecurse" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_AcceptVisitor_TopDownSinglePass" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_AcceptVisitor_BottomUpSinglePass" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_VisitBranch_TopDownRecurse" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_VisitBranch_TopDownSinglePass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_VisitBranch_BottomUpSinglePass" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_ContinueVisiting_TopDownRecurse" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Visited_ContinueVisiting_TopDownSinglePass" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_ContinueVisiting_BottomUpSinglePass" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Visited_FindAllByClassType" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="VisitorMappingGroup_Add" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="VisitorMappingGroup_AssignVisitorInstances" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="VisitorManager_RegisterVisitor" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="VisitorManager_FindVisitorMappingGroup" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="VisitorManager_VisitorController" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="VisitorManager_VisitorControllerException" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="VisClassCount_Execute" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="VisFindAllByClass_Execute" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="VisStream_Execute" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="VisStreamToFile_Execute" Result="OK" ElapsedTime="00:00:00.012"></Test>
+</TestSuite><TestSuite Name="TTestTIVisitorDB" ElapsedTime="00:00:00.201" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="10">
+<Test Name="TIObjectVisitorControllerConfig_SetDatabaseAndPersistenceLayerNames" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="TIObjectVisitorController_BeforeExecuteVisitorGroup" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="TIObjectVisitorController_BeforeExecuteVisitor" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="TIObjectVisitorController_AfterExecuteVisitor" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="TIObjectVisitorController_AfterExecuteVisitorGroup" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="TIObjectVisitorController_AfterExecuteVisitorGroupError" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="TIVisitorManager_ExecutePassDatabaseName" Result="OK" ElapsedTime="00:00:00.012"></Test>
+<Test Name="TIVisitorManager_ExecutePassDatabaseNameException" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="TIVisitorManager_ExecuteUnregisteredVisitor" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="TIVisitorManager_Execute" Result="OK" ElapsedTime="00:00:00.010"></Test>
+</TestSuite><TestSuite Name="TTestTIObject" ElapsedTime="00:00:00.418" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="50">
+<Test Name="Owner" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Parent_TtiObject" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Parent_TtiObjectList" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Deleted_TtiObject" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Deleted_TtiObjectList_AutoSetItemOwnerTrue" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Deleted_TtiObjectList_AutoSetItemOwnerFalse" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Deleted_Owned" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Deleted_Referenced" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Dirty" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="Index" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="SetPropValue" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="GetPropValue" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="PropType" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="IsReadWriteProp" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="PropCount" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Equals" Result="OK" ElapsedTime="00:00:00.030"></Test>
+<Test Name="ObjectStateAsString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FindByOID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FindWithMethod" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FindWithMethodAndParam" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="FindAllWithMethod" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="IsUnique" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="AssignFlat" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="AssignList" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="AssignCompound" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="CloneFlat" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CloneList" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="CloneCompound" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="TopOfHierarchy" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="IsValid" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="AsDebugString" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="FieldString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FieldString_Equals" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FieldString_Assign" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FieldInt64" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FieldInt64_Equals" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FieldInt64_Assign" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="FieldFloat" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="FieldFloat_Equals" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FieldFloat_Assign" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FieldDateTime" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="FieldDateTime_Equals" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FieldDateTime_Assign" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="FieldDateTime_YearsMonthsDays" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FieldDateTime_HoursMinutesSeconds" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="FieldBoolean" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FieldBoolean_Equals" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FieldBoolean_Assign" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="FieldName" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="AttachDetachObserver" Result="OK" ElapsedTime="00:00:00.001"></Test>
+</TestSuite><TestSuite Name="TTestTIObjectList" ElapsedTime="00:00:00.303" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="2" NumberOfRunTests="39">
+<Test Name="Add" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="AddItemOwner" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Items" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Count" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CountNotDeleted" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="OwnsObjects" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ItemOwner" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="AutoSetItemOwner" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="ForEachMethod" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ForEachMethodRegular" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Clear" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Empty" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="IndexOf" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Last" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="First" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FirstExcludeDeleted" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="LastExcludeDeleted" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Delete" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Remove" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Extract" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="InsertByIndex" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="InsertByObject" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="InsertItemOwner" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="MarkListItemsForDeletion" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="MarkListItemsDirty" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="PropToStrings" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="FindByProps_DirectValue" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="FindByProps_TypedValue" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="SortByOID" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="SortByProps" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Find" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="FindInHierarchy" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="CompareWithEvent" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FreeDeleted" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiListToCSVDefault" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="tiListToCSVFields" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="tiListToStreamDefault" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiListToStreamDelims" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiListToStreamFields" Result="OK" ElapsedTime="00:00:00.004"></Test>
+</TestSuite><TestSuite Name="TTestTICompress" ElapsedTime="00:00:01.674" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="6">
+<Test Name="None_FileCompression" Result="OK" ElapsedTime="00:00:00.963"></Test>
+<Test Name="None_StringCompression" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="None_StreamCompression" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ZLib_FileCompression" Result="OK" ElapsedTime="00:00:00.646"></Test>
+<Test Name="ZLib_StringCompression" Result="OK" ElapsedTime="00:00:00.012"></Test>
+<Test Name="ZLib_StreamCompression" Result="OK" ElapsedTime="00:00:00.009"></Test>
+</TestSuite><TestSuite Name="TTestTIEncrypt" ElapsedTime="00:00:00.927" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="8">
+<Test Name="None_StringEncryption" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="None_StreamEncryption" Result="OK" ElapsedTime="00:00:00.024"></Test>
+<Test Name="Simple_StringEncryption" Result="OK" ElapsedTime="00:00:00.172"></Test>
+<Test Name="Simple_StreamEncryption" Result="OK" ElapsedTime="00:00:00.458"></Test>
+<Test Name="DES_StreamEncryption" Result="OK" ElapsedTime="00:00:00.045"></Test>
+<Test Name="DES_StringEncryption" Result="OK" ElapsedTime="00:00:00.016"></Test>
+<Test Name="Blowfish_StreamEncryption" Result="OK" ElapsedTime="00:00:00.091"></Test>
+<Test Name="Blowfish_StringEncryption" Result="OK" ElapsedTime="00:00:00.039"></Test>
+</TestSuite><TestSuite Name="TTestTIStream" ElapsedTime="00:00:00.759" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="18">
+<Test Name="FileStream_Props" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="FileStream_ReadLn1" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="FileStream_ReadLn1WithLineEnd" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="FileStream_ReadLn100" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="FileStream_ReadLn1000" Result="OK" ElapsedTime="00:00:00.037"></Test>
+<Test Name="FileStream_ReadLn2000" Result="OK" ElapsedTime="00:00:00.114"></Test>
+<Test Name="FileStream_LineDelims" Result="OK" ElapsedTime="00:00:00.016"></Test>
+<Test Name="FileStream_LineDelims2" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="FileStream_EOF" Result="OK" ElapsedTime="00:00:00.062"></Test>
+<Test Name="FileStream_Write" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="FileStream_WriteLn" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="PreSizedStream_Write" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="PreSizedStream_WriteLn" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="PreSizedStream_Clear" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="BlockStream_GetBlockAsString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="BlockStream_SetBlockAsString_InSequence" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="BlockStream_SetBlockAsString_OutOfSequence" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="BlockStream_SetBlockAsString_BadInput" Result="OK" ElapsedTime="00:00:00.000"></Test>
+</TestSuite><TestSuite Name="TTestTiPool" ElapsedTime="00:00:08.690" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="3" NumberOfRunTests="10">
+<Test Name="CreateAndDestroy" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Lock_Unlock_1" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="Lock_UnLockData_1" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="Lock_UnLockData_BadData" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="Lock_Unlock_10" Result="OK" ElapsedTime="00:00:00.016"></Test>
+<Test Name="Lock_UnLockData_10" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="Lock_UnLock_Threaded" Result="OK" ElapsedTime="00:00:02.522"></Test>
+<Test Name="MinPoolSize" Result="OK" ElapsedTime="00:00:01.007"></Test>
+<Test Name="MaxPoolSize" Result="OK" ElapsedTime="00:00:01.008"></Test>
+<Test Name="TimeOut" Result="OK" ElapsedTime="00:00:04.024"></Test>
+</TestSuite><TestSuite Name="TTestTIQueue" ElapsedTime="00:00:00.026" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="6">
+<Test Name="Grow" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="EnQueue" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="DeQueue" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Examine" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Clear" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="IsEmpty" Result="OK" ElapsedTime="00:00:00.000"></Test>
+</TestSuite><TestSuite Name="TTestTIOIDInteger" ElapsedTime="00:00:00.030" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="7">
+<Test Name="AsString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="AsVariant" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Null" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Assign" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Compare" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Equals" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Clone" Result="OK" ElapsedTime="00:00:00.001"></Test>
+</TestSuite><TestSuite Name="TTestTIOIDString" ElapsedTime="00:00:00.031" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="7">
+<Test Name="AsString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="AsVariant" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Null" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Assign" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Compare" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Equals" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="Clone" Result="OK" ElapsedTime="00:00:00.001"></Test>
+</TestSuite><TestSuite Name="TTestTIOIDGUID" ElapsedTime="00:00:00.041" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="7">
+<Test Name="AsString" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="AsVariant" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Null" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Assign" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Compare" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Equals" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Clone" Result="OK" ElapsedTime="00:00:00.000"></Test>
+</TestSuite><TestSuite Name="TTestTIWin32" ElapsedTime="00:00:00.794" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="3">
+<Test Name="CoInitialize_CoUnInitialize_MainThread" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CoInitialize_CoUnInitialize_MultiThread" Result="OK" ElapsedTime="00:00:00.773"></Test>
+<Test Name="CoInitialize_ForceCoUnInitialize" Result="OK" ElapsedTime="00:00:00.000"></Test>
+</TestSuite><TestSuite Name="TTestTIGUIUtils" ElapsedTime="00:00:00.013" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="2">
+<Test Name="tiListToClipboardDefault" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="tiListToClipboardFields" Result="OK" ElapsedTime="00:00:00.000"></Test>
+</TestSuite><TestSuite Name="TTestTiDataset" ElapsedTime="00:00:00.209" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="2" NumberOfRunTests="19">
+<Test Name="CheckOpen" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CheckOpenFirstBug" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="CheckFirst" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CheckIterate" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CheckLast" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FieldCount" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="FieldTypes" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="RecordCount" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="DataIntegrity" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="BookMark" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="RetrieveObject" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="MoveForwardBack" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="EofBof" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="Insert" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="Edit" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Cancel" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="Delete" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="CalculatedFields" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FilterTheData" Result="OK" ElapsedTime="00:00:00.002"></Test>
+</TestSuite><TestSuite Name="TTesTtiDataBuffer" ElapsedTime="00:00:00.470" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="20">
+<Test Name="TIDataSetItems" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TIDataSetAddInstance" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TIDataSetRowItems" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TIDataSetRowAddInstance" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TIDataSetCellDataSetField" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TIDataSetCellValueAsString" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="TIDataSetCellValueAsInteger" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="TIDataSetCellValueAsBool" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TIDataSetCellValueAsReal" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TIDataSetCellValueAsDateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TIDataSetCellValueAsStream" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="ExtractToken" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CSVToTIDataSet_Props" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CSVToTIDataSet_SaveHeaderOnly" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CSVToTIDataSet_SaveNoHeader" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CSVToTIDataSet_SaveFieldNames" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="CSVToTIDataSet_ReadHeaderOnly" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CSVToTIDataSet_ReadDataOnly" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CSVToTIDataSet_ReadHeaderAndData" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="CSVToTIDataSet_Read1000Rows" Result="OK" ElapsedTime="00:00:00.060"></Test>
+</TestSuite><TestSuite Name="TtiTestParserTests" ElapsedTime="00:00:00.092" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="16">
+<Test Name="ParseEmptyString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseNewLine1" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="ParseNewLine2" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="ParseNewLine3" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseString1" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseString2" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseString3" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="ParseString4" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseString5" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="ParseString6" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseString7" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseString8" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseMissingArg1" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseMissingArg2" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseMissingArg3" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseMissingArg4" Result="OK" ElapsedTime="00:00:00.000"></Test>
+</TestSuite><TestSuite Name="TTestTextParserStructCSV" ElapsedTime="00:00:00.130" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="5" NumberOfRunTests="20">
+<Test Name="MetaDatasFindCreateByGroupName" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="MetaDatasFindByGroupName" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="MetaDataAddInstance" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="ParseString_MetaDataOnly" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseString_SingleGroupCrLf" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="ParseString_SingleGroupCr" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseString_SingleGroupOrderReversed" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseString_2GroupsMetaDataFirst" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseString_2GroupsMetaDataWithData" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseString_2GroupsMetaDataWithDataOrderReversed" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="ParseError_IGroupNotRegistered" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseError_DGroupNotRegistered" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="ParseError_IFieldNotRegistered" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseError_DuplicateGroup" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseError_DuplicateField" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseError_FirstColumnNotIOrD" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="ParseError_MoreDataThanMetaData" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="ParseError_MoreMetaDataThanData" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseError_ExceptionInPropSetter" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="ParseError_MultipleErrors" Result="OK" ElapsedTime="00:00:00.000"></Test>
+</TestSuite><TestSuite Name="TTestTIMetaData" ElapsedTime="00:00:00.036" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="8">
+<Test Name="DBMetaDataAdd" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="DBMetaDataFindByTableName" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="MetaDataTableAdd" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="MetaDataTableAddField" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="MetaDataTableFindByFieldName" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="MetaDataTableMaxFieldNameWidth" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="MetaDataFieldClone" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="MetaDataTableClone" Result="OK" ElapsedTime="00:00:00.001"></Test>
+</TestSuite><TestSuite Name="TTestTIQueryParams" ElapsedTime="00:00:00.044" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="9">
+<Test Name="TestCheckStreamContentsSame" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="AsString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="AsInteger" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="AsFloat" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="AsDateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="AsBoolean" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="AsStream" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParamByName" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParamIsNull" Result="OK" ElapsedTime="00:00:00.001"></Test>
+</TestSuite><TestSuite Name="TTestTISyncObjs" ElapsedTime="00:00:05.009" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="2">
+<Test Name="tiObjectLockList_SingleThread" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiObjectLockList_MultiThread" Result="OK" ElapsedTime="00:00:05.001"></Test>
+</TestSuite><TestSuite Name="TTestPersistenceLayers" ElapsedTime="00:00:00.131" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="9">
+<Test Name="ConfirmStaticLinking" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="DefaultPerLayerName" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FindByLayerName" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="FindByTIDatabaseClass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="IsLoaded" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CreateTIQuery_LayerName" Result="OK" ElapsedTime="00:00:00.061"></Test>
+<Test Name="CreateTIQuery_DatabaseClass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CreateTIDatabase" Result="OK" ElapsedTime="00:00:00.019"></Test>
+<Test Name="CreateTIDBConnectionPoolData" Result="OK" ElapsedTime="00:00:00.000"></Test>
+</TestSuite><TestSuite Name="TTestTIAutoMapFramework" ElapsedTime="00:00:00.129" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="26">
+<Test Name="TestClassMaps_AddClassMap" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="TestClassMaps_FindCreate" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="TestClassMaps_IsClassReg" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestClassMaps_RegisterInheritance" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestClassMaps_FindParent" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestClassMaps_HasParent" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestClassMaps_FindAllParents" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestClassMap_AddAttrMap" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestDBMaps_AddDBMap" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TtiDBMaps_FindCreate" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestDBMap_AddTableMap" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestDBMap_FindCreate" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestDBTableMap_AddColMap" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestAttrColMaps_AddMapping" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestAttrColMaps_FindAllMappingsByMapToClass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestAttrColMaps_FindAllPKMappingsByMapToClass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestAttrColMaps_FindByClassAttrMap" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestClassDBCollections_AddClassCollectionMappingSimple" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestClassDBCollections_AddClassCollectionMappingFK" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestClassDBCollections_FindByCollectionOf" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestClassDBCollections_FindByCollection" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestClassDBCollections_IsCollection" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestClassDBCollections_IsInCollection" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestClassDBMappingMgr_RegisterMapping" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestClassDBMappingMgr_RegisterCollection" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestClassDBMappingMgr_RegisterInheritance" Result="OK" ElapsedTime="00:00:00.000"></Test>
+</TestSuite><TestSuite Name="TTestTIXML" ElapsedTime="00:00:00.080" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="19">
+<Test Name="TestTIReplicate1" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLTag" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLTagEnd" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLDataTag" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="DateTimeAsXMLString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLStringToDateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLRemoveReservedCharsXML" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLInsertReservedCharsXML" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLRemoveReservedCharsCSV" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLInsertReservedCharsCSV" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLRemoveReservedCharsTAB" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLInsertReservedCharsTAB" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLRemoveReservedCharsXML2" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLInsertReservedCharsXML2" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiParseForSingleNode" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiParseForSingleNode1" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiParseForSingleAttribute" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiParseForSingleNodeAttribute" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiParseForSingleNodeAttribute1" Result="OK" ElapsedTime="00:00:00.000"></Test>
+</TestSuite><TestSuite Name="TTestTIXMLParser" ElapsedTime="00:00:00.024" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="2" NumberOfRunTests="5">
+<Test Name="ParseForNode1" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseForNode2" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseForAttribute1" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseForAttribute2" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="ParseForAttribute3" Result="OK" ElapsedTime="00:00:00.000"></Test>
+</TestSuite><TestSuite Name="TTestTICriteria" ElapsedTime="00:00:00.089" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="18">
+<Test Name="TestPerColumns" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="TestPerCriteriaList" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestPerCriteria_IsEmbraced" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestPerCriteria_ClearAll" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestPerSelectionCriteriaList" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestHasCriteria" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestPerEqualToCriteria_SQL" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="TestPerExistsCriteria_SQL" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestPerGreaterThanCriteria_SQL" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestPerGreaterOrEqualThanCriteria_SQL" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestPerInCriteria_SQL" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestPerLessThanCriteria_SQL" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestPerLessOrEqualThanCriteria_SQL" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestPerLikeCriteria_SQL" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestPerNullCriteria_SQL" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestPerBetweenCriteria_SQL" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestPerSQLCriteria_SQL" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestFieldName" Result="OK" ElapsedTime="00:00:00.000"></Test>
+</TestSuite><TestSuite Name="TTestTITokenLibrary" ElapsedTime="00:00:00.052" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="11">
+<Test Name="TestSimpleTokensMultipleSeparators" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestSimpleTokenSingleSeparator" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestEscapeParamater" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestLeftRightMarkParameters" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestMultipleSeparators" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestVolumeTokenLib" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestPrefixLine" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestSimpleFileLine" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestComplexFileLine" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestDirectoryLine" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="TestSummaryLine" Result="OK" ElapsedTime="00:00:00.000"></Test>
+</TestSuite><TestSuite Name="TestTtiLogToFile" ElapsedTime="00:00:09.926" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="1">
+<Test Name="TestLogFileContention" Result="OK" ElapsedTime="00:00:09.921"></Test>
+</TestSuite><TestSuite Name="TTestTIXMLtoTIDataSet" ElapsedTime="00:00:07.087" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="5" NumberOfRunTests="60">
+<Test Name="XMLDBParser_StateChangeTableOptXMLSizeOff" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLDBParser_StateChangeTableOptXMLSizeOn" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetEmptyFile_Read" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetEmptyFile_Write" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataBuffered_String" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataBuffered_Integer" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataBuffered_Float" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataBuffered_DateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataBuffered_Boolean" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataBuffered_Binary" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetDataBuffered_String" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="XMLToDataSetDataBuffered_Integer" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="XMLToDataSetDataBuffered_Float" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="XMLToDataSetDataBuffered_DateTime" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="XMLToDataSetDataBuffered_Boolean" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetDataBuffered_Binary" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetCompound" Result="OK" ElapsedTime="00:00:00.180"></Test>
+<Test Name="XMLToDataSetCompoundInvalidXML" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="XMLDBParserMetaData_String" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLDBParserMetaData_Integer" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLDBParserMetaData_Float" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLDBParserMetaData_DateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLDBParserMetaData_Boolean" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLDBParserMetaData_Binary" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLDBParser_String" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLDBParser_Integer" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLDBParser_Float" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLDBParser_DateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLDBParser_Boolean" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLDBParser_Binary" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataWriteOnly_Empty" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataWriteOnlyFSString_String" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataWriteOnlyFSString_Integer" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataWriteOnlyFSString_Float" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataWriteOnlyFSString_DateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataWriteOnlyFSString_Boolean" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataWriteOnlyFSString_Binary" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataWriteOnlyFSInteger_Binary" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataWriteOnlyFSInteger_Boolean" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataWriteOnlyFSInteger_DateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataWriteOnlyFSInteger_Float" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataWriteOnlyFSInteger_Integer" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetMetaDataWriteOnlyFSInteger_String" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetDataWriteOnlyFSString_String" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetDataWriteOnlyFSString_Integer" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetDataWriteOnlyFSString_Float" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetDataWriteOnlyFSString_DateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetDataWriteOnlyFSString_Boolean" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetDataWriteOnlyFSString_Binary" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetDataWriteOnlyFSInteger_Binary" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetDataWriteOnlyFSInteger_Boolean" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetDataWriteOnlyFSInteger_DateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetDataWriteOnlyFSInteger_Float" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetDataWriteOnlyFSInteger_Integer" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetDataWriteOnlyFSInteger_String" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="XMLToDataSetWriterCompound" Result="OK" ElapsedTime="00:00:00.184"></Test>
+<Test Name="XMLToDataSetWriterPerformanceFSStringAbsolute" Result="OK" ElapsedTime="00:00:00.989"></Test>
+<Test Name="XMLToDataSetReaderPerformanceFSStringAbsolute" Result="OK" ElapsedTime="00:00:01.975"></Test>
+<Test Name="XMLToDataSetWriterPerformanceFSIntegerAbsolute" Result="OK" ElapsedTime="00:00:00.993"></Test>
+<Test Name="XMLToDataSetReaderPerformanceFSIntegerAbsolute" Result="OK" ElapsedTime="00:00:01.815"></Test>
+</TestSuite><TestSuite Name="TTestTIHTTP" ElapsedTime="00:00:22.420" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="14" NumberOfRunTests="32">
+<Test Name="StringStreamCopyFrom" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="CorrectURL" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="tiMakeTIOPFHTTPBlockHeader" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="tiParseTIOPFHTTPBlockHeader" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="tiHTTPIndyGet" Result="OK" ElapsedTime="00:00:02.739"></Test>
+<Test Name="tiHTTPIndyGetError" Result="OK" ElapsedTime="00:00:00.169"></Test>
+<Test Name="tiHTTPIndyGetPerformance" Result="OK" ElapsedTime="00:00:00.159"></Test>
+<Test Name="tiHTTPIndyGetCustomHeaderInput" Result="OK" ElapsedTime="00:00:00.159"></Test>
+<Test Name="tiHTTPIndyGetCustomHeaderOutput" Result="OK" ElapsedTime="00:00:00.183"></Test>
+<Test Name="tiHTTPIndyGetBlockResponse" Result="OK" ElapsedTime="00:00:00.191"></Test>
+<Test Name="tiHTTPIndyPost" Result="OK" ElapsedTime="00:00:00.150"></Test>
+<Test Name="tiHTTPIndyPostError" Result="OK" ElapsedTime="00:00:00.152"></Test>
+<Test Name="tiHTTPIndyPostPerformance" Result="OK" ElapsedTime="00:00:00.155"></Test>
+<Test Name="tiHTTPIndyPostCustomHeaderInput" Result="OK" ElapsedTime="00:00:00.150"></Test>
+<Test Name="tiHTTPIndyPostCustomHeaderOutput" Result="OK" ElapsedTime="00:00:00.173"></Test>
+<Test Name="tiHTTPIndyPostBlockResponse" Result="OK" ElapsedTime="00:00:00.683"></Test>
+<Test Name="tiHTTPMSXMLHTTPGetCacheFeature" Result="OK" ElapsedTime="00:00:00.477"></Test>
+<Test Name="tiHTTPMSXMLHTTPGet" Result="OK" ElapsedTime="00:00:00.032"></Test>
+<Test Name="tiHTTPMSXMLHTTPGetError" Result="OK" ElapsedTime="00:00:00.038"></Test>
+<Test Name="tiHTTPMSXMLHTTPGetPerformance" Result="OK" ElapsedTime="00:00:08.448"></Test>
+<Test Name="tiHTTPMSXMLHTTPGetCustomHeaderInput" Result="OK" ElapsedTime="00:00:00.012"></Test>
+<Test Name="tiHTTPMSXMLHTTPGetCustomHeaderOutput" Result="OK" ElapsedTime="00:00:00.036"></Test>
+<Test Name="tiHTTPMSXMLHTTPGetBlockResponse" Result="OK" ElapsedTime="00:00:00.047"></Test>
+<Test Name="tiHTTPMSXMLHTTPPost" Result="OK" ElapsedTime="00:00:00.031"></Test>
+<Test Name="tiHTTPMSXMLHTTPPostError" Result="OK" ElapsedTime="00:00:00.023"></Test>
+<Test Name="tiHTTPMSXMLHTTPPostPerformance" Result="OK" ElapsedTime="00:00:07.871"></Test>
+<Test Name="tiHTTPMSXMLHTTPPostCustomHeaderInput" Result="OK" ElapsedTime="00:00:00.022"></Test>
+<Test Name="tiHTTPMSXMLHTTPPostCustomHeaderOutput" Result="OK" ElapsedTime="00:00:00.047"></Test>
+<Test Name="tiHTTPMSXMLHTTPPostBlockResponse" Result="OK" ElapsedTime="00:00:00.058"></Test>
+<Test Name="tiHTTPFactory" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="SetDefaultHTTPClass" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="IsInstanceOfType" Result="OK" ElapsedTime="00:00:00.000"></Test>
+</TestSuite></TestSuite><TestSuite Name="Persistent tests for [BDEParadox]" ElapsedTime="00:00:49.115" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="13" NumberOfRunTests="139">
+<TestSuite Name="TTestTIPersistenceLayersBDEParadox" ElapsedTime="00:00:00.150" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="1">
+<Test Name="[BDEParadox] ConnectDatabase" Result="OK" ElapsedTime="00:00:00.142"></Test>
+</TestSuite><TestSuite Name="TTestTIDatabaseBDEParadox" ElapsedTime="00:00:11.251" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="5" NumberOfRunTests="12">
+<Test Name="[BDEParadox] DatabaseExists" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[BDEParadox] CreateDatabase" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[BDEParadox] Transaction_RollBack" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] LoadDatabaseLayer" Result="OK" ElapsedTime="00:00:00.014"></Test>
+<Test Name="[BDEParadox] NonThreadedDBConnectionPool" Result="OK" ElapsedTime="00:00:02.015"></Test>
+<Test Name="[BDEParadox] ThreadedDBConnectionPool" Result="OK" ElapsedTime="00:00:00.710"></Test>
+<Test Name="[BDEParadox] Connect" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] Transaction_InTransaction" Result="OK" ElapsedTime="00:00:00.040"></Test>
+<Test Name="[BDEParadox] Transaction_Commit" Result="OK" ElapsedTime="00:00:00.113"></Test>
+<Test Name="[BDEParadox] CreateTableDropTable" Result="OK" ElapsedTime="00:00:00.181"></Test>
+<Test Name="[BDEParadox] CreateTableDropTable_Timing" Result="OK" ElapsedTime="00:00:07.727"></Test>
+<Test Name="[BDEParadox] ReadMetaData" Result="OK" ElapsedTime="00:00:00.352"></Test>
+</TestSuite><TestSuite Name="TTestTIQueryBDEParadox" ElapsedTime="00:00:15.761" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="3" NumberOfRunTests="55">
+<Test Name="[BDEParadox] GetSetSQL" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] QueryType" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] ParamName" Result="OK" ElapsedTime="00:00:00.021"></Test>
+<Test Name="[BDEParadox] ParamCount" Result="OK" ElapsedTime="00:00:00.022"></Test>
+<Test Name="[BDEParadox] ParamsAsString" Result="OK" ElapsedTime="00:00:00.021"></Test>
+<Test Name="[BDEParadox] ParamAsString" Result="OK" ElapsedTime="00:00:00.026"></Test>
+<Test Name="[BDEParadox] ParamAsInteger" Result="OK" ElapsedTime="00:00:00.024"></Test>
+<Test Name="[BDEParadox] ParamAsFloat" Result="OK" ElapsedTime="00:00:00.024"></Test>
+<Test Name="[BDEParadox] ParamAsBoolean" Result="OK" ElapsedTime="00:00:00.024"></Test>
+<Test Name="[BDEParadox] ParamAsDateTime" Result="OK" ElapsedTime="00:00:00.024"></Test>
+<Test Name="[BDEParadox] ParamAsStream" Result="OK" ElapsedTime="00:00:00.025"></Test>
+<Test Name="[BDEParadox] ParamAsMacro" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] ParamIsNull" Result="OK" ElapsedTime="00:00:00.018"></Test>
+<Test Name="[BDEParadox] OpenCloseActive" Result="OK" ElapsedTime="00:00:00.048"></Test>
+<Test Name="[BDEParadox] ExecSQL" Result="OK" ElapsedTime="00:00:00.036"></Test>
+<Test Name="[BDEParadox] ConfirmSetupWorks" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] ConfirmDBConnectionWorks" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[BDEParadox] TypeKindToQueryFieldKind" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] QueryToDatabaseConnection" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] FieldAsInteger" Result="OK" ElapsedTime="00:00:00.034"></Test>
+<Test Name="[BDEParadox] FieldAsString" Result="OK" ElapsedTime="00:00:00.034"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong1" Result="OK" ElapsedTime="00:00:00.036"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong10" Result="OK" ElapsedTime="00:00:00.040"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong100" Result="OK" ElapsedTime="00:00:00.037"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong255" Result="OK" ElapsedTime="00:00:00.037"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong256" Result="OK" ElapsedTime="00:00:00.036"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong257" Result="OK" ElapsedTime="00:00:00.038"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong511" Result="OK" ElapsedTime="00:00:00.046"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong512" Result="OK" ElapsedTime="00:00:00.040"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong513" Result="OK" ElapsedTime="00:00:00.084"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong1023" Result="OK" ElapsedTime="00:00:00.036"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong1024" Result="OK" ElapsedTime="00:00:00.038"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong1025" Result="OK" ElapsedTime="00:00:00.036"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong1999" Result="OK" ElapsedTime="00:00:00.037"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong2000" Result="OK" ElapsedTime="00:00:00.037"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong2001" Result="OK" ElapsedTime="00:00:00.045"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong3999" Result="OK" ElapsedTime="00:00:00.039"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong4000" Result="OK" ElapsedTime="00:00:00.036"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong4001" Result="OK" ElapsedTime="00:00:00.036"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong5000" Result="OK" ElapsedTime="00:00:00.146"></Test>
+<Test Name="[BDEParadox] FieldAsStringLong10000" Result="OK" ElapsedTime="00:00:00.116"></Test>
+<Test Name="[BDEParadox] FieldAsFloat" Result="OK" ElapsedTime="00:00:00.025"></Test>
+<Test Name="[BDEParadox] FieldAsBoolean" Result="OK" ElapsedTime="00:00:00.023"></Test>
+<Test Name="[BDEParadox] FieldAsDateTime" Result="OK" ElapsedTime="00:00:00.023"></Test>
+<Test Name="[BDEParadox] FieldAsStream" Result="OK" ElapsedTime="00:00:00.025"></Test>
+<Test Name="[BDEParadox] FieldIsNull" Result="OK" ElapsedTime="00:00:00.026"></Test>
+<Test Name="[BDEParadox] FieldByNameVSFieldByIndex" Result="OK" ElapsedTime="00:00:02.535"></Test>
+<Test Name="[BDEParadox] FieldCount" Result="OK" ElapsedTime="00:00:00.038"></Test>
+<Test Name="[BDEParadox] FieldName" Result="OK" ElapsedTime="00:00:00.029"></Test>
+<Test Name="[BDEParadox] FieldIndex" Result="OK" ElapsedTime="00:00:00.032"></Test>
+<Test Name="[BDEParadox] FieldKind" Result="OK" ElapsedTime="00:00:00.030"></Test>
+<Test Name="[BDEParadox] FieldSize" Result="OK" ElapsedTime="00:00:00.035"></Test>
+<Test Name="[BDEParadox] EOF" Result="OK" ElapsedTime="00:00:00.052"></Test>
+<Test Name="[BDEParadox] Next" Result="OK" ElapsedTime="00:00:00.042"></Test>
+<Test Name="[BDEParadox] InsertDeleteUpdate_Timing" Result="OK" ElapsedTime="00:00:09.027"></Test>
+</TestSuite><TestSuite Name="TTestTIOIDManagerBDEParadox" ElapsedTime="00:00:00.367" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="2" NumberOfRunTests="13">
+<Test Name="[BDEParadox] OIDFactory_RegisterMapping" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] OIDFactory_CreateOID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] OIDFactory_CreateNextOIDGenerator" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] NextOIDMgrInteger" Result="OK" ElapsedTime="00:00:00.043"></Test>
+<Test Name="[BDEParadox] NextOIDMgrString" Result="OK" ElapsedTime="00:00:00.033"></Test>
+<Test Name="[BDEParadox] NextOIDMgrGUID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] NextOIDStringSetNextOIDChars" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] NextOIDInteger" Result="OK" ElapsedTime="00:00:00.044"></Test>
+<Test Name="[BDEParadox] NextOIDString" Result="OK" ElapsedTime="00:00:00.113"></Test>
+<Test Name="[BDEParadox] NextOIDGUID" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[BDEParadox] tiObject_CreateNew" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] tiObject_CreateNew_OIDGUID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] tiObject_CreateNew_OIDInteger" Result="OK" ElapsedTime="00:00:00.037"></Test>
+</TestSuite><TestSuite Name="TTestTIAutoMapOperationBDEParadox" ElapsedTime="00:00:17.317" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="50">
+<Test Name="[BDEParadox] TestSetupAndTearDown" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] ReadWriteString1" Result="OK" ElapsedTime="00:00:00.038"></Test>
+<Test Name="[BDEParadox] ReadWriteString10" Result="OK" ElapsedTime="00:00:00.026"></Test>
+<Test Name="[BDEParadox] ReadWriteString100" Result="OK" ElapsedTime="00:00:00.043"></Test>
+<Test Name="[BDEParadox] ReadWriteString255" Result="OK" ElapsedTime="00:00:00.027"></Test>
+<Test Name="[BDEParadox] ReadWriteString256" Result="OK" ElapsedTime="00:00:00.035"></Test>
+<Test Name="[BDEParadox] ReadWriteString257" Result="OK" ElapsedTime="00:00:00.031"></Test>
+<Test Name="[BDEParadox] ReadWriteString511" Result="OK" ElapsedTime="00:00:00.041"></Test>
+<Test Name="[BDEParadox] ReadWriteString512" Result="OK" ElapsedTime="00:00:00.030"></Test>
+<Test Name="[BDEParadox] ReadWriteString513" Result="OK" ElapsedTime="00:00:00.034"></Test>
+<Test Name="[BDEParadox] ReadWriteString1023" Result="OK" ElapsedTime="00:00:00.033"></Test>
+<Test Name="[BDEParadox] ReadWriteString1024" Result="OK" ElapsedTime="00:00:00.028"></Test>
+<Test Name="[BDEParadox] ReadWriteString1025" Result="OK" ElapsedTime="00:00:00.030"></Test>
+<Test Name="[BDEParadox] ReadWriteString5000" Result="OK" ElapsedTime="00:00:00.028"></Test>
+<Test Name="[BDEParadox] ReadWriteString10000" Result="OK" ElapsedTime="00:00:00.049"></Test>
+<Test Name="[BDEParadox] ReadWriteIntegerLow" Result="OK" ElapsedTime="00:00:00.029"></Test>
+<Test Name="[BDEParadox] ReadWriteInteger10" Result="OK" ElapsedTime="00:00:00.031"></Test>
+<Test Name="[BDEParadox] ReadWriteInteger0" Result="OK" ElapsedTime="00:00:00.023"></Test>
+<Test Name="[BDEParadox] ReadWriteInteger_10" Result="OK" ElapsedTime="00:00:00.025"></Test>
+<Test Name="[BDEParadox] ReadWriteIntegerHigh" Result="OK" ElapsedTime="00:00:00.028"></Test>
+<Test Name="[BDEParadox] ReadWriteFloat" Result="OK" ElapsedTime="00:00:00.028"></Test>
+<Test Name="[BDEParadox] ReadWriteDateDate" Result="OK" ElapsedTime="00:00:00.070"></Test>
+<Test Name="[BDEParadox] ReadWriteDateNow" Result="OK" ElapsedTime="00:00:00.035"></Test>
+<Test Name="[BDEParadox] ReadWriteDateMin" Result="OK" ElapsedTime="00:00:00.039"></Test>
+<Test Name="[BDEParadox] ReadWriteDate0" Result="OK" ElapsedTime="00:00:00.058"></Test>
+<Test Name="[BDEParadox] ReadWriteDateMax" Result="OK" ElapsedTime="00:00:00.045"></Test>
+<Test Name="[BDEParadox] ReadWriteBooleanTrue" Result="OK" ElapsedTime="00:00:00.034"></Test>
+<Test Name="[BDEParadox] ReadWriteBooleanFalse" Result="OK" ElapsedTime="00:00:00.037"></Test>
+<Test Name="[BDEParadox] ReadWriteStream" Result="OK" ElapsedTime="00:00:00.039"></Test>
+<Test Name="[BDEParadox] ReadWriteOID" Result="OK" ElapsedTime="00:00:00.135"></Test>
+<Test Name="[BDEParadox] SingleFlatObjReadThis" Result="OK" ElapsedTime="00:00:00.026"></Test>
+<Test Name="[BDEParadox] SingleFlatObjCreate" Result="OK" ElapsedTime="00:00:00.019"></Test>
+<Test Name="[BDEParadox] SingleFlatObjUpdate" Result="OK" ElapsedTime="00:00:00.028"></Test>
+<Test Name="[BDEParadox] SingleFlatObjDelete" Result="OK" ElapsedTime="00:00:00.035"></Test>
+<Test Name="[BDEParadox] SingleInheritedObjRead" Result="OK" ElapsedTime="00:00:00.037"></Test>
+<Test Name="[BDEParadox] SingleInheritedObjCreateEachLevel" Result="OK" ElapsedTime="00:00:00.090"></Test>
+<Test Name="[BDEParadox] SingleInheritedObjCreateAll" Result="OK" ElapsedTime="00:00:00.017"></Test>
+<Test Name="[BDEParadox] SingleInheritedObjUpdateEachLevel" Result="OK" ElapsedTime="00:00:00.127"></Test>
+<Test Name="[BDEParadox] SingleInheritedObjUpdateAll" Result="OK" ElapsedTime="00:00:00.047"></Test>
+<Test Name="[BDEParadox] SingleInheritedObjDeleteEachLevel" Result="OK" ElapsedTime="00:00:00.066"></Test>
+<Test Name="[BDEParadox] SingleInheritedObjDeleteAll" Result="OK" ElapsedTime="00:00:00.098"></Test>
+<Test Name="[BDEParadox] CollectionOfInheritedObjRead" Result="OK" ElapsedTime="00:00:00.038"></Test>
+<Test Name="[BDEParadox] CollectionOfInheritedObjWithFKRead" Result="OK" ElapsedTime="00:00:00.082"></Test>
+<Test Name="[BDEParadox] CollectionOfInheritedObjWithOutFKRead" Result="OK" ElapsedTime="00:00:00.189"></Test>
+<Test Name="[BDEParadox] CollectionReadPK" Result="OK" ElapsedTime="00:00:00.275"></Test>
+<Test Name="[BDEParadox] CollectionReadAll" Result="OK" ElapsedTime="00:00:00.333"></Test>
+<Test Name="[BDEParadox] CollectionReadAllItems" Result="OK" ElapsedTime="00:00:00.288"></Test>
+<Test Name="[BDEParadox] CollectionCreate" Result="OK" ElapsedTime="00:00:00.122"></Test>
+<Test Name="[BDEParadox] CollectionUpdate" Result="OK" ElapsedTime="00:00:00.159"></Test>
+<Test Name="[BDEParadox] CollectionDelete" Result="OK" ElapsedTime="00:00:00.154"></Test>
+</TestSuite><TestSuite Name="TTestAutomappingCriteriaBDEParadox" ElapsedTime="00:00:04.259" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="8">
+<Test Name="[BDEParadox] TestSetupAndTearDown" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[BDEParadox] CollectionReadAllNoCriteria" Result="OK" ElapsedTime="00:00:00.299"></Test>
+<Test Name="[BDEParadox] CollectionReadStringCriteria" Result="OK" ElapsedTime="00:00:00.232"></Test>
+<Test Name="[BDEParadox] ItemsNoCriteria" Result="OK" ElapsedTime="00:00:00.202"></Test>
+<Test Name="[BDEParadox] ItemsStringLike" Result="OK" ElapsedTime="00:00:00.264"></Test>
+<Test Name="[BDEParadox] ItemsIntegerInArray" Result="OK" ElapsedTime="00:00:00.308"></Test>
+<Test Name="[BDEParadox] ItemsOID" Result="OK" ElapsedTime="00:00:00.295"></Test>
+<Test Name="[BDEParadox] ItemsOwnerOID" Result="OK" ElapsedTime="00:00:00.273"></Test>
+</TestSuite></TestSuite><TestSuite Name="Persistent tests for [ADOAccess]" ElapsedTime="00:00:32.701" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="94" NumberOfRunTests="139">
+<TestSuite Name="TTestTIPersistenceLayersADOAccess" ElapsedTime="00:00:00.444" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="1">
+<Test Name="[ADOAccess] ConnectDatabase" Result="OK" ElapsedTime="00:00:00.438"></Test>
+</TestSuite><TestSuite Name="TTestTIDatabaseADOAccess" ElapsedTime="00:00:07.802" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="5" NumberOfRunTests="12">
+<Test Name="[ADOAccess] DatabaseExists" Result="OK" ElapsedTime="00:00:00.078"></Test>
+<Test Name="[ADOAccess] CreateDatabase" Result="OK" ElapsedTime="00:00:00.085"></Test>
+<Test Name="[ADOAccess] ThreadedDBConnectionPool" Result="OK" ElapsedTime="00:00:00.746"></Test>
+<Test Name="[ADOAccess] LoadDatabaseLayer" Result="OK" ElapsedTime="00:00:00.040"></Test>
+<Test Name="[ADOAccess] NonThreadedDBConnectionPool" Result="OK" ElapsedTime="00:00:02.064"></Test>
+<Test Name="[ADOAccess] Connect" Result="OK" ElapsedTime="00:00:00.038"></Test>
+<Test Name="[ADOAccess] Transaction_InTransaction" Result="OK" ElapsedTime="00:00:00.039"></Test>
+<Test Name="[ADOAccess] Transaction_Commit" Result="OK" ElapsedTime="00:00:00.031"></Test>
+<Test Name="[ADOAccess] Transaction_RollBack" Result="OK" ElapsedTime="00:00:00.023"></Test>
+<Test Name="[ADOAccess] CreateTableDropTable" Result="OK" ElapsedTime="00:00:00.120"></Test>
+<Test Name="[ADOAccess] CreateTableDropTable_Timing" Result="OK" ElapsedTime="00:00:03.761"></Test>
+<Test Name="[ADOAccess] ReadMetaData" Result="OK" ElapsedTime="00:00:00.133"></Test>
+</TestSuite><TestSuite Name="TTestTIQueryADOAccess" ElapsedTime="00:00:12.236" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="44" NumberOfRunTests="55">
+<Test Name="[ADOAccess] GetSetSQL" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] QueryType" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] ParamName" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[ADOAccess] ParamCount" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[ADOAccess] ParamsAsString" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] ParamAsString" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] ParamAsInteger" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] ParamAsFloat" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] ParamAsBoolean" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] ParamAsDateTime" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] ParamAsStream" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] ParamAsMacro" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] ParamIsNull" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[ADOAccess] OpenCloseActive" Result="OK" ElapsedTime="00:00:00.014"></Test>
+<Test Name="[ADOAccess] ExecSQL" Result="OK" ElapsedTime="00:00:00.014"></Test>
+<Test Name="[ADOAccess] ConfirmSetupWorks" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] ConfirmDBConnectionWorks" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] TypeKindToQueryFieldKind" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] QueryToDatabaseConnection" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] FieldAsInteger" Result="OK" ElapsedTime="00:00:00.023"></Test>
+<Test Name="[ADOAccess] FieldAsString" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong1" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong10" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong100" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong255" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong256" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong257" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong511" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong512" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong513" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong1023" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong1024" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong1025" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong1999" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong2000" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong2001" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong3999" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong4000" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong4001" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong5000" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] FieldAsStringLong10000" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[ADOAccess] FieldAsFloat" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] FieldAsBoolean" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] FieldAsDateTime" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] FieldAsStream" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] FieldIsNull" Result="OK" ElapsedTime="00:00:00.029"></Test>
+<Test Name="[ADOAccess] FieldByNameVSFieldByIndex" Result="OK" ElapsedTime="00:00:02.378"></Test>
+<Test Name="[ADOAccess] FieldCount" Result="OK" ElapsedTime="00:00:00.017"></Test>
+<Test Name="[ADOAccess] FieldName" Result="OK" ElapsedTime="00:00:00.019"></Test>
+<Test Name="[ADOAccess] FieldIndex" Result="OK" ElapsedTime="00:00:00.018"></Test>
+<Test Name="[ADOAccess] FieldKind" Result="OK" ElapsedTime="00:00:00.015"></Test>
+<Test Name="[ADOAccess] FieldSize" Result="OK" ElapsedTime="00:00:00.020"></Test>
+<Test Name="[ADOAccess] EOF" Result="OK" ElapsedTime="00:00:00.013"></Test>
+<Test Name="[ADOAccess] Next" Result="OK" ElapsedTime="00:00:00.035"></Test>
+<Test Name="[ADOAccess] InsertDeleteUpdate_Timing" Result="OK" ElapsedTime="00:00:03.569"></Test>
+</TestSuite><TestSuite Name="TTestTIOIDManagerADOAccess" ElapsedTime="00:00:01.286" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="5" NumberOfRunTests="13">
+<Test Name="[ADOAccess] OIDFactory_RegisterMapping" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] OIDFactory_CreateOID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] OIDFactory_CreateNextOIDGenerator" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] NextOIDMgrInteger" Result="OK" ElapsedTime="00:00:00.014"></Test>
+<Test Name="[ADOAccess] NextOIDMgrString" Result="OK" ElapsedTime="00:00:00.014"></Test>
+<Test Name="[ADOAccess] NextOIDMgrGUID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] NextOIDStringSetNextOIDChars" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] NextOIDInteger" Result="OK" ElapsedTime="00:00:00.019"></Test>
+<Test Name="[ADOAccess] NextOIDString" Result="OK" ElapsedTime="00:00:00.073"></Test>
+<Test Name="[ADOAccess] NextOIDGUID" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="[ADOAccess] tiObject_CreateNew" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] tiObject_CreateNew_OIDGUID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] tiObject_CreateNew_OIDInteger" Result="OK" ElapsedTime="00:00:00.014"></Test>
+</TestSuite><TestSuite Name="TTestTIAutoMapOperationADOAccess" ElapsedTime="00:00:08.941" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="35" NumberOfRunTests="50">
+<Test Name="[ADOAccess] TestSetupAndTearDown" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] ReadWriteString1" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[ADOAccess] ReadWriteString10" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] ReadWriteString100" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] ReadWriteString255" Result="OK" ElapsedTime="00:00:00.013"></Test>
+<Test Name="[ADOAccess] ReadWriteString256" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] ReadWriteString257" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] ReadWriteString511" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] ReadWriteString512" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[ADOAccess] ReadWriteString513" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] ReadWriteString1023" Result="OK" ElapsedTime="00:00:00.012"></Test>
+<Test Name="[ADOAccess] ReadWriteString1024" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] ReadWriteString1025" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] ReadWriteString5000" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] ReadWriteString10000" Result="OK" ElapsedTime="00:00:00.012"></Test>
+<Test Name="[ADOAccess] ReadWriteIntegerLow" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[ADOAccess] ReadWriteInteger10" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[ADOAccess] ReadWriteInteger0" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] ReadWriteInteger_10" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] ReadWriteIntegerHigh" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] ReadWriteFloat" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] ReadWriteDateDate" Result="OK" ElapsedTime="00:00:00.017"></Test>
+<Test Name="[ADOAccess] ReadWriteDateNow" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] ReadWriteDateMin" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] ReadWriteDate0" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] ReadWriteDateMax" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[ADOAccess] ReadWriteBooleanTrue" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[ADOAccess] ReadWriteBooleanFalse" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[ADOAccess] ReadWriteStream" Result="OK" ElapsedTime="00:00:00.012"></Test>
+<Test Name="[ADOAccess] ReadWriteOID" Result="OK" ElapsedTime="00:00:00.021"></Test>
+<Test Name="[ADOAccess] SingleFlatObjReadThis" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] SingleFlatObjCreate" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[ADOAccess] SingleFlatObjUpdate" Result="OK" ElapsedTime="00:00:00.013"></Test>
+<Test Name="[ADOAccess] SingleFlatObjDelete" Result="OK" ElapsedTime="00:00:00.021"></Test>
+<Test Name="[ADOAccess] SingleInheritedObjRead" Result="OK" ElapsedTime="00:00:00.024"></Test>
+<Test Name="[ADOAccess] SingleInheritedObjCreateEachLevel" Result="OK" ElapsedTime="00:00:00.033"></Test>
+<Test Name="[ADOAccess] SingleInheritedObjCreateAll" Result="OK" ElapsedTime="00:00:00.013"></Test>
+<Test Name="[ADOAccess] SingleInheritedObjUpdateEachLevel" Result="OK" ElapsedTime="00:00:00.042"></Test>
+<Test Name="[ADOAccess] SingleInheritedObjUpdateAll" Result="OK" ElapsedTime="00:00:00.036"></Test>
+<Test Name="[ADOAccess] SingleInheritedObjDeleteEachLevel" Result="OK" ElapsedTime="00:00:00.039"></Test>
+<Test Name="[ADOAccess] SingleInheritedObjDeleteAll" Result="OK" ElapsedTime="00:00:00.027"></Test>
+<Test Name="[ADOAccess] CollectionOfInheritedObjRead" Result="OK" ElapsedTime="00:00:00.031"></Test>
+<Test Name="[ADOAccess] CollectionOfInheritedObjWithFKRead" Result="OK" ElapsedTime="00:00:00.044"></Test>
+<Test Name="[ADOAccess] CollectionOfInheritedObjWithOutFKRead" Result="OK" ElapsedTime="00:00:00.068"></Test>
+<Test Name="[ADOAccess] CollectionReadPK" Result="OK" ElapsedTime="00:00:00.110"></Test>
+<Test Name="[ADOAccess] CollectionReadAll" Result="OK" ElapsedTime="00:00:00.139"></Test>
+<Test Name="[ADOAccess] CollectionReadAllItems" Result="OK" ElapsedTime="00:00:00.116"></Test>
+<Test Name="[ADOAccess] CollectionCreate" Result="OK" ElapsedTime="00:00:00.074"></Test>
+<Test Name="[ADOAccess] CollectionUpdate" Result="OK" ElapsedTime="00:00:00.118"></Test>
+<Test Name="[ADOAccess] CollectionDelete" Result="OK" ElapsedTime="00:00:00.130"></Test>
+</TestSuite><TestSuite Name="TTestAutomappingCriteriaADOAccess" ElapsedTime="00:00:01.982" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="5" NumberOfRunTests="8">
+<Test Name="[ADOAccess] TestSetupAndTearDown" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[ADOAccess] CollectionReadAllNoCriteria" Result="OK" ElapsedTime="00:00:00.132"></Test>
+<Test Name="[ADOAccess] CollectionReadStringCriteria" Result="OK" ElapsedTime="00:00:00.098"></Test>
+<Test Name="[ADOAccess] ItemsNoCriteria" Result="OK" ElapsedTime="00:00:00.104"></Test>
+<Test Name="[ADOAccess] ItemsStringLike" Result="OK" ElapsedTime="00:00:00.111"></Test>
+<Test Name="[ADOAccess] ItemsIntegerInArray" Result="OK" ElapsedTime="00:00:00.172"></Test>
+<Test Name="[ADOAccess] ItemsOID" Result="OK" ElapsedTime="00:00:00.108"></Test>
+<Test Name="[ADOAccess] ItemsOwnerOID" Result="OK" ElapsedTime="00:00:00.102"></Test>
+</TestSuite></TestSuite><TestSuite Name="Persistent tests for [XML]" ElapsedTime="00:00:21.778" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="10" NumberOfRunTests="127">
+<TestSuite Name="TTestTIPersistenceLayersXML" ElapsedTime="00:00:00.018" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="1">
+<Test Name="[XML] ConnectDatabase" Result="OK" ElapsedTime="00:00:00.012"></Test>
+</TestSuite><TestSuite Name="TTestTIDatabaseXML" ElapsedTime="00:00:06.261" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="2" NumberOfRunTests="12">
+<Test Name="[XML] DatabaseExists" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[XML] CreateDatabase" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="[XML] ThreadedDBConnectionPool" Result="OK" ElapsedTime="00:00:00.708"></Test>
+<Test Name="[XML] LoadDatabaseLayer" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[XML] NonThreadedDBConnectionPool" Result="OK" ElapsedTime="00:00:02.029"></Test>
+<Test Name="[XML] Connect" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="[XML] Transaction_InTransaction" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XML] Transaction_Commit" Result="OK" ElapsedTime="00:00:00.028"></Test>
+<Test Name="[XML] Transaction_RollBack" Result="OK" ElapsedTime="00:00:00.013"></Test>
+<Test Name="[XML] CreateTableDropTable" Result="OK" ElapsedTime="00:00:00.052"></Test>
+<Test Name="[XML] CreateTableDropTable_Timing" Result="OK" ElapsedTime="00:00:03.229"></Test>
+<Test Name="[XML] ReadMetaData" Result="OK" ElapsedTime="00:00:00.107"></Test>
+</TestSuite><TestSuite Name="TTestTIQueryXML" ElapsedTime="00:00:08.137" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="5" NumberOfRunTests="51">
+<Test Name="[XML] FieldByNameVSFieldByIndex" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] ParamName" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] ParamCount" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] ParamsAsString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] ParamAsString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] ParamAsInteger" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] ParamAsFloat" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] ParamAsBoolean" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] ParamAsDateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] ParamAsStream" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] ParamAsMacro" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] ParamIsNull" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] ConfirmSetupWorks" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] ConfirmDBConnectionWorks" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[XML] TypeKindToQueryFieldKind" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] QueryToDatabaseConnection" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] FieldAsInteger" Result="OK" ElapsedTime="00:00:00.028"></Test>
+<Test Name="[XML] FieldAsString" Result="OK" ElapsedTime="00:00:00.012"></Test>
+<Test Name="[XML] FieldAsStringLong1" Result="OK" ElapsedTime="00:00:00.015"></Test>
+<Test Name="[XML] FieldAsStringLong10" Result="OK" ElapsedTime="00:00:00.015"></Test>
+<Test Name="[XML] FieldAsStringLong100" Result="OK" ElapsedTime="00:00:00.019"></Test>
+<Test Name="[XML] FieldAsStringLong255" Result="OK" ElapsedTime="00:00:00.014"></Test>
+<Test Name="[XML] FieldAsStringLong256" Result="OK" ElapsedTime="00:00:00.016"></Test>
+<Test Name="[XML] FieldAsStringLong257" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[XML] FieldAsStringLong511" Result="OK" ElapsedTime="00:00:00.013"></Test>
+<Test Name="[XML] FieldAsStringLong512" Result="OK" ElapsedTime="00:00:00.013"></Test>
+<Test Name="[XML] FieldAsStringLong513" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[XML] FieldAsStringLong1023" Result="OK" ElapsedTime="00:00:00.014"></Test>
+<Test Name="[XML] FieldAsStringLong1024" Result="OK" ElapsedTime="00:00:00.016"></Test>
+<Test Name="[XML] FieldAsStringLong1025" Result="OK" ElapsedTime="00:00:00.015"></Test>
+<Test Name="[XML] FieldAsStringLong1999" Result="OK" ElapsedTime="00:00:00.031"></Test>
+<Test Name="[XML] FieldAsStringLong2000" Result="OK" ElapsedTime="00:00:00.019"></Test>
+<Test Name="[XML] FieldAsStringLong2001" Result="OK" ElapsedTime="00:00:00.013"></Test>
+<Test Name="[XML] FieldAsStringLong3999" Result="OK" ElapsedTime="00:00:00.020"></Test>
+<Test Name="[XML] FieldAsStringLong4000" Result="OK" ElapsedTime="00:00:00.016"></Test>
+<Test Name="[XML] FieldAsStringLong4001" Result="OK" ElapsedTime="00:00:00.016"></Test>
+<Test Name="[XML] FieldAsStringLong5000" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[XML] FieldAsStringLong10000" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[XML] FieldAsFloat" Result="OK" ElapsedTime="00:00:00.016"></Test>
+<Test Name="[XML] FieldAsBoolean" Result="OK" ElapsedTime="00:00:00.020"></Test>
+<Test Name="[XML] FieldAsDateTime" Result="OK" ElapsedTime="00:00:00.016"></Test>
+<Test Name="[XML] FieldAsStream" Result="OK" ElapsedTime="00:00:00.012"></Test>
+<Test Name="[XML] FieldIsNull" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[XML] FieldCount" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[XML] FieldName" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[XML] FieldIndex" Result="OK" ElapsedTime="00:00:00.020"></Test>
+<Test Name="[XML] FieldKind" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XML] FieldSize" Result="OK" ElapsedTime="00:00:00.012"></Test>
+<Test Name="[XML] EOF" Result="OK" ElapsedTime="00:00:00.012"></Test>
+<Test Name="[XML] Next" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[XML] InsertDeleteUpdate_Timing" Result="OK" ElapsedTime="00:00:04.136"></Test>
+</TestSuite><TestSuite Name="TTestTIAutoMapOperationXM" ElapsedTime="00:00:06.728" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="50">
+<Test Name="[XML] TestSetupAndTearDown" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] ReadWriteString1" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[XML] ReadWriteString10" Result="OK" ElapsedTime="00:00:00.013"></Test>
+<Test Name="[XML] ReadWriteString100" Result="OK" ElapsedTime="00:00:00.030"></Test>
+<Test Name="[XML] ReadWriteString255" Result="OK" ElapsedTime="00:00:00.017"></Test>
+<Test Name="[XML] ReadWriteString256" Result="OK" ElapsedTime="00:00:00.012"></Test>
+<Test Name="[XML] ReadWriteString257" Result="OK" ElapsedTime="00:00:00.015"></Test>
+<Test Name="[XML] ReadWriteString511" Result="OK" ElapsedTime="00:00:00.013"></Test>
+<Test Name="[XML] ReadWriteString512" Result="OK" ElapsedTime="00:00:00.014"></Test>
+<Test Name="[XML] ReadWriteString513" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[XML] ReadWriteString1023" Result="OK" ElapsedTime="00:00:00.022"></Test>
+<Test Name="[XML] ReadWriteString1024" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[XML] ReadWriteString1025" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[XML] ReadWriteString5000" Result="OK" ElapsedTime="00:00:00.013"></Test>
+<Test Name="[XML] ReadWriteString10000" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[XML] ReadWriteIntegerLow" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[XML] ReadWriteInteger10" Result="OK" ElapsedTime="00:00:00.017"></Test>
+<Test Name="[XML] ReadWriteInteger0" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[XML] ReadWriteInteger_10" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[XML] ReadWriteIntegerHigh" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[XML] ReadWriteFloat" Result="OK" ElapsedTime="00:00:00.012"></Test>
+<Test Name="[XML] ReadWriteDateDate" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[XML] ReadWriteDateNow" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[XML] ReadWriteDateMin" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[XML] ReadWriteDate0" Result="OK" ElapsedTime="00:00:00.016"></Test>
+<Test Name="[XML] ReadWriteDateMax" Result="OK" ElapsedTime="00:00:00.016"></Test>
+<Test Name="[XML] ReadWriteBooleanTrue" Result="OK" ElapsedTime="00:00:00.013"></Test>
+<Test Name="[XML] ReadWriteBooleanFalse" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[XML] ReadWriteStream" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[XML] ReadWriteOID" Result="OK" ElapsedTime="00:00:00.029"></Test>
+<Test Name="[XML] SingleFlatObjReadThis" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[XML] SingleFlatObjCreate" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[XML] SingleFlatObjUpdate" Result="OK" ElapsedTime="00:00:00.012"></Test>
+<Test Name="[XML] SingleFlatObjDelete" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[XML] SingleInheritedObjRead" Result="OK" ElapsedTime="00:00:00.015"></Test>
+<Test Name="[XML] SingleInheritedObjCreateEachLevel" Result="OK" ElapsedTime="00:00:00.052"></Test>
+<Test Name="[XML] SingleInheritedObjCreateAll" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XML] SingleInheritedObjUpdateEachLevel" Result="OK" ElapsedTime="00:00:00.034"></Test>
+<Test Name="[XML] SingleInheritedObjUpdateAll" Result="OK" ElapsedTime="00:00:00.025"></Test>
+<Test Name="[XML] SingleInheritedObjDeleteEachLevel" Result="OK" ElapsedTime="00:00:00.026"></Test>
+<Test Name="[XML] SingleInheritedObjDeleteAll" Result="OK" ElapsedTime="00:00:00.025"></Test>
+<Test Name="[XML] CollectionOfInheritedObjRead" Result="OK" ElapsedTime="00:00:00.012"></Test>
+<Test Name="[XML] CollectionOfInheritedObjWithFKRead" Result="OK" ElapsedTime="00:00:00.035"></Test>
+<Test Name="[XML] CollectionOfInheritedObjWithOutFKRead" Result="OK" ElapsedTime="00:00:00.034"></Test>
+<Test Name="[XML] CollectionReadPK" Result="OK" ElapsedTime="00:00:00.244"></Test>
+<Test Name="[XML] CollectionReadAll" Result="OK" ElapsedTime="00:00:00.325"></Test>
+<Test Name="[XML] CollectionReadAllItems" Result="OK" ElapsedTime="00:00:00.296"></Test>
+<Test Name="[XML] CollectionCreate" Result="OK" ElapsedTime="00:00:00.034"></Test>
+<Test Name="[XML] CollectionUpdate" Result="OK" ElapsedTime="00:00:00.053"></Test>
+<Test Name="[XML] CollectionDelete" Result="OK" ElapsedTime="00:00:00.029"></Test>
+</TestSuite><TestSuite Name="TTestTIOIDManagerXML" ElapsedTime="00:00:00.628" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="13">
+<Test Name="[XML] OIDFactory_RegisterMapping" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] OIDFactory_CreateOID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] OIDFactory_CreateNextOIDGenerator" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] NextOIDMgrInteger" Result="OK" ElapsedTime="00:00:00.021"></Test>
+<Test Name="[XML] NextOIDMgrString" Result="OK" ElapsedTime="00:00:00.020"></Test>
+<Test Name="[XML] NextOIDMgrGUID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] NextOIDStringSetNextOIDChars" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] NextOIDInteger" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[XML] NextOIDString" Result="OK" ElapsedTime="00:00:00.043"></Test>
+<Test Name="[XML] NextOIDGUID" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="[XML] tiObject_CreateNew" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] tiObject_CreateNew_OIDGUID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XML] tiObject_CreateNew_OIDInteger" Result="OK" ElapsedTime="00:00:00.020"></Test>
+</TestSuite></TestSuite><TestSuite Name="Persistent tests for [XMLLight]" ElapsedTime="00:00:10.426" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="10" NumberOfRunTests="127">
+<TestSuite Name="TTestTIPersistenceLayersXMLLight" ElapsedTime="00:00:00.011" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="1">
+<Test Name="[XMLLight] ConnectDatabase" Result="OK" ElapsedTime="00:00:00.007"></Test>
+</TestSuite><TestSuite Name="TTestTIDatabaseXMLLight" ElapsedTime="00:00:03.881" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="3" NumberOfRunTests="12">
+<Test Name="[XMLLight] DatabaseExists" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="[XMLLight] CreateDatabase" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[XMLLight] ThreadedDBConnectionPool" Result="OK" ElapsedTime="00:00:00.710"></Test>
+<Test Name="[XMLLight] LoadDatabaseLayer" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="[XMLLight] NonThreadedDBConnectionPool" Result="OK" ElapsedTime="00:00:02.014"></Test>
+<Test Name="[XMLLight] Connect" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] Transaction_InTransaction" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="[XMLLight] Transaction_Commit" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[XMLLight] Transaction_RollBack" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] CreateTableDropTable" Result="OK" ElapsedTime="00:00:00.015"></Test>
+<Test Name="[XMLLight] CreateTableDropTable_Timing" Result="OK" ElapsedTime="00:00:01.027"></Test>
+<Test Name="[XMLLight] ReadMetaData" Result="OK" ElapsedTime="00:00:00.035"></Test>
+</TestSuite><TestSuite Name="TTestTIQueryXMLLight" ElapsedTime="00:00:04.438" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="4" NumberOfRunTests="51">
+<Test Name="[XMLLight] ParamName" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] ParamCount" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] ParamsAsString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] ParamAsString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] ParamAsInteger" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] ParamAsFloat" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] ParamAsBoolean" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] ParamAsDateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] ParamAsStream" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] ParamAsMacro" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] ParamIsNull" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] ConfirmSetupWorks" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] ConfirmDBConnectionWorks" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] TypeKindToQueryFieldKind" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] QueryToDatabaseConnection" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] FieldAsInteger" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] FieldAsString" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] FieldAsStringLong1" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] FieldAsStringLong10" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] FieldAsStringLong100" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[XMLLight] FieldAsStringLong255" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[XMLLight] FieldAsStringLong256" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] FieldAsStringLong257" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[XMLLight] FieldAsStringLong511" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[XMLLight] FieldAsStringLong512" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] FieldAsStringLong513" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] FieldAsStringLong1023" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[XMLLight] FieldAsStringLong1024" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] FieldAsStringLong1025" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] FieldAsStringLong1999" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[XMLLight] FieldAsStringLong2000" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[XMLLight] FieldAsStringLong2001" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] FieldAsStringLong3999" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[XMLLight] FieldAsStringLong4000" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[XMLLight] FieldAsStringLong4001" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] FieldAsStringLong5000" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] FieldAsStringLong10000" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[XMLLight] FieldAsFloat" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[XMLLight] FieldAsBoolean" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] FieldAsDateTime" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] FieldAsStream" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[XMLLight] FieldIsNull" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[XMLLight] FieldByNameVSFieldByIndex" Result="OK" ElapsedTime="00:00:01.466"></Test>
+<Test Name="[XMLLight] FieldCount" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[XMLLight] FieldName" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[XMLLight] FieldIndex" Result="OK" ElapsedTime="00:00:00.018"></Test>
+<Test Name="[XMLLight] FieldKind" Result="OK" ElapsedTime="00:00:00.021"></Test>
+<Test Name="[XMLLight] FieldSize" Result="OK" ElapsedTime="00:00:00.017"></Test>
+<Test Name="[XMLLight] EOF" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[XMLLight] Next" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[XMLLight] InsertDeleteUpdate_Timing" Result="OK" ElapsedTime="00:00:02.173"></Test>
+</TestSuite><TestSuite Name="TTestTIOIDManagerXMLLight" ElapsedTime="00:00:00.126" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="2" NumberOfRunTests="13">
+<Test Name="[XMLLight] OIDFactory_RegisterMapping" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] OIDFactory_CreateOID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] OIDFactory_CreateNextOIDGenerator" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] NextOIDMgrInteger" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[XMLLight] NextOIDMgrString" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[XMLLight] NextOIDMgrGUID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] NextOIDStringSetNextOIDChars" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] NextOIDInteger" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] NextOIDString" Result="OK" ElapsedTime="00:00:00.014"></Test>
+<Test Name="[XMLLight] NextOIDGUID" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[XMLLight] tiObject_CreateNew" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] tiObject_CreateNew_OIDGUID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] tiObject_CreateNew_OIDInteger" Result="OK" ElapsedTime="00:00:00.004"></Test>
+</TestSuite><TestSuite Name="TTestTIAutoMapOperationXMLLight" ElapsedTime="00:00:01.963" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="0" NumberOfRunTests="50">
+<Test Name="[XMLLight] TestSetupAndTearDown" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[XMLLight] ReadWriteString1" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteString10" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteString100" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteString255" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteString256" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteString257" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteString511" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] ReadWriteString512" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteString513" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteString1023" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteString1024" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteString1025" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] ReadWriteString5000" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[XMLLight] ReadWriteString10000" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[XMLLight] ReadWriteIntegerLow" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteInteger10" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteInteger0" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[XMLLight] ReadWriteInteger_10" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteIntegerHigh" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteFloat" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteDateDate" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteDateNow" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteDateMin" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteDate0" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[XMLLight] ReadWriteDateMax" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteBooleanTrue" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteBooleanFalse" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteStream" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[XMLLight] ReadWriteOID" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[XMLLight] SingleFlatObjReadThis" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[XMLLight] SingleFlatObjCreate" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[XMLLight] SingleFlatObjUpdate" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] SingleFlatObjDelete" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] SingleInheritedObjRead" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[XMLLight] SingleInheritedObjCreateEachLevel" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[XMLLight] SingleInheritedObjCreateAll" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[XMLLight] SingleInheritedObjUpdateEachLevel" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[XMLLight] SingleInheritedObjUpdateAll" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[XMLLight] SingleInheritedObjDeleteEachLevel" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[XMLLight] SingleInheritedObjDeleteAll" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[XMLLight] CollectionOfInheritedObjRead" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[XMLLight] CollectionOfInheritedObjWithFKRead" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[XMLLight] CollectionOfInheritedObjWithOutFKRead" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[XMLLight] CollectionReadPK" Result="OK" ElapsedTime="00:00:00.061"></Test>
+<Test Name="[XMLLight] CollectionReadAll" Result="OK" ElapsedTime="00:00:00.064"></Test>
+<Test Name="[XMLLight] CollectionReadAllItems" Result="OK" ElapsedTime="00:00:00.101"></Test>
+<Test Name="[XMLLight] CollectionCreate" Result="OK" ElapsedTime="00:00:00.013"></Test>
+<Test Name="[XMLLight] CollectionUpdate" Result="OK" ElapsedTime="00:00:00.016"></Test>
+<Test Name="[XMLLight] CollectionDelete" Result="OK" ElapsedTime="00:00:00.009"></Test>
+</TestSuite></TestSuite><TestSuite Name="Persistent tests for [CSV]" ElapsedTime="00:00:09.899" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="11" NumberOfRunTests="127">
+<TestSuite Name="TTestTIPersistenceLayersCSV" ElapsedTime="00:00:00.010" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="1">
+<Test Name="[CSV] ConnectDatabase" Result="OK" ElapsedTime="00:00:00.007"></Test>
+</TestSuite><TestSuite Name="TTestTIDatabaseCSV" ElapsedTime="00:00:03.384" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="3" NumberOfRunTests="12">
+<Test Name="[CSV] DatabaseExists" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="[CSV] CreateDatabase" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="[CSV] ThreadedDBConnectionPool" Result="OK" ElapsedTime="00:00:00.721"></Test>
+<Test Name="[CSV] LoadDatabaseLayer" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="[CSV] NonThreadedDBConnectionPool" Result="OK" ElapsedTime="00:00:02.026"></Test>
+<Test Name="[CSV] Connect" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] Transaction_InTransaction" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] Transaction_Commit" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[CSV] Transaction_RollBack" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] CreateTableDropTable" Result="OK" ElapsedTime="00:00:00.019"></Test>
+<Test Name="[CSV] CreateTableDropTable_Timing" Result="OK" ElapsedTime="00:00:00.515"></Test>
+<Test Name="[CSV] ReadMetaData" Result="OK" ElapsedTime="00:00:00.019"></Test>
+</TestSuite><TestSuite Name="TTestTIQueryCSV" ElapsedTime="00:00:03.578" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="4" NumberOfRunTests="51">
+<Test Name="[CSV] ParamName" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] ParamCount" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] ParamsAsString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] ParamAsString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] ParamAsInteger" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] ParamAsFloat" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] ParamAsBoolean" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] ParamAsDateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] ParamAsStream" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] ParamAsMacro" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] ParamIsNull" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] ConfirmSetupWorks" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] ConfirmDBConnectionWorks" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] TypeKindToQueryFieldKind" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] QueryToDatabaseConnection" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] FieldAsInteger" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[CSV] FieldAsString" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[CSV] FieldAsStringLong1" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[CSV] FieldAsStringLong10" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[CSV] FieldAsStringLong100" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[CSV] FieldAsStringLong255" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[CSV] FieldAsStringLong256" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[CSV] FieldAsStringLong257" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[CSV] FieldAsStringLong511" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[CSV] FieldAsStringLong512" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] FieldAsStringLong513" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[CSV] FieldAsStringLong1023" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[CSV] FieldAsStringLong1024" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[CSV] FieldAsStringLong1025" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] FieldAsStringLong1999" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[CSV] FieldAsStringLong2000" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] FieldAsStringLong2001" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] FieldAsStringLong3999" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] FieldAsStringLong4000" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[CSV] FieldAsStringLong4001" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[CSV] FieldAsStringLong5000" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[CSV] FieldAsStringLong10000" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[CSV] FieldAsFloat" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] FieldAsBoolean" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[CSV] FieldAsDateTime" Result="OK" ElapsedTime="00:00:00.038"></Test>
+<Test Name="[CSV] FieldAsStream" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] FieldIsNull" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[CSV] FieldByNameVSFieldByIndex" Result="OK" ElapsedTime="00:00:01.227"></Test>
+<Test Name="[CSV] FieldCount" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[CSV] FieldName" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[CSV] FieldIndex" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[CSV] FieldKind" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[CSV] FieldSize" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[CSV] EOF" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[CSV] Next" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[CSV] InsertDeleteUpdate_Timing" Result="OK" ElapsedTime="00:00:01.673"></Test>
+</TestSuite><TestSuite Name="TTestTIOIDManagerCSV" ElapsedTime="00:00:00.124" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="2" NumberOfRunTests="13">
+<Test Name="[CSV] OIDFactory_RegisterMapping" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] OIDFactory_CreateOID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] OIDFactory_CreateNextOIDGenerator" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] NextOIDMgrInteger" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[CSV] NextOIDMgrString" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[CSV] NextOIDMgrGUID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] NextOIDStringSetNextOIDChars" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] NextOIDInteger" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[CSV] NextOIDString" Result="OK" ElapsedTime="00:00:00.018"></Test>
+<Test Name="[CSV] NextOIDGUID" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[CSV] tiObject_CreateNew" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] tiObject_CreateNew_OIDGUID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] tiObject_CreateNew_OIDInteger" Result="OK" ElapsedTime="00:00:00.004"></Test>
+</TestSuite><TestSuite Name="TTestTIAutoMapOperationCSV" ElapsedTime="00:00:02.797" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="50">
+<Test Name="[CSV] TestSetupAndTearDown" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[CSV] ReadWriteString1" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[CSV] ReadWriteString10" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteString100" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteString255" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteString256" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteString257" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteString511" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[CSV] ReadWriteString512" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[CSV] ReadWriteString513" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteString1023" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[CSV] ReadWriteString1024" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[CSV] ReadWriteString1025" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[CSV] ReadWriteString5000" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[CSV] ReadWriteString10000" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[CSV] ReadWriteIntegerLow" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteInteger10" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteInteger0" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteInteger_10" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteIntegerHigh" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteFloat" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteDateDate" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteDateNow" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteDateMin" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteDate0" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteDateMax" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteBooleanTrue" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteBooleanFalse" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] ReadWriteStream" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[CSV] ReadWriteOID" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[CSV] SingleFlatObjReadThis" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] SingleFlatObjCreate" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[CSV] SingleFlatObjUpdate" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[CSV] SingleFlatObjDelete" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[CSV] SingleInheritedObjRead" Result="OK" ElapsedTime="00:00:00.016"></Test>
+<Test Name="[CSV] SingleInheritedObjCreateEachLevel" Result="OK" ElapsedTime="00:00:00.013"></Test>
+<Test Name="[CSV] SingleInheritedObjCreateAll" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[CSV] SingleInheritedObjUpdateEachLevel" Result="OK" ElapsedTime="00:00:00.031"></Test>
+<Test Name="[CSV] SingleInheritedObjUpdateAll" Result="OK" ElapsedTime="00:00:00.012"></Test>
+<Test Name="[CSV] SingleInheritedObjDeleteEachLevel" Result="OK" ElapsedTime="00:00:00.019"></Test>
+<Test Name="[CSV] SingleInheritedObjDeleteAll" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[CSV] CollectionOfInheritedObjRead" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[CSV] CollectionOfInheritedObjWithFKRead" Result="OK" ElapsedTime="00:00:00.019"></Test>
+<Test Name="[CSV] CollectionOfInheritedObjWithOutFKRead" Result="OK" ElapsedTime="00:00:00.020"></Test>
+<Test Name="[CSV] CollectionReadPK" Result="OK" ElapsedTime="00:00:00.238"></Test>
+<Test Name="[CSV] CollectionReadAll" Result="OK" ElapsedTime="00:00:00.186"></Test>
+<Test Name="[CSV] CollectionReadAllItems" Result="OK" ElapsedTime="00:00:00.520"></Test>
+<Test Name="[CSV] CollectionCreate" Result="OK" ElapsedTime="00:00:00.028"></Test>
+<Test Name="[CSV] CollectionUpdate" Result="OK" ElapsedTime="00:00:00.052"></Test>
+<Test Name="[CSV] CollectionDelete" Result="OK" ElapsedTime="00:00:00.022"></Test>
+</TestSuite></TestSuite><TestSuite Name="Persistent tests for [TAB]" ElapsedTime="00:00:09.388" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="11" NumberOfRunTests="127">
+<TestSuite Name="TTestTIPersistenceLayersTab" ElapsedTime="00:00:00.009" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="1">
+<Test Name="[TAB] ConnectDatabase" Result="OK" ElapsedTime="00:00:00.006"></Test>
+</TestSuite><TestSuite Name="TTestTIDatabaseTAB" ElapsedTime="00:00:03.289" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="3" NumberOfRunTests="12">
+<Test Name="[TAB] DatabaseExists" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[TAB] CreateDatabase" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] ThreadedDBConnectionPool" Result="OK" ElapsedTime="00:00:00.733"></Test>
+<Test Name="[TAB] LoadDatabaseLayer" Result="OK" ElapsedTime="00:00:00.001"></Test>
+<Test Name="[TAB] NonThreadedDBConnectionPool" Result="OK" ElapsedTime="00:00:02.015"></Test>
+<Test Name="[TAB] Connect" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] Transaction_InTransaction" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] Transaction_Commit" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[TAB] Transaction_RollBack" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] CreateTableDropTable" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[TAB] CreateTableDropTable_Timing" Result="OK" ElapsedTime="00:00:00.435"></Test>
+<Test Name="[TAB] ReadMetaData" Result="OK" ElapsedTime="00:00:00.019"></Test>
+</TestSuite><TestSuite Name="TTestTIQueryTAB" ElapsedTime="00:00:03.303" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="4" NumberOfRunTests="51">
+<Test Name="[TAB] ParamName" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] ParamCount" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] ParamsAsString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] ParamAsString" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] ParamAsInteger" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] ParamAsFloat" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] ParamAsBoolean" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] ParamAsDateTime" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] ParamAsStream" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] ParamAsMacro" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] ParamIsNull" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] ConfirmSetupWorks" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] ConfirmDBConnectionWorks" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] TypeKindToQueryFieldKind" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] QueryToDatabaseConnection" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] FieldAsInteger" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[TAB] FieldAsString" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[TAB] FieldAsStringLong1" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[TAB] FieldAsStringLong10" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[TAB] FieldAsStringLong100" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[TAB] FieldAsStringLong255" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[TAB] FieldAsStringLong256" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] FieldAsStringLong257" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[TAB] FieldAsStringLong511" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[TAB] FieldAsStringLong512" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[TAB] FieldAsStringLong513" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[TAB] FieldAsStringLong1023" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[TAB] FieldAsStringLong1024" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[TAB] FieldAsStringLong1025" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[TAB] FieldAsStringLong1999" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] FieldAsStringLong2000" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] FieldAsStringLong2001" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] FieldAsStringLong3999" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] FieldAsStringLong4000" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] FieldAsStringLong4001" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] FieldAsStringLong5000" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[TAB] FieldAsStringLong10000" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[TAB] FieldAsFloat" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[TAB] FieldAsBoolean" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[TAB] FieldAsDateTime" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[TAB] FieldAsStream" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] FieldIsNull" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[TAB] FieldByNameVSFieldByIndex" Result="OK" ElapsedTime="00:00:01.412"></Test>
+<Test Name="[TAB] FieldCount" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[TAB] FieldName" Result="OK" ElapsedTime="00:00:00.008"></Test>
+<Test Name="[TAB] FieldIndex" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[TAB] FieldKind" Result="OK" ElapsedTime="00:00:00.020"></Test>
+<Test Name="[TAB] FieldSize" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[TAB] EOF" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[TAB] Next" Result="OK" ElapsedTime="00:00:00.010"></Test>
+<Test Name="[TAB] InsertDeleteUpdate_Timing" Result="OK" ElapsedTime="00:00:01.217"></Test>
+</TestSuite><TestSuite Name="TTestTIOIDManagerTab" ElapsedTime="00:00:00.219" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="2" NumberOfRunTests="13">
+<Test Name="[TAB] OIDFactory_RegisterMapping" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] OIDFactory_CreateOID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] OIDFactory_CreateNextOIDGenerator" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] NextOIDMgrInteger" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[TAB] NextOIDMgrString" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[TAB] NextOIDMgrGUID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] NextOIDStringSetNextOIDChars" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] NextOIDInteger" Result="OK" ElapsedTime="00:00:00.009"></Test>
+<Test Name="[TAB] NextOIDString" Result="OK" ElapsedTime="00:00:00.011"></Test>
+<Test Name="[TAB] NextOIDGUID" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[TAB] tiObject_CreateNew" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] tiObject_CreateNew_OIDGUID" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] tiObject_CreateNew_OIDInteger" Result="OK" ElapsedTime="00:00:00.002"></Test>
+</TestSuite><TestSuite Name="TTestTIAutoMapOperationTab" ElapsedTime="00:00:02.559" NumberOfErrors="0" NumberOfFailures="0" NumberOfWarnings="1" NumberOfRunTests="50">
+<Test Name="[TAB] TestSetupAndTearDown" Result="OK" ElapsedTime="00:00:00.000"></Test>
+<Test Name="[TAB] ReadWriteString1" Result="OK" ElapsedTime="00:00:00.002"></Test>
+<Test Name="[TAB] ReadWriteString10" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[TAB] ReadWriteString100" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteString255" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteString256" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[TAB] ReadWriteString257" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteString511" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteString512" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[TAB] ReadWriteString513" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteString1023" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[TAB] ReadWriteString1024" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[TAB] ReadWriteString1025" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteString5000" Result="OK" ElapsedTime="00:00:00.006"></Test>
+<Test Name="[TAB] ReadWriteString10000" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[TAB] ReadWriteIntegerLow" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteInteger10" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteInteger0" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteInteger_10" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteIntegerHigh" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteFloat" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteDateDate" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteDateNow" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[TAB] ReadWriteDateMin" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteDate0" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteDateMax" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteBooleanTrue" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteBooleanFalse" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteStream" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] ReadWriteOID" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[TAB] SingleFlatObjReadThis" Result="OK" ElapsedTime="00:00:00.003"></Test>
+<Test Name="[TAB] SingleFlatObjCreate" Result="OK" ElapsedTime="00:00:00.004"></Test>
+<Test Name="[TAB] SingleFlatObjUpdate" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[TAB] SingleFlatObjDelete" Result="OK" ElapsedTime="00:00:00.007"></Test>
+<Test Name="[TAB] SingleInheritedObjRead" Result="OK" ElapsedTime="00:00:00.014"></Test>
+<Test Name="[TAB] SingleInheritedObjCreateEachLevel" Result="OK" ElapsedTime="00:00:00.024"></Test>
+<Test Name="[TAB] SingleInheritedObjCreateAll" Result="OK" ElapsedTime="00:00:00.005"></Test>
+<Test Name="[TAB] SingleInheritedObjUpdateEachLevel" Result="OK" ElapsedTime="00:00:00.028"></Test>
+<Test Name="[TAB] SingleInheritedObjUpdateAll" Result="OK" ElapsedTime="00:00:00.018"></Test>
+<Test Name="[TAB] SingleInheritedObjDeleteEachLevel" Result="OK" ElapsedTime="00:00:00.026"></Test>
+<Test Name="[TAB] SingleInheritedObjDeleteAll" Result="OK" ElapsedTime="00:00:00.018"></Test>
+<Test Name="[TAB] CollectionOfInheritedObjRead" Result="OK" ElapsedTime="00:00:00.016"></Test>
+<Test Name="[TAB] CollectionOfInheritedObjWithFKRead" Result="OK" ElapsedTime="00:00:00.037"></Test>
+<Test Name="[TAB] CollectionOfInheritedObjWithOutFKRead" Result="OK" ElapsedTime="00:00:00.037"></Test>
+<Test Name="[TAB] CollectionReadPK" Result="OK" ElapsedTime="00:00:00.286"></Test>
+<Test Name="[TAB] CollectionReadAll" Result="OK" ElapsedTime="00:00:00.249"></Test>
+<Test Name="[TAB] CollectionReadAllItems" Result="OK" ElapsedTime="00:00:00.218"></Test>
+<Test Name="[TAB] CollectionCreate" Result="OK" ElapsedTime="00:00:00.023"></Test>
+<Test Name="[TAB] CollectionUpdate" Result="OK" ElapsedTime="00:00:00.072"></Test>
+<Test Name="[TAB] CollectionDelete" Result="OK" ElapsedTime="00:00:00.019"></Test>
+</TestSuite></TestSuite></TestSuite></TestListing>
+<Title>Dunit2 XML test report</Title>
+<NumberOfRunTests>1440</NumberOfRunTests>
+<NumberOfErrors>0</NumberOfErrors>
+<NumberOfFailures>0</NumberOfFailures>
+<NumberOfWarnings>196</NumberOfWarnings>
+<TotalElapsedTime>00:03:19.172</TotalElapsedTime>
+<DateTimeRan>2007-09-02 01:19:32</DateTimeRan>
+</TestResults>

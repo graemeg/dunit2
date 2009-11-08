@@ -1,0 +1,46 @@
+#------------------------------------------------------------------------------
+VERSION = BWS.01
+#------------------------------------------------------------------------------
+!ifndef ROOT
+ROOT = $(MAKEDIR)\..
+!endif
+#------------------------------------------------------------------------------
+MAKE = $(ROOT)\bin\make.exe -$(MAKEFLAGS) -f$**
+DCC = $(ROOT)\bin\dcc32.exe $**
+BRCC = $(ROOT)\bin\brcc32.exe $**
+#------------------------------------------------------------------------------
+PROJECTS = SingleTestLibW32.dtl MiniTestLibW32A.dtl MiniTestLibW32B.dtl \
+  MiniTestLibW32C.dtl MiniTestLibW32D.dtl DUnit2.exe DUnit2Console.exe \
+  DUnit2ConsoleTest.exe DUnit2Test.exe
+#------------------------------------------------------------------------------
+default: $(PROJECTS)
+#------------------------------------------------------------------------------
+
+SingleTestLibW32.dtl: SingleTestLibW32.dpr
+  $(DCC)
+
+MiniTestLibW32A.dtl: MiniTestLibW32A.dpr
+  $(DCC)
+
+MiniTestLibW32B.dtl: MiniTestLibW32B.dpr
+  $(DCC)
+
+MiniTestLibW32C.dtl: MiniTestLibW32C.dpr
+  $(DCC)
+
+MiniTestLibW32D.dtl: MiniTestLibW32D.dpr
+  $(DCC)
+
+DUnit2.exe: DUnit2.dpr
+  $(DCC)
+
+DUnit2Console.exe: DUnit2Console.dpr
+  $(DCC)
+
+DUnit2ConsoleTest.exe: DUnit2ConsoleTest.dpr
+  $(DCC)
+
+DUnit2Test.exe: DUnit2Test.dpr
+  $(DCC)
+
+

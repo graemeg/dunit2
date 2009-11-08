@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestResults>
+<!--Generated using DUnit2 on 2008-02-23 12:16:42-->
+<TestListing ElapsedTime="00:00:00.019" NumberOfErrors="0" NumberOfFailures="4" NumberOfRunTests="4" NumberOfWarnings="0" NumberOfChecksCalled="0"><TestSuite Name="Project1.exe" ElapsedTime="00:00:00.020" NumberOfErrors="0" NumberOfFailures="4" NumberOfWarnings="0" NumberOfRunTests="4">
+<TestSuite Name="Form1 (TForm1) tests [OpenCTF 1.0]" ElapsedTime="00:00:00.015" NumberOfErrors="0" NumberOfFailures="4" NumberOfWarnings="0" NumberOfRunTests="4">
+<TestSuite Name="TComponentNameTestHandler" ElapsedTime="00:00:00.013" NumberOfErrors="0" NumberOfFailures="4" NumberOfWarnings="0" NumberOfRunTests="4">
+
+
+
+
+<Test Name="CheckBox1 (TCheckBox) " Result="Failed" ElapsedTime="00:00:00.000"><Message>Project1.exe.Form1 (TForm1) tests [OpenCTF 1.0].TComponentNameTestHandler.CheckBox1 (TCheckBox) : Avoid default names for components (e.g. Button1: TButton)</Message><ExceptionClass>ETestFailure</ExceptionClass><ExceptionMessage>Avoid default names for components (e.g. Button1: TButton)</ExceptionMessage></Test>
+
+
+
+
+<Test Name="Edit1 (TEdit) " Result="Failed" ElapsedTime="00:00:00.001"><Message>Project1.exe.Form1 (TForm1) tests [OpenCTF 1.0].TComponentNameTestHandler.Edit1 (TEdit) : Avoid default names for components (e.g. Button1: TButton)</Message><ExceptionClass>ETestFailure</ExceptionClass><ExceptionMessage>Avoid default names for components (e.g. Button1: TButton)</ExceptionMessage></Test>
+
+
+
+
+<Test Name="ListBox1 (TListBox) " Result="Failed" ElapsedTime="00:00:00.000"><Message>Project1.exe.Form1 (TForm1) tests [OpenCTF 1.0].TComponentNameTestHandler.ListBox1 (TListBox) : Avoid default names for components (e.g. Button1: TButton)</Message><ExceptionClass>ETestFailure</ExceptionClass><ExceptionMessage>Avoid default names for components (e.g. Button1: TButton)</ExceptionMessage></Test>
+
+
+
+
+<Test Name="Memo1 (TMemo) " Result="Failed" ElapsedTime="00:00:00.000"><Message>Project1.exe.Form1 (TForm1) tests [OpenCTF 1.0].TComponentNameTestHandler.Memo1 (TMemo) : Avoid default names for components (e.g. Button1: TButton)</Message><ExceptionClass>ETestFailure</ExceptionClass><ExceptionMessage>Avoid default names for components (e.g. Button1: TButton)</ExceptionMessage></Test>
+</TestSuite></TestSuite></TestSuite></TestListing>
+<Title>Dunit2 XML test report</Title>
+<NumberOfRunTests>4</NumberOfRunTests>
+<NumberOfErrors>0</NumberOfErrors>
+<NumberOfFailures>4</NumberOfFailures>
+<NumberOfWarnings>0</NumberOfWarnings>
+<NumberOfExcludedTests>0</NumberOfExcludedTests>
+<NumberOfChecksCalled>0</NumberOfChecksCalled>
+<TotalElapsedTime>00:00:00.019</TotalElapsedTime>
+<DateTimeRan>2008-02-23 12:16:42</DateTimeRan>
+</TestResults>

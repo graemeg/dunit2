@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv= 
+"content-type">
+<title>OpenCTF example project being run by Dunit2</title>
+</head>
+<body>
+<h2>Dunit2 --- OpenCTF execution results</h2>
+
+<br>
+ 
+
+<ul>
+<li><font color="#008000" face="Arial" size="4">OpenCTF (Dunit
+v9.3) is available here&nbsp;&nbsp; <a class= 
+"moz-txt-link-freetext" href="http://openctf.sourceforge.net/">
+http://openctf.sourceforge.net/</a></font></li>
+</ul>
+
+<br>
+Integration work with Dunit2 is still in progress (23rd Feb
+2008)<br>
+Executing Example Names project. Note. All tests are supposed to
+fail.<br>
+<br>
+ <img style="width: 644px; height: 521px;" alt=
+"Result of executing Example project Names" src= 
+"ExecutingOpenCTF.png"><br>
+<br>
+<a href="Project1.xml">XML report from project execution.</a><br>
+<br>
+The screenshot below shows the results of combining most of the
+examples into one test suite, compiling and building under older
+dunit 9.3 and Dunit2.<br>
+<br>
+<img style="width: 1051px; height: 496px;" alt=
+"Comparison of old and new dunits runing OpenCTF combined examples"
+ src="Comparison.png"><br>
+<br>
+<p>Notes. Dunit 9.3 vs New Dunit2</p>
+
+<ul>
+<li>When compiled with dunit V9.3 there are some
+deficiencies</li>
+
+<li>It currently does not report the executed test count, the
+progress% or the %passed score.</li>
+
+<li>Dunit2 is working OK and also reporting the whole path for
+failed tests.</li>
+
+<li>Self testing GUITestRunner goes well (4 errors) until
+shutdown, then all hell breaks loose, which might be
+expected</li>
+</ul>
+
+<img style="width: 989px; height: 884px;" alt=
+"View of errors while testing GUITestRunner form" src= 
+"TestingGUITestRunner.png"><br>
+<br>
+<br>
+Combining OpenCTF testing with regular unit test code is very
+simple. The screenshot below show one of the example projects
+wrapped into a unit test and executed in DUnit2&#39;s own unit
+test suite.<br>
+<br>
+<img style="width: 643px; height: 911px;" alt=
+"Image shows ease of adding OpenCTF tests to regular dunit tests"
+src="UsingOpenCTF.png"><br>
+ <br>
+<a href="http://validator.w3.org/check?uri=referer"> <img alt=
+"Valid HTML 4.0 Transitional" src= 
+"http://www.w3.org/Icons/valid-html40" height="31" width=
+"88"></a> <br>
+<font color="#000000" face="Arial">Page last updated 5th Mar
+2008<br>
+</font> <font color="#000000" face="Arial"><img class=
+"maincounter" alt="Page Hit Counter" src= 
+"http://members.optusnet.com.au/cgi-bin/counter?width=6&font=A&name=mcnabp14">
+</font><br>
+</body>
+</html>
+

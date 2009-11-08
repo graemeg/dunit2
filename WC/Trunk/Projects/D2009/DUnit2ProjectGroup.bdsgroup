@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <PersonalityInfo>
+    <Option>
+      <Option Name="Personality">Default.Personality</Option>
+      <Option Name="ProjectType"></Option>
+      <Option Name="Version">1.0</Option>
+      <Option Name="GUID">{5075C23E-1421-461F-AC91-93FF815FE865}</Option>
+    </Option>
+  </PersonalityInfo>
+  <Default.Personality>
+    
+    <Projects>
+      <Projects Name="SingleTestLibW32.dtl">SingleTestLibW32.bdsproj</Projects>
+      <Projects Name="MiniTestLibW32A.dtl">MiniTestLibW32A.bdsproj</Projects>
+      <Projects Name="MiniTestLibW32B.dtl">MiniTestLibW32B.bdsproj</Projects>
+      <Projects Name="MiniTestLibW32C.dtl">MiniTestLibW32C.bdsproj</Projects>
+      <Projects Name="MiniTestLibW32D.dtl">MiniTestLibW32D.bdsproj</Projects>
+      <Projects Name="DUnit2.exe">DUnit2.bdsproj</Projects>
+      <Projects Name="DUnit2Console.exe">DUnit2Console.bdsproj</Projects>
+      <Projects Name="DUnit2ConsoleTest.exe">DUnit2ConsoleTest.bdsproj</Projects>
+      <Projects Name="DUnit2Test.exe">DUnit2Test.bdsproj</Projects>
+      <Projects Name="Targets">SingleTestLibW32.dtl MiniTestLibW32A.dtl MiniTestLibW32B.dtl MiniTestLibW32C.dtl MiniTestLibW32D.dtl DUnit2.exe DUnit2Console.exe DUnit2ConsoleTest.exe DUnit2Test.exe</Projects>
+    </Projects>
+    <Dependencies/>
+  </Default.Personality>
+</BorlandProject>

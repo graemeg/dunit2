@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <PersonalityInfo>
+    <Option>
+      <Option Name="Personality">Default.Personality</Option>
+      <Option Name="ProjectType"></Option>
+      <Option Name="Version">1.0</Option>
+      <Option Name="GUID">{0C5D43B3-097E-47D2-9808-EB262AAA0656}</Option>
+    </Option>
+  </PersonalityInfo>
+  <Default.Personality>
+    
+    <Projects>
+      <Projects Name="DUnit2.exe">DUnit2.bdsproj</Projects>
+      <Projects Name="DUnit2Console.exe">DUnit2Console.bdsproj</Projects>
+      <Projects Name="DUnit2ConsoleTest.exe">DUnit2ConsoleTest.bdsproj</Projects>
+      <Projects Name="UnitTests4Net.exe">UnitTests4Net.bdsproj</Projects>
+      <Projects Name="Targets">DUnit2.exe DUnit2Console.exe DUnit2ConsoleTest.exe UnitTests4Net.exe</Projects>
+    </Projects>
+    <Dependencies/>
+  </Default.Personality>
+</BorlandProject>
