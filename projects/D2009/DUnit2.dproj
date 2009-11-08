@@ -1,4 +1,4 @@
-	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 		<PropertyGroup>
 			<ProjectGuid>{27728e98-eb9f-4ab1-a6e0-6d175f6aef37}</ProjectGuid>
 			<MainSource>DUnit2.dpr</MainSource>
@@ -28,16 +28,18 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
-			<DCC_DependencyCheckOutputName>DUnit2.exe</DCC_DependencyCheckOutputName>
+			<DCC_ExeOutput>_bin</DCC_ExeOutput>
+			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
+			<DCC_DependencyCheckOutputName>_bin\DUnit2.exe</DCC_DependencyCheckOutputName>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1)'!=''">
 			<Version>7.0</Version>
 			<DCC_DebugInformation>False</DCC_DebugInformation>
 			<DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
 			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
-			<DCC_DcuOutput>LibDCUs</DCC_DcuOutput>
-			<DCC_ObjOutput>LibDCUs</DCC_ObjOutput>
-			<DCC_HppOutput>LibDCUs</DCC_HppOutput>
+			<DCC_DcuOutput>_libdcu</DCC_DcuOutput>
+			<DCC_ObjOutput>_libdcu</DCC_ObjOutput>
+			<DCC_HppOutput>_libdcu</DCC_HppOutput>
 			<DCC_UnitSearchPath>..\..\src;..\..\externals\fastmm;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<DCC_ResourcePath>..\..\src;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;$(DCC_ResourcePath)</DCC_ResourcePath>
 			<DCC_ObjPath>..\..\src;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;$(DCC_ObjPath)</DCC_ObjPath>
@@ -53,9 +55,9 @@
 			<DCC_DebugInformation>False</DCC_DebugInformation>
 			<DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
 			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
-			<DCC_DcuOutput>LibDCUs</DCC_DcuOutput>
-			<DCC_ObjOutput>LibDCUs</DCC_ObjOutput>
-			<DCC_HppOutput>LibDCUs</DCC_HppOutput>
+			<DCC_DcuOutput>_libdcu</DCC_DcuOutput>
+			<DCC_ObjOutput>_libdcu</DCC_ObjOutput>
+			<DCC_HppOutput>_libdcu</DCC_HppOutput>
 			<DCC_UnitSearchPath>..\..\src;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<DCC_ResourcePath>..\..\src;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;$(DCC_ResourcePath)</DCC_ResourcePath>
 			<DCC_ObjPath>..\..\src;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;$(DCC_ObjPath)</DCC_ObjPath>
@@ -65,7 +67,7 @@
 		</PropertyGroup>
 		<Import Project="No_JEDI_JCL.optset" Condition="'$(Cfg_3)'!='' And Exists('No_JEDI_JCL.optset')"/>
 		<PropertyGroup Condition="'$(Cfg_3)'!=''">
-			<DCC_DcuOutput>LibDCUs</DCC_DcuOutput>
+			<DCC_DcuOutput>_libdcu</DCC_DcuOutput>
 			<CfgDependentOn>No_JEDI_JCL.optset</CfgDependentOn>
 		</PropertyGroup>
 		<ItemGroup>

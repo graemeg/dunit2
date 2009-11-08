@@ -46,36 +46,28 @@ program DUnit2ConsoleTest;
 {$ENDIF}
 
 uses
-  {$IFDEF FASTMM}
-    FastMM4,
-  {$ENDIF}
-  TestFrameworkIfaces      in '..\..\src\TestFrameworkIfaces.pas',
-  TestFramework            in '..\..\src\TestFramework.pas',
+  FastMM4,
+  TestFrameworkIfaces in '..\..\src\TestFrameworkIfaces.pas',
+  TestFramework in '..\..\src\TestFramework.pas',
   TestFrameworkProxyIfaces in '..\..\src\TestFrameworkProxyIfaces.pas',
-  TestListenerIface        in '..\..\src\TestListenerIface.pas',
-  ProjectsManagerIface     in '..\..\src\ProjectsManagerIface.pas',
-  ProjectsManager          in '..\..\src\ProjectsManager.pas',
-  TestFrameworkProxy       in '..\..\src\TestFrameworkProxy.pas',
-  XPVistaSupport           in '..\..\src\XPVistaSupport.pas',
-  RefTestFrameworkProxy    in '..\..\Ref\RefTestFrameworkProxy.pas',
-  RefTestFramework         in '..\..\Ref\RefTestFramework.pas',
-  RefProjectsManager       in '..\..\Ref\RefProjectsManager.pas',
-  {$IFDEF FASTMM}
-    FastMMMonitorTest      in '..\..\tests\FastMMMonitorTest.pas',
-  {$ENDIF}
-  SharedTestClasses        in '..\..\tests\SharedTestClasses.pas',
-  UnitTestFramework        in '..\..\tests\UnitTestFramework.pas',
-  UnitTestModules          in '..\..\tests\UnitTestModules.pas',
-  UnitTestFrameworkProxy   in '..\..\tests\UnitTestFrameworkProxy.pas',
-//     ---- Only include in unit tests when required ----
-//     --- See note in UnitTestGUITesting if build fails
-//  UnitTestGUITesting       in '..\..\tests\UnitTestGUITesting.pas',
-//
-  TestExtensions           in '..\..\src\TestExtensions.pas',
-  TestModules              in '..\..\src\TestModules.pas',
-  GUITesting               in '..\..\src\GUITesting.pas',
-  TextTestRunner           in '..\..\src\TextTestRunner.pas',
-  XMLListener              in '..\..\src\XMLListener.pas';
+  TestListenerIface in '..\..\src\TestListenerIface.pas',
+  ProjectsManagerIface in '..\..\src\ProjectsManagerIface.pas',
+  ProjectsManager in '..\..\src\ProjectsManager.pas',
+  TestFrameworkProxy in '..\..\src\TestFrameworkProxy.pas',
+  XPVistaSupport in '..\..\src\XPVistaSupport.pas',
+  RefTestFrameworkProxy in '..\..\Ref\RefTestFrameworkProxy.pas',
+  RefTestFramework in '..\..\Ref\RefTestFramework.pas',
+  RefProjectsManager in '..\..\Ref\RefProjectsManager.pas',
+  FastMMMonitorTest in '..\..\tests\FastMMMonitorTest.pas',
+  SharedTestClasses in '..\..\tests\SharedTestClasses.pas',
+  UnitTestFramework in '..\..\tests\UnitTestFramework.pas',
+  UnitTestModules in '..\..\tests\UnitTestModules.pas',
+  UnitTestFrameworkProxy in '..\..\tests\UnitTestFrameworkProxy.pas',
+  TestExtensions in '..\..\src\TestExtensions.pas',
+  TestModules in '..\..\src\TestModules.pas',
+  GUITesting in '..\..\src\GUITesting.pas',
+  TextTestRunner in '..\..\src\TextTestRunner.pas',
+  XMLListener in '..\..\src\XMLListener.pas';
 
 {$R *.RES}
 
