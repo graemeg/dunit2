@@ -1,0 +1,153 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{27728e98-eb9f-4ab1-a6e0-6d175f6aef37}</ProjectGuid>
+			<MainSource>DUnit2.dpr</MainSource>
+			<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+			<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<DCC_DependencyCheckOutputName>DUnit2.exe</DCC_DependencyCheckOutputName>
+			<ProjectVersion>12.0</ProjectVersion>
+			<Config Condition="'$(Config)'==''">Release</Config>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='NO_JEDI_JCL' or '$(Cfg_3)'!=''">
+			<Cfg_3>true</Cfg_3>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_ExeOutput>_bin</DCC_ExeOutput>
+			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
+			<DCC_DependencyCheckOutputName>_bin\DUnit2.exe</DCC_DependencyCheckOutputName>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<Version>7.0</Version>
+			<DCC_DebugInformation>False</DCC_DebugInformation>
+			<DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DcuOutput>_libdcu</DCC_DcuOutput>
+			<DCC_ObjOutput>_libdcu</DCC_ObjOutput>
+			<DCC_HppOutput>_libdcu</DCC_HppOutput>
+			<DCC_UnitSearchPath>..\..\src;..\..\externals\fastmm;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_ResourcePath>..\..\src;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;$(DCC_ResourcePath)</DCC_ResourcePath>
+			<DCC_ObjPath>..\..\src;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;$(DCC_ObjPath)</DCC_ObjPath>
+			<DCC_IncludePath>..\..\src;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;$(DCC_IncludePath)</DCC_IncludePath>
+			<DCC_Define>FASTMM;RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_Description>GensDCUs</DCC_Description>
+			<DCC_UNSAFE_TYPE>True</DCC_UNSAFE_TYPE>
+			<DCC_UNSAFE_CODE>True</DCC_UNSAFE_CODE>
+			<DCC_UNSAFE_CAST>True</DCC_UNSAFE_CAST>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<Version>7.0</Version>
+			<DCC_DebugInformation>False</DCC_DebugInformation>
+			<DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_DcuOutput>_libdcu</DCC_DcuOutput>
+			<DCC_ObjOutput>_libdcu</DCC_ObjOutput>
+			<DCC_HppOutput>_libdcu</DCC_HppOutput>
+			<DCC_UnitSearchPath>..\..\src;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_ResourcePath>..\..\src;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;$(DCC_ResourcePath)</DCC_ResourcePath>
+			<DCC_ObjPath>..\..\src;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;$(DCC_ObjPath)</DCC_ObjPath>
+			<DCC_IncludePath>..\..\src;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;$(DCC_IncludePath)</DCC_IncludePath>
+			<DCC_Define>FASTMM;USE_JEDI_JCL;DEBUG;$(DCC_Define)</DCC_Define>
+			<DCC_Description>GensDCUs</DCC_Description>
+		</PropertyGroup>
+		<Import Project="No_JEDI_JCL.optset" Condition="'$(Cfg_3)'!='' And Exists('No_JEDI_JCL.optset')"/>
+		<PropertyGroup Condition="'$(Cfg_3)'!=''">
+			<DCC_DcuOutput>_libdcu</DCC_DcuOutput>
+			<CfgDependentOn>No_JEDI_JCL.optset</CfgDependentOn>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="DUnit2.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="..\..\src\TestFrameworkIfaces.pas"/>
+			<DCCReference Include="..\..\src\TestFramework.pas"/>
+			<DCCReference Include="..\..\src\TestFrameworkProxyIfaces.pas"/>
+			<DCCReference Include="..\..\src\TestListenerIface.pas"/>
+			<DCCReference Include="..\..\src\ProjectsManagerIface.pas"/>
+			<DCCReference Include="..\..\src\XPVistaSupport.pas"/>
+			<DCCReference Include="..\..\src\ProjectsManager.pas"/>
+			<DCCReference Include="..\..\src\TestFrameworkProxy.pas"/>
+			<DCCReference Include="..\..\src\GUITestRunner.pas"/>
+			<DCCReference Include="..\..\src\TestExtensions.pas"/>
+			<DCCReference Include="..\..\src\TextTestRunner.pas"/>
+			<DCCReference Include="..\..\src\TestModules.pas"/>
+			<DCCReference Include="..\..\src\GUITesting.pas"/>
+			<DCCReference Include="..\..\src\XMLListener.pas"/>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="NO_JEDI_JCL">
+				<Key>Cfg_3</Key>
+				<CfgParent>Base</CfgParent>
+				<DependentOn>No_JEDI_JCL.optset</DependentOn>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Parameters>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">10</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1033</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">10.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Source>
+						<Source Name="MainSource">DUnit2.dpr</Source>
+					</Source>
+				</Delphi.Personality>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>
