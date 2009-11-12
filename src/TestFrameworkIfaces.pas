@@ -473,6 +473,7 @@ type
     property  ProgressSummary: IInterface read get_ProgressSummary;
     function  get_ExpectedException: ExceptClass;
     procedure StartExpectingException(e: ExceptClass);
+    procedure ClearExpectedException;
     property  ExpectedException :ExceptClass read  get_ExpectedException
                                              write StartExpectingException;
     procedure InstallExecutionControl(const Value: ITestExecControl);

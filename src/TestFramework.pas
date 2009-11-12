@@ -212,6 +212,7 @@ type
     {$ENDIF}
     function  get_ExpectedException: ExceptClass;
     procedure StartExpectingException(e: ExceptClass);
+    procedure ClearExpectedException;
     procedure StopExpectingException(const ErrorMsg :string = '');
     procedure BeginRun; virtual;
     function  get_ExecStatus: TExecutionStatus;
@@ -1173,14 +1174,14 @@ begin
 end;
 
 function TMemUseComparator.AlertOnMemoryLoss(const CurrentStatus: TExecutionStatus): TExecutionStatus;
-  {$IFDEF FASTMM}
+{$IFDEF FASTMM}
 var
   LMemoryLeakIgnoredInSetupOrTearDown: Boolean;
   LMemoryImbalance : boolean;
   LLeakIndex       : Integer;
   LMemErrorMessage : string;
   LExcept: Exception;
-  {$ENDIF}
+{$ENDIF}
 begin
   Result := CurrentStatus;
   {$IFDEF FASTMM}
@@ -2460,6 +2461,7 @@ begin
         (FExceptionIs.ClassName = E.ClassName) then
         begin
           Result := _Passed; // Was the expected exception
+          (CurrentTestCase as ITestCase).ClearExpectedException;
           FExpectedExcept := nil;
           FExceptionIs := nil;
           LMsg := '';
@@ -3220,6 +3222,11 @@ begin
   OnCheckCalled;
   if (not condition) then
       FailNotEquals(BoolToStr(true), BoolToStr(false), ErrorMsg, CallerAddr);
+end;
+
+procedure TTestProc.ClearExpectedException;
+begin
+  FExpectedExcept := nil;
 end;
 
 procedure TTestProc.CheckFalse(const condition: boolean; const ErrorMsg: string);

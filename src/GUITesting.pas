@@ -77,24 +77,15 @@ type
     constructor Create{(MethodName :string)}; override;
     destructor  Destroy; override;
 
-    procedure TearDown; override;
-
   protected
     FGUI         :TControl; // this is the control we're testing
     FActionDelay :Integer;
     procedure SetUpOnce; override;
+    procedure TearDown; override;
     function  FindControl(Comp: TComponent; const CtlName: string; Addrs :Pointer = nil): TControl; overload;
     function  FindControl(const AName: string; Addrs :Pointer = nil): TControl;                      overload;
 
     function  FindParentWinControl(Control :TControl):TWinControl;
-
-(* I belive this is now dead code - if so remove it by Dec 2003
-   Windows doesn't use shift/alt like this at all so I was assuming this was
-   qt/clx code but it now looks like it's not used there.
-{$IFNDEF DUNIT_CLX}
-    function  ShiftStateToKeyData(ShiftState :TShiftState):Longint;
-{$ENDIF}
-*)
 
 {$IFNDEF DUNIT_CLX}
     { Windows specific keyboard state code }

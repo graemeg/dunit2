@@ -480,7 +480,7 @@ function  RunRegisteredTestsModelessUnattended: Integer;
 implementation
 uses
 {$IFDEF FASTMM}
-  FastMM4,
+//  FastMM4,
 {$ENDIF}
   TestFrameworkProxy,
 {$IFDEF XMLLISTENER}
@@ -2197,7 +2197,7 @@ end;
 
 procedure TGUITestRunner.CopyMessageToClipboardActionUpdate(Sender: TObject);
 begin
-  CopyMessageToClipboardAction.Enabled := FailureListView.Selected <> nil;
+  CopyMessageToClipboardAction.Enabled := FailureListView.Items.Count > 0;
 end;
 
 procedure TGUITestRunner.SelectCurrentActionExecute(Sender: TObject);

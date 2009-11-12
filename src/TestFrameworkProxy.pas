@@ -676,13 +676,13 @@ var
 {$ENDIF}
 begin
   {$IFDEF USE_JEDI_JCL}
-      Result := '$'+PtrToStr(Addrs);
-      JclDebug.MapOfAddr(Addrs, _file, _module, _proc, _line);
-      Result := Format(' <$%p>', [ Addrs]);
+    Result := '$'+PtrToStr(Addrs);
+    JclDebug.MapOfAddr(Addrs, _file, _module, _proc, _line);
+    Result := Format(' <$%p>', [ Addrs]);
     if Trim(Result) = '' then
       Result := AddrsToStr(Addrs) + '  <no map file>';
   {$ELSE}
-      Result := AddrsToStr(Addrs);
+    Result := AddrsToStr(Addrs);
   {$ENDIF}
 end;
 
