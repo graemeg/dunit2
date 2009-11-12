@@ -88,6 +88,7 @@
 			<DCCReference Include="..\..\tests\UnitTestFramework.pas"/>
 			<DCCReference Include="..\..\tests\UnitTestModules.pas"/>
 			<DCCReference Include="..\..\tests\UnitTestFrameworkProxy.pas"/>
+			<DCCReference Include="..\..\tests\FastMMMonitorTest.pas"/>
 			<DCCReference Include="..\..\tests\SharedTestClasses.pas"/>
 			<DCCReference Include="..\..\src\TestExtensions.pas"/>
 			<DCCReference Include="..\..\src\TextTestRunner.pas"/>

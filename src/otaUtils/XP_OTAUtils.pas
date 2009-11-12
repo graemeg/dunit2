@@ -34,9 +34,7 @@ unit XP_OTAUtils;
 
 interface
 
-//{$I JEDI.inc}
-{$DEFINE DELPHI6_UP}
-{$DEFINE DELPHI7_UP}
+{$I jedi.inc}   // used solely for delphi version definitions
 
 uses
   ToolsAPI,
@@ -170,16 +168,16 @@ type
 
 implementation
 
-{$IFNDEF DELPHI6_UP}
-uses
-  Variants,
-  FileCtrl;                   // ForceDirectories
-{$ELSE}
+{$IFDEF DELPHI6_UP}
 uses
   Dialogs,
   Windows,      // HKEY_CURRENT_USER
   Registry,
   Variants;
+{$ELSE}
+uses
+  Variants,
+  FileCtrl;                   // ForceDirectories
 {$ENDIF}
 
 {$IFDEF DEBUG}
@@ -212,7 +210,11 @@ begin
     while Src^ <> #0 do
     begin
 
+{$IFDEF DELPHI2009_UP}
+      if not SysUtils.CharInSet(Src^, [#09..#13, #32]) then
+{$ELSE}
       if not (Src^ in [#09..#13, #32]) then
+{$ENDIF}
       begin
         Dst^ := Src^;
         System.Inc(Dst);
@@ -563,7 +565,6 @@ begin
       begin
         // is a relative search path -> make relative to active project absolute folder
         ASearchPaths[i] := Format('%s\%s',[ProjectFolder, ASearchPaths[i]]);
-
       end;
 
       ASearchPaths[i] := IncludeTrailingPathDelimiter(ExpandFileName(ASearchPaths[i]));

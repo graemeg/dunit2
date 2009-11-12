@@ -90,6 +90,4 @@ uses
 {$ENDIF}
 {$ENDIF}
 
-initialization
-
 end.

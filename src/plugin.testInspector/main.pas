@@ -16,6 +16,7 @@ uses
   ,WatchFile      // ReadWatchFile
   ,XP_OTAUtils    // GetCurrentProject, GetProjectAbsoluteSearchPaths, OpenFileInIDE...
   ,Forms          // Application
+  ,Windows
   ;
 
 const
@@ -47,6 +48,9 @@ procedure Register;
 begin
   ToolsAPI.RegisterPackageWizard(TDUnitTestInspector.Create);
 end;
+
+procedure SwitchToThisWindow(hwnd: HWND; fUnknown: BOOL); stdcall;
+  external user32 name 'SwitchToThisWindow';
 
 { TDUnitTestInspector }
 
@@ -128,6 +132,8 @@ var
   LFilePath: string;
   LLineNumber: integer;
   i,j: integer;
+const
+  cAltTab = true;
 begin
   LFilesToOpen := nil;
   LSearchPaths := nil;
@@ -160,8 +166,9 @@ begin
 
         end;
 
-        // Bring Delphi to foreground
-        Application.BringToFront;
+        // Application.BringToFront; // doesn't work for minimised app
+        // Bring app to foreground (even if minimised)
+        SwitchToThisWindow(Application.MainForm.Handle, cAltTab);
       end;
 
     end;
