@@ -53,6 +53,10 @@
     <DCC_HppOutput>_dcu</DCC_HppOutput>
     <DCC_BplOutput>_bin</DCC_BplOutput>
     <DCC_DcpOutput>_bin</DCC_DcpOutput>
+    <DCC_UnitSearchPath>..\..\externals\jcl\source\include</DCC_UnitSearchPath>
+    <DCC_ResourcePath>..\..\externals\jcl\source\include</DCC_ResourcePath>
+    <DCC_ObjPath>..\..\externals\jcl\source\include</DCC_ObjPath>
+    <DCC_IncludePath>..\..\externals\jcl\source\include</DCC_IncludePath>
   </PropertyGroup>
   <ProjectExtensions>
     <Borland.Personality>Delphi.Personality</Borland.Personality>
@@ -76,9 +80,9 @@
     <DelphiCompile Include="OTAUtils.dpk">
       <MainSource>MainSource</MainSource>
     </DelphiCompile>
+    <DCCReference Include="$(SystemRoot)\system32\designide.dcp" />
+    <DCCReference Include="$(SystemRoot)\system32\rtl.dcp" />
     <DCCReference Include="..\..\src\otaUtils\XP_OTAUtils.pas" />
     <DCCReference Include="..\..\src\otaUtils\XP_OTAWizards.pas" />
-    <DCCReference Include="H:\designide.dcp" />
-    <DCCReference Include="H:\rtl.dcp" />
   </ItemGroup>
 </Project>

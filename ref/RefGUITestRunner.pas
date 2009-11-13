@@ -49,7 +49,8 @@ uses
   Windows, Classes, Graphics, Controls, Forms,
   ComCtrls, ExtCtrls, StdCtrls, ImgList, Buttons, Menus, ActnList,
   IniFiles, ToolWin,
-  TestFrameworkProxyIfaces;
+  TestFrameworkProxyIfaces,
+  GUISearchPanel, GUISearchController;
 
 type
   {: Function type used by the TDUnitDialog.ApplyToTests method
@@ -231,6 +232,8 @@ type
     InhibitSummaryLevelChecksMenuItem: TMenuItem;
     PropertyOverrideMenuItem: TMenuItem;
     ShowWarnedTestToolButton: TToolButton;
+    SearchBasePanel: TPanel;
+    SearchImages: TImageList;
     procedure FormCreate(Sender: TObject);
     procedure TestTreeClick(Sender: TObject);
     procedure FailureListViewSelectItem(Sender: TObject; Item: TListItem;
@@ -326,6 +329,8 @@ type
     procedure ShowOverriddenFailuresActionExecute(Sender: TObject);
     procedure ShowEarlyExitedTestActionUpdate(Sender: TObject);
     procedure EnableWarningsActionExecute(Sender: TObject);
+    procedure FailureListViewDblClick(Sender: TObject);
+    procedure ErrorMessageRTFDblClick(Sender: TObject);
 
   private
     FSuite:         ITestProxy;
@@ -349,6 +354,8 @@ type
     FPopupX: Integer;
     FHoldOptions: boolean;
     FTestFailed: Boolean;
+    FSP: TGUISearchPanel;
+    FSearchController: TGUISearchController;
     procedure ResetProgress;
     procedure MenuLooksInactive(ACanvas: TCanvas; ARect: TRect; Selected: Boolean;
       ATitle: string; TitlePosn: UINT; PtyOveridesGUI: boolean);
@@ -358,6 +365,12 @@ type
     procedure RefreshTestCount;
     procedure HoldOptions(const Value: boolean);
     function  ShowNodeChildrenFailures(const ANode: TTreeNode): TTreeNode;
+    function StripAllCRLFs(const AString: string): string;
+    function SplitPair(const APair: string; out AFirst, ASecond: string;
+      const ASeparator: char): boolean;
+    procedure CreateSearchPanel(const AOwner: TWinControl);
+    procedure CreateSearchController(const ASearchPanel: TGUISearchPanel;
+      const ATreeView: TTreeView);
   protected
     procedure OnUpdateTimer(Sender: TObject);
     function  get_TestResult: TTestResult;
@@ -447,6 +460,8 @@ type
     procedure TestingEnds(TestResult :TTestResult);
     function  ShouldRunTest(const ATest :ITestProxy):boolean;
     procedure Status(const ATest: ITestProxy; AMessage: string);
+    property SP: TGUISearchPanel read FSP;
+    property VT: TTreeView read TestTree;
   published
     {: The Test Suite to be run in this runner }
     property Suite: ITestProxy read FSuite write SetSuite;
@@ -465,7 +480,7 @@ function  RunRegisteredTestsModelessUnattended: Integer;
 implementation
 uses
 {$IFDEF FASTMM}
-  FastMM4,
+//  FastMM4,
 {$ENDIF}
   RefTestFrameworkProxy,
 {$IFDEF XMLLISTENER}
@@ -476,7 +491,9 @@ uses
   XPVistaSupport,
   SysUtils,
   Clipbrd,
-  Math;
+  Math,
+  StrUtils,
+  WatchFile;
 
 {$BOOLEVAL OFF}  // Required or you'll get an AV
 {$R *.DFM}
@@ -1396,6 +1413,8 @@ end;
 procedure TRefGUITestRunner.FormCreate(Sender: TObject);
 begin
   inherited;
+  CreateSearchPanel(SearchBasePanel);
+  CreateSearchController(SP, VT);
   FTests := TInterfaceList.Create;
   LoadConfiguration;
 
@@ -1414,7 +1433,9 @@ begin
 
   {$IFDEF FASTMM}
     FailTestCaseIfMemoryLeakedAction.Enabled := True;
-    ReportMemoryLeaksOnShutdown := ReportMemoryLeakTypeOnShutdownAction.Checked;
+    {$IFNDEF VER150} // ToDo: Make this hack to get Delphi 7 compiling more robust
+      ReportMemoryLeaksOnShutdown := ReportMemoryLeakTypeOnShutdownAction.Checked;
+    {$ENDIF}
   {$ELSE}
     FailTestCaseIfMemoryLeakedAction.Enabled := False;
     ReportMemoryLeakTypeOnShutdownAction.Checked := False;
@@ -1436,6 +1457,7 @@ begin
   FreeAndNil(FTests); // Note this is an object full of Interface refs
   Suite := nil;       // Take down the test proxys
   ClearRegistry;      // Take down the Registered tests
+  FreeAndNil(FSearchController);
   inherited;
 end;
 
@@ -1542,6 +1564,71 @@ begin
   begin
     TestTree.Selected := TTreeNode(FailureListView.Selected.data);
   end;
+end;
+
+function TRefGUITestRunner.SplitPair(const APair: string;
+  out AFirst, ASecond: string; const ASeparator: char): boolean;
+var
+  LSeparatorPos: integer;
+begin
+  LSeparatorPos := Pos(ASeparator, APair);
+
+  if LSeparatorPos > 0 then
+  begin
+    Result := true;
+    AFirst := Copy(APair, 1, LSeparatorPos - 1);
+    ASecond := Copy(APair, LSeparatorPos + 1, Length(APair));
+  end
+  else
+  begin
+    Result := false;
+    AFirst := APair;
+    ASecond := '';
+  end;
+end;
+
+function TRefGUITestRunner.StripAllCRLFs(const AString: string): string;
+var
+  Src, Dst: PChar;
+begin
+  SetLength(Result, Length(AString));
+  Src := @AString[1];
+  Dst := @Result[1];
+
+  while Src^ <> #0 do
+  begin
+
+    if (Src^ <> #13) and (Src^ <> #10) then
+    begin
+      Dst^ := Src^;
+      Inc(Dst);
+    end;
+
+    Inc(Src);
+  end;
+
+  // Add null terminator
+  Dst^ :=  Src^;
+  // re-sync string length with position of null terminator
+  Result := PChar(Result);
+end;
+
+procedure TRefGUITestRunner.FailureListViewDblClick(Sender: TObject);
+var
+  LFailureLocation: string;
+  LFailureFileName, LFailureLineNumber: string;
+
+begin
+  if FailureListView.Selected <> nil then
+  begin
+    LFailureLocation := FailureListView.Selected.SubItems[2];
+
+    if SplitPair(LFailureLocation, LFailureFileName, LFailureLineNumber, ':') and
+      (StrToIntDef(LFailureLineNumber, 0) > 0) then
+      WriteWatchFile(LFailureFileName, LFailureLineNumber);
+      
+  end;
+
 end;
 
 procedure TRefGUITestRunner.FailureListViewSelectItem(Sender: TObject; Item: TListItem; Selected: Boolean);
@@ -1687,6 +1774,63 @@ begin
        ErrorBoxSplitter.Top := ErrorBoxPanel.Top-8;
      end
    end;
+end;
+
+procedure TRefGUITestRunner.ErrorMessageRTFDblClick(Sender: TObject);
+var
+  LRichEdit: TRichEdit;
+  LFileInfo: string;
+  LLineNumber: string;
+  LFileName: string;
+  LAnchor: PChar;
+  LSelStart: integer;
+
+// Example from stack trace: (Line 128, "MudpackLegacyModelDiagram_TST.pas")
+const
+  cFileInfoStartAnchor = '(Line ';
+  cFileInfoEndAnchor = '")';
+
+  cLineNameSeparator = ',';
+
+begin
+  Assert(Sender is TRichEdit, 'Sender is not a TRichEdit');
+  LRichEdit := Sender as TRichEdit;
+  LFileInfo := LRichEdit.Lines.Text;
+  LSelStart := LRichEdit.SelStart;
+  // search forwards from caret position for end anchor
+  LAnchor := SearchBuf(Pointer(LFileInfo), Length(LFileInfo), LSelStart,
+    0, cFileInfoEndAnchor, [soDown]);
+
+  if Assigned(LAnchor) then
+  begin
+    // search backwards from end anchor for start anchor
+    LSelStart := (integer(LAnchor) - integer(Pointer(LFileInfo))) div SizeOf(Char);
+    LAnchor := SearchBuf(PChar(LFileInfo), Length(LFileInfo), LSelStart,
+      0, cFileInfoStartAnchor, []);
+
+    if Assigned(LAnchor) then
+    begin
+      // strip leading text to start of start Anchor
+      LFileInfo := String(LAnchor);
+      // trim off leading and trailing text inclusive of Anchors
+      Delete(LFileInfo, 1, Length(cFileInfoStartAnchor));
+      Delete(LFileInfo, Pos(cFileInfoEndAnchor, LFileInfo), Length(LFileInfo));
+      // remove any linebreaks from wrapped lines
+      LFileInfo := StripAllCRLFs(LFileInfo);
+
+      if SplitPair(LFileInfo, LLineNumber, LFileName, cLineNameSeparator) then
+      begin
+        // trim off whitespace
+        LFileName := Trim(LFileName);
+        // trim off (") char from start of file name
+        Delete(LFileName, 1, 1);
+        WriteWatchFile(LFileName, LLineNumber);
+      end;
+  
+    end;
+
+  end;
+
 end;
 
 procedure TRefGUITestRunner.ErrorBoxSplitterMoved(Sender: TObject);
@@ -2135,6 +2279,19 @@ begin
   begin
     Clipboard.AsText := ANode.Text;
   end;
+end;
+
+procedure TRefGUITestRunner.CreateSearchPanel(const AOwner: TWinControl);
+begin
+  FSP := TGUISearchPanel.Create(AOwner);
+  FSP.Parent := AOwner;
+  FSP.Images := SearchImages;
+end;
+
+procedure TRefGUITestRunner.CreateSearchController(
+  const ASearchPanel: TGUISearchPanel; const ATreeView: TTreeView);
+begin
+  FSearchController := TGUISearchController.Create(ASearchPanel, ATreeView);
 end;
 
 procedure TRefGUITestRunner.CopyProcnameToClipboardActionUpdate(
@@ -2665,7 +2822,9 @@ begin
   begin
   {$IFDEF FASTMM}
     Checked := not Checked;
-    ReportMemoryLeaksOnShutdown := Checked;
+    {$IFNDEF VER150}  //ToDo: Make this hack to get Delphi 7 compiling more robust
+      ReportMemoryLeaksOnShutdown := Checked;
+    {$ENDIF}
   {$ELSE}
     Checked := False;
   {$ENDIF}

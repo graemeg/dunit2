@@ -464,6 +464,8 @@ type
     procedure StopTests(const ErrorMsg: string = '');
     procedure InhibitStackTrace; overload;
     procedure InhibitStackTrace(const Value: boolean); overload;
+    procedure ClearExpectedException;
+
 
     { The following are the calls users make in test procedures . }
   public
@@ -2653,6 +2655,11 @@ begin
   {$ELSE}
     AMethod;
   {$ENDIF}
+end;
+
+procedure TTestCase.ClearExpectedException;
+begin
+  FExpectedExcept := nil;
 end;
 
 function TTestCase.Count: Integer;
