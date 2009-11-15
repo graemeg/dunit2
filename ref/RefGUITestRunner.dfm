@@ -3,8 +3,9 @@ object RefGUITestRunner: TRefGUITestRunner
   Top = 169
   Caption = 'DUnit2: An Xtreme testing framework'
   ClientHeight = 452
-  ClientWidth = 466
+  ClientWidth = 492
   Color = clBtnFace
+  Constraints.MinWidth = 500
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -34,16 +35,17 @@ object RefGUITestRunner: TRefGUITestRunner
   object BodyPanel: TPanel
     Left = 0
     Top = 0
-    Width = 466
+    Width = 492
     Height = 452
     Align = alClient
     BevelOuter = bvNone
     BorderWidth = 2
     TabOrder = 0
+    ExplicitWidth = 482
     object ErrorBoxSplitter: TSplitter
       Left = 2
       Top = 369
-      Width = 462
+      Width = 488
       Height = 6
       Cursor = crVSplit
       Align = alBottom
@@ -53,31 +55,34 @@ object RefGUITestRunner: TRefGUITestRunner
       ParentColor = False
       OnMoved = ErrorBoxSplitterMoved
       ExplicitTop = 377
+      ExplicitWidth = 462
     end
     object TopPanel: TPanel
       Left = 2
       Top = 2
-      Width = 462
+      Width = 488
       Height = 367
       Align = alClient
       BevelOuter = bvNone
       ParentColor = True
       TabOrder = 0
+      ExplicitWidth = 478
       object ResultsSplitter: TSplitter
         Left = 0
         Top = 188
-        Width = 462
+        Width = 488
         Height = 5
         Cursor = crVSplit
         Align = alBottom
         Color = clBtnFace
         ParentColor = False
         ExplicitTop = 196
+        ExplicitWidth = 462
       end
       object TreePanel: TPanel
         Left = 0
         Top = 0
-        Width = 462
+        Width = 488
         Height = 188
         Align = alClient
         BevelOuter = bvNone
@@ -85,10 +90,11 @@ object RefGUITestRunner: TRefGUITestRunner
         Constraints.MinHeight = 100
         ParentColor = True
         TabOrder = 0
+        ExplicitWidth = 478
         object TestTree: TTreeView
           Left = 2
           Top = 57
-          Width = 458
+          Width = 484
           Height = 129
           Hint = 'Hierarchy of test cases. Checked test cases will be run.'
           Align = alClient
@@ -105,17 +111,19 @@ object RefGUITestRunner: TRefGUITestRunner
           OnKeyPress = TestTreeKeyPress
           OnMouseDown = TestTreeMouseDown
           Items.NodeData = {
-            01020000002300000000000000000000002080DB410000000000000000020000
-            0005540065007300740031002700000000000000000000002080DB4100000000
-            00000000000000000753007500620054006500730074002D0000000000000000
-            0000002080DB410000000000000000000000000A530075006200540065007300
-            740031002E0032002300000000000000000000002080DB410000000000000000
-            000000000554006500730074003200}
+            03020000002800000000000000000000002080DB4100000000FFFFFFFF000000
+            00020000000105540065007300740031002C00000000000000000000002080DB
+            4100000000FFFFFFFF0000000000000000010753007500620054006500730074
+            003200000000000000000000002080DB4100000000FFFFFFFF00000000000000
+            00010A530075006200540065007300740031002E003200280000000000000000
+            0000002080DB4100000000FFFFFFFF0000000000000000010554006500730074
+            003200}
+          ExplicitWidth = 474
         end
         object ToolBar1: TToolBar
           Left = 2
           Top = 2
-          Width = 458
+          Width = 484
           Height = 29
           ButtonWidth = 26
           Caption = 'ToolBar'
@@ -123,6 +131,7 @@ object RefGUITestRunner: TRefGUITestRunner
           Images = ActionsImages
           TabOrder = 1
           Wrapable = False
+          ExplicitWidth = 474
           object SelectAllButton: TToolButton
             Left = 0
             Top = 0
@@ -260,15 +269,16 @@ object RefGUITestRunner: TRefGUITestRunner
         object SearchBasePanel: TPanel
           Left = 2
           Top = 31
-          Width = 458
+          Width = 484
           Height = 26
           Align = alTop
           BevelEdges = []
           BevelOuter = bvNone
           TabOrder = 2
+          ExplicitWidth = 474
           object lblTestTree: TLabel
             Left = 2
-            Top = 1
+            Top = 2
             Width = 92
             Height = 19
             AutoSize = False
@@ -281,42 +291,46 @@ object RefGUITestRunner: TRefGUITestRunner
       object ResultsPanel: TPanel
         Left = 0
         Top = 193
-        Width = 462
+        Width = 488
         Height = 174
         Align = alBottom
         BevelOuter = bvNone
         BorderWidth = 2
         ParentColor = True
         TabOrder = 1
+        ExplicitWidth = 478
         object ProgressPanel: TPanel
           Left = 2
           Top = 2
-          Width = 458
+          Width = 484
           Height = 46
           Align = alTop
           BevelOuter = bvLowered
           BorderWidth = 4
           ParentColor = True
           TabOrder = 0
+          ExplicitWidth = 474
           object TopProgressPanel: TPanel
             Left = 5
             Top = 5
-            Width = 448
+            Width = 474
             Height = 18
             Align = alTop
             BevelOuter = bvNone
             BorderWidth = 2
             ParentColor = True
             TabOrder = 0
+            ExplicitWidth = 464
             object ProgressBar: TProgressBar
               Left = 62
               Top = 2
-              Width = 384
+              Width = 410
               Height = 14
               Hint = 'Shows the proportion of tests run'
               Align = alClient
               Step = 1
               TabOrder = 1
+              ExplicitWidth = 400
             end
             object pnlProgresslabel: TPanel
               Left = 2
@@ -334,15 +348,16 @@ object RefGUITestRunner: TRefGUITestRunner
           object ScorePanel: TPanel
             Left = 5
             Top = 23
-            Width = 448
+            Width = 474
             Height = 18
             Align = alClient
             BevelOuter = bvNone
             BorderWidth = 2
             ParentColor = True
             TabOrder = 1
+            ExplicitWidth = 464
             object LbProgress: TLabel
-              Left = 390
+              Left = 416
               Top = 2
               Width = 56
               Height = 14
@@ -350,17 +365,19 @@ object RefGUITestRunner: TRefGUITestRunner
               Alignment = taRightJustify
               AutoSize = False
               Caption = 'Progress'
+              ExplicitLeft = 390
             end
             object ScoreBar: TProgressBar
               Left = 62
               Top = 2
-              Width = 328
+              Width = 354
               Height = 14
               Hint = 'Shows the proportion of successful tests'
               Align = alClient
               BorderWidth = 2
               Step = 1
               TabOrder = 1
+              ExplicitWidth = 344
             end
             object ScoreLabel: TPanel
               Left = 2
@@ -379,7 +396,7 @@ object RefGUITestRunner: TRefGUITestRunner
         object ResultsView: TListView
           Left = 2
           Top = 48
-          Width = 458
+          Width = 484
           Height = 39
           Hint = 'Shows statistics about the current/last run'
           Align = alTop
@@ -440,16 +457,17 @@ object RefGUITestRunner: TRefGUITestRunner
               Width = 0
             end>
           Items.ItemData = {
-            01390000000100000000000000FFFFFFFFFFFFFFFF0700000000000000000131
-            00013200013300013400013500013600013700FFFFFFFFFFFFFFFFFFFFFFFFFF
-            FF}
+            033D0000000100000000000000FFFFFFFFFFFFFFFF07000000FFFFFFFF000000
+            0000013100013200013300013400013500013600013700FFFFFFFFFFFFFFFFFF
+            FFFFFFFFFF}
           TabOrder = 1
           ViewStyle = vsReport
+          ExplicitWidth = 474
         end
         object FailureListView: TListView
           Left = 2
           Top = 87
-          Width = 458
+          Width = 484
           Height = 85
           Hint = 'Shows the list of failed tests'
           Align = alClient
@@ -484,14 +502,14 @@ object RefGUITestRunner: TRefGUITestRunner
           OnClick = FailureListViewClick
           OnDblClick = FailureListViewDblClick
           OnSelectItem = FailureListViewSelectItem
-          ExplicitTop = 89
+          ExplicitWidth = 474
         end
       end
     end
     object ErrorBoxPanel: TPanel
       Left = 2
       Top = 375
-      Width = 462
+      Width = 488
       Height = 75
       Align = alBottom
       BevelOuter = bvNone
@@ -500,19 +518,28 @@ object RefGUITestRunner: TRefGUITestRunner
       ParentColor = True
       TabOrder = 1
       OnResize = ErrorBoxPanelResize
+      ExplicitWidth = 478
       object ErrorMessageRTF: TRichEdit
         Left = 2
         Top = 2
-        Width = 458
+        Width = 484
         Height = 71
         Align = alClient
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Pitch = fpVariable
+        Font.Style = []
         Lines.Strings = (
           'ErrorMessageRTF')
+        ParentFont = False
         PopupMenu = ErrorMessagePopup
         ReadOnly = True
         ScrollBars = ssVertical
         TabOrder = 0
         OnDblClick = ErrorMessageRTFDblClick
+        ExplicitWidth = 474
       end
     end
   end
