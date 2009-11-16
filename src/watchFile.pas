@@ -2,6 +2,8 @@ unit watchFile;
 
 interface
 
+{$I jedi.inc}   // used solely for delphi version definitions
+
 uses
   Windows      // HKEY_CURRENT_USER
   ,Classes     // TStrings
@@ -23,7 +25,9 @@ uses
 
 const
   cRegRootKey = HKEY_CURRENT_USER;
-  cRegPluginKey = 'SOFTWARE\DUnitTestInspector';
+{$IFDEF DELPHI2007} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\Delphi2007'; {$ENDIF}
+{$IFDEF DELPHI2009} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\Delphi2009'; {$ENDIF}
+{$IFDEF DELPHI2010} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\Delphi2010'; {$ENDIF}
   cRegWatchFile = 'WatchFile';
   cWatchFileSection = 'FilesToOpen';
 
