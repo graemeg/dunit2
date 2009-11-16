@@ -49,72 +49,32 @@ Name: D2009; Description: Delphi 2009; Types: D2009
 Name: D2010; Description: Delphi 2010; Types: D2010
 
 [Files]
-Source: ..\_bin\{#PluginFileName}; DestDir: {#D2007Folder}; Flags: ignoreversion; AfterInstall: AddToDelphi2007KnownPackages; Components: D2007
+Source: ..\_bin\{#PluginFileName}; DestDir: {#D2007Folder}; Flags: ignoreversion; Components: D2007
 Source: ..\_bin\{#OTAFileName}; DestDir: {#D2007Folder}; Flags: ignoreversion; Components: D2007
 
-Source: ..\_bin\{#PluginFileName}; DestDir: {#D2009Folder}; Flags: ignoreversion; AfterInstall: AddToDelphi2009KnownPackages; Components: D2009
+Source: ..\_bin\{#PluginFileName}; DestDir: {#D2009Folder}; Flags: ignoreversion; Components: D2009
 Source: ..\_bin\{#OTAFileName}; DestDir: {#D2009Folder}; Flags: ignoreversion; Components: D2009
 
-Source: ..\_bin\{#PluginFileName}; DestDir: {#D2010Folder}; Flags: ignoreversion; AfterInstall: AddToDelphi2010KnownPackages; Components: D2010
+Source: ..\_bin\{#PluginFileName}; DestDir: {#D2010Folder}; Flags: ignoreversion; Components: D2010
 Source: ..\_bin\{#OTAFileName}; DestDir: {#D2010Folder}; Flags: ignoreversion; Components: D2010
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
-Root: HKCU; Subkey: Software\{#PluginName}; ValueType: expandsz; ValueName: WatchFile; ValueData: {#WatchFolder}\watchFile; Flags: uninsdeletekey; AfterInstall: CreateWatchFolder
+Root: HKCU; Subkey: Software\{#PluginName}; ValueType: expandsz; ValueName: WatchFile; ValueData: {#WatchFolder}\watchFile; Flags: uninsdeletekey; AfterInstall: CreateWatchFolder; Components: ; Languages: 
+
+Root: HKCU; Subkey: {#D2007KnownPackageKey}; ValueType: expandsz; ValueName: {#D2007PluginPath}; ValueData: {#PluginIDEDescription}; Components: D2007; Languages: ; Flags: uninsdeletevalue
+Root: HKCU; Subkey: {#D2007DisabledPackageKey}; ValueType: expandsz; ValueName: {#D2007PluginPath}; Flags: uninsdeletevalue deletevalue; Components: D2007
+
+Root: HKCU; Subkey: {#D2009KnownPackageKey}; ValueType: expandsz; ValueName: {#D2009PluginPath}; ValueData: {#PluginIDEDescription}; Components: D2009; Languages: ; Flags: uninsdeletevalue
+Root: HKCU; Subkey: {#D2009DisabledPackageKey}; ValueType: expandsz; ValueName: {#D2009PluginPath}; Flags: uninsdeletevalue deletevalue; Components: D2009
+
+Root: HKCU; Subkey: {#D2010KnownPackageKey}; ValueType: expandsz; ValueName: {#D2010PluginPath}; ValueData: {#PluginIDEDescription}; Components: D2010; Languages: ; Flags: uninsdeletevalue
+Root: HKCU; Subkey: {#D2010DisabledPackageKey}; ValueType: expandsz; ValueName: {#D2010PluginPath}; Flags: uninsdeletevalue deletevalue; Components: D2010
 
 [Icons]
 Name: {group}\{cm:UninstallProgram,{#PluginName}}; Filename: {uninstallexe}
 
 [Code]
-
-procedure AddKnownPackageToRegistry(AKnownPackageKey, ADisabledPackageKey, APackageFilePath, APackageDescription: string);
-begin
-  RegWriteStringValue(HKEY_CURRENT_USER, AKnownPackageKey, APackageFilePath, APackageDescription);
-  RegDeleteValue(HKEY_CURRENT_USER, ADisabledPackageKey, APackageFilePath);
-end;
-
-procedure DeleteKnownPackageFromRegistry(AKnownPackageKey, ADisabledPackageKey, APackageFilePath: string);
-begin
-  RegDeleteValue(HKEY_CURRENT_USER, AKnownPackageKey, APackageFilePath);
-  RegDeleteValue(HKEY_CURRENT_USER, ADisabledPackageKey, APackageFilePath);
-end;
-
-procedure AddToDelphi2007KnownPackages;
-begin
-   AddKnownPackageToRegistry('{#D2007KnownPackageKey}', '{#D2007DisabledPackageKey}',
-     ExpandConstant('{#D2007PluginPath}'), '{#PluginIDEDescription}');
-end;
-
-procedure DeleteFromDelphi2007KnownPackages;
-begin
-  DeleteKnownPackageFromRegistry('{#D2007KnownPackageKey}', '{#D2007DisabledPackageKey}',
-    ExpandConstant('{#D2007PluginPath}'));
-end;
-
-
-procedure AddToDelphi2009KnownPackages;
-begin
-   AddKnownPackageToRegistry('{#D2009KnownPackageKey}', '{#D2009DisabledPackageKey}',
-     ExpandConstant('{#D2009PluginPath}'), '{#PluginIDEDescription}');
-end;
-
-procedure DeleteFromDelphi2009KnownPackages;
-begin
-  DeleteKnownPackageFromRegistry('{#D2009KnownPackageKey}', '{#D2009DisabledPackageKey}',
-    ExpandConstant('{#D2009PluginPath}'));
-end;
-
-procedure AddToDelphi2010KnownPackages;
-begin
-   AddKnownPackageToRegistry('{#D2010KnownPackageKey}', '{#D2010DisabledPackageKey}',
-     ExpandConstant('{#D2010PluginPath}'), '{#PluginIDEDescription}');
-end;
-
-procedure DeleteFromDelphi2010KnownPackages;
-begin
-  DeleteKnownPackageFromRegistry('{#D2010KnownPackageKey}', '{#D2010DisabledPackageKey}',
-    ExpandConstant('{#D2010PluginPath}'));
-end;
 
 procedure CreateWatchFolder();
 begin
@@ -128,8 +88,5 @@ end;
 
 procedure DeinitializeUninstall();
 begin
-  DeleteFromDelphi2007KnownPackages;
-  DeleteFromDelphi2009KnownPackages;
-  DeleteFromDelphi2010KnownPackages;
   DeleteWatchFolder;
 end;
