@@ -1368,27 +1368,28 @@ begin
   ResetProgress;
   Update;
 
-  with ResultsView.Items[0] do
-  begin
-    SubItems[0] := '';    //Test Count
-    SubItems[1] := '';    //Tests Run
-    SubItems[2] := '';    //Failures
-    SubItems[3] := '';    //Errors
-    SubItems[4] := '';    //Warnings
-    SubItems[5] := '';    //Test's Time
-    SubItems[6] := '';    //Total Test Time
-
-    if Suite <> nil then
+  if ResultsView.Items.Count > 0 then
+    with ResultsView.Items[0] do
     begin
-      TotalTestsCount := Suite.countEnabledTestCases;
-      SubItems[0] := IntToStr(TotalTestsCount);
-      ProgressBar.Max := TotalTestsCount;
-    end
-    else
-      ProgressBar.Max:= 10000;
+      SubItems[0] := '';    //Test Count
+      SubItems[1] := '';    //Tests Run
+      SubItems[2] := '';    //Failures
+      SubItems[3] := '';    //Errors
+      SubItems[4] := '';    //Warnings
+      SubItems[5] := '';    //Test's Time
+      SubItems[6] := '';    //Total Test Time
 
-    ScoreBar.Max := ProgressBar.Max;
-  end;
+      if Suite <> nil then
+      begin
+        TotalTestsCount := Suite.countEnabledTestCases;
+        SubItems[0] := IntToStr(TotalTestsCount);
+        ProgressBar.Max := TotalTestsCount;
+      end
+      else
+        ProgressBar.Max:= 10000;
+
+      ScoreBar.Max := ProgressBar.Max;
+    end;
 
   for i := 0 to TestTree.Items.Count - 1 do
   begin

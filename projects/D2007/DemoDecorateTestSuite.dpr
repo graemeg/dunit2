@@ -15,11 +15,11 @@ program DemoDecorateTestSuite;
 {$ENDIF}
 
 uses
-  FastMM4,
-  GUITestRunner,
-  TextTestRunner,
-  Unit1,           
-  TestUnit1;
+  FastMM4                     in '..\..\externals\fastmm\FastMM4.pas',
+  GUITestRunner               in '..\..\src\GUITestRunner.pas',
+  TextTestRunner              in '..\..\src\TextTestRunner.pas',
+  Unit1                       in '..\..\tests\examples\Unit1.pas',
+  TestUnit1                   in '..\..\tests\examples\TestUnit1.pas';
 
 {$R *.RES}
 

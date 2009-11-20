@@ -66,8 +66,6 @@ object GUITestRunner: TGUITestRunner
       BevelOuter = bvNone
       ParentColor = True
       TabOrder = 0
-      ExplicitWidth = 462
-      ExplicitHeight = 367
       object ResultsSplitter: TSplitter
         Left = 0
         Top = 100
@@ -91,8 +89,6 @@ object GUITestRunner: TGUITestRunner
         Constraints.MinHeight = 100
         ParentColor = True
         TabOrder = 0
-        ExplicitWidth = 462
-        ExplicitHeight = 188
         object TestTree: TTreeView
           Left = 2
           Top = 57
@@ -112,16 +108,6 @@ object GUITestRunner: TGUITestRunner
           OnClick = TestTreeClick
           OnKeyPress = TestTreeKeyPress
           OnMouseDown = TestTreeMouseDown
-          Items.NodeData = {
-            03020000002800000000000000000000002080DB4100000000FFFFFFFF000000
-            00020000000105540065007300740031002C00000000000000000000002080DB
-            4100000000FFFFFFFF0000000000000000010753007500620054006500730074
-            003200000000000000000000002080DB4100000000FFFFFFFF00000000000000
-            00010A530075006200540065007300740031002E003200280000000000000000
-            0000002080DB4100000000FFFFFFFF0000000000000000010554006500730074
-            003200}
-          ExplicitWidth = 458
-          ExplicitHeight = 129
         end
         object ToolBar1: TToolBar
           Left = 2
@@ -134,7 +120,6 @@ object GUITestRunner: TGUITestRunner
           Images = ActionsImages
           TabOrder = 1
           Wrapable = False
-          ExplicitWidth = 458
           object SelectAllButton: TToolButton
             Left = 0
             Top = 0
@@ -278,7 +263,6 @@ object GUITestRunner: TGUITestRunner
           BevelEdges = []
           BevelOuter = bvNone
           TabOrder = 2
-          ExplicitWidth = 458
           object lblTestTree: TLabel
             Left = 2
             Top = 2
@@ -302,8 +286,6 @@ object GUITestRunner: TGUITestRunner
         Constraints.MinHeight = 140
         ParentColor = True
         TabOrder = 1
-        ExplicitTop = 193
-        ExplicitWidth = 462
         object ProgressPanel: TPanel
           Left = 2
           Top = 2
@@ -314,7 +296,6 @@ object GUITestRunner: TGUITestRunner
           BorderWidth = 4
           ParentColor = True
           TabOrder = 0
-          ExplicitWidth = 458
           object TopProgressPanel: TPanel
             Left = 5
             Top = 5
@@ -325,7 +306,6 @@ object GUITestRunner: TGUITestRunner
             BorderWidth = 2
             ParentColor = True
             TabOrder = 0
-            ExplicitWidth = 448
             object ProgressBar: TProgressBar
               Left = 62
               Top = 2
@@ -335,7 +315,6 @@ object GUITestRunner: TGUITestRunner
               Align = alClient
               Step = 1
               TabOrder = 1
-              ExplicitWidth = 384
             end
             object pnlProgresslabel: TPanel
               Left = 2
@@ -360,7 +339,6 @@ object GUITestRunner: TGUITestRunner
             BorderWidth = 2
             ParentColor = True
             TabOrder = 1
-            ExplicitWidth = 448
             object LbProgress: TLabel
               Left = 416
               Top = 2
@@ -382,7 +360,6 @@ object GUITestRunner: TGUITestRunner
               BorderWidth = 2
               Step = 1
               TabOrder = 1
-              ExplicitWidth = 328
             end
             object ScoreLabel: TPanel
               Left = 2
@@ -407,67 +384,57 @@ object GUITestRunner: TGUITestRunner
           Align = alTop
           Columns = <
             item
-              Width = 8
-            end
-            item
-              Alignment = taRightJustify
+              AutoSize = True
               Caption = 'Tests'
               MaxWidth = 90
               MinWidth = 30
-              Width = 60
             end
             item
-              Alignment = taRightJustify
+              AutoSize = True
               Caption = 'Run'
               MaxWidth = 90
               MinWidth = 30
-              Width = 60
             end
             item
               Alignment = taRightJustify
+              AutoSize = True
               Caption = 'Failures'
               MaxWidth = 90
               MinWidth = 30
-              Width = 60
             end
             item
               Alignment = taRightJustify
+              AutoSize = True
               Caption = 'Errors'
               MaxWidth = 90
               MinWidth = 30
-              Width = 60
             end
             item
               Alignment = taRightJustify
+              AutoSize = True
               Caption = 'Warnings'
               MaxWidth = 90
               MinWidth = 30
-              Width = 60
             end
             item
               Alignment = taRightJustify
               AutoSize = True
               Caption = 'Test Time'
               MaxWidth = 200
-              MinWidth = 70
+              MinWidth = 80
             end
             item
               Alignment = taRightJustify
+              AutoSize = True
               Caption = 'Total Time'
-              MaxWidth = 120
-              MinWidth = 70
-              Width = 70
-            end
-            item
-              Width = 0
+              MaxWidth = 200
+              MinWidth = 80
             end>
           Items.ItemData = {
-            033D0000000100000000000000FFFFFFFFFFFFFFFF07000000FFFFFFFF000000
-            0000013100013200013300013400013500013600013700FFFFFFFFFFFFFFFFFF
-            FFFFFFFFFF}
+            01360000000100000000000000FFFFFFFFFFFFFFFF0600000000000000013000
+            013100013200013300013400013500013600FFFFFFFFFFFFFFFFFFFFFFFF}
           TabOrder = 1
           ViewStyle = vsReport
-          ExplicitWidth = 458
         end
         object FailureListView: TListView
           Left = 2
@@ -507,7 +474,6 @@ object GUITestRunner: TGUITestRunner
           OnClick = FailureListViewClick
           OnDblClick = FailureListViewDblClick
           OnSelectItem = FailureListViewSelectItem
-          ExplicitWidth = 458
         end
       end
     end
@@ -524,7 +490,6 @@ object GUITestRunner: TGUITestRunner
       ParentColor = True
       TabOrder = 1
       OnResize = ErrorBoxPanelResize
-      ExplicitTop = 248
       object ErrorMessageRTF: TRichEdit
         Left = 2
         Top = 2
@@ -545,8 +510,6 @@ object GUITestRunner: TGUITestRunner
         ScrollBars = ssVertical
         TabOrder = 0
         OnDblClick = ErrorMessageRTFDblClick
-        ExplicitWidth = 458
-        ExplicitHeight = 71
       end
     end
   end

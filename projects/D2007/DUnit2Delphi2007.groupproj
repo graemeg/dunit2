@@ -4,6 +4,7 @@
   </PropertyGroup>
   <ItemGroup />
   <ItemGroup>
+    <Projects Include="DemoDecorateTestSuite.dproj" />
     <Projects Include="DUnit2.dproj" />
     <Projects Include="DUnit2Console.dproj" />
     <Projects Include="DUnit2ConsoleTest.dproj" />
@@ -14,6 +15,7 @@
     <Projects Include="MiniTestLibW32C.dproj" />
     <Projects Include="MiniTestLibW32D.dproj" />
     <Projects Include="OTAUtils.dproj" />
+    <Projects Include="ShowOverrides.dproj" />
     <Projects Include="SingleTestLibW32.dproj" />
   </ItemGroup>
   <ProjectExtensions>
@@ -121,14 +123,32 @@
   <Target Name="DUnit2Test:Make">
     <MSBuild Projects="DUnit2Test.dproj" Targets="Make" />
   </Target>
+  <Target Name="DemoDecorateTestSuite">
+    <MSBuild Projects="DemoDecorateTestSuite.dproj" Targets="" />
+  </Target>
+  <Target Name="DemoDecorateTestSuite:Clean">
+    <MSBuild Projects="DemoDecorateTestSuite.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="DemoDecorateTestSuite:Make">
+    <MSBuild Projects="DemoDecorateTestSuite.dproj" Targets="Make" />
+  </Target>
+  <Target Name="ShowOverrides">
+    <MSBuild Projects="ShowOverrides.dproj" Targets="" />
+  </Target>
+  <Target Name="ShowOverrides:Clean">
+    <MSBuild Projects="ShowOverrides.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="ShowOverrides:Make">
+    <MSBuild Projects="ShowOverrides.dproj" Targets="Make" />
+  </Target>
   <Target Name="Build">
-    <CallTarget Targets="SingleTestLibW32;MiniTestLibW32A;MiniTestLibW32B;MiniTestLibW32C;MiniTestLibW32D;OTAUtils;DUnitTestInspector;DUnit2;DUnit2Console;DUnit2ConsoleTest;DUnit2Test" />
+    <CallTarget Targets="SingleTestLibW32;MiniTestLibW32A;MiniTestLibW32B;MiniTestLibW32C;MiniTestLibW32D;OTAUtils;DUnitTestInspector;DUnit2;DUnit2Console;DUnit2ConsoleTest;DUnit2Test;DemoDecorateTestSuite;ShowOverrides" />
   </Target>
   <Target Name="Clean">
-    <CallTarget Targets="SingleTestLibW32:Clean;MiniTestLibW32A:Clean;MiniTestLibW32B:Clean;MiniTestLibW32C:Clean;MiniTestLibW32D:Clean;OTAUtils:Clean;DUnitTestInspector:Clean;DUnit2:Clean;DUnit2Console:Clean;DUnit2ConsoleTest:Clean;DUnit2Test:Clean" />
+    <CallTarget Targets="SingleTestLibW32:Clean;MiniTestLibW32A:Clean;MiniTestLibW32B:Clean;MiniTestLibW32C:Clean;MiniTestLibW32D:Clean;OTAUtils:Clean;DUnitTestInspector:Clean;DUnit2:Clean;DUnit2Console:Clean;DUnit2ConsoleTest:Clean;DUnit2Test:Clean;DemoDecorateTestSuite:Clean;ShowOverrides:Clean" />
   </Target>
   <Target Name="Make">
-    <CallTarget Targets="SingleTestLibW32:Make;MiniTestLibW32A:Make;MiniTestLibW32B:Make;MiniTestLibW32C:Make;MiniTestLibW32D:Make;OTAUtils:Make;DUnitTestInspector:Make;DUnit2:Make;DUnit2Console:Make;DUnit2ConsoleTest:Make;DUnit2Test:Make" />
+    <CallTarget Targets="SingleTestLibW32:Make;MiniTestLibW32A:Make;MiniTestLibW32B:Make;MiniTestLibW32C:Make;MiniTestLibW32D:Make;OTAUtils:Make;DUnitTestInspector:Make;DUnit2:Make;DUnit2Console:Make;DUnit2ConsoleTest:Make;DUnit2Test:Make;DemoDecorateTestSuite:Make;ShowOverrides:Make" />
   </Target>
   <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
 </Project>

@@ -1,0 +1,118 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{73fbdbd2-bc69-4cd1-ae8c-bc31997deb39}</ProjectGuid>
+    <MainSource>DemoDecorateTestSuite.dpr</MainSource>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+    <DCC_DependencyCheckOutputName>_bin\DemoDecorateTestSuite.exe</DCC_DependencyCheckOutputName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_DebugInformation>False</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+    <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+    <DCC_Define>RELEASE</DCC_Define>
+    <DCC_ExeOutput>_bin</DCC_ExeOutput>
+    <DCC_DcuOutput>_dcu</DCC_DcuOutput>
+    <DCC_ObjOutput>_dcu</DCC_ObjOutput>
+    <DCC_HppOutput>_dcu</DCC_HppOutput>
+    <DCC_UnitSearchPath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include</DCC_UnitSearchPath>
+    <DCC_ResourcePath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include</DCC_ResourcePath>
+    <DCC_ObjPath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include</DCC_ObjPath>
+    <DCC_IncludePath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include</DCC_IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_Define>DEBUG</DCC_Define>
+    <DCC_ExeOutput>_bin</DCC_ExeOutput>
+    <DCC_DcuOutput>_dcu</DCC_DcuOutput>
+    <DCC_ObjOutput>_dcu</DCC_ObjOutput>
+    <DCC_HppOutput>_dcu</DCC_HppOutput>
+    <DCC_UnitSearchPath>$(BDS)\lib\Debug;$(BDS)\Lib\Debug\Indy10;..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include</DCC_UnitSearchPath>
+    <DCC_ResourcePath>$(BDS)\lib\Debug;$(BDS)\Lib\Debug\Indy10;..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include</DCC_ResourcePath>
+    <DCC_ObjPath>$(BDS)\lib\Debug;$(BDS)\Lib\Debug\Indy10;..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include</DCC_ObjPath>
+    <DCC_IncludePath>$(BDS)\lib\Debug;$(BDS)\Lib\Debug\Indy10;..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include</DCC_IncludePath>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Delphi.Personality</Borland.Personality>
+    <Borland.ProjectType>VCLApplication</Borland.ProjectType>
+    <BorlandProject>
+<BorlandProject xmlns=""> <Delphi.Personality>   <Parameters>
+      <Parameters Name="UseLauncher">False</Parameters>
+      <Parameters Name="LoadAllSymbols">True</Parameters>
+      <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+    </Parameters>
+    <VersionInfo>
+      <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+      <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+      <VersionInfo Name="MajorVer">1</VersionInfo>
+      <VersionInfo Name="MinorVer">0</VersionInfo>
+      <VersionInfo Name="Release">0</VersionInfo>
+      <VersionInfo Name="Build">0</VersionInfo>
+      <VersionInfo Name="Debug">False</VersionInfo>
+      <VersionInfo Name="PreRelease">False</VersionInfo>
+      <VersionInfo Name="Special">False</VersionInfo>
+      <VersionInfo Name="Private">False</VersionInfo>
+      <VersionInfo Name="DLL">False</VersionInfo>
+      <VersionInfo Name="Locale">3081</VersionInfo>
+      <VersionInfo Name="CodePage">1252</VersionInfo>
+    </VersionInfo>
+    <VersionInfoKeys>
+      <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
+      <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
+      <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+      <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
+      <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
+      <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
+      <VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys>
+      <VersionInfoKeys Name="ProductName"></VersionInfoKeys>
+      <VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+      <VersionInfoKeys Name="Comments"></VersionInfoKeys>
+    </VersionInfoKeys>
+    <Source>
+      <Source Name="MainSource">DemoDecorateTestSuite.dpr</Source>
+    </Source>
+  </Delphi.Personality> </BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Delphi.Targets" />
+  <ItemGroup>
+    <DelphiCompile Include="DemoDecorateTestSuite.dpr">
+      <MainSource>MainSource</MainSource>
+    </DelphiCompile>
+    <DCCReference Include="..\..\externals\astMM\FastMM4.pas" />
+    <DCCReference Include="..\..\externals\fastmm\FastMM4.pas" />
+    <DCCReference Include="..\..\externals\fastm\FastMM4.pas" />
+    <DCCReference Include="..\..\externals\fast\FastMM4.pas" />
+    <DCCReference Include="..\..\src\GUITestRunner.pas" />
+    <DCCReference Include="..\..\src\TextTestRunner.pas" />
+    <DCCReference Include="..\..\tests\examples\Te.pas" />
+    <DCCReference Include="..\..\tests\examples\Teer.pas" />
+    <DCCReference Include="..\..\tests\examples\TeestRunner.pas" />
+    <DCCReference Include="..\..\tests\examples\Tener.pas" />
+    <DCCReference Include="..\..\tests\examples\Tenner.pas" />
+    <DCCReference Include="..\..\tests\examples\Ter.pas" />
+    <DCCReference Include="..\..\tests\examples\TeRunner.pas" />
+    <DCCReference Include="..\..\tests\examples\Tes.pas" />
+    <DCCReference Include="..\..\tests\examples\Test.pas" />
+    <DCCReference Include="..\..\tests\examples\TestRunner.pas" />
+    <DCCReference Include="..\..\tests\examples\TestU.pas" />
+    <DCCReference Include="..\..\tests\examples\TestUn.pas" />
+    <DCCReference Include="..\..\tests\examples\TestUni.pas" />
+    <DCCReference Include="..\..\tests\examples\TestUnit.pas">
+      <ModuleName>TestUnit1</ModuleName>
+    </DCCReference>
+    <DCCReference Include="..\..\tests\examples\Tesy.pas" />
+    <DCCReference Include="..\..\tests\examples\TeTestRunner.pas" />
+    <DCCReference Include="..\..\tests\examples\TetRunner.pas" />
+    <DCCReference Include="..\..\tests\examples\TetTestRunner.pas" />
+    <DCCReference Include="..\..\tests\examples\Teunner.pas" />
+    <DCCReference Include="..\..\tests\examples\TextTestRunner.pas" />
+    <DCCReference Include="..\..\tests\examples\U.pas" />
+    <DCCReference Include="..\..\tests\examples\Un.pas" />
+    <DCCReference Include="..\..\tests\examples\Uni.pas" />
+    <DCCReference Include="..\..\tests\examples\Uni1.pas" />
+    <DCCReference Include="..\..\tests\examples\Unit.pas" />
+    <DCCReference Include="..\..\tests\examples\Unit1.pas" />
+  </ItemGroup>
+</Project>

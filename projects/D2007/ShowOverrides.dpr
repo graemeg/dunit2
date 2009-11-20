@@ -47,7 +47,7 @@ program ShowOverrides;
 {%TogetherDiagram 'ModelSupport_ShowOverrides\default.txaPackage'}
 
 uses
-  FastMM4                  in '..\..\..\..\Externals\FastMM\FastMM4.pas',
+  FastMM4                  in '..\..\externals\fastmm\FastMM4.pas',
   SysUtils,
 {
   TestFrameworkIfaces      in '..\..\src\TestFrameworkIfaces.pas',
@@ -68,7 +68,7 @@ uses
 
   TextTestRunner           in '..\..\src\TextTestRunner.pas',
 //  TestModules              in '..\..\src\TestModules.pas',
-  CheckOverrides           in '..\..\tests\Examples\CheckOverrides.pas';
+  CheckOverrides           in '..\..\tests\examples\CheckOverrides.pas';
 
 {$R *.RES}
 

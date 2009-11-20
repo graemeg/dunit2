@@ -41,7 +41,6 @@ object RefGUITestRunner: TRefGUITestRunner
     BevelOuter = bvNone
     BorderWidth = 2
     TabOrder = 0
-    ExplicitWidth = 482
     object ErrorBoxSplitter: TSplitter
       Left = 2
       Top = 369
@@ -66,7 +65,6 @@ object RefGUITestRunner: TRefGUITestRunner
       BevelOuter = bvNone
       ParentColor = True
       TabOrder = 0
-      ExplicitWidth = 478
       object ResultsSplitter: TSplitter
         Left = 0
         Top = 188
@@ -90,7 +88,6 @@ object RefGUITestRunner: TRefGUITestRunner
         Constraints.MinHeight = 100
         ParentColor = True
         TabOrder = 0
-        ExplicitWidth = 478
         object TestTree: TTreeView
           Left = 2
           Top = 57
@@ -110,15 +107,6 @@ object RefGUITestRunner: TRefGUITestRunner
           OnClick = TestTreeClick
           OnKeyPress = TestTreeKeyPress
           OnMouseDown = TestTreeMouseDown
-          Items.NodeData = {
-            03020000002800000000000000000000002080DB4100000000FFFFFFFF000000
-            00020000000105540065007300740031002C00000000000000000000002080DB
-            4100000000FFFFFFFF0000000000000000010753007500620054006500730074
-            003200000000000000000000002080DB4100000000FFFFFFFF00000000000000
-            00010A530075006200540065007300740031002E003200280000000000000000
-            0000002080DB4100000000FFFFFFFF0000000000000000010554006500730074
-            003200}
-          ExplicitWidth = 474
         end
         object ToolBar1: TToolBar
           Left = 2
@@ -131,7 +119,6 @@ object RefGUITestRunner: TRefGUITestRunner
           Images = ActionsImages
           TabOrder = 1
           Wrapable = False
-          ExplicitWidth = 474
           object SelectAllButton: TToolButton
             Left = 0
             Top = 0
@@ -275,7 +262,6 @@ object RefGUITestRunner: TRefGUITestRunner
           BevelEdges = []
           BevelOuter = bvNone
           TabOrder = 2
-          ExplicitWidth = 474
           object lblTestTree: TLabel
             Left = 2
             Top = 2
@@ -298,7 +284,6 @@ object RefGUITestRunner: TRefGUITestRunner
         BorderWidth = 2
         ParentColor = True
         TabOrder = 1
-        ExplicitWidth = 478
         object ProgressPanel: TPanel
           Left = 2
           Top = 2
@@ -309,7 +294,6 @@ object RefGUITestRunner: TRefGUITestRunner
           BorderWidth = 4
           ParentColor = True
           TabOrder = 0
-          ExplicitWidth = 474
           object TopProgressPanel: TPanel
             Left = 5
             Top = 5
@@ -320,7 +304,6 @@ object RefGUITestRunner: TRefGUITestRunner
             BorderWidth = 2
             ParentColor = True
             TabOrder = 0
-            ExplicitWidth = 464
             object ProgressBar: TProgressBar
               Left = 62
               Top = 2
@@ -330,7 +313,6 @@ object RefGUITestRunner: TRefGUITestRunner
               Align = alClient
               Step = 1
               TabOrder = 1
-              ExplicitWidth = 400
             end
             object pnlProgresslabel: TPanel
               Left = 2
@@ -355,7 +337,6 @@ object RefGUITestRunner: TRefGUITestRunner
             BorderWidth = 2
             ParentColor = True
             TabOrder = 1
-            ExplicitWidth = 464
             object LbProgress: TLabel
               Left = 416
               Top = 2
@@ -377,7 +358,6 @@ object RefGUITestRunner: TRefGUITestRunner
               BorderWidth = 2
               Step = 1
               TabOrder = 1
-              ExplicitWidth = 344
             end
             object ScoreLabel: TPanel
               Left = 2
@@ -456,13 +436,8 @@ object RefGUITestRunner: TRefGUITestRunner
             item
               Width = 0
             end>
-          Items.ItemData = {
-            033D0000000100000000000000FFFFFFFFFFFFFFFF07000000FFFFFFFF000000
-            0000013100013200013300013400013500013600013700FFFFFFFFFFFFFFFFFF
-            FFFFFFFFFF}
           TabOrder = 1
           ViewStyle = vsReport
-          ExplicitWidth = 474
         end
         object FailureListView: TListView
           Left = 2
@@ -502,7 +477,6 @@ object RefGUITestRunner: TRefGUITestRunner
           OnClick = FailureListViewClick
           OnDblClick = FailureListViewDblClick
           OnSelectItem = FailureListViewSelectItem
-          ExplicitWidth = 474
         end
       end
     end
@@ -518,7 +492,6 @@ object RefGUITestRunner: TRefGUITestRunner
       ParentColor = True
       TabOrder = 1
       OnResize = ErrorBoxPanelResize
-      ExplicitWidth = 478
       object ErrorMessageRTF: TRichEdit
         Left = 2
         Top = 2
@@ -539,7 +512,6 @@ object RefGUITestRunner: TRefGUITestRunner
         ScrollBars = ssVertical
         TabOrder = 0
         OnDblClick = ErrorMessageRTFDblClick
-        ExplicitWidth = 474
       end
     end
   end
