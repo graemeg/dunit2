@@ -62,10 +62,7 @@
 			<DCC_IncludePath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_IncludePath)</DCC_IncludePath>
 			<DCC_Define>USE_JEDI_JCL;DEBUG;$(DCC_Define)</DCC_Define>
 		</PropertyGroup>
-		<Import Project="No_JEDI_JCL.optset" Condition="'$(Cfg_3)'!='' And Exists('No_JEDI_JCL.optset')"/>
-		<PropertyGroup Condition="'$(Cfg_3)'!=''">
-			<CfgDependentOn>No_JEDI_JCL.optset</CfgDependentOn>
-		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_3)'!=''"/>
 		<ItemGroup>
 			<DelphiCompile Include="MiniTestLibW32A.dpr">
 				<MainSource>MainSource</MainSource>
@@ -83,7 +80,6 @@
 			<BuildConfiguration Include="NO_JEDI_JCL">
 				<Key>Cfg_3</Key>
 				<CfgParent>Base</CfgParent>
-				<DependentOn>No_JEDI_JCL.optset</DependentOn>
 			</BuildConfiguration>
 			<BuildConfiguration Include="Debug">
 				<Key>Cfg_2</Key>

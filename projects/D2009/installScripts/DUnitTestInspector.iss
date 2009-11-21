@@ -6,8 +6,6 @@
 #define MyAppPublisher "DUnit project group"
 
 #define PluginIDEDescription "DUnit Test Inspector"
-#define PluginFileName "DUnitTestInspector.bpl"
-#define OTAFileName "OTAUtils.bpl"
 
 #define ProductKey "Software\DunitTestInspector"
 
@@ -16,8 +14,9 @@
 #define D2009DisabledPackageKey "Software\CodeGear\BDS\6.0\Disabled Packages"
 #define D2009WatchFolder "{userappdata}\DUnitTestInspector\Delphi2009"
 #define D2009WatchPath "{userappdata}\DUnitTestInspector\Delphi2009\watchFile"
-#define D2009PluginFolder "{commondocs}\RAD Studio\6.0\Bpl"
+#define D2009BplFolder "{commondocs}\RAD Studio\6.0\Bpl"
 #define D2009PluginPath "{commondocs}\RAD Studio\6.0\Bpl\DUnitTestInspector.bpl"
+#define D2009OTAPath "{commondocs}\RAD Studio\6.0\Bpl\OTAUtils.bpl"
 
 [Setup]
 AppName={#PluginName}
@@ -37,8 +36,9 @@ Name: english; MessagesFile: compiler:Default.isl
 Name: {#D2009WatchFolder}; Languages: ; Flags: uninsalwaysuninstall
 
 [Files]
-Source: ..\_bin\{#PluginFileName}; DestDir: {#D2009PluginFolder}; Flags: ignoreversion
-Source: ..\_bin\{#OTAFileName}; DestDir: {#D2009PluginFolder}; Flags: ignoreversion
+Source: {#D2009PluginPath}; DestDir: {#D2009BplFolder}; Flags: ignoreversion external
+Source: {#D2009OTAPath}; DestDir: {#D2009BplFolder}; Flags: ignoreversion external
+
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]

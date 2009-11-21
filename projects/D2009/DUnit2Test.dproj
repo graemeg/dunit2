@@ -64,11 +64,9 @@
 			<DCC_Define>FASTMM;USE_JEDI_JCL;SELFTEST;DEBUG;$(DCC_Define)</DCC_Define>
 			<DCC_UNSAFE_TYPE>True</DCC_UNSAFE_TYPE>
 		</PropertyGroup>
-		<Import Project="No_JEDI_JCL.optset" Condition="'$(Cfg_3)'!='' And Exists('No_JEDI_JCL.optset')"/>
 		<PropertyGroup Condition="'$(Cfg_3)'!=''">
 			<DCC_Define>SELFTEST;$(DCC_Define)</DCC_Define>
 			<DCC_UnitSearchPath>..\..\ref;..\..\Tests;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
-			<CfgDependentOn>No_JEDI_JCL.optset</CfgDependentOn>
 		</PropertyGroup>
 		<ItemGroup>
 			<DelphiCompile Include="DUnit2Test.dpr">
@@ -102,7 +100,6 @@
 			<BuildConfiguration Include="NO_JEDI_JCL">
 				<Key>Cfg_3</Key>
 				<CfgParent>Base</CfgParent>
-				<DependentOn>No_JEDI_JCL.optset</DependentOn>
 			</BuildConfiguration>
 			<BuildConfiguration Include="Debug">
 				<Key>Cfg_2</Key>
