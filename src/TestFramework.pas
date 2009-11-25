@@ -57,8 +57,7 @@ uses
   TestFrameworkIfaces,
   Classes,
   SysUtils,
-  IniFiles,
-  Registry;
+  IniFiles;
 
 type
 {$IFDEF CLR}
@@ -377,8 +376,8 @@ type
   public
     constructor Create; overload; virtual;
     constructor Create(const AName: string); overload; virtual;
-    constructor Create(const OwnerProc: TTestMethod;
-                       const ParentPath: string;
+    constructor Create(const AOwnerMethod: TTestMethod;
+                       const AParentPath: string;
                        const AMethod: TTestMethod;
                        const AMethodName: string); overload;
     destructor Destroy; override;
@@ -471,7 +470,7 @@ type
     procedure AddSuite(const ATest: ITest); virtual;
     procedure AddTest(const ATest: ITest);
     constructor Create; overload; override;
-    constructor Create(ProcName: string); reintroduce; overload; virtual;
+    constructor Create(const AMethodName: string); reintroduce; overload; virtual;
     destructor Destroy; override;
     class function Suite: ITestCase; virtual;
   published
@@ -496,7 +495,7 @@ type
     procedure AddTest(const SuiteTitle: string;
                       const Suites: array of ITestCase); reintroduce; overload;
     constructor Create; overload; override;
-    constructor Create({const} SuiteName: string); overload; override;
+    constructor Create(const ASuiteName: string); overload; override;
 
     class function Suite(const ASuiteName: string): ITestSuite; reintroduce; overload;
                                                                 {$IFDEF CLR} virtual; {$ENDIF}
@@ -585,7 +584,7 @@ type
     procedure set_Listener(const Value: IInterface);
   public
     constructor Create; overload; override;
-    constructor Create({const} SuiteName: string); overload; override;
+    constructor Create(const ASuiteName: string); overload; override;
     destructor Destroy; override;
   published
     property  Manager: IInterface read get_Manager write set_Manager;
@@ -1769,8 +1768,8 @@ begin
     FDisplayedName := AName;
 end;
 
-constructor TTestProc.Create(const OwnerProc: TTestMethod;
-                             const ParentPath: string;
+constructor TTestProc.Create(const AOwnerMethod: TTestMethod;
+                             const AParentPath: string;
                              const AMethod: TTestMethod;
                              const AMethodName: string);
 begin
@@ -1782,8 +1781,8 @@ begin
   {$ENDIF}
     FMethodName := AMethodName;
   FDisplayedName := FMethodName;
-  FIsTestMethod := IsValidTestMethod(OwnerProc);
-  FParentPath := ParentPath;
+  FIsTestMethod := IsValidTestMethod(AOwnerMethod);
+  FParentPath := AParentPath;
 end;
 
 function TTestProc.CurrentTest: ITest;
@@ -2620,7 +2619,7 @@ begin
   EnumerateMethods;
 end;
 
-constructor TTestCase.Create({const} ProcName: string);
+constructor TTestCase.Create(const AMethodName: string);
 var
   LTest: ITest;
 begin
@@ -2629,8 +2628,8 @@ begin
   repeat
     LTest := FTestIterator.FindNextTest;
     if Assigned(LTest) then
-      LTest.Enabled := (LTest.DisplayedName = ProcName) or
-        (ProcName = '');
+      LTest.Enabled := (LTest.DisplayedName = AMethodName) or
+        (AMethodName = '');
   until (LTest = nil);
 end;
 
@@ -3622,11 +3621,11 @@ begin
   inherited Create;
 end;
 
-constructor TTestSuite.Create({const} SuiteName: string);
+constructor TTestSuite.Create(const ASuiteName: string);
 begin
   inherited Create;
-  if SuiteName <> '' then
-    FDisplayedName := SuiteName;
+  if ASuiteName <> '' then
+    FDisplayedName := ASuiteName;
 end;
 
 class function TTestSuite.Suite(const ASuiteName: string): ITestSuite;
@@ -3911,11 +3910,11 @@ begin
   CreateFields;
 end;
 
-constructor TTestProject.Create({const} SuiteName: string);
+constructor TTestProject.Create(const ASuiteName: string);
 begin
   Create;
-  if (SuiteName <> '') then
-    FDisplayedName := SuiteName
+  if (ASuiteName <> '') then
+    FDisplayedName := ASuiteName
   else
     FDisplayedName := DefaultProject;
 end;
