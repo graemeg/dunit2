@@ -371,6 +371,7 @@ type
     procedure CreateSearchPanel(const AOwner: TWinControl);
     procedure CreateSearchController(const ASearchPanel: TGUISearchPanel;
       const ATreeView: TTreeView);
+    procedure InitResultsView;
   protected
     procedure OnUpdateTimer(Sender: TObject);
     function  get_TestResult: TTestResult;
@@ -603,6 +604,20 @@ begin
 end;
 
 { TGUITestRunner }
+
+procedure TGUITestRunner.InitResultsView;
+var
+  totalTests: TListItem;
+  i: integer;
+
+begin
+  ResultsView.Items.Clear;
+  totalTests := ResultsView.Items.Add;
+
+  for i := siTestsRun to siTotalTestTime do
+    totalTests.SubItems.Add('');
+
+end;
 
 procedure TGUITestRunner.InitTree;
 begin
@@ -1428,6 +1443,7 @@ begin
   FUpdateTimer.Interval := 200;
   FUpdateTimer.Enabled := False;
   FUpdateTimer.OnTimer := OnUpdateTimer;
+  InitResultsView;
   SetUp;
   HoldOptions(False);
 
