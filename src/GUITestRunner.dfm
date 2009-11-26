@@ -506,7 +506,7 @@ object GUITestRunner: TGUITestRunner
         ReadOnly = True
         ScrollBars = ssVertical
         TabOrder = 0
-        OnDblClick = ErrorMessageRTFDblClick
+        OnClick = ErrorMessageRTFClick
       end
     end
   end

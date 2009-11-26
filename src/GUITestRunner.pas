@@ -331,6 +331,7 @@ type
     procedure EnableWarningsActionExecute(Sender: TObject);
     procedure FailureListViewDblClick(Sender: TObject);
     procedure ErrorMessageRTFDblClick(Sender: TObject);
+    procedure ErrorMessageRTFClick(Sender: TObject);
 
   private
     FSuite:         ITestProxy;
@@ -372,6 +373,10 @@ type
     procedure CreateSearchController(const ASearchPanel: TGUISearchPanel;
       const ATreeView: TTreeView);
     procedure InitResultsView;
+    function FindStackTraceSourceReference(const AString: string;
+      const AStartIndex: integer; out AFileName, ALineNumber: string): boolean;
+    function FindMultiErrorSourceReference(const AString: string;
+      const AStartIndex: integer; out AFileName, ALineNumber: string): boolean;
   protected
     procedure OnUpdateTimer(Sender: TObject);
     function  get_TestResult: TTestResult;
@@ -1777,7 +1782,7 @@ procedure TGUITestRunner.ErrorBoxVisibleActionExecute(Sender: TObject);
 begin
   if FHoldOptions then
     Exit;
-    
+
    with ErrorBoxVisibleAction do
    begin
      Checked := not Checked;
@@ -1791,60 +1796,172 @@ begin
    end;
 end;
 
-procedure TGUITestRunner.ErrorMessageRTFDblClick(Sender: TObject);
+function TGUITestRunner.FindMultiErrorSourceReference(const AString: string;
+  const AStartIndex: integer; out AFileName, ALineNumber: string): boolean;
 var
-  LRichEdit: TRichEdit;
-  LFileInfo: string;
-  LLineNumber: string;
-  LFileName: string;
-  LAnchor: PChar;
-  LSelStart: integer;
+  idx: integer;
+  startFileName: integer;
+  stopping: boolean;
+  text: string;
+  // Example from multi-error listing: filename.pas:number
 
+const
+  cTokenDelimiters = ' .:';
+  cReferenceIdentifier = '.pas:';
+
+  function GetNextDelimiter(var AIndex: integer; const AExpectedDelimiters: string): boolean;
+  begin
+    while  (AIndex >= 1) and (Pos(text[AIndex], cTokenDelimiters) = 0) do
+      Dec(AIndex);
+    Result := (AIndex > 0) and (Pos(text[AIndex], AExpectedDelimiters) > 0);
+  end;
+
+  function FindFileName(var AIndex: integer; const AExpectedDelimiters: string): boolean;
+  begin
+    if GetNextDelimiter(AIndex, AExpectedDelimiters) then
+      case text[AIndex] of
+        ' ':
+          begin
+            Result := true;
+            Inc(AIndex);
+          end;
+        '.': Result := FindFileName(AIndex, ' ');
+        ':': Result := FindFileName(AIndex, '.');
+       else
+         Result := false;
+      end;
+  end;
+
+begin
+  text := LowerCase(AString);
+  Result := false;
+  idx := AStartIndex;
+
+  if FindFileName(idx, cTokenDelimiters) then
+  begin
+    Delete(text, 1, idx - 1);
+    text := StripAllCRLFs(text);
+    stopping := false;
+    idx := 1;
+
+    while (idx < Length(text)) and (not stopping) do
+      case text[idx] of
+        'a'..'z','A'..'Z','0'..'9','_': Inc(idx);
+      else
+        stopping := true;
+      end;
+
+    if stopping and (Pos(cReferenceIdentifier, text) = idx) then
+    begin
+      AFileName := Copy(text, 1, idx + Length(cReferenceIdentifier) - 2);
+      Delete(text, 1, idx + Length(cReferenceIdentifier) - 1);
+      stopping := false;
+      idx := 1;
+
+      while (idx <= Length(text)) and (not stopping) do
+        case text[idx] of
+          '0'..'9': Inc(idx);
+        else
+          stopping := true;
+        end;
+
+       ALineNumber := Copy(text, 1, idx - 1);
+       Result := Length(ALineNumber) > 0;
+    end;
+
+  end;
+
+end;
+
+function TGUITestRunner.FindStackTraceSourceReference(const AString: string;
+  const AStartIndex: integer; out AFileName, ALineNumber: string): boolean;
+var
+  LAnchor: PChar;
+  LStartIndex: integer;
+  LReference: string;
 // Example from stack trace: (Line 128, "MudpackLegacyModelDiagram_TST.pas")
+
 const
   cFileInfoStartAnchor = '(Line ';
   cFileInfoEndAnchor = '")';
-
   cLineNameSeparator = ',';
 
 begin
-  Assert(Sender is TRichEdit, 'Sender is not a TRichEdit');
-  LRichEdit := Sender as TRichEdit;
-  LFileInfo := LRichEdit.Lines.Text;
-  LSelStart := LRichEdit.SelStart;
+  Result := false;
+  LStartIndex := AStartIndex;
   // search forwards from caret position for end anchor
-  LAnchor := SearchBuf(Pointer(LFileInfo), Length(LFileInfo), LSelStart,
+  LAnchor := SearchBuf(Pointer(AString), Length(AString), LStartIndex,
     0, cFileInfoEndAnchor, [soDown]);
 
   if Assigned(LAnchor) then
   begin
     // search backwards from end anchor for start anchor
-    LSelStart := (integer(LAnchor) - integer(Pointer(LFileInfo))) div SizeOf(Char);
-    LAnchor := SearchBuf(PChar(LFileInfo), Length(LFileInfo), LSelStart,
+    LStartIndex := (integer(LAnchor) - integer(Pointer(AString))) div SizeOf(Char);
+    LAnchor := SearchBuf(PChar(AString), Length(AString), LStartIndex,
       0, cFileInfoStartAnchor, []);
 
     if Assigned(LAnchor) then
     begin
       // strip leading text to start of start Anchor
-      LFileInfo := String(LAnchor);
+      LReference := String(LAnchor);
       // trim off leading and trailing text inclusive of Anchors
-      Delete(LFileInfo, 1, Length(cFileInfoStartAnchor));
-      Delete(LFileInfo, Pos(cFileInfoEndAnchor, LFileInfo), Length(LFileInfo));
+      Delete(LReference, 1, Length(cFileInfoStartAnchor));
+      Delete(LReference, Pos(cFileInfoEndAnchor, LReference), Length(LReference));
       // remove any linebreaks from wrapped lines
-      LFileInfo := StripAllCRLFs(LFileInfo);
+      LReference := StripAllCRLFs(LReference);
 
-      if SplitPair(LFileInfo, LLineNumber, LFileName, cLineNameSeparator) then
+      if SplitPair(LReference, ALineNumber, AFileName, cLineNameSeparator) then
       begin
         // trim off whitespace
-        LFileName := Trim(LFileName);
+        AFileName := Trim(AFileName);
         // trim off (") char from start of file name
-        Delete(LFileName, 1, 1);
-        WriteWatchFile(LFileName, LLineNumber);
+        Delete(AFileName, 1, 1);
+        Result := true;
       end;
-  
+
     end;
 
   end;
+
+end;
+
+procedure TGUITestRunner.ErrorMessageRTFClick(Sender: TObject);
+var
+  LRichEdit: TRichEdit;
+  LText: string;
+  LCursorPos: integer;
+  LLineNumber: string;
+  LFileName: string;
+
+begin
+  Assert(Sender is TRichEdit, 'Sender is not a TRichEdit');
+  LRichEdit := Sender as TRichEdit;
+  LText := LRichEdit.Lines.Text;
+  LCursorPos := LRichEdit.SelStart + LRichEdit.SelLength;
+
+  if FindStackTraceSourceReference(LText, LCursorPos, LFileName, LLineNumber) or
+    FindMultiErrorSourceReference(LText, LCursorPos, LFileName, LLineNumber) then
+    WriteWatchFile(LFileName, LLineNumber);
+
+end;
+
+procedure TGUITestRunner.ErrorMessageRTFDblClick(Sender: TObject);
+var
+  LRichEdit: TRichEdit;
+  LText: string;
+  LCursorPos: integer;
+  LLineNumber: string;
+  LFileName: string;
+
+begin
+  Assert(Sender is TRichEdit, 'Sender is not a TRichEdit');
+  LRichEdit := Sender as TRichEdit;
+  LText := LRichEdit.Lines.Text;
+  LCursorPos := LRichEdit.SelStart + LRichEdit.SelLength;
+
+  if FindStackTraceSourceReference(LText, LCursorPos, LFileName, LLineNumber) or
+    FindMultiErrorSourceReference(LText, LCursorPos, LFileName, LLineNumber) then
+    WriteWatchFile(LFileName, LLineNumber);
 
 end;
 
