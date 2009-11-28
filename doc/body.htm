@@ -78,7 +78,7 @@ end;
 
 All constructor action takes place before the GUI fires up, so exceptions can force the application to close prematurely and sometimes fatally leak resources.
 Similarly, unless all object references get set to nil in the TTestCase destructor exceptions will occur during program closure.<br>
-There are still occasions when it would be really advantageous to be able to initialize say a database connection once and hold it for the entire duration of the test framework execution. There are "complex" ways to achieve the effect but the methodology is not standardized across unit testers.<
+There are still occasions when it would be really advantageous to be able to initialize say a database connection once and hold it for the entire duration of the test framework execution. There are "complex" ways to achieve the effect but the methodology is not standardized across unit testers.
 
 <a name="DUnit2_Constructors_and_Destructors" /><h2>DUnit2 Constructors and Destructors</h2>
 
@@ -105,16 +105,14 @@ published
 end;
 </pre></div></blockquote>
 
-        </div><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="5"><br>
-        Test Decorators</font></font></font></font></font>
-        <div style="MARGIN-LEFT: 40px">
-          <font size="+1"><font size="5"><font size="+1"><font size="+1">Pattern aware DUnit author(s) provided a less convenient solution in V9.4 by introducing test "Decorators".<br>
-          <br>
-          To utilize a test decorator requires the coder to write a derivative class of TTestDecorator which also gets registered at initialization time. It contains just a SetUp and Teardown procedure. The following is an example.<br>
-          <br></font></font></font></font>
-          <blockquote>
-            <div class="default">
-              <pre>
+        
+<a name="Test_Decorators" /><h2>Test Decorators</h2>        
+        
+Pattern aware DUnit author(s) provided a less convenient solution in V9.4 by introducing test "Decorators".
+
+To utilize a test decorator requires the coder to write a derivative class of TTestDecorator which also gets registered at initialization time. It contains just a SetUp and Teardown procedure. The following is an example.
+          
+<blockquote><div class="default"><pre>
 type
 TMyTestDecorator = class(TTestDecorator)
 private
@@ -122,65 +120,62 @@ protected
   procedure SetUp; override;
   procedure Teardown; override;
 end;
-</pre>
-            </div>
-          </blockquote><font size="+1"><font size="5"><font size="+1"><font size="+1">In the initialization section I think the registration is supposed to look something like the following.<br>
-          <br></font></font></font></font>
-          <blockquote>
-            <div class="default">
-              <pre>
+</pre></div></blockquote>
+ In the initialization section I think the registration is supposed to look something like the following.
+
+<blockquote><div class="default"><pre>
 initialization
   RegisterTest(TMyTestDecorator.Suite('Optional Name', TMyDecoratedTests.Suite));
 end.
-</pre>
-            </div>
-          </blockquote><font size="+1"><font size="5"><font size="+1"><font size="+1">When the test suite is executed TMyTestDecorator's SetUp procedure executes once before any code in TMyDecoratedTests.<br>
-          Similarly TMyTestDecorator's Teardown procedure executes after the last Teardown in TMyDecoratoratedTests<br>
-          <br>
-          The simplicity of use eludes many, perhaps because there were few clear examples in the earlier DUnit documentation. The test decorator class solves the problem of having to set up and tear down code whenever the process only needs to be done once for a particular test case instance.<br>
-          <br>
-          For test writers the main problem is that field variables in the decorator are not easily shared with the decorated tests class. When multiple decorators are required there is no natural association to help keep track of which decorator class goes with which test case class.<br>
-          <br>
-          Implementation of tests decorators in DUnit2 is straight forward. Decorator classes can continue to inherit from TTestSetup to gain access to GetName read or change the new DisplayedName property. Both classes register in the same manner as V9.4 DUnit2 test decorators can be nested to any depth but the issue of sharing variables still exist.<br>
-          Decorators can now register multiple test cases simultaneously thus:-<br></font></font></font></font>
-          <blockquote>
-            <div class="default">
-              <pre>
+</pre></div></blockquote>
+            
+When the test suite is executed TMyTestDecorator's SetUp procedure executes once before any code in TMyDecoratedTests.
+Similarly TMyTestDecorator's Teardown procedure executes after the last Teardown in TMyDecoratoratedTests
+
+The simplicity of use eludes many, perhaps because there were few clear examples in the earlier DUnit documentation. The test decorator class solves the problem of having to set up and tear down code whenever the process only needs to be done once for a particular test case instance.
+
+For test writers the main problem is that field variables in the decorator are not easily shared with the decorated tests class. When multiple decorators are required there is no natural association to help keep track of which decorator class goes with which test case class.
+
+Implementation of tests decorators in DUnit2 is straight forward. Decorator classes can continue to inherit from TTestSetup to gain access to GetName read or change the new DisplayedName property. Both classes register in the same manner as V9.4 DUnit2 test decorators can be nested to any depth but the issue of sharing variables still exist.
+Decorators can now register multiple test cases simultaneously thus:-
+
+<blockquote><div class="default"><pre>
 initialization
   RegisterTest(TMyTestDecorator.Suite('SuiteName' , TMyDecoratedTests.Suite,
 TMoreDecoratedTests.Suite]));
 end.
-</pre>
-            </div>
-          </blockquote><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4">This improves the versatility because each contained TTestCase can use their own SetUp and TearDown procedures as required. In addition decorators can be nested in varoius ways:-<br></font></font></font></font></font>
-          <blockquote>
-            <div class="default">
-              <pre>
-RegisterTest(TTestTheDecorator.Suite('XXX', TestAnotherDecorator.Suite('YYY',  TTestTheDecorator.Suite('ZZZ', TTrialDecoratedTest.Suite))));   RegisterTest(TTestTheDecorator.Suite('XXX', [TTrialDecoratedTest.Suite,// This is just an ordinary test
-TTestAnotherDecorator.Suite('YYY', [TTrialDecoratedTest.Suite,  TTestTheDecorator.Suite('ZZZ', TTrialDecoratedTest.Suite)])]));
-</pre>
-            </div>
-          </blockquote><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><a name="Data_sharing" id="Data_sharing"></a> <font size="+1"><font size="5">Data sharing between decorators and test cases</font></font><br></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">DUnit V9.4 and prior needed to declare data for initialization by test decorators in common view of the decorator and decorated class definitions, usually as one or more global variables in a shared unit.<br>
-            DUnit2 has a new approach which keeps the data lifetime within the project's execution path.</font><br>
-            <font size="+1">To share data, even among disparate unit tests and interface deriving from ITestSetupData is defined and need only contain setters, getters and temporary storage. This is illustrated in sample code below provides a means to share a string reference.</font></font></font></font></font></font>
-          <blockquote>
-            <div class="default">
-              <pre>
+</pre></div></blockquote>
+            
+This improves the versatility because each contained TTestCase can use their own SetUp and TearDown procedures as required. In addition decorators can be nested in varoius ways:-
+
+<blockquote><div class="default"><pre>
+RegisterTest(TTestTheDecorator.Suite('XXX', TestAnotherDecorator.Suite('YYY',  
+  TTestTheDecorator.Suite('ZZZ', TTrialDecoratedTest.Suite))));   
+RegisterTest(TTestTheDecorator.Suite('XXX', [TTrialDecoratedTest.Suite,// This is just an ordinary test
+  TTestAnotherDecorator.Suite('YYY', [TTrialDecoratedTest.Suite,  
+    TTestTheDecorator.Suite('ZZZ', TTrialDecoratedTest.Suite)])]));
+</pre></div></blockquote>
+          
+<a name="Data_sharing"/> <h2>Data sharing between decorators and test cases</h2>
+          
+DUnit V9.4 and prior needed to declare data for initialization by test decorators in common view of the decorator and decorated class definitions, usually as one or more global variables in a shared unit.
+
+DUnit2 has a new approach which keeps the data lifetime within the project's execution path.
+
+To share data, even among disparate unit tests and interface deriving from ITestSetupData is defined and need only contain setters, getters and temporary storage. This is illustrated in sample code below provides a means to share a string reference.
+
+<blockquote><div class="default"><pre>
 ICheckTestSetUpData = interface(ITestSetUpData)
 ['{8C61F458-86B5-4CD0-BF26-5366D28980CB}']
   function get_SetupData: string;
   procedure set_SetupData(const Value: string);   
   property SetupData: string read get_SetupData write set_SetupData; 
 end;
-</pre>
-            </div>
-          </blockquote>
-          Now for the concrete class implementing the above interface.<br>
-          <blockquote>
-            <div class="default">
-              <pre>
+</pre></div></blockquote>
+
+Now for the concrete class implementing the above interface.<br>
+
+<blockquote><div class="default"><pre>
 TSetupData = class(TInterfacedObject, ICheckTestSetupData)&lt; BR &gt; private
   FSetupData: string;
   function get_SetupData: string;
@@ -188,184 +183,174 @@ TSetupData = class(TInterfacedObject, ICheckTestSetupData)&lt; BR &gt; private
 published
   property SetUpData: string read get_SetUpData write set_SetUpData;
 end;
-</pre>
-            </div>
-          </blockquote>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">At an appropriate point in the test suite execution an instance of the above class would be created, populated and it's reference stored in the execution control object's "TestSetUpData" variable. Before each test case executes the execution control object stores a reference to the above interfaced object in the test case's own TestSetUpData property. This gives test methods access to information prepared elsewhere. Data updated by test methods can also be passed back up the execution chain.</font><br>
-            <font size="+1">Finally the reference is automatically set to nil as each project terminates, so there should be no data leakage outside projects.</font></font></font></font></font></font>
-          </div><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><br>
-          <a name="SetUpOnce_and_TeardownOnce" id="SetUpOnce_and_TeardownOnce"></a> <a name="Overrides" id="Overrides"><font size="+1"><font size="5">Overrides</font></font></a><br></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">DUnit V9.3 introduced the concept of "Post Execution Failures".<br>
-            There are two possible causes.</font></font></font></font></font></font>
-            <ol>
-              <li>
-                <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">If test methods do not execute at least one call to Check() then the test may not indicate a test actually failed. A GUI global menu option "Fail TestCase if no checks executed" can be enabled so test methods which have not called Check() will fail.</font></font></font></font></font></font>
-              </li>
-              <li>
-                <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Memory leak detection has a corresponding menu option and the amount of memory leaked gets shown in the resulting test failure report.</font></font></font></font></font></font>
-              </li>
-            </ol><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">These soft failures increase the usefulness of tests and raise the level of test integrity. Some tests however may generate memory leaks by virtue of calling leaky code outside the coder's control. Sometimes such soft test failures might not be considered failures of the tested code. Memory leaks of known size can also be programmed to pass while allowing leaks of any other size to raise a failure.<br>
-            <br>
-            Similarly, some tests might not be programmed to call Check() because the tested code only needs to execute without raising an exception to be considered a pass. Boolean properties can be set during the test method execution to suppress post test failures, overriding the GUI's global command.<br>
-            "Overrides" was the count of tests set to suppress display of post execution failures.<br>
-            <br>
-            Note that potential post execution failures are not detectable or even show in V9.4 if they aren't armed to fail. Consequently testers may not be alerted to latent code problems.</font></font></font></font></font></font>
-          </div><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1"><br>
-          <br>
-          <a name="Warnings" id="Warnings"></a><font size="5">Warnings<br></font></font></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">DUnit2 advances test integrity by automatically detecting potential failures. DUnit2 replaces V9.4s Overrides display with "Warnings". This now presents the sum of potential post execution failures and overrides.<br>
-            The value has no meaning until the tests are executed.<br>
-            <br>
-            The location of warnings can now be displayed. See image below.<br>
-            <br>
-            <img style="WIDTH: 758px; HEIGHT: 547px" alt="Image shows effect of selecting Warn if fail test overridden" src="ShowWarnings.png"><br>
-            <br>
-            <br>
-            <font size="5">Showing tests which must never leak -or- must always call Check().<br></font>Some tests, usually those testing the interaction of classes or those relying on externally prepared test data can become complex. Tests that contain either if, case or {$ifdef condition} statements that may have data dependant execution paths which accidentally bypass all calls to Check().<br>
-            Similarly an unexpected memory leak in some tested code might be deemed critical and need to fail even if memory leak detection is turned off globally.<br>
-            <br>
-            The test writer can place statements in either SetUp or the test method:-<br>
-<blockquote>
-  <div class="default">
-    <pre>
+</pre></div></blockquote>
+         
+At an appropriate point in the test suite execution an instance of the above class would be created, populated and it's reference stored in the execution control object's "TestSetUpData" variable. Before each test case executes the execution control object stores a reference to the above interfaced object in the test case's own TestSetUpData property. This gives test methods access to information prepared elsewhere. Data updated by test methods can also be passed back up the execution chain.
+Finally the reference is automatically set to nil as each project terminates, so there should be no data leakage outside projects.
+          
+<a name="Overrides" /><h2>Overrides</h2>
+DUnit V9.3 introduced the concept of "Post Execution Failures".
+There are two possible causes.
+<ol>
+  <li>
+If test methods do not execute at least one call to Check() then the test may not indicate a test actually failed. A GUI global menu option "Fail TestCase if no checks executed" can be enabled so test methods which have not called Check() will fail.
+  </li>
+  <li>
+Memory leak detection has a corresponding menu option and the amount of memory leaked gets shown in the resulting test failure report.
+  </li>
+</ol>
+These soft failures increase the usefulness of tests and raise the level of test integrity. Some tests however may generate memory leaks by virtue of calling leaky code outside the coder's control. Sometimes such soft test failures might not be considered failures of the tested code. Memory leaks of known size can also be programmed to pass while allowing leaks of any other size to raise a failure.
+            
+Similarly, some tests might not be programmed to call Check() because the tested code only needs to execute without raising an exception to be considered a pass. Boolean properties can be set during the test method execution to suppress post test failures, overriding the GUI's global command.
+
+"Overrides" was the count of tests set to suppress display of post execution failures.
+            
+Note that potential post execution failures are not detectable or even show in V9.4 if they aren't armed to fail. Consequently testers may not be alerted to latent code problems.
+          
+<a name="Warnings"/><h2>Warnings</h2>
+
+DUnit2 advances test integrity by automatically detecting potential failures. DUnit2 replaces V9.4s Overrides display with "Warnings". This now presents the sum of potential post execution failures and overrides.
+
+The value has no meaning until the tests are executed.
+
+The location of warnings can now be displayed. See image below.
+
+<img style="WIDTH: 758px; HEIGHT: 547px" alt="Image shows effect of selecting Warn if fail test overridden" src="ShowWarnings.png">
+            
+Showing tests which must never leak -or- must always call Check().Some tests, usually those testing the interaction of classes or those relying on externally prepared test data can become complex. Tests that contain either if, case or {$ifdef condition} statements that may have data dependant execution paths which accidentally bypass all calls to Check().
+
+Similarly an unexpected memory leak in some tested code might be deemed critical and need to fail even if memory leak detection is turned off globally.
+
+The test writer can place statements in either SetUp or the test method:-
+
+<blockquote><div class="default"><pre>
 FailOnNoChecksExecuted := True;
-    </pre>
-  </div>
-</blockquote>            
-            -or-<br>
-<blockquote>
-  <div class="default">
-    <pre>
+</pre></div></blockquote>            
+-or-
+<blockquote><div class="default"><pre>
 FailsOnMemoryLeak := True;
-    </pre>
-  </div>
-</blockquote>            
-            <br>
-            To discover which tests contain these statements the user runs the tests with just the yellow button selected.<br>
-            Yellow - indicates which tests contain statements overriding the GUI, that have not failed.<br>
-            <br>
-            As mentioned above, in both V9.4 and DUnit2 the tester can choose to override the GUI global commands so specific test methods don't fail on soft failures. DUnit2 adds yellow and orange node colours to identify tests where run-time properties have overridden the GUI.<br>
-            Yellow - indicates which tests contain statements overriding the GUI, that have not failed.<br>
-            Orange - indicates which overridden tests would have failed.<br>
-            Neither show in the TestTree display if run-time properties have not been used.<br>
-            "Warnings" will however still have a count of the potential failures.<br>
-            <br>
-            <br>
-            <img style="WIDTH: 532px; HEIGHT: 523px" alt="Images shows warning locations" src="ShowNewButtons.png"><br></font></font></font></font></font></font>
-          </div><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><br>
-          <font size="+1"><br>
-          <br>
-          <font size="5">Summary Level Checks (early exit on pass)</font></font></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Within test methods it is not uncommon to have a sequence of specific checks culminating in a definitive pass/fail check.<br>
-            An example could be a series of tests which validate individual aspects of a regular expression evaluator followed by a demonstration of all aspects combined.<br>
-            There are times where test suite execution times would benefit from executing the summary level test first and if it passes then skip the detailed level checks.<br>
-            Conversely, if the summary level test failed then all the summary level checks should run. If they all pass only the initial failure would be reported.<br>
-            DUnit2 now provides a means to execute a summary level check and if it passed the remaining checks are skipped.<br>
-            A single boolean check "EarlyExitCheck(boolean check result, 'Error message'); is now available for use.<br>
-            Tests following a "EarlyExitCheck() statement execute when the summary level check fails.<br>
-            <br>
-            Selecting "Inhibit Summary Level Checks" reverses the behavior of the EarlyExitCheck so the following checks run on pass.<br>
-            Summary level checks are only available within test methods and do not extend to the TTestCase level.<br>
-            <br></font></font></font></font></font></font>
-          </div><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1"><a name="Error_Reporting" id="Error_Reporting"></a><font size="5">Error Reporting</font></font></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">When an error or test failure occurs DUnit2 now reports the whole test path from the top level node down to the individual method name. See image above.<br>
-            In all DUnit versions (D5..D10) when USE_JEDI_JCL is defined in project - options - conditionals, if the linker includes the .map file the source code line number location is displayed. In DUnit2 if the map file was not linked a message to that effect appears next to the error address.<br>
-            <br>
-            Individual or selected parts of error messages can now be copied to the clipboard using new GUI menu options.<br>
-            <br>
-            <img style="WIDTH: 391px; HEIGHT: 64px" alt="Clipboard functions available when tests is selected in the ErrorMessage window." src="ClipboardErrorMessageFunctions.png"><br>
-            <br>
-            Additionally all the error messages pertaining to a Treeview node can be viewed in the ErrorMessage window. Clicking on the top level project node shows all of the error messages<br>
-            <br>
-            <img height="725" alt="Summary of all error messages pertaining to the clicked TreeView node" src="ErrorSummary.png" width="760"></font></font></font></font></font></font>
-          </div><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><a name="ShutDown_Leak_Reporting" id="ShutDown_Leak_Reporting"></a><font size="5"><br>
-          Optional Leak Report on Shutdown</font></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">When compiled with FastMM4 DUnit provides an optional detailed leak report on shutdown. This has been configured to require Delphi to be running. See images below.<br>
-            <br></font></font></font></font></font></font>
-          </div><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1"><font size="5"><img height="298" alt="Options menu entry for Optional leak report on shutdown" src="LeakReportOnShutdown.png" width="254"></font></font><br>
-          <font size="+1"><font size="5"><br>
-          <small>FastMM4's Shutdown Leak Report</small><br>
-          <br>
-          <img style="WIDTH: 784px; HEIGHT: 184px" alt="Typical FastMM4 shutdown leak report" src="Shutdown_Decteded_Leak_Report.png"><br>
-          <br>
-          DLL Test Suites</font></font></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="4">Test suites can now be compiled into a DLL and registered and executed in the same manner as conventional unit tests. There was a similar non obvious functionality in the previous DUnit. DLLs each register as separate Projects using their filename.<br>
-            The purpose is to allow groups of separately prepared unit tests to be gathered on one machine and executed under the same test scenario. So one DLL might be compiled with Optimisation ON and another with Align Records ON etc. DLLs compiled under D7 executed correctly when run under D10. (BDS2006)</font></font></font></font></font></font>
-          </div><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><br>
-          <font size="+1"><a name="TestFrameworkProxy" id="TestFrameworkProxy"></a><font size="5">TestFrameworkProxy</font></font></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">DUnit2 has been developed from the lowest level back towards the GUI, with the eventual aim of rewriting the middle and upper layers to support multi-threaded testing. The GUI of course will always run in the VCL thread. To facilitate early testing and not break too much code, particularly other people's tests an intermediate object class has been introduced to marry the new and old as code.<br>
-            <br>
-            An object tree structure of ITestProxy is interposed between the GUI/Test test runners and the new DUnit core. Consequently the GUI never sees the real ITests or ProjectsManager. This extra layer undoubtedly slows execution, but not to any detrimental degree.</font></font></font></font></font></font>
-          </div><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1"><br>
-          <br>
-          <a name="GUITestRunner_and_TextTestRunner" id="GUITestRunner_and_TextTestRunner"></a><font size="5">GUITestRunner and TextTestRunner</font></font></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">GUITestRunner and TextTestRunner have been modified to use a new ITestProxy class and a modified version of TTestResult. TTestResult has been changed to an interfaced object and most executable code pruned out. The method of initiating test execution has changed slightly which necessitated changes to both test runners. Other slight changes stem from the way test results are propagated back to the GUI. TestListeners are still used as before.</font></font></font></font></font></font>
-          </div><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1"><br>
-          <br>
-          <a name="Speed_of_execution" id="Speed_of_execution"></a><font size="5">Speed of execution</font></font></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">During the process of analyzing the original DUnit's inner workings to add leak detection one aspect of the execution flow became obvious. TTestResult was repeatedly visiting then being visited by the execution flow in a very hard to follow manner (well for me, not necessarily for the initial writers). One consequence was that memory leak detection code had to execute multiple times for each test method.<br>
-            <br>
-            Another point of code inefficiency involves reporting status back to the GUI after every test. The existing DUnit code unnecessarily refreshes the TestTree right back up to the highest node for every test regardless of whether there will be any status change. DUnit2 only ripples necessary changes back to the higher levels.<br>
-            <br>
-            Normal displayed unit testing times show very little difference between the new and old code. However there is a significant speed increase when conducting repeat tests. 10000 loops calling Check(True) from a RepeatTest decorator in older DUnit takes 145 secs compared with only 38 secs in new DUnit2. Efforts to improve code efficiency are paying dividends, albeit in an infrequently used aspect.<br>
-            One unexpected speed improvement occurs when executing TextTestRunner on a complex project's suite of tests (1200+) such as tiOPF2. The new tests begin execution approximately 4 seconds earlier.<br>
-            <br>
-            Prior to test suite execution DUnit2 builds a linear list of ITest references in each TestProject for rapid access at runtime. The list is is now scanned sequentially rather than code reccursing into a tree structure. Calls back to the TestTree to check each node for enabled status have been replaced but other Listeners are still polled.</font></font></font></font></font></font>
-          </div><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1"><br>
-          <a name="Compatibility" id="Compatibility"></a><font size="5">Compatibility</font></font></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">For simple projects the main .dpr just needs to name GUITestRunner or TextTestRunner as before. The project paths should be pointed to the new code src folder or DCU set. Similarly, most unit tests still only need to refer to TestFramework.<br>
-            <br>
-            TTestResult class definition had been hidden from external access and a function GetTestResult now returns an interfaced object version instead. So, for those specialist test suite writers who directly access TestResult data need to call that function to get a reference. The variable is now an interface type which should to be set to nil instead of calling .Free. Nothing major.<br>
-            Similarly, TTestFailure has been upgraded to being an interface and no longer requires a call to .Free to clean up each instance.<br>
-            <br>
-            Existing unit tests are still register as before. e.g. :-<br>
-<blockquote>
-  <div class="default">
-    <pre>
+</pre></div></blockquote>            
+            
+To discover which tests contain these statements the user runs the tests with just the yellow button selected.
+Yellow - indicates which tests contain statements overriding the GUI, that have not failed.
+
+As mentioned above, in both V9.4 and DUnit2 the tester can choose to override the GUI global commands so specific test methods don't fail on soft failures. DUnit2 adds yellow and orange node colours to identify tests where run-time properties have overridden the GUI.
+
+Yellow - indicates which tests contain statements overriding the GUI, that have not failed.
+Orange - indicates which overridden tests would have failed.
+
+Neither show in the TestTree display if run-time properties have not been used.
+"Warnings" will however still have a count of the potential failures.
+
+<img style="WIDTH: 532px; HEIGHT: 523px" alt="Images shows warning locations" src="ShowNewButtons.png">
+
+<a name="Early_Exit_Check"/> <h2>Summary Level Checks (early exit on pass)</h2>
+          
+Within test methods it is not uncommon to have a sequence of specific checks culminating in a definitive pass/fail check.
+
+An example could be a series of tests which validate individual aspects of a regular expression evaluator followed by a demonstration of all aspects combined.
+
+There are times where test suite execution times would benefit from executing the summary level test first and if it passes then skip the detailed level checks.
+
+Conversely, if the summary level test failed then all the summary level checks should run. If they all pass only the initial failure would be reported.
+
+DUnit2 now provides a means to execute a summary level check and if it passed the remaining checks are skipped.
+
+A single boolean check "EarlyExitCheck(boolean check result, 'Error message'); is now available for use.
+Tests following a "EarlyExitCheck() statement execute when the summary level check fails.
+
+Selecting "Inhibit Summary Level Checks" reverses the behavior of the EarlyExitCheck so the following checks run on pass.
+
+Summary level checks are only available within test methods and do not extend to the TTestCase level.
+
+<a name="Error_Reporting"/><h2>Error Reporting</h2>
+          
+When an error or test failure occurs DUnit2 now reports the whole test path from the top level node down to the individual method name. See image above.
+
+In all DUnit versions (D5..D10) when USE_JEDI_JCL is defined in project - options - conditionals, if the linker includes the .map file the source code line number location is displayed. In DUnit2 if the map file was not linked a message to that effect appears next to the error address.
+
+Individual or selected parts of error messages can now be copied to the clipboard using new GUI menu options.
+            
+<img style="WIDTH: 391px; HEIGHT: 64px" alt="Clipboard functions available when tests is selected in the ErrorMessage window." src="ClipboardErrorMessageFunctions.png">
+            
+Additionally all the error messages pertaining to a Treeview node can be viewed in the ErrorMessage window. Clicking on the top level project node shows all of the error messages
+            
+<img height="725" alt="Summary of all error messages pertaining to the clicked TreeView node" src="ErrorSummary.png" width="760">
+
+<a name="ShutDown_Leak_Reporting"/><h2>Optional Leak Report on Shutdown</h2>
+          
+When compiled with FastMM4 DUnit provides an optional detailed leak report on shutdown. This has been configured to require Delphi to be running. See images below.
+            
+<img height="298" alt="Options menu entry for Optional leak report on shutdown" src="LeakReportOnShutdown.png" width="254">
+<small>FastMM4's Shutdown Leak Report</small><br>
+
+<img style="WIDTH: 784px; HEIGHT: 184px" alt="Typical FastMM4 shutdown leak report" src="Shutdown_Decteded_Leak_Report.png"><br>
+          
+<a name="DLL_Test_Suites"/><h2>DLL Test Suites</h2>
+          
+Test suites can now be compiled into a DLL and registered and executed in the same manner as conventional unit tests. There was a similar non obvious functionality in the previous DUnit. DLLs each register as separate Projects using their filename.
+
+The purpose is to allow groups of separately prepared unit tests to be gathered on one machine and executed under the same test scenario. So one DLL might be compiled with Optimisation ON and another with Align Records ON etc. DLLs compiled under D7 executed correctly when run under D10. (BDS2006)
+          
+<a name="TestFrameworkProxy" /><h2>TestFrameworkProxy</h2>
+
+DUnit2 has been developed from the lowest level back towards the GUI, with the eventual aim of rewriting the middle and upper layers to support multi-threaded testing. The GUI of course will always run in the VCL thread. To facilitate early testing and not break too much code, particularly other people's tests an intermediate object class has been introduced to marry the new and old as code.
+            
+An object tree structure of ITestProxy is interposed between the GUI/Test test runners and the new DUnit core. Consequently the GUI never sees the real ITests or ProjectsManager. This extra layer undoubtedly slows execution, but not to any detrimental degree.
+    
+<a name="GUITestRunner_and_TextTestRunner" /><h2>GUITestRunner and TextTestRunner</h2>
+
+GUITestRunner and TextTestRunner have been modified to use a new ITestProxy class and a modified version of TTestResult. TTestResult has been changed to an interfaced object and most executable code pruned out. The method of initiating test execution has changed slightly which necessitated changes to both test runners. Other slight changes stem from the way test results are propagated back to the GUI. TestListeners are still used as before.
+
+<a name="Speed_of_execution" /><h2>Speed of execution</h2>
+          
+During the process of analyzing the original DUnit's inner workings to add leak detection one aspect of the execution flow became obvious. TTestResult was repeatedly visiting then being visited by the execution flow in a very hard to follow manner (well for me, not necessarily for the initial writers). One consequence was that memory leak detection code had to execute multiple times for each test method.
+
+Another point of code inefficiency involves reporting status back to the GUI after every test. The existing DUnit code unnecessarily refreshes the TestTree right back up to the highest node for every test regardless of whether there will be any status change. DUnit2 only ripples necessary changes back to the higher levels.
+
+Normal displayed unit testing times show very little difference between the new and old code. However there is a significant speed increase when conducting repeat tests. 10000 loops calling Check(True) from a RepeatTest decorator in older DUnit takes 145 secs compared with only 38 secs in new DUnit2. Efforts to improve code efficiency are paying dividends, albeit in an infrequently used aspect.
+One unexpected speed improvement occurs when executing TextTestRunner on a complex project's suite of tests (1200+) such as tiOPF2. The new tests begin execution approximately 4 seconds earlier.
+
+Prior to test suite execution DUnit2 builds a linear list of ITest references in each TestProject for rapid access at runtime. The list is is now scanned sequentially rather than code reccursing into a tree structure. Calls back to the TestTree to check each node for enabled status have been replaced but other Listeners are still polled.
+
+<a name="Compatibility" /><h2>Compatibility</h2>
+
+For simple projects the main .dpr just needs to name GUITestRunner or TextTestRunner as before. The project paths should be pointed to the new code src folder or DCU set. Similarly, most unit tests still only need to refer to TestFramework.
+
+TTestResult class definition had been hidden from external access and a function GetTestResult now returns an interfaced object version instead. So, for those specialist test suite writers who directly access TestResult data need to call that function to get a reference. The variable is now an interface type which should to be set to nil instead of calling .Free. Nothing major.
+
+Similarly, TTestFailure has been upgraded to being an interface and no longer requires a call to .Free to clean up each instance.
+            
+Existing unit tests are still register as before. e.g. :-
+
+<blockquote><div class="default"><pre>
 Registertest(TMyTestCase.Suite);
 Registertests('MyNamedGroupOfTests', [TTestCaseABC.Suite, TTestCaseXYZ.Suite]); 
-    </pre>
-  </div>
-</blockquote>            
+</pre></div></blockquote>            
             
-Registering multiple test in the same named TestSuite will display the tests together in the TestTree view and their execution will be sequential.<br>
-            <br>
-            Legacy Unit Test Suites.<br>
-            Some "legacy" unit tests with complex test scenarios have not been converted to using interfaces yet and may so not compile because the required TTestCase methods are not public. As an aid, All Check() and Fail() methods have been made public. In addition TAbstractTest definition has been re-added to the code and represents an ITestProc. A parameterless RunTest method has been added.<br>
-            <br></font></font></font></font></font></font>
-          </div><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><a name="Embedded_unit_tests" id="Embedded_unit_tests"></a><font size="5">Creating TTestCase instances within test methods.</font></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Unit test writers who create instances of TTestCase on the fly (now an interfaced object) need to change variable definitions from TTestCase to ITestCase. Naturally one should not call .Free when their useful life has passed. Either set the reference to nil or let them die by Delphi magic.<br>
-            Perhaps more noticeable is that the constructor for TTestCase instances no longer needs a string parameter. In all the unit tests I have encountered these have all been empty i.e.<br>
-<blockquote>
-  <div class="default">
-    <pre>
+Registering multiple test in the same named TestSuite will display the tests together in the TestTree view and their execution will be sequential.
+            
+<a name="Adapting_Legacy_code" /><h2>Legacy Unit Test Suites</h2>
+
+Some "legacy" unit tests with complex test scenarios have not been converted to using interfaces yet and may so not compile because the required TTestCase methods are not public. As an aid, All Check() and Fail() methods have been made public. In addition TAbstractTest definition has been re-added to the code and represents an ITestProc. A parameterless RunTest method has been added.
+            
+<a name="Embedded_unit_tests" /><h2>Creating TTestCase instances within test methods</h2>
+          
+Unit test writers who create instances of TTestCase on the fly (now an interfaced object) need to change variable definitions from TTestCase to ITestCase. Naturally one should not call .Free when their useful life has passed. Either set the reference to nil or let them die by Delphi magic.
+
+Perhaps more noticeable is that the constructor for TTestCase instances no longer needs a string parameter. In all the unit tests I have encountered these have all been empty i.e.
+
+<blockquote><div class="default"><pre>
 FMyTestCase := TMyTestCase.Create('');
 // &lt;&lt;becomes&gt;&gt;
 FMyTestCase := TMyTestCase.Create;
-    </pre>
-  </div>
-</blockquote>            
-          
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1"><br>
-            Note. DUnit2 now allows creating TTestCases with an empty string. TTestCase can be inherited from and additional characteristics added. New classes also need to override the appropriate constructor(s) to ensure proper registration. Adding once off setup operations in these constructors is now possible although it has disadvantages compared with using SetUpOnce.<br>
-            <br>
-            TTestCase instances created on-the-fly should be allocated to a local or field variable and should not be registered. Code can be executed by calling LMyTests.Run(AnIExecControl) where AnIExecControl is a local instance of an ITestExecControl. For the following code to compile an additional unit "TestFrameworkIfaces" may need to be added to your unit test's uses clause.<br>
-<blockquote>
-  <div class="default">
-    <pre>
+</pre></div></blockquote>            
+
+Note. DUnit2 now allows creating TTestCases with an empty string. TTestCase can be inherited from and additional characteristics added. New classes also need to override the appropriate constructor(s) to ensure proper registration. Adding once off setup operations in these constructors is now possible although it has disadvantages compared with using SetUpOnce.
+            
+TTestCase instances created on-the-fly should be allocated to a local or field variable and should not be registered. Code can be executed by calling LMyTests.Run(AnIExecControl) where AnIExecControl is a local instance of an ITestExecControl. For the following code to compile an additional unit "TestFrameworkIfaces" may need to be added to your unit test's uses clause.
+
+<blockquote><div class="default"><pre>
 interface
 uses
 TestFrameworkIfaces,
@@ -382,36 +367,29 @@ begin
   LExecControl := TestExecControl;
 
 // Get ref to new instance of a TTestExecControl
-  LMyTestCase := TMyTestCase.Create;&lt;
+  LMyTestCase := TMyTestCase.Create;
   Check(LMyTestCase.Run(LExecControl) = _Passed, 'Oh damn, it failed');
 
 // No need to destroy the local vars, they are interfaces and Delphi does it for you
 
 end;
-    </pre>
-  </div>
-</blockquote>            
+</pre></div></blockquote>            
           
-          <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><br>
-          <a name="Adapting Legacy code"></a><font size="5">Providing partial V9.4 compatibility.</font></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Some users add functionality to DUnit that was not anticipated during it's initial design.<br>
-            To aid this process the following changes have been incorporated.<br>
-            <br>
-            Crafted unit tests can now be executed by calling RunTest instead of defining a test method.<br>
-            The first step is to define a new type inherited from ITestProc or for Legacy code TAbstractTest.<br>
-            In the class definition override RunTest and place the test code and Check() or Fail() therein.<br>
-            The constructor can accept a string which does not have to conform with Delphi method names.<br>
-            Note, there can only be one RunTest method defined per class.<br>
-            RunTest does not take TTestResult as a parameter and is not called from TTestResult.<br>
-            At run time create an inherited empty instance of TTestCase and add one or more of the above TTestProcs.<br>
-            Register the containing TTestCase in the normal fashion.</font></font></font></font></font></font>
-          </div>
+<a name="Providing_partial_compatability" /><h2>Providing partial V9.4 compatibility</h2>
           
-            
-<blockquote>
-  <div class="default">
-    <pre>
+Some users add functionality to DUnit that was not anticipated during it's initial design.
+To aid this process the following changes have been incorporated.
+
+Crafted unit tests can now be executed by calling RunTest instead of defining a test method.
+The first step is to define a new type inherited from ITestProc or for Legacy code TAbstractTest.
+In the class definition override RunTest and place the test code and Check() or Fail() therein.
+The constructor can accept a string which does not have to conform with Delphi method names.
+Note, there can only be one RunTest method defined per class.
+RunTest does not take TTestResult as a parameter and is not called from TTestResult.
+At run time create an inherited empty instance of TTestCase and add one or more of the above TTestProcs.
+Register the containing TTestCase in the normal fashion.
+
+<blockquote><div class="default"><pre>
 type
 TMyRunTestExample = class(TTestProc) //-or- (TAbstractTest) if it's existing code
 public
@@ -434,253 +412,235 @@ initialization
   LTest := TMyRunTestRunner.Suite;
   LTest.AddTest(TMyRunTestExample.Create('A funny !! name');
   RegisterTest(LTest);
-    </pre>
-  </div>
-</blockquote>            
-          <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><br>
-          <br>
-          <a name="Notable_design_changes" id="Notable_design_changes"></a><font size="5">Notable design changes</font></font></font></font></font></font>
-          <ul>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">The TestResult object has been replaced at the low level by an interfaced object TTestExecControl which contains property getters and setters.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">The interface definitions start at the basic ITest - and progresses through to ITestProject.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">When TTestCase instances are registered only one instance is created and test methods each spawn an ITest instance.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">ITestSuite represents a visibly named group of ITestCases, the same as in V9.4.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Above ITestSuite are ITestDecorator IRepeatTest and ITestProject.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">ProjectsManager looks after the registration of all tests and is hidden from casual view.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Execution paths have been straightened out considerably.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">The requirement for TAbstractTest has been superseeded.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">All test method names need to be legitimate Delphi procedure names. However during test registration their displayed name can be manipulated if necessary. An example of this occurs in the tiOPF2 test suite where test procedure names are prefixed with the database type under test.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="4">There are two additional Check() procedures for comparing Int64 values as well as the new EarlyExitCheck() capability.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="4">An XML Reporter has been added to provide a viewable report for web page deployment.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="4">Individual tests can be excluded from execution by the inclusion of identifying information in the DUnit.ini file.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="4">2 buttons have been added to the GUI to show Memory Leak and Checkless test option status.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="4">3 buttons have been added to the GUI to select post execution TestTree display functionality.</font></font></font></font></font></font>
-            </li>
-          </ul><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1"><br>
-          <a name="Project_Registration" id="Project_Registration"></a><font size="5">Project Registration</font></font></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Existing unit tests suites appear in the TestTree in exactly the same manner as V9.4. The root node is assigned the project executable name and tests follow in order of registration. Tests registered in named Test Suites however are grouped together, regardless of registration order as in V9.4.<br>
-            To segregate tests for execution in separate threads (future work) a new inherited type "ITestProject" has been introduced.<br>
-            <br>
-            When more than one project is registered test cases not specifically register to a named project are relegated to a project called "Default Project". The TestTree becomes:-<br>
-            <br>
-            ProjectName.exe - Default Project<br>
-            some test cases<br>
-            FirstNamed Project<br>
-            some more test cases<br>
-            SecondNamedNamed Project etc.<br>
-            even more test cases<br>
-            <br>
-            A suite of tests can be compiled into a DLL and registered using unit "TestModules.pas" procedures.<br>
-            DLL based tests show in the TestTree as a project using the DLL name. At some time in the future someone more familiar with .NET might like to so the same for Assemblies. Registration is shown below.</font></font></font></font></font></font>
-          </div>
+ </pre></div></blockquote>
+             
+ <a name="Notable_design_changes" /><h2>Notable design changes</h2>
+<ul>
+  <li>
+The TestResult object has been replaced at the low level by an interfaced object TTestExecControl which contains property getters and setters.
+  </li>
+  <li>
+The interface definitions start at the basic ITest - and progresses through to ITestProject.
+  </li>
+  <li>
+When TTestCase instances are registered only one instance is created and test methods each spawn an ITest instance.
+  </li>
+  <li>
+ITestSuite represents a visibly named group of ITestCases, the same as in V9.4.
+  </li>
+  <li>
+Above ITestSuite are ITestDecorator IRepeatTest and ITestProject.
+  </li>
+  <li>
+ProjectsManager looks after the registration of all tests and is hidden from casual view.
+  </li>
+  <li>
+ Execution paths have been straightened out considerably.
+  </li>
+  <li>
+The requirement for TAbstractTest has been superseeded.
+  </li>   
+  <li>
+All test method names need to be legitimate Delphi procedure names. However during test registration their displayed name can be manipulated if necessary. An example of this occurs in the tiOPF2 test suite where test procedure names are prefixed with the database type under test.
+  </li>
+  <li>
+There are two additional Check() procedures for comparing Int64 values as well as the new EarlyExitCheck() capability.
+  </li>
+  <li>
+An XML Reporter has been added to provide a viewable report for web page deployment.
+  </li>
+  <li>
+Individual tests can be excluded from execution by the inclusion of identifying information in the DUnit.ini file.
+  </li>
+  <li>
+2 buttons have been added to the GUI to show Memory Leak and Checkless test option status.
+  </li>
+  <li>
+3 buttons have been added to the GUI to select post execution TestTree display functionality.
+  </li>
+</ul>
+
+<a name="Project_Registration" /><h2>Project Registration</h2>
           
-            RegisterModuleTests('Full path and dll filename.ext');
-          
-          
+Existing unit tests suites appear in the TestTree in exactly the same manner as V9.4. The root node is assigned the project executable name and tests follow in order of registration. Tests registered in named Test Suites however are grouped together, regardless of registration order as in V9.4.
+
+To segregate tests for execution in separate threads (future work) a new inherited type "ITestProject" has been introduced.
+
+When more than one project is registered test cases not specifically register to a named project are relegated to a project called "Default Project". The TestTree becomes:-
             
-            The syntax for registering tests in named a project is simple. In unit test unit's initialization section the registration code looks like the following.
+            ProjectName.exe - Default Project
+            some test cases
+            FirstNamed Project
+            some more test cases
+            SecondNamedNamed Project etc.
+            even more test cases
             
-          <blockquote>
-            <div class="default">
-              <pre>
+A suite of tests can be compiled into a DLL and registered using unit "TestModules.pas" procedures.
+DLL based tests show in the TestTree as a project using the DLL name. At some time in the future someone more familiar with .NET might like to so the same for Assemblies. Registration is shown below.
+          
+<blockquote><div class="default"><pre>
+RegisterModuleTests('Full path and dll filename.ext');
+</pre></div></blockquote>            
+          
+The syntax for registering tests in named a project is simple. In unit test unit's initialization section the registration code looks like the following.
+            
+<blockquote><div class="default"><pre>
 ProjectRegisterTest('My First Ever Project', TMyTestCase.Suite);
 RegisterTest(TMyTestCase.Suite); // Automatically allocated to the "Default Project"
 ProjectRegisterTests('My Next Project', [TTestCaseABC.suite, TTestCaseXYZ.Suite]);
-ProjectRegisterTests('My Suite Project', 'A Test Suite Of Tests', [TTestCaseJKL.suite, TTestCaseMNO.Suite]);
-    </pre>
-  </div>
-</blockquote>            
+ProjectRegisterTests('My Suite Project', 'A Test Suite Of Tests', 
+  [TTestCaseJKL.suite, TTestCaseMNO.Suite]);
+</pre></div></blockquote>            
           
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">If multi-threading is added to DUnit2 the default project will run in the context of the VCL thread for maximum compatibility with existing code.<br>
-            <br>
-            A simple demo of multiple registered "Projects" is illustrated below.<br>
-            <br>
-            <img height="658" alt="Image shows multiple registered projects" src="MultipleProjects.png" width="477"><br>
-            <br>
-            Note that "MiniTestLibW32.dtl" is a suite of tests compiled into a dll, registered and executed along with ordinary tests.<br>
-            <br>
-            <a href="#Top">Back to Top</a></font></font></font></font></font></font>
-          </div><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1"><br>
-          <br>
-          <a name="DUnit_Self_Testing" id="DUnit_Self_Testing"></a><font size="5">DUnit Self Testing</font></font><br></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Both V9.4 and DUnit2 use a global variable in memory to hold a reference to the registered TestCases instances. DUnit2 test suite verifies this variable get cleared on pseudo shutdown. Unfortunately this also deletes the running tests themselves so a parallel set of essential DUnit code is invoked in a separate Ref folder to execute the DUnit self tests. These duplicate units are easily kept in sync with the deployed DUnit code but have unit names starting with "Ref"<br>
-            <br>
-            Define 'SELFTEST' in the project conditionals automatically invokes the duplicate code. All DUnit self testing should be calling RefTestFrameworks.RegisterTest(); to put the tests into the TestTree view.<br>
-            <br>
-            In code tests i.e. those being executed with registered tests need to be prefixed as:-<br>
-            TestFramework.RegisterTest(MyTestedTests.Suite); to avoid a compile time ambiguity error.<br>
-            <br>
-            TestFramework makes use of FastMM4 for detecting memory leaks and provide some speed improvement.<br>
-            <br>
-            FastMM4Options.inc can be modified if specific options are deemed necessary.<br>
-            The latest .zip of files uses FastMM4 rev 4.88 and the shipped FastMM4Options.inc<br>
-            FASTMM should always be linked with the code, even on BDS2006.<br>
-            <br>
-            The JEDI_JCL code can optionally be linked and provides stack tracing and exception error reporting when the code is linked with it's .map file. D5 through to BDS2006/7 support the library. It was necessary to delete one reference in a uses clause for compilation under .NET.<br>
-            When JEDI_JCL is armed to perform stack tracing the generated strings acquire memory which the memory leak detection code flags as a soft failure. Provision has been made in code to allow StackTracing to be disarmed when memory leak detection is enabled.</font></font></font></font></font></font>
-          </div><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1"><br>
-          <br>
-          <a name="DUnit2_Unit_Test_Suite" id="DUnit2_Unit_Test_Suite"></a><font size="5">DUnit2 Unit Test Suite</font></font></font></font></font></font></font>
-          <div style="MARGIN-LEFT: 40px">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">DUnit2 tests have been written continuously since coding began. Many test methods extensively validate the test itself before performing the final calls to Check(). This gives considerable confidence in the final result.<br>
-            Once the low level TestFramework and TestFrameworkProxy harness was validated a set of unit tests from an unrelated project were linked with DUnit2 and executed correctly on the first attempt.<br>
-            <br>
-            Exposure to tiOPF2 unit tests has been invaluable in teasing out compatibility issues and managed to expose an untested aspect recently. Naturally an additional unit test to capture the issue has been added to the test suite.<br>
-            <br>
-            Condensed view of unit tests executing 21st May 2007 showing the range of testing conducted.<br>
-            <br>
-            <img style="WIDTH: 532px; HEIGHT: 779px" alt="Entire suite of tests executed as two projects" src="TwoProjects.png"><br>
-            <br>
-            <a href="#Top">Back to Top</a></font></font></font></font></font></font>
-          </div><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1"><br>
-          <a name="Excluding Tests"></a></font><font size="5">Excluding Tests</font></font></font></font></font></font>
-          <ul>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Individual tests can now be excluded separately from Enabling and Disabling tests.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Excluded test state is persisted in DUnit.ini and is not cleared by globally enabling tests.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">To exclude a test in the GUI version right click on the test and choose Exclude Test Execution.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">To re-include tests right click on the test and choose Include Test Execution.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Excluded tests are shown with a red X in the GUI test treeview.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Excluded tests are stored in Sections in DUnit.ini and include the project name.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">To exclude the same tests from execution in console mode duplicate the sections in the .ini file and change the project name accordingly.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">In console mode (TextTestRunner) excluded tests are shown with an x in place of dots.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">After tests suite execution the XML report file shows the number of Excluded tests.</font></font></font></font></font></font>
-            </li>
-          </ul><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1"><img style="WIDTH: 478px; HEIGHT: 640px" alt="View of excluded tests in GUI version" src="ExcludedTests.png"><br>
-          <br>
-          <br>
-          <a name="XML_Report_Generator" id="XML_Report_Generator"></a></font><font size="5">XML Report Generator</font></font></font></font></font></font>
-          <ul>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">An XML report generator has been added for D7..D10 but not .NET.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">D7..D10 automatically link to the supplied xdom.pas.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">To compile D5 or D6 xdom.pas would need to be copied from a higher Delphi version and several compiler specific $IFDEFs removed to include XMLListener.pas.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">The report format follows the style used by the tiOPF2 project.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Reports are automatically created at the end of each suite execution.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">the .XML file is saved in the same location as the test executable.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><a href="DUnit2Test.xml"><font size="+1">DUnit2 XML test results report. Note tag difference to tiOPF2 shown below</font></a></font></font></font></font></font>
-            </li>
-          </ul>
-          <div style="MARGIN-LEFT: 2em">
-            <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1"><br>
-            An example file running tiOPF2 tests is shown below in two sections, beginning and ending.<br>
-            <br>
-            <img style="WIDTH: 1183px; HEIGHT: 387px" alt="Beginning of XML report" src="XMLStart.png"><br>
-            <br>
-            <img style="WIDTH: 876px; HEIGHT: 422px" alt="Final section of XML report" src="XMLEnd.png"><br>
-            <br>
-            <a name="Closing_summary" id="Closing_summary"></a> <font size="5">Closing summary</font></font></font></font></font></font></font>
-          </div>
-          <ul>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">DUnit2 appears very stable and largely compatible with existing standard test suites.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">The addition of SetUpOnce and TearDownOnce adds significant versatility.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Testing integrity has been strengthened with potential soft failures detected automatically.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Named projects provide a pathway for future improvements to run multi threaded unit testing.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">The test framework does not leak memory or resources.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Decorated tests can be nested.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Repeated tests execute significantly faster.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">TTestCase Constructors and Destructors only run once.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">New Int64 Check() procedures and EarlyExitCheck capability have been added.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">An XML report generator has been added (.NET excluded).</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1">Individual tests can be excluded from execution.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="4">The code is still undergoing refinement in particular to improve readability and maintainability.</font></font></font></font></font></font>
-            </li>
-            <li>
-              <font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="4"><a href="FeatureMatrix.html">Check methods feature matrix</a>.</font></font></font></font></font></font>
-            </li>
-          </ul><font size="+1"><font size="5"><font size="+1"><font size="+1"><font size="4"><font size="+1"><a href="#Top">Back to Top</a><br>
-          <br>
-          <font size="3">Page last updated 29th Aug 2008</font><br>
-          <br>
-          Copyright<br>
-          DUnit Group 2006, 2008<br>
-          All rights reserved.<br>
-          <br>
-          <br>
-          <a href="http://validator.w3.org/check?uri=referer"><img height="31" alt="Valid HTML 4.0 Transitional" src="valid-html40.png" width="88"></a></font> <img class="maincounter" alt="Page Hit Counter" src="/cgi-bin/counter?width=6&amp;font=A&amp;name=mcnabp11"></font></font></font></font></font>
-        </div>
-      </div>
-    </div>
+          
+If multi-threading is added to DUnit2 the default project will run in the context of the VCL thread for maximum compatibility with existing code.
+
+A simple demo of multiple registered "Projects" is illustrated below.
+            
+<img height="658" alt="Image shows multiple registered projects" src="MultipleProjects.png" width="477"><br>
+            
+Note that "MiniTestLibW32.dtl" is a suite of tests compiled into a dll, registered and executed along with ordinary tests.
+
+<a name="DUnit_Self_Testing" /><h2>DUnit Self Testing</h2>
+          
+Both V9.4 and DUnit2 use a global variable in memory to hold a reference to the registered TestCases instances. DUnit2 test suite verifies this variable get cleared on pseudo shutdown. Unfortunately this also deletes the running tests themselves so a parallel set of essential DUnit code is invoked in a separate Ref folder to execute the DUnit self tests. These duplicate units are easily kept in sync with the deployed DUnit code but have unit names starting with "Ref"
+
+Define 'SELFTEST' in the project conditionals automatically invokes the duplicate code. All DUnit self testing should be calling RefTestFrameworks.RegisterTest(); to put the tests into the TestTree view.
+
+In code tests i.e. those being executed with registered tests need to be prefixed as:-
+TestFramework.RegisterTest(MyTestedTests.Suite); to avoid a compile time ambiguity error.
+
+TestFramework makes use of FastMM4 for detecting memory leaks and provide some speed improvement.
+
+FastMM4Options.inc can be modified if specific options are deemed necessary.
+The latest .zip of files uses FastMM4 rev 4.88 and the shipped FastMM4Options.inc
+FASTMM should always be linked with the code, even on BDS2006.
+
+The JEDI_JCL code can optionally be linked and provides stack tracing and exception error reporting when the code is linked with it's .map file. D5 through to BDS2006/7 support the library. It was necessary to delete one reference in a uses clause for compilation under .NET.
+When JEDI_JCL is armed to perform stack tracing the generated strings acquire memory which the memory leak detection code flags as a soft failure. Provision has been made in code to allow StackTracing to be disarmed when memory leak detection is enabled.
+
+<a name="DUnit2_Unit_Test_Suite" /><h2>DUnit2 Unit Test Suite</h2>
+          
+DUnit2 tests have been written continuously since coding began. Many test methods extensively validate the test itself before performing the final calls to Check(). This gives considerable confidence in the final result.
+Once the low level TestFramework and TestFrameworkProxy harness was validated a set of unit tests from an unrelated project were linked with DUnit2 and executed correctly on the first attempt.
+
+Exposure to tiOPF2 unit tests has been invaluable in teasing out compatibility issues and managed to expose an untested aspect recently. Naturally an additional unit test to capture the issue has been added to the test suite.
+
+Condensed view of unit tests executing 21st May 2007 showing the range of testing conducted.
+
+<img style="WIDTH: 532px; HEIGHT: 779px" alt="Entire suite of tests executed as two projects" src="TwoProjects.png"><br>
+
+<a name="Excluding_Tests" /><h2>Excluding Tests</h2>
+<ul>
+  <li>
+    Individual tests can now be excluded separately from Enabling and Disabling tests.
+  </li>
+  <li>
+    Excluded test state is persisted in DUnit.ini and is not cleared by globally enabling tests.
+  </li>
+  <li>
+    To exclude a test in the GUI version right click on the test and choose Exclude Test Execution.
+  </li>
+  <li>
+    To re-include tests right click on the test and choose Include Test Execution.
+  </li>
+  <li>
+    Excluded tests are shown with a red X in the GUI test treeview.
+  </li>
+  <li>
+    Excluded tests are stored in Sections in DUnit.ini and include the project name.
+  </li>
+  <li>
+    To exclude the same tests from execution in console mode duplicate the sections in the .ini file and change the project name accordingly.
+  </li>
+  <li>
+    In console mode (TextTestRunner) excluded tests are shown with an x in place of dots.
+  </li>
+  <li>
+    After tests suite execution the XML report file shows the number of Excluded tests.
+  </li>
+</ul>
+
+<img style="WIDTH: 478px; HEIGHT: 640px" alt="View of excluded tests in GUI version" src="ExcludedTests.png">
+
+<a name="XML_Report_Generator" /><h2>XML Report Generator</h2>
+<ul>
+  <li>
+    An XML report generator has been added for D7..D10 but not .NET.
+  </li>
+  <li>
+    D7..D10 automatically link to the supplied xdom.pas.
+  </li>
+  <li>
+    To compile D5 or D6 xdom.pas would need to be copied from a higher Delphi version and several compiler specific $IFDEFs removed to include XMLListener.pas.
+  </li>
+  <li>
+    The report format follows the style used by the tiOPF2 project.
+  </li>
+  <li>
+    Reports are automatically created at the end of each suite execution.
+  </li>
+  <li>
+    the .XML file is saved in the same location as the test executable.
+  </li>
+  <li>
+    DUnit2 XML test results report. Note tag difference to tiOPF2 shown below
+  </li>
+</ul>
+          
+An example file running tiOPF2 tests is shown below in two sections, beginning and ending.
+            
+<img style="WIDTH: 1183px; HEIGHT: 387px" alt="Beginning of XML report" src="XMLStart.png">
+
+<img style="WIDTH: 876px; HEIGHT: 422px" alt="Final section of XML report" src="XMLEnd.png">
+
+<a name="Closing_summary" /><h2>Closing summary</h2>
+<ul>
+  <li>
+    DUnit2 appears very stable and largely compatible with existing standard test suites.
+  </li>
+  <li>
+    The addition of SetUpOnce and TearDownOnce adds significant versatility.
+  </li>
+  <li>
+    Testing integrity has been strengthened with potential soft failures detected automatically.
+  </li>
+  <li>
+    Named projects provide a pathway for future improvements to run multi threaded unit testing.
+  </li>
+  <li>
+    The test framework does not leak memory or resources.
+  </li>
+  <li>
+    Decorated tests can be nested.
+  </li>
+  <li>
+    Repeated tests execute significantly faster.
+  </li>
+  <li>
+    TTestCase Constructors and Destructors only run once.
+  </li>
+  <li>
+    New Int64 Check() procedures and EarlyExitCheck capability have been added.
+  </li>
+  <li>
+    An XML report generator has been added (.NET excluded).
+  </li>
+  <li>
+    Individual tests can be excluded from execution.
+  </li>
+  <li>
+    The code is still undergoing refinement in particular to improve readability and maintainability.
+  </li>
+  <li>
+<a href="FeatureMatrix.html">Check methods feature matrix</a>
+  </li>
+</ul>
+
+Page last updated 29th Aug 2008
+Copyright DUnit Group 2006, 2008
+All rights reserved.
+          
+</div>          
   </body>
 </html>
