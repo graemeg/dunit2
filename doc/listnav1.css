@@ -1,0 +1,17 @@
+#navigation ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#navigation li a:link, #navigation li a:visited {
+	font-size: 90%;
+	display: block;
+	padding: 0.4em 0 0.4em 0.5em;
+	background-color: #cccc99;
+	color: #000000;
+	text-decoration: none;
+}
+#navigation li a:hover {
+	background-color: #99cc66;
+	color: #ffffff;
+}

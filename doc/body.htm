@@ -1,20 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
   <head>
     <title>
       Untitled Document
     </title>
-    <meta http-equiv="content-type" content="text/html;  
-       charset=utf-8" /> 
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="default.css" type="text/css" />
   </head>
-  <body bgcolor="white" text="black">
+  <body>
     <div class="default">
       <h1>
         DUnit2 documentation
-      </h1><font size="-2">Document version: $Id: body.htm 43 2009-11-28
-      20:12:44Z pvspain $</font> <a name="Introduction" id="Introduction" />
+      </h1>
+      <div class="ident">Document version: $Id: body.htm 43 2009-11-28
+      20:12:44Z pvspain $</div> <a name="Introduction" id="Introduction"></a>
       <h2>
         Introduction
       </h2>
@@ -26,9 +26,7 @@
         TTestCase, each containing one or more published test procedures as
         shown in the example below. TTestCase is now an interfaced object.
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 type
   TTestMyComms = class(TTestCase)
   published
@@ -36,15 +34,14 @@ type
     procedure VerifyThatTheCommPortOpens;
     procedure VerifyThatTheCommPortCloses;
   end;
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         Through the magic of RTTI or .NET Reflection DUnit is able to execute
         the published test procedures in an orderly fashion. Code written into
         test methods performs tests on user's code and calls one or more
         Check() procedures to signal pass or fail to the test framework.
-      </p><a name="SetUp_and_Teardown" id="SetUp_and_Teardown" />
+      </p><a name="SetUp_and_Teardown" id="SetUp_and_Teardown"></a>
       <h2>
         SetUp and Teardown
       </h2>
@@ -59,9 +56,7 @@ type
         Expanding the TTestCase class to include SetUp and Teardown procedures
         is simple as shown below.
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 type
 TTestMyComms = class(TTestCase)
 private
@@ -74,9 +69,8 @@ published
   procedure VerifyThatTheCommPortOpens;
   procedure VerifyThatTheCommPortCloses;
 end;
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         "SetUp" and "Teardown" optional procedures provide a convenient means
         to initialize variables, grab and release resources etc. However when
@@ -88,9 +82,9 @@ end;
         initializing code into the class constructor. In DUnit up to V9.4 this
         approach is flawed for the reasons shown below.
       </p><a name="Constructors_and_Destructors" id=
-      "Constructors_and_Destructors" />
+      "Constructors_and_Destructors"></a>
       <h2>
-        Constructors and Destructors
+        Constructors and destructors
       </h2>
       <p>
         In DUnit up to V9.4 each test procedure is implemented by creating
@@ -102,9 +96,7 @@ end;
         The classic problem of placing code in the constructor might look like
         the following.
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 type
 TTestMyComms = class(TTestCase)
 private
@@ -121,9 +113,8 @@ public
   constructor Create(const CommPortNo: integer);
   destructor Destroy; override;
 end;
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         All constructor action takes place before the GUI fires up, so
         exceptions can force the application to close prematurely and sometimes
@@ -140,9 +131,9 @@ end;
         ways to achieve the effect but the methodology is not standardized
         across unit testers.
       </p><a name="DUnit2_Constructors_and_Destructors" id=
-      "DUnit2_Constructors_and_Destructors" />
+      "DUnit2_Constructors_and_Destructors"></a>
       <h2>
-        DUnit2 Constructors and Destructors
+        DUnit2 constructors and destructors
       </h2>
       <p>
         DUnit2's design has been improved, so the TTestCase constructor and
@@ -151,7 +142,8 @@ end;
         becomes standardized, more visible and safer to implement. Care is
         still required however because creation and destruction still occurs
         outside the GUI existence.
-      </p><a name="SetUpOnce_and_TeardownOnce" id="SetUpOnce_and_TeardownOnce" />
+      </p><a name="SetUpOnce_and_TeardownOnce" id=
+      "SetUpOnce_and_TeardownOnce"></a>
       <h2>
         SetUpOnce and TeardownOnce
       </h2>
@@ -164,9 +156,7 @@ end;
         these procedures appropriately. Field variables are common to all
         procedures in the class, reducing code complexity and maintenance.
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 type
 TTestMyComms = class(TTestCase)
 private
@@ -181,11 +171,10 @@ published
   procedure VerifyThatTheCommPortOpens;
   procedure VerifyThatTheCommPortCloses;
 end;
-          </pre>
-        </div>
-      </blockquote><a name="Test_Decorators" id="Test_Decorators" />
+          
+</pre><a name="Test_Decorators" id="Test_Decorators"></a>
       <h2>
-        Test Decorators
+        Test decorators
       </h2>
       <p>
         Pattern aware DUnit author(s) provided a less convenient solution in
@@ -197,9 +186,7 @@ end;
         time. It contains just a SetUp and Teardown procedure. The following is
         an example.
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 type
 TMyTestDecorator = class(TTestDecorator)
 private
@@ -207,22 +194,18 @@ protected
   procedure SetUp; override;
   procedure Teardown; override;
 end;
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         In the initialization section I think the registration is supposed to
         look something like the following.
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 initialization
   RegisterTest(TMyTestDecorator.Suite('Optional Name', TMyDecoratedTests.Suite));
 end.
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         When the test suite is executed TMyTestDecorator's SetUp procedure
         executes once before any code in TMyDecoratedTests. Similarly
@@ -252,32 +235,26 @@ end.
       <p>
         Decorators can now register multiple test cases simultaneously thus:-
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 initialization
   RegisterTest(TMyTestDecorator.Suite('SuiteName' , TMyDecoratedTests.Suite,
 TMoreDecoratedTests.Suite]));
 end.
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         This improves the versatility because each contained TTestCase can use
         their own SetUp and TearDown procedures as required. In addition
         decorators can be nested in various ways:-
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 RegisterTest(TTestTheDecorator.Suite('XXX', TestAnotherDecorator.Suite('YYY',  
   TTestTheDecorator.Suite('ZZZ', TTrialDecoratedTest.Suite))));   
 RegisterTest(TTestTheDecorator.Suite('XXX', [TTrialDecoratedTest.Suite,// This is just an ordinary test
   TTestAnotherDecorator.Suite('YYY', [TTrialDecoratedTest.Suite,  
     TTestTheDecorator.Suite('ZZZ', TTrialDecoratedTest.Suite)])]));
-          </pre>
-        </div>
-      </blockquote><a name="Data_sharing" id="Data_sharing" />
+          
+</pre><a name="Data_sharing" id="Data_sharing"></a>
       <h2>
         Data sharing between decorators and test cases
       </h2>
@@ -296,24 +273,19 @@ RegisterTest(TTestTheDecorator.Suite('XXX', [TTrialDecoratedTest.Suite,// This i
         and temporary storage. This is illustrated in sample code below
         provides a means to share a string reference.
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 ICheckTestSetUpData = interface(ITestSetUpData)
 ['{8C61F458-86B5-4CD0-BF26-5366D28980CB}']
   function get_SetupData: string;
   procedure set_SetupData(const Value: string);   
   property SetupData: string read get_SetupData write set_SetupData; 
 end;
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         Now for the concrete class implementing the above interface.
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 TSetupData = class(TInterfacedObject, ICheckTestSetupData)&lt; BR &gt; private
   FSetupData: string;
   function get_SetupData: string;
@@ -321,9 +293,8 @@ TSetupData = class(TInterfacedObject, ICheckTestSetupData)&lt; BR &gt; private
 published
   property SetUpData: string read get_SetUpData write set_SetUpData;
 end;
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         At an appropriate point in the test suite execution an instance of the
         above class would be created, populated and it's reference stored in
@@ -337,7 +308,7 @@ end;
       <p>
         Finally the reference is automatically set to nil as each project
         terminates, so there should be no data leakage outside projects.
-      </p><a name="Overrides" id="Overrides" />
+      </p><a name="Overrides" id="Overrides"></a>
       <h2>
         Overrides
       </h2>
@@ -379,7 +350,7 @@ end;
         Note that potential post execution failures are not detectable or even
         show in V9.4 if they aren't armed to fail. Consequently testers may not
         be alerted to latent code problems.
-      </p><a name="Warnings" id="Warnings" />
+      </p><a name="Warnings" id="Warnings"></a>
       <h2>
         Warnings
       </h2>
@@ -414,23 +385,17 @@ end;
         The test writer can place statements in either SetUp or the test
         method:-
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 FailOnNoChecksExecuted := True;
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         -or-
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 FailsOnMemoryLeak := True;
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         To discover which tests contain these statements the user runs the
         tests with just the yellow button selected.
@@ -457,10 +422,10 @@ FailsOnMemoryLeak := True;
         been used. "Warnings" will however still have a count of the potential
         failures.
       </p><img style="WIDTH: 532px; HEIGHT: 523px" alt=
-      "Images shows warning locations" src="images/ShowNewButtons.png" /> <a name=
-      "Early_Exit_Check" id="Early_Exit_Check" />
+      "Images shows warning locations" src="images/ShowNewButtons.png" />
+      <a name="Early_Exit_Check" id="Early_Exit_Check"></a>
       <h2>
-        Summary Level Checks (early exit on pass)
+        Summary level checks (early exit on pass)
       </h2>
       <p>
         Within test methods it is not uncommon to have a sequence of specific
@@ -487,9 +452,9 @@ FailsOnMemoryLeak := True;
       <p>
         Summary level checks are only available within test methods and do not
         extend to the TTestCase level.
-      </p><a name="Error_Reporting" id="Error_Reporting" />
+      </p><a name="Error_Reporting" id="Error_Reporting"></a>
       <h2>
-        Error Reporting
+        Error reporting
       </h2>
       <p>
         When an error or test failure occurs DUnit2 now reports the whole test
@@ -515,10 +480,10 @@ FailsOnMemoryLeak := True;
         node shows all of the error messages
       </p><img height="725" alt=
       "Summary of all error messages pertaining to the clicked TreeView node"
-      src="images/ErrorSummary.png" width="760" /> <a name="ShutDown_Leak_Reporting" id=
-      "ShutDown_Leak_Reporting" />
+      src="images/ErrorSummary.png" width="760" /> <a name=
+      "ShutDown_Leak_Reporting" id="ShutDown_Leak_Reporting"></a>
       <h2>
-        Optional Leak Report on Shutdown
+        Optional leak report on shutdown
       </h2>
       <p>
         When compiled with FastMM4 DUnit provides an optional detailed leak
@@ -526,13 +491,12 @@ FailsOnMemoryLeak := True;
         running. See images below.
       </p><img height="298" alt=
       "Options menu entry for Optional leak report on shutdown" src=
-      "images/LeakReportOnShutdown.png" width="254" />
-      <img style="WIDTH: 784px; HEIGHT: 184px" alt=
-      "Typical FastMM4 shutdown leak report" src=
-      "images/Shutdown_Decteded_Leak_Report.png" />
-      <a name="DLL_Test_Suites" id="DLL_Test_Suites" />
+      "images/LeakReportOnShutdown.png" width="254" /> <img style=
+      "WIDTH: 784px; HEIGHT: 184px" alt="Typical FastMM4 shutdown leak report"
+      src="images/Shutdown_Decteded_Leak_Report.png" /> <a name=
+      "DLL_Test_Suites" id="DLL_Test_Suites"></a>
       <h2>
-        DLL Test Suites
+        DLL test suites
       </h2>
       <p>
         Test suites can now be compiled into a DLL and registered and executed
@@ -546,7 +510,7 @@ FailsOnMemoryLeak := True;
         one DLL might be compiled with Optimisation ON and another with Align
         Records ON etc. DLLs compiled under D7 executed correctly when run
         under D10. (BDS2006)
-      </p><a name="TestFrameworkProxy" id="TestFrameworkProxy" />
+      </p><a name="TestFrameworkProxy" id="TestFrameworkProxy"></a>
       <h2>
         TestFrameworkProxy
       </h2>
@@ -564,7 +528,7 @@ FailsOnMemoryLeak := True;
         never sees the real ITests or ProjectsManager. This extra layer
         undoubtedly slows execution, but not to any detrimental degree.
       </p><a name="GUITestRunner_and_TextTestRunner" id=
-      "GUITestRunner_and_TextTestRunner" />
+      "GUITestRunner_and_TextTestRunner"></a>
       <h2>
         GUITestRunner and TextTestRunner
       </h2>
@@ -576,7 +540,7 @@ FailsOnMemoryLeak := True;
         necessitated changes to both test runners. Other slight changes stem
         from the way test results are propagated back to the GUI. TestListeners
         are still used as before.
-      </p><a name="Speed_of_execution" id="Speed_of_execution" />
+      </p><a name="Speed_of_execution" id="Speed_of_execution"></a>
       <h2>
         Speed of execution
       </h2>
@@ -614,7 +578,7 @@ FailsOnMemoryLeak := True;
         is now scanned sequentially rather than code reccursing into a tree
         structure. Calls back to the TestTree to check each node for enabled
         status have been replaced but other Listeners are still polled.
-      </p><a name="Compatibility" id="Compatibility" />
+      </p><a name="Compatibility" id="Compatibility"></a>
       <h2>
         Compatibility
       </h2>
@@ -639,21 +603,18 @@ FailsOnMemoryLeak := True;
       <p>
         Existing unit tests are still register as before. e.g. :-
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 Registertest(TMyTestCase.Suite);
 Registertests('MyNamedGroupOfTests', [TTestCaseABC.Suite, TTestCaseXYZ.Suite]); 
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         Registering multiple test in the same named TestSuite will display the
         tests together in the TestTree view and their execution will be
         sequential.
-      </p><a name="Adapting_Legacy_code" id="Adapting_Legacy_code" />
+      </p><a name="Adapting_Legacy_code" id="Adapting_Legacy_code"></a>
       <h2>
-        Legacy Unit Test Suites
+        Legacy unit test suites
       </h2>
       <p>
         Some "legacy" unit tests with complex test scenarios have not been
@@ -662,7 +623,7 @@ Registertests('MyNamedGroupOfTests', [TTestCaseABC.Suite, TTestCaseXYZ.Suite]);
         Fail() methods have been made public. In addition TAbstractTest
         definition has been re-added to the code and represents an ITestProc. A
         parameterless RunTest method has been added.
-      </p><a name="Embedded_unit_tests" id="Embedded_unit_tests" />
+      </p><a name="Embedded_unit_tests" id="Embedded_unit_tests"></a>
       <h2>
         Creating TTestCase instances within test methods
       </h2>
@@ -678,15 +639,12 @@ Registertests('MyNamedGroupOfTests', [TTestCaseABC.Suite, TTestCaseXYZ.Suite]);
         no longer needs a string parameter. In all the unit tests I have
         encountered these have all been empty i.e.
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 FMyTestCase := TMyTestCase.Create('');
 // &lt;&lt;becomes&gt;&gt;
 FMyTestCase := TMyTestCase.Create;
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         Note. DUnit2 now allows creating TTestCases with an empty string.
         TTestCase can be inherited from and additional characteristics added.
@@ -703,9 +661,7 @@ FMyTestCase := TMyTestCase.Create;
         additional unit "TestFrameworkIfaces" may need to be added to your unit
         test's uses clause.
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 interface
 uses
 TestFrameworkIfaces,
@@ -728,10 +684,9 @@ begin
 // No need to destroy the local vars, they are interfaces and Delphi does it for you
 
 end;
-          </pre>
-        </div>
-      </blockquote><a name="Providing_partial_compatability" id=
-      "Providing_partial_compatability" />
+          
+</pre><a name="Providing_partial_compatability" id=
+"Providing_partial_compatability"></a>
       <h2>
         Providing partial V9.4 compatibility
       </h2>
@@ -757,9 +712,7 @@ end;
         TTestCase and add one or more of the above TTestProcs. Register the
         containing TTestCase in the normal fashion.
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 type
 TMyRunTestExample = class(TTestProc) //-or- (TAbstractTest) if it's existing code
 public
@@ -782,10 +735,8 @@ initialization
   LTest := TMyRunTestRunner.Suite;
   LTest.AddTest(TMyRunTestExample.Create('A funny !! name');
   RegisterTest(LTest);
-          </pre>
-        </div>
-      </blockquote><a name="Notable_design_changes" id=
-      "Notable_design_changes" />
+          
+</pre><a name="Notable_design_changes" id="Notable_design_changes"></a>
       <h2>
         Notable design changes
       </h2>
@@ -833,9 +784,9 @@ initialization
         <li>3 buttons have been added to the GUI to select post execution
         TestTree display functionality.
         </li>
-      </ul><a name="Project_Registration" id="Project_Registration" />
+      </ul><a name="Project_Registration" id="Project_Registration"></a>
       <h2>
-        Project Registration
+        Project registration
       </h2>
       <p>
         Existing unit tests suites appear in the TestTree in exactly the same
@@ -853,18 +804,15 @@ initialization
         register to a named project are relegated to a project called "Default
         Project". The TestTree becomes:-
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 ProjectName.exe - Default Project
 some test cases
 FirstNamed Project
 some more test cases
 SecondNamedNamed Project etc.
 even more test cases
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         A suite of tests can be compiled into a DLL and registered using unit
         "TestModules.pas" procedures. DLL based tests show in the TestTree as a
@@ -872,29 +820,23 @@ even more test cases
         familiar with .NET might like to so the same for Assemblies.
         Registration is shown below.
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 RegisterModuleTests('Full path and dll filename.ext');
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         The syntax for registering tests in named a project is simple. In unit
         test unit's initialization section the registration code looks like the
         following.
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 ProjectRegisterTest('My First Ever Project', TMyTestCase.Suite);
 RegisterTest(TMyTestCase.Suite); // Automatically allocated to the "Default Project"
 ProjectRegisterTests('My Next Project', [TTestCaseABC.suite, TTestCaseXYZ.Suite]);
 ProjectRegisterTests('My Suite Project', 'A Test Suite Of Tests', 
   [TTestCaseJKL.suite, TTestCaseMNO.Suite]);
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         If multi-threading is added to DUnit2 the default project will run in
         the context of the VCL thread for maximum compatibility with existing
@@ -907,9 +849,9 @@ ProjectRegisterTests('My Suite Project', 'A Test Suite Of Tests',
       <p>
         Note that "MiniTestLibW32.dtl" is a suite of tests compiled into a dll,
         registered and executed along with ordinary tests.
-      </p><a name="DUnit_Self_Testing" id="DUnit_Self_Testing" />
+      </p><a name="DUnit_Self_Testing" id="DUnit_Self_Testing"></a>
       <h2>
-        DUnit Self Testing
+        DUnit self-testing
       </h2>
       <p>
         Both V9.4 and DUnit2 use a global variable in memory to hold a
@@ -930,13 +872,10 @@ ProjectRegisterTests('My Suite Project', 'A Test Suite Of Tests',
         In code tests i.e. those being executed with registered tests need to
         be prefixed as:-
       </p>
-      <blockquote>
-        <div class="default">
-          <pre>
+      <pre>
 TestFramework.RegisterTest(MyTestedTests.Suite); 
-          </pre>
-        </div>
-      </blockquote>
+          
+</pre>
       <p>
         to avoid a compile time ambiguity error.
       </p>
@@ -956,9 +895,9 @@ TestFramework.RegisterTest(MyTestedTests.Suite);
         acquire memory which the memory leak detection code flags as a soft
         failure. Provision has been made in code to allow StackTracing to be
         disarmed when memory leak detection is enabled.
-      </p><a name="DUnit2_Unit_Test_Suite" id="DUnit2_Unit_Test_Suite" />
+      </p><a name="DUnit2_Unit_Test_Suite" id="DUnit2_Unit_Test_Suite"></a>
       <h2>
-        DUnit2 Unit Test Suite
+        DUnit2 unit test suite
       </h2>
       <p>
         DUnit2 tests have been written continuously since coding began. Many
@@ -982,10 +921,10 @@ TestFramework.RegisterTest(MyTestedTests.Suite);
         of testing conducted.
       </p><img style="WIDTH: 532px; HEIGHT: 779px" alt=
       "Entire suite of tests executed as two projects" src=
-      "images/TwoProjects.png" />
-      <a name="Excluding_Tests" id="Excluding_Tests" />
+      "images/TwoProjects.png" /> <a name="Excluding_Tests" id=
+      "Excluding_Tests"></a>
       <h2>
-        Excluding Tests
+        Excluding tests
       </h2>
       <ul>
         <li>Individual tests can now be excluded separately from Enabling and
@@ -1015,10 +954,10 @@ TestFramework.RegisterTest(MyTestedTests.Suite);
         Excluded tests.
         </li>
       </ul><img style="WIDTH: 478px; HEIGHT: 640px" alt=
-      "View of excluded tests in GUI version" src="images/ExcludedTests.png" /> <a name=
-      "XML_Report_Generator" id="XML_Report_Generator" />
+      "View of excluded tests in GUI version" src="images/ExcludedTests.png" />
+      <a name="XML_Report_Generator" id="XML_Report_Generator"></a>
       <h2>
-        XML Report Generator
+        XML report generator
       </h2>
       <ul>
         <li>An XML report generator has been added for D7..D10 but not .NET.
@@ -1046,7 +985,8 @@ TestFramework.RegisterTest(MyTestedTests.Suite);
       </p><img style="WIDTH: 1183px; HEIGHT: 387px" alt=
       "Beginning of XML report" src="images/XMLStart.png" /> <img style=
       "WIDTH: 876px; HEIGHT: 422px" alt="Final section of XML report" src=
-      "images/XMLEnd.png" /> <a name="Closing_summary" id="Closing_summary" />
+      "images/XMLEnd.png" /> <a name="Closing_summary" id=
+      "Closing_summary"></a>
       <h2>
         Closing summary
       </h2>
