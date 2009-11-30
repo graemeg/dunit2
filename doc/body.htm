@@ -286,7 +286,8 @@ end;
         Now for the concrete class implementing the above interface.
       </p>
       <pre>
-TSetupData = class(TInterfacedObject, ICheckTestSetupData)&lt; BR &gt; private
+TSetupData = class(TInterfacedObject, ICheckTestSetupData)
+private
   FSetupData: string;
   function get_SetupData: string;
   procedure set_SetupData(const Value: string);
@@ -985,8 +986,8 @@ TestFramework.RegisterTest(MyTestedTests.Suite);
       </p><img style="WIDTH: 1183px; HEIGHT: 387px" alt=
       "Beginning of XML report" src="images/XMLStart.png" /> <img style=
       "WIDTH: 876px; HEIGHT: 422px" alt="Final section of XML report" src=
-      "images/XMLEnd.png" /> <a name="Closing_summary" id=
-      "Closing_summary"></a>
+      "images/XMLEnd.png" /> 
+      <a name="Closing_summary" id="Closing_summary"></a>
       <h2>
         Closing summary
       </h2>
