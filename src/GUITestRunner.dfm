@@ -126,12 +126,12 @@ object GUITestRunner: TGUITestRunner
             Action = SelectAllAction
           end
           object DeselectAllButton: TToolButton
-            Left = 26
+            Left = 23
             Top = 0
             Action = DeselectAllAction
           end
           object ToolButton1: TToolButton
-            Left = 52
+            Left = 46
             Top = 0
             Width = 8
             Caption = 'ToolButton1'
@@ -139,12 +139,12 @@ object GUITestRunner: TGUITestRunner
             Style = tbsSeparator
           end
           object SelectFailedButton: TToolButton
-            Left = 60
+            Left = 54
             Top = 0
             Action = SelectFailedAction
           end
           object ToolButton2: TToolButton
-            Left = 86
+            Left = 77
             Top = 0
             Width = 8
             Caption = 'ToolButton2'
@@ -152,17 +152,17 @@ object GUITestRunner: TGUITestRunner
             Style = tbsSeparator
           end
           object SelectCurrentButton: TToolButton
-            Left = 94
+            Left = 85
             Top = 0
             Action = SelectCurrentAction
           end
           object DeselectCurrentButton: TToolButton
-            Left = 120
+            Left = 108
             Top = 0
             Action = DeselectCurrentAction
           end
           object ToolButton3: TToolButton
-            Left = 146
+            Left = 131
             Top = 0
             Width = 8
             Caption = 'ToolButton3'
@@ -170,22 +170,22 @@ object GUITestRunner: TGUITestRunner
             Style = tbsSeparator
           end
           object ToolButton4: TToolButton
-            Left = 154
+            Left = 139
             Top = 0
             Action = RunAction
           end
           object RunSelectedTestButton: TToolButton
-            Left = 180
+            Left = 162
             Top = 0
             Action = RunSelectedTestAction
           end
           object ToolButton5: TToolButton
-            Left = 206
+            Left = 185
             Top = 0
             Action = StopAction
           end
           object ToolButton6: TToolButton
-            Left = 232
+            Left = 208
             Top = 0
             Width = 8
             Caption = 'ToolButton6'
@@ -193,28 +193,28 @@ object GUITestRunner: TGUITestRunner
             Style = tbsSeparator
           end
           object PropertyOverrideToolButton: TToolButton
-            Left = 240
+            Left = 216
             Top = 0
             Hint = 'Show tests with run-time properties enabled'
             Action = ShowTestCasesWithRunTimePropertiesAction
             ImageIndex = 15
           end
           object ShowOverriddenFailuresToolButton: TToolButton
-            Left = 266
+            Left = 239
             Top = 0
             Hint = 'Show overridden post execution test failures'
             Action = ShowOverriddenFailuresAction
             ImageIndex = 16
           end
           object ShowSummaryLevelExitsToolButton: TToolButton
-            Left = 292
+            Left = 262
             Top = 0
             Hint = 'Show passing Summary Level tests which exited early'
             Action = ShowEarlyExitedTestAction
             ImageIndex = 17
           end
           object ToolButton11: TToolButton
-            Left = 318
+            Left = 285
             Top = 0
             Width = 8
             Caption = 'ToolButton11'
@@ -222,31 +222,31 @@ object GUITestRunner: TGUITestRunner
             Style = tbsSeparator
           end
           object CheckMemLeaksToolButton: TToolButton
-            Left = 326
+            Left = 293
             Top = 0
             Action = FailTestCaseIfMemoryLeakedAction
             ImageIndex = 12
           end
           object CheckCheckedToolButton: TToolButton
-            Left = 352
+            Left = 316
             Top = 0
             Action = FailIfNoChecksExecutedAction
             ImageIndex = 14
           end
           object ShowWarnedTestToolButton: TToolButton
-            Left = 378
+            Left = 339
             Top = 0
             Action = EnableWarningsAction
             ImageIndex = 18
           end
           object InhibitSummaryLevelChecksToolButton: TToolButton
-            Left = 404
+            Left = 362
             Top = 0
             Action = InhibitSummaryLevelChecksAction
             ImageIndex = 20
           end
           object ToolButton10: TToolButton
-            Left = 430
+            Left = 385
             Top = 0
             Width = 8
             Caption = 'ToolButton10'

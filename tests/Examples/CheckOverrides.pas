@@ -34,9 +34,6 @@
  *******************************************************************************
 *)
 
-{$IFDEF VER180}
-  {$DEFINE FASTMM}
-{$ENDIF}
 {$IFDEF CLR}
   {$UNSAFECODE ON}
   {$UNDEF FASTMM}

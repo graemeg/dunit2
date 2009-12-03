@@ -36,6 +36,12 @@
 			<Projects Include="DUnit2Test.dproj">
 				<Dependencies/>
 			</Projects>
+			<Projects Include="DemoDecorateTestSuite.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="ShowOverrides.dproj">
+				<Dependencies/>
+			</Projects>
 		</ItemGroup>
 		<ProjectExtensions>
 			<Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -145,14 +151,32 @@
 		<Target Name="DUnit2Test:Make">
 			<MSBuild Targets="Make" Projects="DUnit2Test.dproj"/>
 		</Target>
+		<Target Name="DemoDecorateTestSuite">
+			<MSBuild Projects="DemoDecorateTestSuite.dproj"/>
+		</Target>
+		<Target Name="DemoDecorateTestSuite:Clean">
+			<MSBuild Targets="Clean" Projects="DemoDecorateTestSuite.dproj"/>
+		</Target>
+		<Target Name="DemoDecorateTestSuite:Make">
+			<MSBuild Targets="Make" Projects="DemoDecorateTestSuite.dproj"/>
+		</Target>
+		<Target Name="ShowOverrides">
+			<MSBuild Projects="ShowOverrides.dproj"/>
+		</Target>
+		<Target Name="ShowOverrides:Clean">
+			<MSBuild Targets="Clean" Projects="ShowOverrides.dproj"/>
+		</Target>
+		<Target Name="ShowOverrides:Make">
+			<MSBuild Targets="Make" Projects="ShowOverrides.dproj"/>
+		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="SingleTestLibW32;MiniTestLibW32A;MiniTestLibW32B;MiniTestLibW32C;MiniTestLibW32D;OTAUtils;DUnitTestInspector;DUnit2;DUnit2Console;DUnit2ConsoleTest;DUnit2Test"/>
+			<CallTarget Targets="SingleTestLibW32;MiniTestLibW32A;MiniTestLibW32B;MiniTestLibW32C;MiniTestLibW32D;OTAUtils;DUnitTestInspector;DUnit2;DUnit2Console;DUnit2ConsoleTest;DUnit2Test;DemoDecorateTestSuite;ShowOverrides"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="SingleTestLibW32:Clean;MiniTestLibW32A:Clean;MiniTestLibW32B:Clean;MiniTestLibW32C:Clean;MiniTestLibW32D:Clean;OTAUtils:Clean;DUnitTestInspector:Clean;DUnit2:Clean;DUnit2Console:Clean;DUnit2ConsoleTest:Clean;DUnit2Test:Clean"/>
+			<CallTarget Targets="SingleTestLibW32:Clean;MiniTestLibW32A:Clean;MiniTestLibW32B:Clean;MiniTestLibW32C:Clean;MiniTestLibW32D:Clean;OTAUtils:Clean;DUnitTestInspector:Clean;DUnit2:Clean;DUnit2Console:Clean;DUnit2ConsoleTest:Clean;DUnit2Test:Clean;DemoDecorateTestSuite:Clean;ShowOverrides:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="SingleTestLibW32:Make;MiniTestLibW32A:Make;MiniTestLibW32B:Make;MiniTestLibW32C:Make;MiniTestLibW32D:Make;OTAUtils:Make;DUnitTestInspector:Make;DUnit2:Make;DUnit2Console:Make;DUnit2ConsoleTest:Make;DUnit2Test:Make"/>
+			<CallTarget Targets="SingleTestLibW32:Make;MiniTestLibW32A:Make;MiniTestLibW32B:Make;MiniTestLibW32C:Make;MiniTestLibW32D:Make;OTAUtils:Make;DUnitTestInspector:Make;DUnit2:Make;DUnit2Console:Make;DUnit2ConsoleTest:Make;DUnit2Test:Make;DemoDecorateTestSuite:Make;ShowOverrides:Make"/>
 		</Target>
 		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 	</Project>
