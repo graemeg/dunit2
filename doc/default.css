@@ -1,12 +1,16 @@
-.default {
+h1,h2,h3 {
 	font-family: Verdana, Geneva, sans-serif;
+	font-style: normal;
+	line-height: normal;
+}
+
+div {
+	font-family: Georgia, serif;
 	font-size: 14px;
 	font-style: normal;
 	line-height: normal;
 }
-.ident {
+div.ident {
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 10px;
-	font-style: normal;
-	line-height: normal;
 }
