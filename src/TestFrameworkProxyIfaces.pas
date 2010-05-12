@@ -65,6 +65,7 @@ type
     function  ParentPath: string;
     function  GetStatus :string;
     function  get_IsTestMethod: boolean;
+    function  get_IsGUITestMethod: boolean;
     function  SupportedIfaceType: TSupportedIface;
     function  get_ExecutedStatus: TExecutionStatus;
     procedure set_ExecutedStatus(const Value: TExecutionStatus);
@@ -118,6 +119,7 @@ type
     property  Name: string read GetName;
     property  Status: string read GetStatus;
     property  IsTestMethod: boolean read get_IsTestMethod;
+    property  IsGUITestMethod: boolean read get_IsGUITestMethod;
     property  ExecutionStatus: TExecutionStatus read get_ExecutedStatus
                                                write set_ExecutedStatus;
     property  IsOverridden: boolean read get_IsOverridden write set_IsOverridden;

@@ -34,16 +34,13 @@
  * The DUnit group at SourceForge <http://dunit.sourceforge.net>
  *
  *)
-{$UNDEF XMLLISTENER}
-{$IFNDEF VER130}
-  {$IFNDEF VER140}
-    {$DEFINE XMLLISTENER}
-  {$ENDIF}
-{$ENDIF}
-
 
 unit GUITestRunner;
 interface
+
+//TODO: Resolve XML changes introduced in D2009
+{$UNDEF XMLLISTENER}
+//{$DEFINE XMLLISTENER}
 
 uses
   Windows, Classes, Graphics, Controls, Forms,
@@ -147,8 +144,8 @@ type
     SelectCurrentButton: TToolButton;
     DeselectCurrentButton: TToolButton;
     ToolButton3: TToolButton;
-    ToolButton4: TToolButton;
-    ToolButton5: TToolButton;
+    RunButton: TToolButton;
+    StopButton: TToolButton;
     Alt_R_RunAction: TAction;
     Alt_S_StopAction: TAction;
     N1: TMenuItem;
@@ -162,10 +159,10 @@ type
     Copytestnametoclipboard2: TMenuItem;
     RunSelectedTestAction: TAction;
     N5: TMenuItem;
-    Runcurrenttest1: TMenuItem;
+    RunFromHereItem3: TMenuItem;
     N6: TMenuItem;
-    Runcurrenttest2: TMenuItem;
-    RunSelectedTestItem: TMenuItem;
+    RunFromHereItem2: TMenuItem;
+    RunFromHereItem4: TMenuItem;
     RunSelectedTestButton: TToolButton;
     GoToNextSelectedTestAction: TAction;
     GoToPrevSelectedTestAction: TAction;
@@ -234,6 +231,17 @@ type
     ShowWarnedTestToolButton: TToolButton;
     SearchBasePanel: TPanel;
     SearchImages: TImageList;
+    RunFromHereAction: TAction;
+    RunFromHereButton: TToolButton;
+    Runselectedtest3: TMenuItem;
+    RecordSelectedTestItem1: TMenuItem;
+    RecordSelectedTestItem2: TMenuItem;
+    RecordSelectedTestItem3: TMenuItem;
+    RecordSelectedTestAction: TAction;
+    RecordSelectedTestAltAction: TAction;
+    RecordSelectedTestButton: TToolButton;
+    Runselectedtest2: TMenuItem;
+    Runselectedtest4: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure TestTreeClick(Sender: TObject);
     procedure FailureListViewSelectItem(Sender: TObject; Item: TListItem;
@@ -331,7 +339,13 @@ type
     procedure EnableWarningsActionExecute(Sender: TObject);
     procedure FailureListViewDblClick(Sender: TObject);
     procedure ErrorMessageRTFDblClick(Sender: TObject);
-    procedure ErrorMessageRTFClick(Sender: TObject);
+    procedure RunFromHereActionExecute(Sender: TObject);
+    procedure RunFromHereActionUpdate(Sender: TObject);
+    procedure RecordSelectedTestActionExecute(Sender: TObject);
+    procedure RecordSelectedTestActionUpdate(Sender: TObject);
+    procedure RecordSelectedTestAltActionExecute(Sender: TObject);
+    procedure RecordSelectedTestItem1DrawItem(Sender: TObject; ACanvas: TCanvas;
+      ARect: TRect; Selected: Boolean);
 
   private
     FSuite:         ITestProxy;
@@ -339,6 +353,7 @@ type
     FRunning:       Boolean;
     FTests:         TInterfaceList;
     FSelectedTests: TInterfaceList;
+    FSelectedTestCount: Integer;
     FTotalTime:     Int64;
     FNoChecksStr:   string;
     FUpdateTimer:   TTimer;
@@ -408,6 +423,7 @@ type
     function  TestToNode(Test :ITestProxy) :TTreeNode;
     function  SelectedTest :ITestProxy;
     procedure ListSelectedTests;
+    procedure ListTestsFromHere;
 
     function  EnableTest(Test :ITestProxy) : boolean;
     function  DisableTest(Test :ITestProxy) : boolean;
@@ -499,7 +515,8 @@ uses
   Clipbrd,
   Math,
   StrUtils,
-  WatchFile;
+  WatchFile,
+  GUIActionRecorder;
 
 {$BOOLEVAL OFF}  // Required or you'll get an AV
 {$R *.DFM}
@@ -1607,6 +1624,7 @@ begin
   end;
 end;
 
+{$WARN UNSAFE_CODE OFF}
 function TGUITestRunner.StripAllCRLFs(const AString: string): string;
 var
   Src, Dst: PChar;
@@ -1632,6 +1650,7 @@ begin
   // re-sync string length with position of null terminator
   Result := PChar(Result);
 end;
+{$WARN UNSAFE_CODE ON}
 
 procedure TGUITestRunner.FailureListViewDblClick(Sender: TObject);
 var
@@ -1800,7 +1819,6 @@ function TGUITestRunner.FindMultiErrorSourceReference(const AString: string;
   const AStartIndex: integer; out AFileName, ALineNumber: string): boolean;
 var
   idx: integer;
-  startFileName: integer;
   stopping: boolean;
   text: string;
   // Example from multi-error listing: filename.pas:number
@@ -1829,7 +1847,9 @@ const
         ':': Result := FindFileName(AIndex, '.');
        else
          Result := false;
-      end;
+      end
+    else
+      Result := false;
   end;
 
 begin
@@ -1922,26 +1942,6 @@ begin
     end;
 
   end;
-
-end;
-
-procedure TGUITestRunner.ErrorMessageRTFClick(Sender: TObject);
-var
-  LRichEdit: TRichEdit;
-  LText: string;
-  LCursorPos: integer;
-  LLineNumber: string;
-  LFileName: string;
-
-begin
-  Assert(Sender is TRichEdit, 'Sender is not a TRichEdit');
-  LRichEdit := Sender as TRichEdit;
-  LText := LRichEdit.Lines.Text;
-  LCursorPos := LRichEdit.SelStart + LRichEdit.SelLength;
-
-  if FindStackTraceSourceReference(LText, LCursorPos, LFileName, LLineNumber) or
-    FindMultiErrorSourceReference(LText, LCursorPos, LFileName, LLineNumber) then
-    WriteWatchFile(LFileName, LLineNumber);
 
 end;
 
@@ -2491,14 +2491,18 @@ begin
   FSelectedTests.Free;
   FSelectedTests := nil;
   FSelectedTests := TInterfaceList.Create;
+  FSelectedTestCount := 0;
 
   ANode := TestTree.Selected;
-
-  while Assigned(ANode) do
+  if Assigned(ANode) then
   begin
-    ATest := NodeToTest(ANode);
-    FSelectedTests.Add(ATest as ITestProxy);
-    ANode := ANode.Parent;
+    while Assigned(ANode) do
+    begin
+      ATest := NodeToTest(ANode);
+      FSelectedTests.Add(ATest as ITestProxy);
+      ANode := ANode.Parent;
+    end;
+    FSelectedTestCount := 1;
   end;
 end;
 
@@ -2506,8 +2510,8 @@ procedure TGUITestRunner.RunSelectedTestActionExecute(Sender: TObject);
 begin
   SetUp;
   ListSelectedTests;
-  ProgressBar.Max := 1;
-  ScoreBar.Max    := 1;
+  ProgressBar.Max := FSelectedTestCount;
+  ScoreBar.Max    := FSelectedTestCount;
   HoldOptions(True);
   try
     RunTheTest(Suite);
@@ -2528,6 +2532,170 @@ var
 begin
   ATest := SelectedTest;
   RunSelectedTestAction.Enabled := (ATest <> nil) and (ATest.IsTestMethod);
+end;
+
+procedure TGUITestRunner.RecordSelectedTestActionExecute(Sender: TObject);
+var
+  I: Integer;
+  LCommands: TStringList;
+begin
+  if RunSelectedTestAction.Enabled then
+  begin
+    GGUIActionRecorder.Initialize;
+    GGUIActionRecorder.Active := true;
+    try
+      RunSelectedTestAction.Execute;
+    finally
+      GGUIActionRecorder.Active := false;
+    end;
+
+    ErrorMessageRTF.SelAttributes.Size  := self.Font.Size;
+    ErrorMessageRTF.SelAttributes.Color := clWindowText;
+    ErrorMessageRTF.SelAttributes.Style := [fsBold];
+    ErrorMessageRTF.SelText := 'Recorded GUI Actions:';
+    ErrorMessageRTF.SelAttributes.Style := [];
+
+    LCommands := TStringList.Create;
+    try
+      LCommands.Add('  ThreadedExecute(procedure begin');
+      for I := 0 to GGUIActionRecorder.Commands.Count - 1 do
+        LCommands.Add('    ' + GGUIActionRecorder.Commands.Strings[I]);
+      LCommands.Add('  end);');
+      Clipbrd.Clipboard.AsText := LCommands.Text;
+      ErrorMessageRTF.Lines.AddStrings(LCommands);
+    finally
+      LCommands.Free;
+    end;
+  end;
+end;
+
+procedure TGUITestRunner.RecordSelectedTestActionUpdate(Sender: TObject);
+var
+  ATest :ITestProxy;
+begin
+  ATest := SelectedTest;
+  RecordSelectedTestAction.Enabled := (ATest <> nil) and (ATest.IsGUITestMethod);
+end;
+
+procedure TGUITestRunner.ListTestsFromHere;
+
+  // Add test for the given node. Return true if it is a test method
+  function _AddTestForNode(ANode: TTreeNode): boolean;
+  var
+    LTest: ITestProxy;
+  begin
+    result := false;
+    if Assigned(ANode) then
+    begin
+      LTest := NodeToTest(ANode);
+      if Assigned(LTest) and LTest.Enabled then
+      begin
+        if FSelectedTests.IndexOf(LTest) = -1 then
+        begin
+          FSelectedTests.Add(LTest);
+          if LTest.IsTestMethod then
+          begin
+            Inc(FSelectedTestCount);
+            result := true;
+          end;
+        end;
+      end;
+    end;
+  end;
+
+  // Must add all parent test nodes in the tree to execute a test method
+  procedure _SelectParents(ANode: TTreeNode);
+  var
+    LNode: TTreeNode;
+    LTest: ITestProxy;
+  begin
+    LNode := ANode;
+    while Assigned(LNode) do
+    begin
+      LTest := NodeToTest(ANode);
+      if (not Assigned(LTest)) or (not LTest.Enabled) then
+        break;
+
+      _AddTestForNode(LNode);
+      LNode := LNode.Parent;
+    end;
+  end;
+
+  // Add nodes children (and their children and so on) and the node itself
+  function _SelectNode(ANode: TTreeNode): boolean;
+  var
+    LNode: TTreeNode;
+  begin
+    result := false;
+    if not Assigned(ANode) then
+      exit;
+    LNode := ANode.getFirstChild;
+    while Assigned(LNode) do
+    begin
+      result := _SelectNode(LNode) or result;
+      LNode := LNode.getNextSibling;
+    end;
+    result := _AddTestForNode(ANode) or result;
+  end;
+
+  // Add the given node and all following nodes in the tree
+  procedure _SelectFromNode(ANode: TTreeNode);
+  var
+    LNode: TTreeNode;
+    LTestAdded: Boolean;
+  begin
+    if not Assigned(ANode) then
+      Exit;
+
+    // Add given node and following siblings, and their children
+    LTestAdded := false;
+    LNode := ANode;
+    while Assigned(LNode) do
+    begin
+      if _SelectNode(LNode) then
+        LTestAdded := true;
+      LNode := LNode.getNextSibling;
+    end;
+    if LTestAdded then
+      _SelectParents(ANode.Parent);
+
+    // Add parent's following siblings and their children
+    if Assigned(ANode.Parent) then
+      _SelectFromNode(ANode.Parent.getNextSibling);
+  end;
+
+begin
+  FSelectedTests.Free;
+  FSelectedTests := nil;
+  FSelectedTests := TInterfaceList.Create;
+  FSelectedTestCount := 0;
+
+  _SelectFromNode(TestTree.Selected);
+end;
+
+procedure TGUITestRunner.RunFromHereActionExecute(Sender: TObject);
+begin
+  SetUp;
+  ListTestsFromHere;
+  ProgressBar.Max := FSelectedTestCount;
+  ScoreBar.Max    := FSelectedTestCount;
+  HoldOptions(True);
+  try
+    RunTheTest(Suite);
+  finally
+    HoldOptions(False);
+  {$IFDEF VER130}
+    FreeAndNil(FSelectedTests);
+  {$ELSE}
+    FSelectedTests.Free;
+    FSelectedTests := nil;
+  {$ENDIF}
+  end;
+end;
+
+procedure TGUITestRunner.RunFromHereActionUpdate(Sender: TObject);
+begin
+  RunFromHereAction.Enabled := SelectedTest <> nil;
 end;
 
 class procedure TGUITestRunner.RunTest(Test: ITestProxy);
@@ -2673,6 +2841,7 @@ const
   PopupTitle   = 'TestCase Run-Time Applied Properties';
   PopupPrevious= ' Previous';
   PopupRun     = ' Run Selected Test';
+  PopupRecord  = ' Record GUI Actions For Selected Test';
   PopupNext    = ' Next';
   NoChecksStrT = ' FailsOnNoChecksExecuted  := True ';
   NoChecksStrF = ' FailsOnNoChecksExecuted  := False';
@@ -2838,6 +3007,12 @@ begin
   MenuLooksActive(ACanvas, ARect, Selected, PopupRun, DT_LEFT);
 end;
 
+procedure TGUITestRunner.RecordSelectedTestItem1DrawItem(Sender: TObject;
+  ACanvas: TCanvas; ARect: TRect; Selected: Boolean);
+begin
+  MenuLooksActive(ACanvas, ARect, Selected, PopupRecord, DT_LEFT);
+end;
+
 procedure TGUITestRunner.Next1DrawItem(Sender: TObject; ACanvas: TCanvas;
   ARect: TRect; Selected: Boolean);
 begin
@@ -2931,6 +3106,12 @@ end;
 procedure TGUITestRunner.RunSelectedTestAltActionExecute(Sender: TObject);
 begin
   RunSelectedTestActionExecute(Self);
+  TestCasePropertiesActionExecute(Self);
+end;
+
+procedure TGUITestRunner.RecordSelectedTestAltActionExecute(Sender: TObject);
+begin
+  RecordSelectedTestActionExecute(Self);
   TestCasePropertiesActionExecute(Self);
 end;
 

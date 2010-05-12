@@ -144,6 +144,7 @@ type
     function  ParentPath: string;
     function  GetStatus :string;
     function  get_IsTestMethod: boolean;
+    function  get_IsGUITestMethod: boolean;
     function  SupportedIfaceType: TSupportedIface;
     function  get_ExecutedStatus: TExecutionStatus;
     procedure set_ExecutedStatus(const Value: TExecutionStatus);
@@ -649,7 +650,7 @@ function PointerToLocationInfo(Addrs: IntPtr): string;
 var
   _file,
   _module,
-  _proc: string;
+  _proc: String;
   _line: Integer;
 {$ENDIF}
 begin
@@ -671,7 +672,7 @@ function PointerToAddressInfo(Addrs: IntPtr): string;
 var
   _file,
   _module,
-  _proc: string;
+  _proc: String;
   _line: Integer;
 {$ENDIF}
 begin
@@ -865,7 +866,7 @@ begin
   if FITest = nil then
     Exit;
 
-  if FITest.ParentTestCase <> nil then
+  if (FITest.ExecStatus = _Running) and (FITest.ParentTestCase <> nil) then
   begin
     Result := FITest.ParentTestCase.GetName;
     Exit;
@@ -886,6 +887,11 @@ end;
 function TTestProxy.get_IsTestMethod: boolean;
 begin
   Result := FITest.IsTestMethod;
+end;
+
+function TTestProxy.get_IsGUITestMethod: boolean;
+begin
+  Result := FITest.IsGUITestMethod;
 end;
 
 function TTestProxy.ParentPath: string;

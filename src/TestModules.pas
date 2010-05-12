@@ -1,7 +1,7 @@
 { $Id$ }
 {: DUnit: An XTreme testing framework for Delphi programs.
    @author  The DUnit Group.
-   @version $Revision$ 2001/03/08 uberto
+   @version $Revision$
 }
 {#(@)$Id$ }
 {  DUnit: An XTreme testing framework for Delphi programs. }

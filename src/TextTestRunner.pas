@@ -39,14 +39,9 @@ unit TextTestRunner;
   {$UNDEF FASTMM}
 {$ENDIF}
 
+//TODO: Resolve XML changes introduced in D2009
 {$UNDEF XMLLISTENER}
-{$IFNDEF VER130}
-  {$IFNDEF VER140}
-    {$IFNDEF CLR}
-      {$DEFINE XMLLISTENER}
-    {$ENDIF}
-  {$ENDIF}
-{$ENDIF}
+//{$DEFINE XMLLISTENER}
 
 interface
 uses

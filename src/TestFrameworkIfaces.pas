@@ -243,6 +243,7 @@ type
     procedure set_TestSetUpData(const Value: ITestSetUpData);
     property  TestSetUpData : ITestSetUpData read get_TestSetUpData write set_TestSetUpData;
     function  IsTestMethod: boolean;
+    function  IsGUITestMethod: boolean;
     function  SupportedIfaceType: TSupportedIface;
     function  InterfaceSupports(const Value: TSupportedIface): Boolean;
     function  get_ElapsedTime: Int64;
@@ -489,6 +490,10 @@ type
     procedure StopTests(const ErrorMsg: string = '');
     procedure InhibitStackTrace; overload;
     procedure InhibitStackTrace(const Value: boolean); overload;
+  end;
+
+  IGUITestCase = interface
+  ['{9FF30C20-5A8F-47CB-8655-993351A907DB}']
   end;
 
   IReadOnlyIterator = interface

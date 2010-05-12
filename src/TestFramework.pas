@@ -42,6 +42,7 @@
   {$IFNDEF VER140}
     {$WARN UNSAFE_CODE OFF}
     {$WARN UNSAFE_CAST OFF}
+    {$WARN EXPLICIT_STRING_CAST OFF}
   {$ENDIF}
 {$ENDIF}
 
@@ -184,6 +185,7 @@ type
     procedure LoadConfiguration(const iniFile :TCustomIniFile;
                                 const Section :string); virtual;
     function  IsTestMethod: boolean;
+    function  IsGUITestMethod: boolean;
     function  SupportedIfaceType: TSupportedIface;
     function  InterfaceSupports(const Value: TSupportedIface): Boolean;
     function  get_ElapsedTime: Int64;
@@ -379,7 +381,8 @@ type
     constructor Create(const AOwnerMethod: TTestMethod;
                        const AParentPath: string;
                        const AMethod: TTestMethod;
-                       const AMethodName: string); overload;
+                       const AMethodName: string;
+                       const AParent: ITestCase); overload;
     destructor Destroy; override;
   published
     property  ProjectID: Integer read get_ProjectID write set_ProjectID;
@@ -1771,7 +1774,8 @@ end;
 constructor TTestProc.Create(const AOwnerMethod: TTestMethod;
                              const AParentPath: string;
                              const AMethod: TTestMethod;
-                             const AMethodName: string);
+                             const AMethodName: string;
+                             const AParent: ITestCase);
 begin
   Create;
   FMethod := AMethod;
@@ -1783,6 +1787,7 @@ begin
   FDisplayedName := FMethodName;
   FIsTestMethod := IsValidTestMethod(AOwnerMethod);
   FParentPath := AParentPath;
+  FParent := AParent;
 end;
 
 function TTestProc.CurrentTest: ITest;
@@ -2338,6 +2343,13 @@ begin
   Result := FIsTestMethod;
 end;
 
+function TTestProc.IsGUITestMethod: boolean;
+begin
+  // Are we a test method and parent test case is for GUI testing
+  Result := IsTestMethod and
+      Assigned(FParent) and Supports(FParent, IGUITestCase);
+end;
+
 procedure TTestProc.BeginRun;
 begin
   ExecStatus := _Ready;
@@ -2602,7 +2614,7 @@ begin
         if (FParentPath <> '') then
           LParentStr := FParentPath + '.';
         LTest := TTestProc.Create(EnumerateMethods, LParentStr +
-            FDisplayedName, LMethod, LNameOfMethod);
+            FDisplayedName, LMethod, LNameOfMethod, Self);
         Assert(LTest.IsTestMethod, 'Invalid test method');
         FTestIterator.AddTest(LTest);
       end;
@@ -2857,7 +2869,6 @@ var
     Result := ExecStatus;
     LErrors := ExecControl.ErrorCount;  // Hold count so we only bump it once
     FErrorMessage := '';
-    ATest.ParentTestCase := self;
 
     try
       TestSetUpData := ExecControl.TestSetUpData;
@@ -2890,7 +2901,6 @@ var
     FExpectedExcept := nil;
     ExecControl.CurrentTest := nil;
     FTestSetUpData := nil;
-    ATest.ParentTestCase := nil;
   end;
 
   function RunAsTestCase(const ATest: ITestCase): TExecutionStatus;
