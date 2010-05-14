@@ -2499,7 +2499,7 @@ var
   LDummyTestMethod: TTestMethod;
 begin
   LDummyTestMethod := nil;
-  FTestProc := TestFramework.TTestProc.Create(LDummyTestMethod, '', TTestMethod(LDummyTestMethod), '');
+  FTestProc := TestFramework.TTestProc.Create(LDummyTestMethod, '', TTestMethod(LDummyTestMethod), '', Self);
   Check(FTestProc <> nil, 'Still nil after create attempt');
   Check(FTestProc.DisplayedName = '', 'Name should be empty for proc');
   Check(FTestProc.ParentPath = '', 'ParentPath should be empty');
@@ -2514,7 +2514,7 @@ begin
   LParentStr := 'ParentPathStr';
   try
     FTestProc := TestFramework.TTestProc.Create(TestTestProcCreatesNamed, LParentStr,
-      TestTestProcCreatesNamed, 'TestTestProcCreatesNamed');
+      TestTestProcCreatesNamed, 'TestTestProcCreatesNamed', Self);
     Check(FTestProc <> nil, 'Empty After create');
   except
     Check(False, 'Excepetion creating FITestProc');

@@ -144,6 +144,7 @@ type
     function  ParentPath: string;
     function  GetStatus :string;
     function  get_IsTestMethod: boolean;
+    function  get_IsGUITestMethod: boolean;
     function  SupportedIfaceType: TSupportedIface;
     function  get_ExecutedStatus: TExecutionStatus;
     procedure set_ExecutedStatus(const Value: TExecutionStatus);
@@ -886,6 +887,11 @@ end;
 function TTestProxy.get_IsTestMethod: boolean;
 begin
   Result := FITest.IsTestMethod;
+end;
+
+function TTestProxy.get_IsGUITestMethod: boolean;
+begin
+  Result := FITest.IsGUITestMethod;
 end;
 
 function TTestProxy.ParentPath: string;

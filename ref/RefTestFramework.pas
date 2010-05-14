@@ -185,6 +185,7 @@ type
     procedure LoadConfiguration(const iniFile :TCustomIniFile;
                                 const Section :string); virtual;
     function  IsTestMethod: boolean;
+    function  IsGUITestMethod: boolean;
     function  SupportedIfaceType: TSupportedIface;
     function  InterfaceSupports(const Value: TSupportedIface): Boolean;
     function  get_ElapsedTime: Int64;
@@ -2341,6 +2342,13 @@ begin
   Result := FIsTestMethod;
 end;
 
+function TTestProc.IsGUITestMethod: boolean;
+begin
+  // Are we a test method and parent test case is for GUI testing
+  Result := IsTestMethod and
+      Assigned(FParent) and Supports(FParent, IGUITestCase);
+end;
+
 procedure TTestProc.BeginRun;
 begin
   ExecStatus := _Ready;
@@ -2604,7 +2612,7 @@ begin
         if (FParentPath <> '') then
           LParentStr := FParentPath + '.';
         LTest := TTestProc.Create(EnumerateMethods, LParentStr +
-            FDisplayedName, LMethod, LNameOfMethod);
+            FDisplayedName, LMethod, LNameOfMethod{, Self});
         Assert(LTest.IsTestMethod, 'Invalid test method');
         FTestIterator.AddTest(LTest);
       end;
