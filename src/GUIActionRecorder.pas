@@ -45,6 +45,11 @@
  *     the window resized.
  *   Optionally record timing. Calculate time between actions and add delay
  *     to commands to simulate actual usage.
+ *   Detect change in foreground window and add a WaitForNewForegroundWindow
+ *     command.
+ *   Optionally record all mouse movement at set intervals.
+ *   Set mouse position prior to text/key entry command (if pos changed since
+ *     prev click command).
  *)
 
 {$IFDEF LINUX}
@@ -70,38 +75,64 @@ uses
   Controls,
   Forms,
 {$ENDIF}
-  Classes;
+  Classes,
+  Contnrs;
 
 const
   rcs_id: string = '#(@)$Id: GUIActionRecorder.pas,v 1.35 2010/05/04 09:55:00 jarrodh Exp $';
 
-  CAutomationCommandPrefix = 'Automation';
   CEnterTextIntoCommandName = 'EnterTextInto';
   CEnterKeyIntoCommandName = 'EnterKeyInto';
   CEnterKeyCommandName = 'EnterKey';
-  CLeftClickCommandName = 'LeftClick';
-  CLeftClickAtCommandName = 'LeftClickAt';
-  CLeftDoubleClickCommandName = 'LeftDoubleClick';
-  CLeftDoubleClickAtCommandName = 'LeftDoubleClickAt';
-  CRightClickCommandName = 'RightClick';
-  CRightClickAtCommandName = 'RightClickAt';
-  CRightDoubleClickCommandName = 'RightDoubleClick';
-  CRightDoubleClickAtCommandName = 'RightDoubleClickAt';
+  CLeftClickCommand = 'Left';
+  CRightClickCommand = 'Right';
+  CMiddleClickCommand = 'Middle';
+  CDoubleClickCommand = 'Double';
+  CClickCommand = 'Click';
+  CClickAtCommand = 'At';
 
 type
   TGUITestCaseStopRecordingEvent = procedure(Sender: TObject;
       var AStopRecording: boolean) of object;
 
+  TMouseClickState = (mcsSingle, mcsDouble);
+
+  TGUIActionAbs = class abstract(TObject)
+  private
+    FControlName: string;
+  protected
+    function GetCommandName: string; virtual; abstract;
+    function GetCommandParameters: string; virtual;
+    function GetAsString: string;
+    function JoinParams(const AFirst: string; const ASecond: string): string;
+  public
+    constructor Create(const AControlName: string);
+    property ControlName: string read FControlName;
+    property CommandName: string read GetCommandName;
+    property CommandParameters: string read GetCommandParameters;
+    property AsString: string read GetAsString;
+  end;
+
+  TGUIActionList = class(TObjectList)
+  protected
+    function GetItem(AIndex: Integer): TGUIActionAbs;
+    procedure SetItem(AIndex: Integer; AObject: TGUIActionAbs);
+    function GetAsString: string;
+  public
+    property Items[AIndex: Integer]: TGUIActionAbs read GetItem write SetItem; default;
+    property AsString: string read GetAsString;
+  end;
+
   // Singleton
   TGUIActionRecorder = class(TObject)
   private
     FActive: boolean;
+    FActions: TGUIActionList;
     FCommands: TStringList;
     FEnteredText: string;
     FControl: TControl;
     FOnStopRecording: TGUITestCaseStopRecordingEvent;
-    procedure AddCommand(const ACommandName: string;
-        const AOptionalArguments: string = '');
+    procedure AddAction(AAction: TGUIActionAbs);
     procedure FlushTextEntry;
     function CharFromVirtualKey(const AKey: Word): string;
     function CheckKeyState(const AVKCode: Word; var AKeyState: string;
@@ -109,6 +140,7 @@ type
     procedure SetActive(const AValue: boolean);
     procedure SetControl(const AControl: TControl);
     function IsDesignTimeControl(const AControl: TControl): boolean;
+    function ControlName: string;
   public
     constructor Create;
     destructor Destroy; override;
@@ -121,8 +153,53 @@ type
 
     property Active: boolean read FActive write SetActive;
     property Commands: TStringList read FCommands;
+    property Actions: TGUIActionList read FActions;
     property OnStopRecording: TGUITestCaseStopRecordingEvent read
         FOnStopRecording write FOnStopRecording;
+  end;
+
+  TGUIActionEnterTextInto = class(TGUIActionAbs)
+  private
+    FText: string;
+  protected
+    function GetCommandName: string; override;
+    function GetCommandParameters: string; override;
+  public
+    constructor Create(const AControlName: string; const AText: string);
+    property Text: string read FText;
+  end;
+
+  TGUIActionEnterKey = class(TGUIActionAbs)
+  private
+    FKeyCode: Integer;
+    FKeyState: string;
+  protected
+    function GetCommandName: string; override;
+    function GetCommandParameters: string; override;
+  public
+    constructor Create(const AControlName: string; const AKeyCode: Integer;
+        const AKeyState: string);
+    property KeyCode: Integer read FKeyCode;
+    property KeyState: string read FKeyState;
+  end;
+
+  TGUIActionClick = class(TGUIActionAbs)
+  private
+    FX: Integer;
+    FY: Integer;
+    FButton: TMouseButton;
+    FClickState: TMouseClickState;
+  protected
+    function GetCommandName: string; override;
+    function GetCommandParameters: string; override;
+  public
+    constructor Create(const AControlName: string; const AX: Integer;
+        const AY: Integer; const AButton: TMouseButton;
+        const AClickState: TMouseClickState);
+    property X: Integer read FX;
+    property Y: Integer read FY;
+    property Button: TMouseButton read FButton;
+    property ClickState: TMouseClickState read FClickState;
   end;
 
 function GGUIActionRecorder: TGUIActionRecorder;
@@ -144,9 +221,9 @@ resourcestring
 function GGUIActionRecorder: TGUIActionRecorder;
 begin
   if Assigned(URecorder) then
-    result := URecorder
+    Result := URecorder
   else
-    result := TGUIActionRecorder.Create;
+    Result := TGUIActionRecorder.Create;
 end;
 
 function ProcessGetMessageProcHook(AnCode: Integer;
@@ -191,6 +268,68 @@ end;
 //    URecorder.StopRecording;
 //end;
 
+{ TGUIActionAbs }
+
+constructor TGUIActionAbs.Create(const AControlName: string);
+begin
+  inherited Create;
+  FControlName := AControlName;
+end;
+
+function TGUIActionAbs.GetCommandParameters: string;
+begin
+  if FControlName = '' then
+    Result := ''
+  else
+    Result := Format('''%s''', [FControlName]);
+end;
+
+function TGUIActionAbs.GetAsString: string;
+var
+  LParameters: string;
+begin
+  Result := CommandName;
+  LParameters := CommandParameters;
+  if LParameters <> '' then
+    Result := Result + '(' + LParameters + ')';
+end;
+
+function TGUIActionAbs.JoinParams(const AFirst: string;
+  const ASecond: string): string;
+begin
+  Result := AFirst;
+  if (AFirst <> '') and (ASecond <> '') then
+    Result := Result + ', ';
+  Result := Result + ASecond;
+end;
+
+{ TGUIActionList }
+
+function TGUIActionList.GetItem(AIndex: Integer): TGUIActionAbs;
+begin
+  Result := (inherited GetItem(AIndex)) as TGUIActionAbs;
+end;
+
+procedure TGUIActionList.SetItem(AIndex: Integer; AObject: TGUIActionAbs);
+begin
+  inherited SetItem(AIndex, AObject);
+end;
+
+function TGUIActionList.GetAsString: string;
+var
+  LActions: TStringList;
+  I: Integer;
+begin
+  LActions := TStringList.Create;
+  try
+    for I := 0 to Count - 1 do
+      LActions.Add(Items[I].AsString);
+    Result := LActions.Text;
+  finally
+    LActions.Free;
+  end;
+end;
+
 { TGUIActionRecorder }
 
 constructor TGUIActionRecorder.Create;
@@ -201,12 +340,14 @@ begin
   URecorder := Self;
 
   FCommands := TStringList.Create;
+  FActions := TGUIActionList.Create;
   FActive := false;
 end;
 
 destructor TGUIActionRecorder.Destroy;
 begin
   Active := false; // Use setter
+  FActions.Free;
   FCommands.Free;
   URecorder := nil;
   inherited;
@@ -215,6 +356,7 @@ end;
 procedure TGUIActionRecorder.Initialize;
 begin
   FCommands.Clear;
+  FActions.Clear;
 end;
 
 procedure TGUIActionRecorder.Finalize;
@@ -226,30 +368,20 @@ end;
 function TGUIActionRecorder.IsDesignTimeControl(const AControl: TControl):
   boolean;
 begin
-  result := Assigned(FControl) and (FControl.Name <> '');
+  Result := Assigned(FControl) and (FControl.Name <> '');
 end;
 
-procedure TGUIActionRecorder.AddCommand(const ACommandName: string;
-  const AOptionalArguments: string);
-var
-  LCommand: string;
-  LArguments: string;
+function TGUIActionRecorder.ControlName: string;
 begin
   if IsDesignTimeControl(FControl) then
-    LArguments := Format('''%s''', [FControl.Name])
+    Result := FControl.Name
   else
-    LArguments := '';
+    Result := '';
+end;
 
-  if AOptionalArguments <> '' then
-  begin
-    if LArguments <> '' then
-      LArguments := LArguments + ', ';
-    LArguments := LArguments + AOptionalArguments;
-  end;
-
-  LCommand := Format('%s.%s(%s);', [CAutomationCommandPrefix, ACommandName,
-      LArguments]);
-  FCommands.Add(LCommand);
+procedure TGUIActionRecorder.AddAction(AAction: TGUIActionAbs);
+begin
+  FActions.Add(AAction);
 end;
 
 procedure TGUIActionRecorder.SetActive(const AValue: boolean);
@@ -303,7 +435,7 @@ procedure TGUIActionRecorder.FlushTextEntry;
 begin
   if Assigned(FControl) and (FEnteredText <> '') then
   begin
-    AddCommand(CEnterTextIntoCommandName, Format('''%s''', [FEnteredText]));
+    AddAction(TGUIActionEnterTextInto.Create(ControlName, FEnteredText));
     FEnteredText := '';
   end;
 end;
@@ -345,20 +477,21 @@ var
   LControl: TControl;
   LKeyState: string;
   LPoint: TPoint;
-  LCommandName: string;
+  LButton: TMouseButton;
+  LClickState: TMouseClickState;
 
   // Translate control co-ords to window co-ords as we don't have a
   // repeatable window name or handle to rely on so we record it as
   // a click at the position relative to root window of the control.
-  function _WindowCoords: TPoint;
+  function _ControlToWindowCoords(const APoint: TPoint): TPoint;
   var
     LWindowHwnd: HWND;
   begin
-    result := Point(AX, AY);
-    ClientToScreen(AHwnd, result);
+    Result := APoint;
+    ClientToScreen(AHwnd, Result);
     //LWindowHwnd := GetAncestor(AHwnd, GA_ROOT);
     LWindowHwnd := GetForegroundWindow;
-    ScreenToClient(LWindowHwnd, result);
+    ScreenToClient(LWindowHwnd, Result);
   end;
 
 begin
@@ -368,6 +501,7 @@ begin
 
   // See if the window handle is for a VCL control
   LControl := FindControl(AHwnd);
+  LPoint := Point(AX, AY);
 
   case AMessage of
     WM_SYSKEYDOWN, WM_KEYDOWN:
@@ -397,10 +531,7 @@ begin
           else
           begin // Special characters
             FlushTextEntry;
-            if IsDesignTimeControl(FControl) then
-              AddCommand(CEnterKeyIntoCommandName, Format('%d, [%s]', [AWParam, LKeyState]))
-            else
-              AddCommand(CEnterKeyCommandName, Format('%d, [%s]', [AWParam, LKeyState]));
+            AddAction(TGUIActionEnterKey.Create(ControlName, AWParam, LKeyState));
           end;
         end;
       end;
@@ -412,26 +543,110 @@ begin
         SetControl(LControl);
         FlushTextEntry;
 
-        // Note: See constants for valid command names.
         if (AMessage = WM_LBUTTONDOWN) or (AMessage = WM_LBUTTONDBLCLK) then
-          LCommandName := 'Left'
+          LButton := mbLeft
         else
-          LCommandName := 'Right';
-        if (AMessage = WM_LBUTTONDBLCLK) or (AMessage = WM_RBUTTONDBLCLK) then
-          LCommandName :=  LCommandName + 'Double';
-        LCommandName := LCommandName + 'Click';
+          LButton := mbRight;
 
-        // Send directly to control if it can be identified, else find control
-        // at runtime based on co-ords from active window.
-        if IsDesignTimeControl(FControl) then
-          AddCommand(LCommandName, Format('%d, %d', [AX, AY]))
+        if (AMessage = WM_LBUTTONDBLCLK) or (AMessage = WM_RBUTTONDBLCLK) then
+          LClickState := mcsDouble
         else
-        begin
-          LPoint := _WindowCoords;
-          Addcommand(LCommandName + 'At', Format('%d, %d', [LPoint.X, LPoint.Y]));
-        end;
+          LClickState := mcsSingle;
+
+        // If control cannot be identified by name then find the control
+        // at runtime based on co-ords from foreground window.
+        if not IsDesignTimeControl(FControl) then
+          LPoint := _ControlToWindowCoords(LPoint);
+
+        AddAction(TGUIActionClick.Create(ControlName, LPoint.X, LPoint.Y,
+            LButton, LClickState));
       end;
   end;
+end;
+
+{ TGUIActionEnterTextInto }
+
+constructor TGUIActionEnterTextInto.Create(const AControlName: string;
+  const AText: string);
+begin
+  inherited Create(AControlName);
+  FText := AText;
+end;
+
+function TGUIActionEnterTextInto.GetCommandName: string;
+begin
+  Result := CEnterTextIntoCommandName;
+end;
+
+function TGUIActionEnterTextInto.GetCommandParameters: string;
+begin
+  Result := JoinParams((inherited GetCommandParameters),
+      Format('''%s''', [FText]));
+end;
+
+{ TGUIActionEnterKey }
+
+constructor TGUIActionEnterKey.Create(const AControlName: string;
+  const AKeyCode: Integer; const AKeyState: string);
+begin
+  inherited Create(AControlName);
+  FKeyCode := AKeyCode;
+  FKeyState := AKeyState;
+end;
+
+function TGUIActionEnterKey.GetCommandName: string;
+begin
+  if ControlName = '' then
+    Result := CEnterKeyCommandName
+  else
+    Result := CEnterKeyIntoCommandName;
+end;
+
+function TGUIActionEnterKey.GetCommandParameters: string;
+begin
+  Result := JoinParams((inherited GetCommandParameters),
+      Format('%d, [%s]', [FKeyCode, FKeyState]));
+end;
+
+{ TGUIActionClick }
+
+constructor TGUIActionClick.Create(const AControlName: string;
+  const AX: Integer; const AY: Integer; const AButton: TMouseButton;
+  const AClickState: TMouseClickState);
+begin
+  inherited Create(AControlName);
+  FX := AX;
+  FY := AY;
+  FButton := AButton;
+  FClickState := AClickState;
+end;
+
+function TGUIActionClick.GetCommandName: string;
+begin
+  case FButton of
+    mbLeft: Result := CLeftClickCommand;
+    mbRight: Result := CRightClickCommand;
+//    mbMiddle: Result := CMiddleClickCommand;
+  else
+    raise Exception.Create('Unhandled mouse button: ' + IntToStr(Ord(FButton)));
+  end;
+
+  case FClickState of
+    mcsSingle: ;
+    mcsDouble: Result := Result + CDoubleClickCommand;
+  else
+    raise Exception.Create('Unhandled click state: ' + IntToStr(Ord(FClickState)));
+  end;
+
+  Result := Result + CClickCommand;
+  if ControlName = '' then
+    Result := Result + CClickAtCommand;
+end;
+
+function TGUIActionClick.GetCommandParameters: string;
+begin
+  Result := JoinParams((inherited GetCommandParameters),
+      Format('%d, %d', [FX, FY]));
 end;
 
 initialization

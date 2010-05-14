@@ -558,6 +558,8 @@ const
   siTestTime = 4;
   siTotalTestTime = 5;
 
+  // TGUITestCase automation property.
+  CGUIAutomationCommandPrefix = 'Automation';
 
 
 procedure RunTest(Test: ITestProxy);
@@ -2558,8 +2560,9 @@ begin
     LCommands := TStringList.Create;
     try
       LCommands.Add('  ThreadedExecute(procedure begin');
-      for I := 0 to GGUIActionRecorder.Commands.Count - 1 do
-        LCommands.Add('    ' + GGUIActionRecorder.Commands.Strings[I]);
+      for I := 0 to GGUIActionRecorder.Actions.Count - 1 do
+        LCommands.Add('    ' + CGUIAutomationCommandPrefix + '.' +
+            GGUIActionRecorder.Actions[I].AsString + ';');
       LCommands.Add('  end);');
       Clipbrd.Clipboard.AsText := LCommands.Text;
       ErrorMessageRTF.Lines.AddStrings(LCommands);

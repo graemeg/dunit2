@@ -43,7 +43,6 @@ object GUITestRunner: TGUITestRunner
     BevelOuter = bvNone
     BorderWidth = 2
     TabOrder = 0
-    ExplicitHeight = 587
     object ErrorBoxSplitter: TSplitter
       Left = 2
       Top = 544
@@ -68,7 +67,6 @@ object GUITestRunner: TGUITestRunner
       BevelOuter = bvNone
       ParentColor = True
       TabOrder = 0
-      ExplicitHeight = 502
       object ResultsSplitter: TSplitter
         Left = 0
         Top = 363
@@ -92,7 +90,6 @@ object GUITestRunner: TGUITestRunner
         Constraints.MinHeight = 100
         ParentColor = True
         TabOrder = 0
-        ExplicitHeight = 323
         object TestTree: TTreeView
           Left = 2
           Top = 57
@@ -112,7 +109,6 @@ object GUITestRunner: TGUITestRunner
           OnClick = TestTreeClick
           OnKeyPress = TestTreeKeyPress
           OnMouseDown = TestTreeMouseDown
-          ExplicitHeight = 264
         end
         object ToolBar1: TToolBar
           Left = 2
@@ -301,7 +297,6 @@ object GUITestRunner: TGUITestRunner
         Constraints.MinHeight = 140
         ParentColor = True
         TabOrder = 1
-        ExplicitTop = 328
         object ProgressPanel: TPanel
           Left = 2
           Top = 2
@@ -395,7 +390,7 @@ object GUITestRunner: TGUITestRunner
           Left = 2
           Top = 48
           Width = 493
-          Height = 39
+          Height = 47
           Hint = 'Shows statistics about the current/last run'
           Align = alTop
           Columns = <
@@ -451,9 +446,9 @@ object GUITestRunner: TGUITestRunner
         end
         object FailureListView: TListView
           Left = 2
-          Top = 87
+          Top = 95
           Width = 493
-          Height = 85
+          Height = 77
           Hint = 'Shows the list of failed tests'
           Align = alClient
           Columns = <
@@ -503,7 +498,6 @@ object GUITestRunner: TGUITestRunner
       ParentColor = True
       TabOrder = 1
       OnResize = ErrorBoxPanelResize
-      ExplicitTop = 510
       object ErrorMessageRTF: TRichEdit
         Left = 2
         Top = 2
