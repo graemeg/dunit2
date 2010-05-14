@@ -28,6 +28,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UnitSearchPath>..\..\externals\jcl\source\include;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<DCC_ExeOutput>_bin</DCC_ExeOutput>
 			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
 			<DCC_DependencyCheckOutputName>_bin\DUnit2.exe</DCC_DependencyCheckOutputName>

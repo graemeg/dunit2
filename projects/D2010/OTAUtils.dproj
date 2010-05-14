@@ -23,6 +23,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UnitSearchPath>..\..\externals\jcl\source\include;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
 			<DCC_BplOutput>_bin</DCC_BplOutput>
 			<DCC_DependencyCheckOutputName>_bin\OTAUtils.bpl</DCC_DependencyCheckOutputName>
@@ -38,7 +39,6 @@
 			<GenDll>true</GenDll>
 			<DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
 			<DCC_DebugInformation>false</DCC_DebugInformation>
-			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
 			<GenPackage>true</GenPackage>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1)'!=''">

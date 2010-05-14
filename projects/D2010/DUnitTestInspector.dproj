@@ -29,11 +29,10 @@
 			<DCC_DependencyCheckOutputName>_bin\DUnitTestInspector.bpl</DCC_DependencyCheckOutputName>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DCC_Description>DUnit Test Inspector</DCC_Description>
-			<DCC_UnitSearchPath>_bin;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_UnitSearchPath>_bin;..\..\externals\jcl\source\include;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<GenPackage>true</GenPackage>
 			<GenDll>true</GenDll>
 			<DesignOnlyPackage>true</DesignOnlyPackage>
-			<DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1)'!=''">
 			<Version>7.0</Version>
