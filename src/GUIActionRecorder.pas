@@ -56,6 +56,8 @@
 {$DEFINE DUNIT_CLX}
 {$ENDIF}
 
+{$I jedi.inc}
+
 unit GUIActionRecorder;
 
 interface
@@ -214,6 +216,24 @@ var
   URecorder: TGUIActionRecorder;
   UProcessGetMessageHook: HHOOK;
 //  UCallWndProcHook: HHOOK;
+
+{$IFNDEF LINUX}
+  {$IFNDEF DELPHI2010_UP}
+
+const
+  MAPVK_VK_TO_VSC    = 0;
+  {$EXTERNALSYM MAPVK_VK_TO_VSC}
+  MAPVK_VSC_TO_VK    = 1;
+  {$EXTERNALSYM MAPVK_VSC_TO_VK}
+  MAPVK_VK_TO_CHAR   = 2;
+  {$EXTERNALSYM MAPVK_VK_TO_CHAR}
+  MAPVK_VSC_TO_VK_EX = 3;
+  {$EXTERNALSYM MAPVK_VSC_TO_VK_EX}
+  MAPVK_VK_TO_VSC_EX = 4;
+  {$EXTERNALSYM MAPVK_VK_TO_VSC_EX}
+
+  {$ENDIF}
+{$ENDIF}
 
 resourcestring
   CSingleInstanceErrorMessage = 'Only one instance of TGUIActionRecorder is permitted';
