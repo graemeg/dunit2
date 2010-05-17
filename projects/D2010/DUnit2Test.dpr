@@ -68,7 +68,7 @@ uses
   UnitTestFramework in '..\..\tests\UnitTestFramework.pas',
   UnitTestModules in '..\..\tests\UnitTestModules.pas',
   UnitTestFrameworkProxy in '..\..\tests\UnitTestFrameworkProxy.pas',
-  {$IFDEF FASTMM} FastMMMonitorTest in '..\..\tests\FastMMMonitorTest.pas', {$ENDIF}}
+  {$IFDEF FASTMM} FastMMMonitorTest in '..\..\tests\FastMMMonitorTest.pas', {$ENDIF}
   SharedTestClasses in '..\..\tests\SharedTestClasses.pas',
   TestExtensions in '..\..\src\TestExtensions.pas',
   TextTestRunner in '..\..\src\TextTestRunner.pas',
