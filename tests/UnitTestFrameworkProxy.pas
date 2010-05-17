@@ -38,6 +38,8 @@
   '!!!Alert SELFTEST must be defined in project options conditionals'
 {$ENDIF}
 
+{$I jedi.inc}
+
 unit UnitTestFrameworkProxy;
 interface
 uses
@@ -94,8 +96,7 @@ type
 
   {$ifdef fastmm}
     {$ifndef clr}
-      {$ifndef VER130}
-        {$IFNDEF VER140}
+      {$ifdef DELPHI7_UP}
   TLeaksAndPasses = class(TTestCase)
   private
     FSetUpObject:    TObject;
@@ -140,7 +141,6 @@ type
     procedure ValidateMultiLeakHandling;
     procedure ValidateXMLEffectOnMultiLeakHanding;
   end;
-        {$ENDIF}
       {$endif}
     {$endif}
   {$endif}
@@ -167,12 +167,10 @@ uses
   TestFramework,
   {$ifndef clr}
   TestModules,
-   {$IFNDEF VER130}
-     {$IFNDEF VER140}
-       XMLListener,
-     {$ENDIF}
+    {$IFDEF XMLLISTENER}
+     XMLListener,
      Windows,
-   {$ENDIF}
+    {$ENDIF}
   {$ENDIF}
   XPVistaSupport,
   SharedTestClasses,
@@ -803,7 +801,9 @@ begin
   FProject1 := LPM.Project[0];
   FTestFrameworkProxy := TestFrameworkProxy.RegisteredTests;
   FTestResult := GetTestResult;
+{$ifdef XMLLISTENER}
   FTestResult.AddListener(TXMLListener.Create(FXMLFile));
+{$endif}
   TestFrameWork.RegisteredTests.FailsOnMemoryLeak := True;
   LCount := FTestFrameworkProxy.CountEnabledTestCases;
   Check(LCount = 9,
@@ -823,7 +823,9 @@ begin
   Check(FTestResult.ErrorCount = 0,
     'TestResult Error count should be 0 but was ' + IntToStr(FTestResult.ErrorCount));
 
+{$ifdef XMLLISTENER}
   Check(FileExists(FXMLFile), 'XML File was not created');
+{$endif}
 end;
         {$ENDIF}
       {$endif}

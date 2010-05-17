@@ -39,9 +39,12 @@ unit TextTestRunner;
   {$UNDEF FASTMM}
 {$ENDIF}
 
-//TODO: Resolve XML changes introduced in D2009
-{$UNDEF XMLLISTENER}
-//{$DEFINE XMLLISTENER}
+{$I jedi.inc}
+
+//TODO: Resolve XML changes introduced in D2010 - dropping of xdom in source
+{$IFNDEF DELPHI2010_UP}
+  {$DEFINE XMLLISTENER}
+{$ENDIF}
 
 interface
 uses

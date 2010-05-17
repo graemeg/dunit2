@@ -95,7 +95,6 @@
 			<DCCReference Include="..\..\src\TestModules.pas"/>
 			<DCCReference Include="..\..\src\GUITesting.pas"/>
 			<DCCReference Include="..\..\src\XPVistaSupport.pas"/>
-			<DCCReference Include="..\..\src\XMLListener.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

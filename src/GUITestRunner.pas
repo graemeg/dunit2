@@ -38,9 +38,12 @@
 unit GUITestRunner;
 interface
 
-//TODO: Resolve XML changes introduced in D2009
-{$UNDEF XMLLISTENER}
-//{$DEFINE XMLLISTENER}
+{$I jedi.inc}
+
+//TODO: Resolve XML changes introduced in D2010 - dropping of xdom
+{$IFNDEF DELPHI2010_UP}
+  {$DEFINE XMLLISTENER}
+{$ENDIF}
 
 uses
   Windows, Classes, Graphics, Controls, Forms,

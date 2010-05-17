@@ -66,8 +66,7 @@ uses
   TestExtensions in '..\..\src\TestExtensions.pas',
   TestModules in '..\..\src\TestModules.pas',
   GUITesting in '..\..\src\GUITesting.pas',
-  TextTestRunner in '..\..\src\TextTestRunner.pas',
-  XMLListener in '..\..\src\XMLListener.pas';
+  TextTestRunner in '..\..\src\TextTestRunner.pas';
 
 {$R *.RES}
 

@@ -24,9 +24,9 @@
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
 			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
-			<DCC_BplOutput>_bin</DCC_BplOutput>
+			<DCC_BplOutput>$(BDSCOMMONDIR)\Bpl</DCC_BplOutput>
 			<DCC_DcpOutput>_bin</DCC_DcpOutput>
-			<DCC_DependencyCheckOutputName>_bin\DUnitTestInspector.bpl</DCC_DependencyCheckOutputName>
+			<DCC_DependencyCheckOutputName>C:\Users\Public\Documents\RAD Studio\7.0\Bpl\DUnitTestInspector.bpl</DCC_DependencyCheckOutputName>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DCC_Description>DUnit Test Inspector</DCC_Description>
 			<DCC_UnitSearchPath>_bin;..\..\externals\jcl\source\include;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
@@ -42,6 +42,7 @@
 			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_DependencyCheckOutputName>_bin\DUnitTestInspector.bpl</DCC_DependencyCheckOutputName>
 			<Version>7.0</Version>
 			<DCC_UnitSearchPath>$(BDS)\source\ToolsAPI;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<DCC_ResourcePath>$(BDS)\source\ToolsAPI;$(DCC_ResourcePath)</DCC_ResourcePath>

@@ -48,23 +48,20 @@ program DUnit2;
 {$ENDIF}
 
 uses
-  {$IFDEF FASTMM}
-    FastMM4,
-  {$ENDIF}
-  TestFrameworkIfaces      in '..\..\src\TestFrameworkIfaces.pas',
-  TestFramework            in '..\..\src\TestFramework.pas',
+  {$IFDEF FASTMM} FastMM4, {$ENDIF}
+  TestFrameworkIfaces in '..\..\src\TestFrameworkIfaces.pas',
+  TestFramework in '..\..\src\TestFramework.pas',
   TestFrameworkProxyIfaces in '..\..\src\TestFrameworkProxyIfaces.pas',
-  TestListenerIface        in '..\..\src\TestListenerIface.pas',
-  ProjectsManagerIface     in '..\..\src\ProjectsManagerIface.pas',
-  XPVistaSupport           in '..\..\src\XPVistaSupport.pas',
-  ProjectsManager          in '..\..\src\ProjectsManager.pas',
-  TestFrameworkProxy       in '..\..\src\TestFrameworkProxy.pas',
-  GUITestRunner            in '..\..\src\GUITestRunner.pas',
-  TestExtensions           in '..\..\src\TestExtensions.pas',
-  TextTestRunner           in '..\..\src\TextTestRunner.pas',
-  TestModules              in '..\..\src\TestModules.pas',
-  GUITesting               in '..\..\src\GUITesting.pas',
-  XMLListener              in '..\..\src\XMLListener.pas';
+  TestListenerIface in '..\..\src\TestListenerIface.pas',
+  ProjectsManagerIface in '..\..\src\ProjectsManagerIface.pas',
+  XPVistaSupport in '..\..\src\XPVistaSupport.pas',
+  ProjectsManager in '..\..\src\ProjectsManager.pas',
+  TestFrameworkProxy in '..\..\src\TestFrameworkProxy.pas',
+  GUITestRunner in '..\..\src\GUITestRunner.pas',
+  TestExtensions in '..\..\src\TestExtensions.pas',
+  TextTestRunner in '..\..\src\TextTestRunner.pas',
+  TestModules in '..\..\src\TestModules.pas',
+  GUITesting in '..\..\src\GUITesting.pas';
 
 {$R *.RES}
 

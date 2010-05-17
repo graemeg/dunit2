@@ -34,11 +34,11 @@
  * The DUnit group at SourceForge <http://dunit.sourceforge.net>
  *
  *)
-{$UNDEF XMLLISTENER}
-{$IFNDEF VER130}
-  {$IFNDEF VER140}
-    {$DEFINE XMLLISTENER}
-  {$ENDIF}
+
+{$I jedi.inc}
+//TODO: Resolve XML changes introduced in D2010 - xdom dropped from source
+{$IFNDEF DELPHI2010_UP}
+  {$DEFINE XMLLISTENER}
 {$ENDIF}
 
 
