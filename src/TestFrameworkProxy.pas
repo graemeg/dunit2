@@ -464,7 +464,8 @@ end;
 procedure TITestResult.ReleaseListeners;
 begin
   try
-    FTestListenerProxy.ReleaseListeners;
+    if Assigned(FTestListenerProxy) then
+      FTestListenerProxy.ReleaseListeners;
   finally
     FTestListenerProxy := nil;
   end;
