@@ -380,7 +380,8 @@ type
     constructor Create(const OwnerProc: TTestMethod;
                        const ParentPath: string;
                        const AMethod: TTestMethod;
-                       const AMethodName: string); overload;
+                       const AMethodName: string;
+                       const AParent: ITestCase); overload;
     destructor Destroy; override;
   published
     property  ProjectID: Integer read get_ProjectID write set_ProjectID;
@@ -1775,7 +1776,8 @@ end;
 constructor TTestProc.Create(const OwnerProc: TTestMethod;
                              const ParentPath: string;
                              const AMethod: TTestMethod;
-                             const AMethodName: string);
+                             const AMethodName: string;
+                             const AParent: ITestCase);
 begin
   Create;
   FMethod := AMethod;
@@ -1787,6 +1789,7 @@ begin
   FDisplayedName := FMethodName;
   FIsTestMethod := IsValidTestMethod(OwnerProc);
   FParentPath := ParentPath;
+  FParent := AParent;
 end;
 
 function TTestProc.CurrentTest: ITest;
@@ -2612,7 +2615,7 @@ begin
         if (FParentPath <> '') then
           LParentStr := FParentPath + '.';
         LTest := TTestProc.Create(EnumerateMethods, LParentStr +
-            FDisplayedName, LMethod, LNameOfMethod{, Self});
+            FDisplayedName, LMethod, LNameOfMethod, Self);
         Assert(LTest.IsTestMethod, 'Invalid test method');
         FTestIterator.AddTest(LTest);
       end;

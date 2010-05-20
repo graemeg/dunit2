@@ -338,6 +338,7 @@ type
     FRunning:       Boolean;
     FTests:         TInterfaceList;
     FSelectedTests: TInterfaceList;
+    FSelectedTestCount: Integer;
     FTotalTime:     Int64;
     FNoChecksStr:   string;
     FUpdateTimer:   TTimer;
@@ -371,6 +372,7 @@ type
     procedure CreateSearchPanel(const AOwner: TWinControl);
     procedure CreateSearchController(const ASearchPanel: TGUISearchPanel;
       const ATreeView: TTreeView);
+    procedure InitResultsView;
   protected
     procedure OnUpdateTimer(Sender: TObject);
     function  get_TestResult: TTestResult;
@@ -528,6 +530,13 @@ const
   imgEXCLUDED        = 4;
   imgPARENT_EXCLUDED = 5;
 
+  siTestsRun = 0;
+  siFailures = 1;
+  siErrors = 2;
+  siWarnings = 3;
+  siTestTime = 4;
+  siTotalTestTime = 5;
+
 procedure RunTest(Test: ITestProxy);
 begin
   with TRefGUITestRunner.Create(nil) do
@@ -594,6 +603,20 @@ begin
 end;
 
 { TRefGUITestRunner }
+
+procedure TRefGUITestRunner.InitResultsView;
+var
+  totalTests: TListItem;
+  i: integer;
+
+begin
+  ResultsView.Items.Clear;
+  totalTests := ResultsView.Items.Add;
+
+  for i := siTestsRun to siTotalTestTime do
+    totalTests.SubItems.Add('');
+
+end;
 
 procedure TRefGUITestRunner.InitTree;
 begin
@@ -1006,9 +1029,9 @@ procedure TRefGUITestRunner.RefreshTestCount;
 begin
   TotalTestsCount := (FSuite as ITestProxy).CountEnabledTestCases;
   if Assigned(Suite) then
-    ResultsView.Items[0].SubItems[0] := IntToStr(TotalTestsCount)
+    ResultsView.Items[0].Caption := IntToStr(TotalTestsCount)
   else
-    ResultsView.Items[0].SubItems[0] := '';
+    ResultsView.Items[0].Caption := '';
 end;
 
 procedure TRefGUITestRunner.SetNodeState(Node: TTreeNode; Enabled :boolean);
@@ -1074,6 +1097,7 @@ procedure TRefGUITestRunner.UpdateStatus(const fullUpdate:Boolean);
 var
   i: Integer;
   TestNumber: Integer;
+  Results : TListItem;
 
    function FormatElapsedTime(milli: Int64):string;
    var
@@ -1089,14 +1113,14 @@ var
      Result := Format('%d:%2.2d:%2.2d.%3.3d', [H, nn, ss, zzz]);
    end;
 begin
-  if ResultsView.Items.Count = 0 then
-    Exit;
+  Assert(ResultsView.Items.Count > 0, 'ResultsView unpopulated from .dfm file');
+  Results := ResultsView.Items[0];
 
   if fullUpdate then
     if Assigned(Suite) then
-      ResultsView.Items[0].SubItems[0] := IntToStr(TotalTestsCount)
+      Results.Caption := IntToStr(TotalTestsCount)
     else
-      ResultsView.Items[0].SubItems[0] := '';
+      Results.Caption := '';
 
   if TestResult <> nil then
   begin
@@ -1105,15 +1129,12 @@ begin
     FTotalTime := TestResult.TotalTime;
     if fullUpdate or FTimerExpired or ((TestNumber and 15) = 0) or FTestFailed then
     begin
-      with ResultsView.Items[0] do
-      begin
-        SubItems[1] := IntToStr(TestNumber);
-        SubItems[2] := IntToStr(TestResult.FailureCount);
-        SubItems[3] := IntToStr(TestResult.ErrorCount);
-        SubItems[4] := IntToStr(TestResult.WarningCount + TestResult.Overrides);
-        SubItems[5] := FormatElapsedTime(TestResult.TotalTime);
-        SubItems[6] := FormatElapsedTime(FTotalTime);
-      end;
+      Results.SubItems[siTestsRun] := IntToStr(TestNumber);
+      Results.SubItems[siFailures] := IntToStr(TestResult.FailureCount);
+      Results.SubItems[siErrors] := IntToStr(TestResult.ErrorCount);
+      Results.SubItems[siWarnings] := IntToStr(TestResult.WarningCount + TestResult.Overrides);
+      Results.SubItems[siTestTime] := FormatElapsedTime(TestResult.TotalTime);
+      Results.SubItems[siTotalTestTime] := FormatElapsedTime(FTotalTime);
       with TestResult do
       begin
         ScoreBar.Position  := TestNumber - (FailureCount + ErrorCount);
@@ -1136,18 +1157,15 @@ begin
   end
   else
   begin  {TestResult = nil}
-    with ResultsView.Items[0] do
+    if (Results.Caption = '0') or (Results.Caption = '') then
     begin
-      if (SubItems[0] = '0') or (subItems[0] = '') then
-      begin
-        for i := 1 to 6 do
-          SubItems[i] := ''
-      end
-      else
-      begin
-        SubItems[5] := FormatElapsedTime(SelectedTest.ElapsedTestTime);
-        SubItems[6] := FormatElapsedTime(FTotalTime);
-      end;
+      for i := siTestsRun to siTotalTestTime do
+        Results.SubItems[i] := ''
+    end
+    else
+    begin
+      Results.SubItems[siTestTime] := FormatElapsedTime(SelectedTest.ElapsedTestTime);
+      Results.SubItems[siTotalTestTime] := FormatElapsedTime(FTotalTime);
     end;
 
     ResetProgress;
@@ -1363,33 +1381,28 @@ procedure TRefGUITestRunner.SetUp;
 var
   i: Integer;
   Node: TTreeNode;
+  Results: TListItem;
+
 begin
   FailureListView.Items.Clear;
   ResetProgress;
   Update;
+  Assert(ResultsView.Items.Count > 0, 'ResultsView unpopulated in .dfm file');
+  Results := ResultsView.Items[0];
+  Results.Caption := '';
+  for i := siTestsRun to siTotalTestTime do
+    Results.SubItems[i] := '';
 
-  if ResultsView.Items.Count > 0 then
-    with ResultsView.Items[0] do
-    begin
-      SubItems[0] := '';    //Test Count
-      SubItems[1] := '';    //Tests Run
-      SubItems[2] := '';    //Failures
-      SubItems[3] := '';    //Errors
-      SubItems[4] := '';    //Warnings
-      SubItems[5] := '';    //Test's Time
-      SubItems[6] := '';    //Total Test Time
+  if Suite <> nil then
+  begin
+    TotalTestsCount := Suite.countEnabledTestCases;
+    Results.Caption := IntToStr(TotalTestsCount);
+    ProgressBar.Max := TotalTestsCount;
+  end
+  else
+    ProgressBar.Max:= 10000;
 
-      if Suite <> nil then
-      begin
-        TotalTestsCount := Suite.countEnabledTestCases;
-        SubItems[0] := IntToStr(TotalTestsCount);
-        ProgressBar.Max := TotalTestsCount;
-      end
-      else
-        ProgressBar.Max:= 10000;
-
-      ScoreBar.Max := ProgressBar.Max;
-    end;
+  ScoreBar.Max := ProgressBar.Max;
 
   for i := 0 to TestTree.Items.Count - 1 do
   begin
@@ -1427,8 +1440,9 @@ begin
   ClearFailureMessage;
   FUpdateTimer := TTimer.Create(Self);
   FUpdateTimer.Interval := 200;
-  FUpdateTimer.Enabled :=False;
+  FUpdateTimer.Enabled := False;
   FUpdateTimer.OnTimer := OnUpdateTimer;
+  InitResultsView;
   SetUp;
   HoldOptions(False);
 
@@ -1470,7 +1484,6 @@ begin
 
 
   SetupGUINodes;
-  ResultsView.Columns[8].Width := ResultsView.Columns[8].Width;
 end;
 
 procedure TRefGUITestRunner.TestTreeClick(Sender: TObject);
@@ -1588,6 +1601,7 @@ begin
   end;
 end;
 
+{$WARN UNSAFE_CODE OFF}
 function TRefGUITestRunner.StripAllCRLFs(const AString: string): string;
 var
   Src, Dst: PChar;
@@ -1613,6 +1627,7 @@ begin
   // re-sync string length with position of null terminator
   Result := PChar(Result);
 end;
+{$WARN UNSAFE_CODE ON}
 
 procedure TRefGUITestRunner.FailureListViewDblClick(Sender: TObject);
 var
@@ -2360,14 +2375,18 @@ begin
   FSelectedTests.Free;
   FSelectedTests := nil;
   FSelectedTests := TInterfaceList.Create;
+  FSelectedTestCount := 0;
 
   ANode := TestTree.Selected;
-
-  while Assigned(ANode) do
+  if Assigned(ANode) then
   begin
-    ATest := NodeToTest(ANode);
-    FSelectedTests.Add(ATest as ITestProxy);
-    ANode := ANode.Parent;
+    while Assigned(ANode) do
+    begin
+      ATest := NodeToTest(ANode);
+      FSelectedTests.Add(ATest as ITestProxy);
+      ANode := ANode.Parent;
+    end;
+    FSelectedTestCount := 1;
   end;
 end;
 
@@ -2375,8 +2394,8 @@ procedure TRefGUITestRunner.RunSelectedTestActionExecute(Sender: TObject);
 begin
   SetUp;
   ListSelectedTests;
-  ProgressBar.Max := 1;
-  ScoreBar.Max    := 1;
+  ProgressBar.Max := FSelectedTestCount;
+  ScoreBar.Max    := FSelectedTestCount;
   HoldOptions(True);
   try
     RunTheTest(Suite);

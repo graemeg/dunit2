@@ -139,7 +139,9 @@ type
     procedure TearDownOnce; override;
   published
     procedure ValidateMultiLeakHandling;
+{$IFDEF XMLLISTENER}
     procedure ValidateXMLEffectOnMultiLeakHanding;
+{$ENDIF}
   end;
       {$endif}
     {$endif}
@@ -790,6 +792,7 @@ begin
     'Execution count should be 9 but was ' + IntToStr(LExecControl.ExecutionCount));
 end;
 
+{$IFDEF XMLLISTENER}
 procedure TTestMultiLeakHandling.ValidateXMLEffectOnMultiLeakHanding;
 var
   LCount: Integer;
@@ -801,9 +804,7 @@ begin
   FProject1 := LPM.Project[0];
   FTestFrameworkProxy := TestFrameworkProxy.RegisteredTests;
   FTestResult := GetTestResult;
-{$ifdef XMLLISTENER}
   FTestResult.AddListener(TXMLListener.Create(FXMLFile));
-{$endif}
   TestFrameWork.RegisteredTests.FailsOnMemoryLeak := True;
   LCount := FTestFrameworkProxy.CountEnabledTestCases;
   Check(LCount = 9,
@@ -823,10 +824,9 @@ begin
   Check(FTestResult.ErrorCount = 0,
     'TestResult Error count should be 0 but was ' + IntToStr(FTestResult.ErrorCount));
 
-{$ifdef XMLLISTENER}
   Check(FileExists(FXMLFile), 'XML File was not created');
-{$endif}
 end;
+{$ENDIF}
         {$ENDIF}
       {$endif}
     {$endif}
