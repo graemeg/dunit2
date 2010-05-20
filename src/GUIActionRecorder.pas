@@ -130,7 +130,6 @@ type
   private
     FActive: boolean;
     FActions: TGUIActionList;
-    FCommands: TStringList;
     FEnteredText: string;
     FControl: TControl;
     FOnStopRecording: TGUITestCaseStopRecordingEvent;
@@ -154,7 +153,6 @@ type
     procedure StopRecording;
 
     property Active: boolean read FActive write SetActive;
-    property Commands: TStringList read FCommands;
     property Actions: TGUIActionList read FActions;
     property OnStopRecording: TGUITestCaseStopRecordingEvent read
         FOnStopRecording write FOnStopRecording;
@@ -359,7 +357,6 @@ begin
   inherited;
   URecorder := Self;
 
-  FCommands := TStringList.Create;
   FActions := TGUIActionList.Create;
   FActive := false;
 end;
@@ -368,14 +365,12 @@ destructor TGUIActionRecorder.Destroy;
 begin
   Active := false; // Use setter
   FActions.Free;
-  FCommands.Free;
   URecorder := nil;
   inherited;
 end;
 
 procedure TGUIActionRecorder.Initialize;
 begin
-  FCommands.Clear;
   FActions.Clear;
 end;
 

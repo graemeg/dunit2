@@ -108,6 +108,7 @@ type
 
   protected
     procedure SyncMessages;
+    procedure SyncSleep(const AInterval: Integer);
     function WaitForWindowEnabled(const AHwnd: HWND): boolean;
     function ControlAtActiveWindowCoord(const AX: Integer; const AY: Integer;
         out AControlHwnd: HWND; out APoint: TPoint): boolean;
@@ -294,6 +295,12 @@ begin
     TGUISyncMessagesThread.SyncMessages;
 end;
 
+procedure TGUIAutomation.SyncSleep(const AInterval: Integer);
+begin
+  SyncMessages;
+  Sleep(AInterval);
+end;
+
 procedure TGUIAutomation.ThreadedExecute(AProc: TThreadProcedure);
 var
   LThread: TThread;
@@ -360,12 +367,19 @@ end;
 function TGUIAutomation.WaitForWindowEnabled(const AHwnd: HWND): boolean;
 begin
   if AHwnd <> 0 then
+  begin
     while ContinueExecution and
         ((GetWindowLong(AHwnd, GWL_STYLE) and WS_DISABLED) = WS_DISABLED) do
     begin
       Sleep(100);
       SyncMessages;
     end;
+    if ContinueExecution then
+    begin
+      Sleep(50);
+      SyncMessages;
+    end;
+  end;
 
   result := ContinueExecution;
 end;
@@ -506,8 +520,7 @@ begin
   PostMessage(AHwnd, AMouseDownMsg, 0, Longint(LSmallPoint));
   PostMessage(AHwnd, AMouseUpMsg, 0,   Longint(LSmallPoint));
 {$ENDIF}
-  SyncMessages;
-  Sleep(ActionDelay);
+  SyncSleep(ActionDelay);
 end;
 
 function TGUIAutomation.FindControl(const AName: string; Addrs :Pointer): TControl;
@@ -582,7 +595,7 @@ function TGUIAutomation.ControlAtActiveWindowCoord(const AX: Integer;
 var
   LPoint: TPoint;
 begin
-{$IF COMPILERVERSION >= 11} // D2007
+{$IF COMPILERVERSION >= 11} // D2007 or later
   // NOTE: Themeing in Vista and later doesn't set the foreground window handle
   //   until the window animation effect is complete (at least with task
   //   dialogs) so if we are too fast we might get the control on the wrong
@@ -593,7 +606,10 @@ begin
   //   (and add this to the GUIActionRecorder) or use a different mechanism to
   //   identify the target window (such as window caption).
   if Dialogs.UseLatestCommonDialogs then
+  begin
     Sleep(CGUIPositionalClickDelay);
+    SyncMessages;
+  end;
 {$IFEND}
 
   // Get screen position of the co-ord relative to the active window
@@ -782,8 +798,7 @@ begin
     else
       PostMessage(AControlHwnd, WM_KEYDOWN, Key, 0);
 {$ENDIF}
-    SyncMessages;
-    Sleep(KeyDownDelay);
+    SyncSleep(KeyDownDelay);
 {$IFDEF DUNIT_CLX}
     E := QKeyEvent_create(QEventType_KeyRelease, Key, Ord(Ch), State, @S, false, 1);
     try
@@ -798,8 +813,7 @@ begin
       PostMessage(AControlHwnd, WM_KEYUP, Key, integer($C0000000));
     SetKeyboardStateUp(ShiftState);
 {$ENDIF}
-    SyncMessages;
-    Sleep(ActionDelay);
+    SyncSleep(ActionDelay);
   end;
 end;
 
@@ -878,8 +892,7 @@ begin
 {$ELSE}
       PostMessage(AControlHwnd, WM_CHAR, Ord(Text[i]), 0);
 {$ENDIF}
-      SyncMessages;
-      Sleep(TextEntryDelay);
+      SyncSleep(TextEntryDelay);
     end;
   end;
 end;
@@ -904,8 +917,7 @@ begin
   Assert(Control <> nil);
   Control.Visible := OnOff;
   Assert(Control.Visible = OnOff);
-  SyncMessages;
-  Sleep(ActionDelay);
+  SyncSleep(ActionDelay);
 end;
 
 function TGUIAutomation.ContinueExecution: boolean;
@@ -944,8 +956,7 @@ begin
     EnterKey(VK_TAB, s);
   end;
 
-  SyncMessages;
-  Sleep(ActionDelay);
+  SyncSleep(ActionDelay);
 end;
 
 procedure TGUIAutomation.SetFocus(Control: TControl; Addrs: Pointer);
