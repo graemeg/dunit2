@@ -1778,7 +1778,7 @@ procedure TRefGUITestRunner.ErrorBoxVisibleActionExecute(Sender: TObject);
 begin
   if FHoldOptions then
     Exit;
-    
+
    with ErrorBoxVisibleAction do
    begin
      Checked := not Checked;

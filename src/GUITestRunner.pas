@@ -1157,12 +1157,12 @@ begin
     FTotalTime := TestResult.TotalTime;
     if fullUpdate or FTimerExpired or ((TestNumber and 15) = 0) or FTestFailed then
     begin
-        Results.SubItems[siTestsRun] := IntToStr(TestNumber);
-        Results.SubItems[siFailures] := IntToStr(TestResult.FailureCount);
-        Results.SubItems[siErrors] := IntToStr(TestResult.ErrorCount);
-        Results.SubItems[siWarnings] := IntToStr(TestResult.WarningCount + TestResult.Overrides);
-        Results.SubItems[siTestTime] := FormatElapsedTime(TestResult.TotalTime);
-        Results.SubItems[siTotalTestTime] := FormatElapsedTime(FTotalTime);
+      Results.SubItems[siTestsRun] := IntToStr(TestNumber);
+      Results.SubItems[siFailures] := IntToStr(TestResult.FailureCount);
+      Results.SubItems[siErrors] := IntToStr(TestResult.ErrorCount);
+      Results.SubItems[siWarnings] := IntToStr(TestResult.WarningCount + TestResult.Overrides);
+      Results.SubItems[siTestTime] := FormatElapsedTime(TestResult.TotalTime);
+      Results.SubItems[siTotalTestTime] := FormatElapsedTime(FTotalTime);
       with TestResult do
       begin
         ScoreBar.Position  := TestNumber - (FailureCount + ErrorCount);

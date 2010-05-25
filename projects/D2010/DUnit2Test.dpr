@@ -53,7 +53,6 @@ program DUnit2Test;
 {$ENDIF}
 
 uses
-  {$IFDEF FASTMM} FastMM4, {$ENDIF}
   TestFrameworkIfaces in '..\..\src\TestFrameworkIfaces.pas',
   TestFramework in '..\..\src\TestFramework.pas',
   TestFrameworkProxyIfaces in '..\..\src\TestFrameworkProxyIfaces.pas',
@@ -66,15 +65,19 @@ uses
   RefProjectsManager in '..\..\Ref\RefProjectsManager.pas',
   RefGUITestRunner in '..\..\Ref\RefGUITestRunner.pas',
   UnitTestFramework in '..\..\tests\UnitTestFramework.pas',
-  UnitTestModules in '..\..\tests\UnitTestModules.pas',
   UnitTestFrameworkProxy in '..\..\tests\UnitTestFrameworkProxy.pas',
-  {$IFDEF FASTMM} FastMMMonitorTest in '..\..\tests\FastMMMonitorTest.pas', {$ENDIF}
   SharedTestClasses in '..\..\tests\SharedTestClasses.pas',
   TestExtensions in '..\..\src\TestExtensions.pas',
   TextTestRunner in '..\..\src\TextTestRunner.pas',
   TestModules in '..\..\src\TestModules.pas',
   GUITesting in '..\..\src\GUITesting.pas',
-  XPVistaSupport in '..\..\src\XPVistaSupport.pas';
+  XPVistaSupport in '..\..\src\XPVistaSupport.pas',
+  UnitTestModules in '..\..\tests\UnitTestModules.pas',
+  DLLSingleTest in '..\..\tests\DLLSingleTest.pas',
+  MiniTestSuite2 in '..\..\tests\MiniTestSuite2.pas',
+  MiniTestSuite in '..\..\tests\MiniTestSuite.pas',
+  UnitSingleTest in '..\..\tests\UnitSingleTest.pas',
+  UnitTestGUITesting in '..\..\tests\UnitTestGUITesting.pas' {TestForm};
 
 {$R *.RES}
 

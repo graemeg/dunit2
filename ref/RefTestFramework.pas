@@ -57,8 +57,7 @@ uses
   TestFrameworkIfaces,
   Classes,
   SysUtils,
-  IniFiles,
-  Registry;
+  IniFiles;
 
 type
 {$IFDEF CLR}
@@ -213,6 +212,7 @@ type
     {$ENDIF}
     function  get_ExpectedException: ExceptClass;
     procedure StartExpectingException(e: ExceptClass);
+    procedure ClearExpectedException;
     procedure StopExpectingException(const ErrorMsg :string = '');
     procedure BeginRun; virtual;
     function  get_ExecStatus: TExecutionStatus;
@@ -377,8 +377,8 @@ type
   public
     constructor Create; overload; virtual;
     constructor Create(const AName: string); overload; virtual;
-    constructor Create(const OwnerProc: TTestMethod;
-                       const ParentPath: string;
+    constructor Create(const AOwnerMethod: TTestMethod;
+                       const AParentPath: string;
                        const AMethod: TTestMethod;
                        const AMethodName: string;
                        const AParent: ITestCase); overload;
@@ -466,15 +466,13 @@ type
     procedure StopTests(const ErrorMsg: string = '');
     procedure InhibitStackTrace; overload;
     procedure InhibitStackTrace(const Value: boolean); overload;
-    procedure ClearExpectedException;
-
 
     { The following are the calls users make in test procedures . }
   public
     procedure AddSuite(const ATest: ITest); virtual;
     procedure AddTest(const ATest: ITest);
     constructor Create; overload; override;
-    constructor Create(ProcName: string); reintroduce; overload; virtual;
+    constructor Create(const AMethodName: string); reintroduce; overload; virtual;
     destructor Destroy; override;
     class function Suite: ITestCase; virtual;
   published
@@ -499,7 +497,7 @@ type
     procedure AddTest(const SuiteTitle: string;
                       const Suites: array of ITestCase); reintroduce; overload;
     constructor Create; overload; override;
-    constructor Create({const} SuiteName: string); overload; override;
+    constructor Create(const ASuiteName: string); overload; override;
 
     class function Suite(const ASuiteName: string): ITestSuite; reintroduce; overload;
                                                                 {$IFDEF CLR} virtual; {$ENDIF}
@@ -588,7 +586,7 @@ type
     procedure set_Listener(const Value: IInterface);
   public
     constructor Create; overload; override;
-    constructor Create({const} SuiteName: string); overload; override;
+    constructor Create(const ASuiteName: string); overload; override;
     destructor Destroy; override;
   published
     property  Manager: IInterface read get_Manager write set_Manager;
@@ -1773,8 +1771,8 @@ begin
     FDisplayedName := AName;
 end;
 
-constructor TTestProc.Create(const OwnerProc: TTestMethod;
-                             const ParentPath: string;
+constructor TTestProc.Create(const AOwnerMethod: TTestMethod;
+                             const AParentPath: string;
                              const AMethod: TTestMethod;
                              const AMethodName: string;
                              const AParent: ITestCase);
@@ -1787,8 +1785,8 @@ begin
   {$ENDIF}
     FMethodName := AMethodName;
   FDisplayedName := FMethodName;
-  FIsTestMethod := IsValidTestMethod(OwnerProc);
-  FParentPath := ParentPath;
+  FIsTestMethod := IsValidTestMethod(AOwnerMethod);
+  FParentPath := AParentPath;
   FParent := AParent;
 end;
 
@@ -2474,6 +2472,7 @@ begin
         (FExceptionIs.ClassName = E.ClassName) then
         begin
           Result := _Passed; // Was the expected exception
+          (CurrentTestCase as ITestCase).ClearExpectedException;
           FExpectedExcept := nil;
           FExceptionIs := nil;
           LMsg := '';
@@ -2632,7 +2631,7 @@ begin
   EnumerateMethods;
 end;
 
-constructor TTestCase.Create({const} ProcName: string);
+constructor TTestCase.Create(const AMethodName: string);
 var
   LTest: ITest;
 begin
@@ -2641,8 +2640,8 @@ begin
   repeat
     LTest := FTestIterator.FindNextTest;
     if Assigned(LTest) then
-      LTest.Enabled := (LTest.DisplayedName = ProcName) or
-        (ProcName = '');
+      LTest.Enabled := (LTest.DisplayedName = AMethodName) or
+        (AMethodName = '');
   until (LTest = nil);
 end;
 
@@ -2666,11 +2665,6 @@ begin
   {$ELSE}
     AMethod;
   {$ENDIF}
-end;
-
-procedure TTestCase.ClearExpectedException;
-begin
-  FExpectedExcept := nil;
 end;
 
 function TTestCase.Count: Integer;
@@ -2875,7 +2869,6 @@ var
     Result := ExecStatus;
     LErrors := ExecControl.ErrorCount;  // Hold count so we only bump it once
     FErrorMessage := '';
-    ATest.ParentTestCase := self;
 
     try
       TestSetUpData := ExecControl.TestSetUpData;
@@ -2908,7 +2901,6 @@ var
     FExpectedExcept := nil;
     ExecControl.CurrentTest := nil;
     FTestSetUpData := nil;
-    ATest.ParentTestCase := nil;
   end;
 
   function RunAsTestCase(const ATest: ITestCase): TExecutionStatus;
@@ -3239,6 +3231,11 @@ begin
   OnCheckCalled;
   if (not condition) then
       FailNotEquals(BoolToStr(true), BoolToStr(false), ErrorMsg, CallerAddr);
+end;
+
+procedure TTestProc.ClearExpectedException;
+begin
+  FExpectedExcept := nil;
 end;
 
 procedure TTestProc.CheckFalse(const condition: boolean; const ErrorMsg: string);
@@ -3634,11 +3631,11 @@ begin
   inherited Create;
 end;
 
-constructor TTestSuite.Create({const} SuiteName: string);
+constructor TTestSuite.Create(const ASuiteName: string);
 begin
   inherited Create;
-  if SuiteName <> '' then
-    FDisplayedName := SuiteName;
+  if ASuiteName <> '' then
+    FDisplayedName := ASuiteName;
 end;
 
 class function TTestSuite.Suite(const ASuiteName: string): ITestSuite;
@@ -3923,11 +3920,11 @@ begin
   CreateFields;
 end;
 
-constructor TTestProject.Create({const} SuiteName: string);
+constructor TTestProject.Create(const ASuiteName: string);
 begin
   Create;
-  if (SuiteName <> '') then
-    FDisplayedName := SuiteName
+  if (ASuiteName <> '') then
+    FDisplayedName := ASuiteName
   else
     FDisplayedName := DefaultProject;
 end;

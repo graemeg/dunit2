@@ -464,7 +464,8 @@ end;
 procedure TITestResult.ReleaseListeners;
 begin
   try
-    FTestListenerProxy.ReleaseListeners;
+    if Assigned(FTestListenerProxy) then
+      FTestListenerProxy.ReleaseListeners;
   finally
     FTestListenerProxy := nil;
   end;
@@ -866,7 +867,7 @@ begin
   if FITest = nil then
     Exit;
 
-  if FITest.ParentTestCase <> nil then
+  if (FITest.ExecStatus = _Running) and (FITest.ParentTestCase <> nil) then
   begin
     Result := FITest.ParentTestCase.GetName;
     Exit;

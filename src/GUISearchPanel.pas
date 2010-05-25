@@ -67,6 +67,7 @@ type
     property TextMatching: boolean read FTextMatching write SetTextMatching;
     property SearchText: string read GetSearchText;
     procedure Wrapped(const AForward: boolean = true);
+    property FindText: TEdit read FFindText;
 
   published
     property Showing: boolean read FShowing;

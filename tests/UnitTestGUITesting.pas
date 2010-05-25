@@ -286,7 +286,7 @@ procedure T_TGUITestCase.SetUp;
 begin
   inherited;
   mForm := TTestForm.Create(nil);
-  ActionDelay := 10;
+  Automation.ActionDelay := 10;
   mForm.Show;
   Application.ProcessMessages;
 end;
@@ -301,7 +301,7 @@ end;
 procedure T_TGUITestCase.Test_IsFocused;
 begin
   {f}FailsOnNoChecksExecuted := False;
-  SetFocus(mForm.xButton);
+  Automation.SetFocus(mForm.xButton);
   Assert(not IsFocused(mForm.xButton2));
   Assert(IsFocused(mForm.xButton));
 end;
@@ -318,10 +318,10 @@ begin
   diff := after - before;
   Assert(diff > 2.0e-6);
 
-  { Sleep is done in EnterKeyInto }
-  ActionDelay := 125;
+  { Sleep is done in Automation.EnterKeyInto }
+  Automation.ActionDelay := 125;
   before := Now;
-  EnterKeyInto(mForm, ord('A'), []);
+  Automation.EnterKeyInto(mForm, ord('A'), []);
   after := Now;
   Assert(after > before);
   diff := after - before;
@@ -332,7 +332,7 @@ procedure T_TGUITestCase.Test_EnterKeyInto;
 const VK_A = ord('A');
 begin
   {f}FailsOnNoChecksExecuted := False;
-  SetFocus(mForm.xButton);
+  Automation.SetFocus(mForm.xButton);
   { Make sure:
      focus shifts to the correct control
      form key preview works
@@ -341,7 +341,7 @@ begin
   }
 
   { Keys pressed: A }
-  EnterKeyInto(mForm.xEdit, VK_A, []);
+  Automation.EnterKeyInto(mForm.xEdit, VK_A, []);
   Assert(mForm.xEdit.Text = 'a');
   Assert(mForm.EditKeyDownCount = 1);
   Assert(mForm.EditKeyUpCount = 1);
@@ -351,7 +351,7 @@ begin
 
   { Keys pressed:  Shift, A }
   mForm.ResetForm;
-  EnterKeyInto(mForm.xEdit, VK_A, [ssShift]);
+  Automation.EnterKeyInto(mForm.xEdit, VK_A, [ssShift]);
   Assert(mForm.xEdit.Text = 'A');
   Assert(mForm.EditKeyDownCount = 1);
   Assert(mForm.EditKeyUpCount = 1);
@@ -361,7 +361,7 @@ begin
 
   { Keys pressed:  Shift, A }
   mForm.ResetForm;
-  EnterKeyInto(mForm.xMemo, VK_A, [ssShift]);
+  Automation.EnterKeyInto(mForm.xMemo, VK_A, [ssShift]);
   Assert(mForm.xMemo.Text = 'A');
   Assert(mForm.FormKeyDownCount = 1);
   Assert(mForm.FormKeyUpCount = 1);
@@ -369,41 +369,41 @@ begin
 
   { Keys pressed:  Shift, A }
   mForm.ResetForm;
-  EnterKeyInto(mForm.xButton, VK_A, [ssShift]);
+  Automation.EnterKeyInto(mForm.xButton, VK_A, [ssShift]);
   Assert(mForm.FormKeyDownCount = 1);
   Assert(mForm.FormKeyUpCount = 1);
   Assert(mForm.FormKeys = 'A');
 
   { Keys pressed : F8 }
   mForm.ResetForm;
-  EnterKeyInto(mForm, VK_F8, []);
+  Automation.EnterKeyInto(mForm, VK_F8, []);
   Assert(mForm.Function8Count = 1);
   Assert(mForm.FormKeyDownCount = 0);  { Keydown gets munched ?}
   Assert(mForm.FormKeyUpCount = 1);
 
   { Keys pressed : Alt, Backspace }
   mForm.ResetForm;
-  EnterKeyInto(mForm, VK_BACK, [ssAlt]);
+  Automation.EnterKeyInto(mForm, VK_BACK, [ssAlt]);
   Assert(mForm.AltBackspaceCount = 1);
 
   { Keys pressed : Ctrl, A }
   mForm.ResetForm;
-  EnterKeyInto(mForm, VK_A, [ssCtrl]);
+  Automation.EnterKeyInto(mForm, VK_A, [ssCtrl]);
   Assert(mForm.ControlACount = 1);
 end;
 
 procedure T_TGUITestCase.Test_EnterKey;
 begin
   {f}FailsOnNoChecksExecuted := False;
-  EnterKey(VK_F8);
+  Automation.EnterKey(VK_F8);
 {$IFNDEF DUNIT_CLX}
   Assert(mForm.Function8Count = 1);
 {$ENDIF}
-  SetFocus(mForm.xMemo);
-  EnterKey('M');
+  Automation.SetFocus(mForm.xMemo);
+  Automation.EnterKey('M');
   Assert(mForm.xMemo.Text = 'm');
-  SetFocus(mForm);
-  EnterKey(VK_F8);
+  Automation.SetFocus(mForm);
+  Automation.EnterKey(VK_F8);
 {$IFNDEF DUNIT_CLX}
   Assert(mForm.Function8Count = 2);
 {$ENDIF}
@@ -413,21 +413,21 @@ procedure T_TGUITestCase.Test_EnterTextInto;
 const c_text = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ `1234567890-=~!@#$%^&*()_+[]{}\|;'':",./<>?';
 begin
   {f}FailsOnNoChecksExecuted := False;
-  EnterTextInto(mForm.xMemo, c_text);
+  Automation.EnterTextInto(mForm.xMemo, c_text);
   Assert(mForm.xMemo.Text = c_text);
 
-  EnterTextInto(mForm.xEdit, c_text);
+  Automation.EnterTextInto(mForm.xEdit, c_text);
   Assert(mForm.xEdit.Text = c_text);
 end;
 
 procedure T_TGUITestCase.Test_Tab;
 begin
   {f}FailsOnNoChecksExecuted := False;
-  Tab(2);
+  Automation.Tab(2);
   Assert(GetFocused = mForm.xButton3);
-  Tab(-1);
+  Automation.Tab(-1);
   Assert(GetFocused = mForm.xButton2);
-  Tab(-1);
+  Automation.Tab(-1);
   Assert(GetFocused = mForm.xButton);
 end;
 
@@ -481,14 +481,16 @@ begin
   FRunner.TestTree.SetFocus;
 {$ENDIF}
   CheckFocused(FRunner.TestTree);
-  Tab;
+  Automation.Tab;
+  CheckFocused(FRunner.SP.FindText);
+  Automation.Tab;
   CheckFocused(FRunner.ResultsView);
-  Tab;
+  Automation.Tab;
   CheckFocused(FRunner.FailureListView);
-  Tab;
+  Automation.Tab;
 {$IFNDEF DUNIT_CLX}
   CheckFocused(FRunner.ErrorMessageRTF);
-  Tab;
+  Automation.Tab;
 {$ENDIF}
 end;
 
@@ -509,7 +511,7 @@ begin
   CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[3],   'error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'failure list');
 
-  EnterKey(vk_F9);
+  Automation.EnterKey(vk_F9);
 
   // nothing happens
   CheckEquals(0,          FRunner.ProgressBar.Position,               'progress bar');
@@ -520,7 +522,7 @@ begin
   CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[3],   'error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'failure list');
 
-  EnterKey('X', [ssAlt]);
+  Automation.EnterKey('X', [ssAlt]);
 
   Check(not FRunner.Visible, 'form closed?');
 end;
@@ -537,23 +539,23 @@ begin
 {$ENDIF}
   CheckEquals(0,          FRunner.ProgressBar.Position,               'progress bar');
   CheckEqualsString('',   FRunner.LbProgress.Caption,                 'progress label');
-  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[0],   'tests');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[1],   'run count');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[2],   'failure count');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[3],   'error count');
+  CheckEqualsString('2',  FRunner.ResultsView.Items[0].Caption,       'tests');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[0],   'run count');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[1],   'failure count');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[2],   'error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'failure list');
 
-  EnterKey('R', [ssAlt]);
+  Automation.EnterKey('R', [ssAlt]);
 
   CheckEquals(2,          FRunner.ProgressBar.Position,               'progress bar');
   CheckEqualsString('100%', FRunner.LbProgress.Caption,               'progress label');
-  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[0],   'tests');
-  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[1],   'run count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'failure count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[3],   'error count');
+  CheckEqualsString('2',  FRunner.ResultsView.Items[0].Caption,       'tests');
+  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[0],   'run count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[1],   'failure count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'failure list');
 
-  EnterKey('X', [ssAlt]);
+  Automation.EnterKey('X', [ssAlt]);
 
   Check(not FRunner.Visible, 'form closed?');
 end;
@@ -574,24 +576,24 @@ begin
 
   CheckEquals(0,          FRunner.ProgressBar.Position,               'progress bar');
   CheckEqualsString('',   FRunner.LbProgress.Caption,                 'progress label');
-  CheckEqualsString('4',  FRunner.ResultsView.Items[0].SubItems[0],   'tests');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[1],   'run count');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[2],   'failure count');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[3],   'error count');
+  CheckEqualsString('4',  FRunner.ResultsView.Items[0].Caption,       'tests');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[0],   'run count');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[1],   'failure count');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[2],   'error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'failure list');
 
-  EnterKey('R', [ssAlt]);
+  Automation.EnterKey('R', [ssAlt]);
 
   CheckEquals(4,          FRunner.ProgressBar.Position,               'progress bar');
   CheckEqualsString('25%', FRunner.LbProgress.Caption,                'progress label');
-  CheckEqualsString('4',  FRunner.ResultsView.Items[0].SubItems[0],   'tests');
-  CheckEqualsString('4',  FRunner.ResultsView.Items[0].SubItems[1],   'run count');
-  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[2],   'failure count');
-  CheckEqualsString('1',  FRunner.ResultsView.Items[0].SubItems[3],   'error count');
+  CheckEqualsString('4',  FRunner.ResultsView.Items[0].Caption,       'tests');
+  CheckEqualsString('4',  FRunner.ResultsView.Items[0].SubItems[0],   'run count');
+  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[1],   'failure count');
+  CheckEqualsString('1',  FRunner.ResultsView.Items[0].SubItems[2],   'error count');
 
   CheckEquals(3,          FRunner.FailureListView.Items.Count,        'failure list');
 
-  EnterKey('X', [ssAlt]);
+  Automation.EnterKey('X', [ssAlt]);
 
   Check(not FRunner.Visible, 'form closed?');
 end;
@@ -608,14 +610,14 @@ begin
   FRunner.TestTree.Items[0].Item[0].Selected := true;
   FRunner.TestTree.Items[0].Item[0].Selected := true;
 {$IFNDEF DUNIT_CLX}
-  EnterKey('D',[ssAlt]); //to uncheck node
+  Automation.EnterKey('D',[ssAlt]); //to uncheck node
 {$ENDIF}
   CheckEquals(0,          FRunner.ProgressBar.Position,               'progress bar');
   CheckEqualsString('',   FRunner.LbProgress.Caption,                 'progress label');
-  CheckEqualsString('4',  FRunner.ResultsView.Items[0].SubItems[0],   'tests');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[1],   'run count');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[2],   'failure count');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[3],   'error count');
+  CheckEqualsString('4',  FRunner.ResultsView.Items[0].Caption,       'tests');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[0],   'run count');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[1],   'failure count');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[2],   'error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'failure list');
 end;
 
@@ -630,8 +632,8 @@ begin
   FRunner.SetFocusedControl(FRunner);
   FRunner.TestTree.SetFocus;
 {$ENDIF}
-  EnterKey(vk_F9);
-  ElapTime := FRunner.ResultsView.Items[0].SubItems[6];
+  Automation.EnterKey(vk_F9);
+  ElapTime := FRunner.ResultsView.Items[0].SubItems[5];
   MinTime := '0:00:00.010';
   MaxTime := '0:00:00.300';
   Check(ElapTime > MinTime, 'Test Time ('+ElapTime+') should be bigger than ' + MinTime);
@@ -663,23 +665,23 @@ begin
 {$ENDIF}
   CheckEquals(0,          FRunner.ProgressBar.Position,               'progress bar');
   CheckEqualsString('',   FRunner.LbProgress.Caption,                 'progress label');
-  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[0],   'tests');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[1],   'run count');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[2],   'failure count');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[3],   'error count');
+  CheckEqualsString('2',  FRunner.ResultsView.Items[0].Caption,       'tests');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[0],   'run count');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[1],   'failure count');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[2],   'error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'failure list');
 {$IFNDEF DUNIT_CLX}
   CheckEquals(0,          FRunner.ErrorMessageRTF.Lines.Count,        'Status in ErrorMessageRTF');
 {$ENDIF}
 
-  EnterKey('R', [ssAlt]);
+  Automation.EnterKey('R', [ssAlt]);
 
   CheckEquals(2,          FRunner.ProgressBar.Position,               'progress bar');
   CheckEqualsString('100%', FRunner.LbProgress.Caption,               'progress label');
-  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[0],   'tests');
-  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[1],   'run count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'failure count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[3],   'error count');
+  CheckEqualsString('2',  FRunner.ResultsView.Items[0].Caption,       'tests');
+  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[0],   'run count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[1],   'failure count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'failure list');
 {$IFNDEF DUNIT_CLX}
   CheckEqualsString(constStatusTestStr, FRunner.ErrorMessageRTF.Lines.Text,
@@ -687,7 +689,7 @@ begin
   CheckEquals(4,          FRunner.ErrorMessageRTF.Lines.Count,        'Status in ErrorMessageRTF');
 {$ENDIF}
 
-  EnterKey('X', [ssAlt]);
+  Automation.EnterKey('X', [ssAlt]);
 
   Check(not FRunner.Visible, 'form closed?');
 end;
@@ -710,10 +712,10 @@ begin
 
   CheckEquals(0,          FRunner.ProgressBar.Position,               'progress bar');
   CheckEqualsString('',   FRunner.LbProgress.Caption,                 'progress label');
-  CheckEqualsString('4',  FRunner.ResultsView.Items[0].SubItems[0],   'tests');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[1],   'run count');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[2],   'failure count');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[3],   'error count');
+  CheckEqualsString('4',  FRunner.ResultsView.Items[0].Caption,       'tests');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[0],   'run count');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[1],   'failure count');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[2],   'error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'failure list');
 
   CheckEquals(1, FRunner.Suite.Tests.Count, 'Before Suite.Tests.Count');
@@ -727,15 +729,15 @@ begin
   FRunner.TestTree.SetFocus;
 
   CheckFocused(FRunner.TestTree);
-  EnterKeyInto(FRunner.TestTree, VK_END);
+  Automation.EnterKeyInto(FRunner.TestTree, VK_END);
 
-  EnterKey(VK_F8);
+  Automation.EnterKey(VK_F8);
   CheckEquals(1,          FRunner.ProgressBar.Position,               'After first progress bar');
   CheckEqualsString('100%', FRunner.LbProgress.Caption,               'After first progress label');
-  CheckEqualsString('4',  FRunner.ResultsView.Items[0].SubItems[0],   'After first tests');
-  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[1],   'After first run count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'After first failure count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[3],   'After first error count');
+  CheckEqualsString('4',  FRunner.ResultsView.Items[0].Caption,       'After first tests');
+  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[0],   'After first run count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[1],   'After first failure count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'After first error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'After first failure list');
 
   CheckEquals(1, FRunner.Suite.Tests.Count, 'After first Suite.Tests.Count');
@@ -748,34 +750,34 @@ begin
   CheckFocused(FRunner.TestTree);
 
   // Second time could generate an pointer error
-  EnterKeyInto(FRunner.TestTree, VK_F8);
+  Automation.EnterKeyInto(FRunner.TestTree, VK_F8);
 
   CheckEquals(1,          FRunner.ProgressBar.Position,               'After second progress bar');
   CheckEqualsString('100%', FRunner.LbProgress.Caption,               'After second progress label');
-  CheckEqualsString('4',  FRunner.ResultsView.Items[0].SubItems[0],   'After second tests');
-  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[1],   'After second run count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'After second failure count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[3],   'After second error count');
+  CheckEqualsString('4',  FRunner.ResultsView.Items[0].Caption,       'After second tests');
+  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[0],   'After second run count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[1],   'After second failure count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'After second error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'After second failure list');
 
   CheckEquals(4, FRunner.Suite.CountEnabledTestCases, 'After second CountEnabledTestCases');
   CheckEquals(4, TDunitDialogCracker(FRunner).Suite.CountEnabledTestCases, 'testcount');
 
   // Normal test after single test. Should run all enabled tests.
-  EnterKeyInto(FRunner.TestTree, VK_F9);
+  Automation.EnterKeyInto(FRunner.TestTree, VK_F9);
 
   CheckEquals(4,          FRunner.ProgressBar.Position,               'Normal after progress bar');
   CheckEqualsString('100%', FRunner.LbProgress.Caption,               'Normal after progress label');
-  CheckEqualsString('4',  FRunner.ResultsView.Items[0].SubItems[0],   'Normal after tests');
-  CheckEqualsString('4',  FRunner.ResultsView.Items[0].SubItems[1],   'Normal after run count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'Normal after failure count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[3],   'Normal after error count');
+  CheckEqualsString('4',  FRunner.ResultsView.Items[0].Caption,       'Normal after tests');
+  CheckEqualsString('4',  FRunner.ResultsView.Items[0].SubItems[0],   'Normal after run count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[1],   'Normal after failure count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'Normal after error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'Normal after failure list');
 
   CheckEquals(4, FRunner.Suite.CountEnabledTestCases, 'Normal after CountEnabledTestCases');
   CheckEquals(4, TDunitDialogCracker(FRunner).Suite.CountEnabledTestCases, 'Normal after testcount');
 
-  EnterKey('X', [ssAlt]);
+  Automation.EnterKey('X', [ssAlt]);
 
   Check(not FRunner.Visible, 'form closed?');
 end;
@@ -800,10 +802,10 @@ begin
 
   CheckEquals(0,          FRunner.ProgressBar.Position,               'progress bar');
   CheckEqualsString('',   FRunner.LbProgress.Caption,                 'progress label');
-  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[0],   'tests');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[1],   'run count');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[2],   'failure count');
-  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[3],   'error count');
+  CheckEqualsString('2',  FRunner.ResultsView.Items[0].Caption,       'tests');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[0],   'run count');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[1],   'failure count');
+  CheckEqualsString('',   FRunner.ResultsView.Items[0].SubItems[2],   'error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'failure list');
 
   CheckEquals(1, FRunner.Suite.Tests.Count, 'Before Suite.Tests.Count');
@@ -817,16 +819,16 @@ begin
   FRunner.TestTree.SetFocus;
 
   CheckFocused(FRunner.TestTree);
-  EnterKeyInto(FRunner.TestTree, VK_END);
+  Automation.EnterKeyInto(FRunner.TestTree, VK_END);
 
-  EnterKey(VK_F8);
+  Automation.EnterKey(VK_F8);
 
   CheckEquals(1,          FRunner.ProgressBar.Position,               'After first progress bar');
   CheckEqualsString('100%', FRunner.LbProgress.Caption,               'After first progress label');
-  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[0],   'After first tests');
-  CheckEqualsString('1',  FRunner.ResultsView.Items[0].SubItems[1],   'After first run count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'After first failure count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[3],   'After first error count');
+  CheckEqualsString('2',  FRunner.ResultsView.Items[0].Caption,       'After first tests');
+  CheckEqualsString('1',  FRunner.ResultsView.Items[0].SubItems[0],   'After first run count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[1],   'After first failure count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'After first error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'After first failure list');
 
   CheckEquals(1, FRunner.Suite.Tests.Count, 'After first Suite.Tests.Count');
@@ -840,14 +842,14 @@ begin
   CheckFocused(FRunner.TestTree);
 
   // Second time could generate a pointer error
-  EnterKeyInto(FRunner.TestTree, VK_F8);
+  Automation.EnterKeyInto(FRunner.TestTree, VK_F8);
 
   CheckEquals(1,          FRunner.ProgressBar.Position,               'After second progress bar');
   CheckEqualsString('100%', FRunner.LbProgress.Caption,               'After second progress label');
-  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[0],   'After second tests');
-  CheckEqualsString('1',  FRunner.ResultsView.Items[0].SubItems[1],   'After second run count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'After second failure count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[3],   'After second error count');
+  CheckEqualsString('2',  FRunner.ResultsView.Items[0].Caption,       'After second tests');
+  CheckEqualsString('1',  FRunner.ResultsView.Items[0].SubItems[0],   'After second run count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[1],   'After second failure count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'After second error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'After second failure list');
 
   CheckEquals(2, FRunner.Suite.CountEnabledTestCases, 'After second CountEnabledTestCases');
@@ -857,14 +859,14 @@ begin
   CheckEquals(2, (LTestDecSuite as ISetUpTestCase).TearDownCount, 'After second TearDownCount');
 
   // Normal test after single test. Should run all enabled tests.
-  EnterKeyInto(FRunner.TestTree, VK_F9);
+  Automation.EnterKeyInto(FRunner.TestTree, VK_F9);
 
   CheckEquals(2,          FRunner.ProgressBar.Position,               'Normal after progress bar');
   CheckEqualsString('100%', FRunner.LbProgress.Caption,               'Normal after progress label');
-  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[0],   'Normal after tests');
-  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[1],   'Normal after run count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'Normal after failure count');
-  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[3],   'Normal after error count');
+  CheckEqualsString('2',  FRunner.ResultsView.Items[0].Caption,       'Normal after tests');
+  CheckEqualsString('2',  FRunner.ResultsView.Items[0].SubItems[0],   'Normal after run count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[1],   'Normal after failure count');
+  CheckEqualsString('0',  FRunner.ResultsView.Items[0].SubItems[2],   'Normal after error count');
   CheckEquals(0,          FRunner.FailureListView.Items.Count,        'Normal after failure list');
 
   CheckEquals(2, FRunner.Suite.CountEnabledTestCases, 'Normal after CountEnabledTestCases');
@@ -873,7 +875,7 @@ begin
   CheckEquals(3, (LTestDecSuite as ISetUpTestCase).SetupCount, 'Normal after SetupCount');
   CheckEquals(3, (LTestDecSuite as ISetUpTestCase).TearDownCount, 'Normal after TearDownCount');
 
-  EnterKey('X', [ssAlt]);
+  Automation.EnterKey('X', [ssAlt]);
 
   Check(not FRunner.Visible, 'form closed?');
 

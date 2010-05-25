@@ -86,7 +86,6 @@
 			<DCCReference Include="..\..\Ref\RefProjectsManager.pas"/>
 			<DCCReference Include="..\..\Ref\RefGUITestRunner.pas"/>
 			<DCCReference Include="..\..\tests\UnitTestFramework.pas"/>
-			<DCCReference Include="..\..\tests\UnitTestModules.pas"/>
 			<DCCReference Include="..\..\tests\UnitTestFrameworkProxy.pas"/>
 			<DCCReference Include="..\..\tests\SharedTestClasses.pas"/>
 			<DCCReference Include="..\..\src\TestExtensions.pas"/>
@@ -94,6 +93,14 @@
 			<DCCReference Include="..\..\src\TestModules.pas"/>
 			<DCCReference Include="..\..\src\GUITesting.pas"/>
 			<DCCReference Include="..\..\src\XPVistaSupport.pas"/>
+			<DCCReference Include="..\..\tests\UnitTestModules.pas"/>
+			<DCCReference Include="..\..\tests\DLLSingleTest.pas"/>
+			<DCCReference Include="..\..\tests\MiniTestSuite2.pas"/>
+			<DCCReference Include="..\..\tests\MiniTestSuite.pas"/>
+			<DCCReference Include="..\..\tests\UnitSingleTest.pas"/>
+			<DCCReference Include="..\..\tests\UnitTestGUITesting.pas">
+				<Form>TestForm</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
