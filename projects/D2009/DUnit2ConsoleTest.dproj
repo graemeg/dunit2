@@ -1,4 +1,4 @@
-﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 		<PropertyGroup>
 			<ProjectGuid>{f2925245-a34c-47d2-b412-b7d6e21e116d}</ProjectGuid>
 			<MainSource>DUnit2ConsoleTest.dpr</MainSource>
@@ -46,7 +46,7 @@
 			<DCC_ResourcePath>..\..\src;..\..\Ref;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;$(DCC_ResourcePath)</DCC_ResourcePath>
 			<DCC_ObjPath>..\..\src;..\..\Ref;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;$(DCC_ObjPath)</DCC_ObjPath>
 			<DCC_IncludePath>..\..\src;..\..\Ref;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;$(DCC_IncludePath)</DCC_IncludePath>
-			<DCC_Define>FASTMM;SELFTESTx;USE_JEDI_JCL;CONSOLE_TESTRUNNER;SELFTEST;RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_Define>CONSOLE_TESTRUNNER;SELFTEST;RELEASE;$(DCC_Define)</DCC_Define>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
 			<Version>7.0</Version>
@@ -59,7 +59,7 @@
 			<DCC_ResourcePath>..\..\src;..\..\Ref;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;$(DCC_ResourcePath)</DCC_ResourcePath>
 			<DCC_ObjPath>..\..\src;..\..\Ref;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;$(DCC_ObjPath)</DCC_ObjPath>
 			<DCC_IncludePath>..\..\src;..\..\Ref;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;$(DCC_IncludePath)</DCC_IncludePath>
-			<DCC_Define>FASTMM;SELFTESTx;USE_JEDI_JCL;CONSOLE_TESTRUNNER;SELFTEST;DEBUG;$(DCC_Define)</DCC_Define>
+			<DCC_Define>CONSOLE_TESTRUNNER;SELFTEST;DEBUG;$(DCC_Define)</DCC_Define>
 			<DCC_Optimize>False</DCC_Optimize>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_3)'!=''">

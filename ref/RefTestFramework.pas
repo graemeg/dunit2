@@ -34,19 +34,9 @@
  *******************************************************************************
 *)
 
-{$IFDEF CLR}
-  {$UNSAFECODE ON}
-  {$UNDEF FASTMM}
-{$ENDIF}
-{$IFNDEF VER130}
-  {$IFNDEF VER140}
-    {$WARN UNSAFE_CODE OFF}
-    {$WARN UNSAFE_CAST OFF}
-  {$ENDIF}
-{$ENDIF}
+{$I DUnit.inc}
 
 unit RefTestFramework;
-
 
 { The following is for C++ Support }
 (*$HPPEMIT '#pragma link "dunitrtl.lib"' *)
@@ -638,7 +628,7 @@ uses
   {$IFDEF FASTMM}
     FastMM4,
   {$ENDIF}
-{$IFDEF USE_JEDI_JCL}
+{$IFDEF JCL_STACK_TRACE}
   JclDebug,
 {$ENDIF}
   TypInfo,
@@ -866,10 +856,9 @@ type
     FTestProcMemDiff : Integer;
     FSetUpMemDiff    : Integer;
     FTearDownMemDiff : Integer;
-
-{$IFDEF FASTMM}
+  {$IFDEF FASTMM}
     function BumpWarningCount(const ALeakSize: Integer): TExecutionStatus;
-{$ENDIF}
+  {$ENDIF}
   protected
     procedure BeginTestMethod;
     procedure RunSetup(const UsersSetUp: TThreadMethod); override;
@@ -1176,14 +1165,14 @@ begin
 end;
 
 function TMemUseComparator.AlertOnMemoryLoss(const CurrentStatus: TExecutionStatus): TExecutionStatus;
-  {$IFDEF FASTMM}
+{$IFDEF FASTMM}
 var
   LMemoryLeakIgnoredInSetupOrTearDown: Boolean;
   LMemoryImbalance : boolean;
   LLeakIndex       : Integer;
   LMemErrorMessage : string;
   LExcept: Exception;
-  {$ENDIF}
+{$ENDIF}
 begin
   Result := CurrentStatus;
   {$IFDEF FASTMM}
@@ -2361,7 +2350,7 @@ function  TTestProc.Run(const CurrentTestCase: ITestCase;
                         const ExecControl: ITestExecControl): TExecutionStatus;
 var
   LMsg: string;
-  {$IFDEF USE_JEDI_JCL}
+  {$IFDEF JCL_STACK_TRACE}
   LTrackingStack: boolean;
   {$ENDIF}
 begin
@@ -2371,7 +2360,7 @@ begin
   try
     ExecControl.ExecutionCount := ExecControl.ExecutionCount + 1;
     CheckMethodIsNotEmpty(FMethod);
-    {$IFNDEF USE_JEDI_JCL}
+    {$IFNDEF JCL_STACK_TRACE}
     try
     {$ELSE}
       LTrackingStack := JclExceptionTrackingActive;
@@ -2404,7 +2393,7 @@ begin
     finally
       QueryPerformanceCounter(FStopTime);
       FElapsedTime := ElapsedTestTime;
-      {$IFDEF USE_JEDI_JCL}
+      {$IFDEF JCL_STACK_TRACE}
       {$IFNDEF CLR}
         if LTrackingStack then
           JclStartExceptionTracking // Does nothing if already running. Re-enables tracking
@@ -4335,7 +4324,7 @@ begin
 end;
 
 initialization
-{$IFDEF USE_JEDI_JCL}
+{$IFDEF JCL_STACK_TRACE}
   {$IFNDEF CLR}
   JclStartExceptionTracking; // First time use uses 24 bytes.
   JclStopExceptionTracking;

@@ -1,4 +1,4 @@
-﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 		<PropertyGroup>
 			<ProjectGuid>{27728e98-eb9f-4ab1-a6e0-6d175f6aef37}</ProjectGuid>
 			<MainSource>DUnit2.dpr</MainSource>
@@ -61,7 +61,7 @@
 			<DCC_ResourcePath>..\..\src;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;$(DCC_ResourcePath)</DCC_ResourcePath>
 			<DCC_ObjPath>..\..\src;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;$(DCC_ObjPath)</DCC_ObjPath>
 			<DCC_IncludePath>..\..\src;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;$(DCC_IncludePath)</DCC_IncludePath>
-			<DCC_Define>FASTMM;USE_JEDI_JCL;DEBUG;$(DCC_Define)</DCC_Define>
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
 			<DCC_Description>GensDCUs</DCC_Description>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_3)'!=''">

@@ -41,12 +41,15 @@ program DUnit2ConsoleTest;
 }
 
 {$APPTYPE CONSOLE}
+
+{$I DUnit.inc}
+
 {$IFNDEF SELFTEST}
-  '!!!Alert SELFTEST must be defined in project options conditionals'
+  '!!!Alert SELFTEST must be defined'
 {$ENDIF}
 
 uses
-  FastMM4,
+  {$IFDEF FASTMM} FastMM4, {$ENDIF}
   TestFrameworkIfaces in '..\..\src\TestFrameworkIfaces.pas',
   TestFramework in '..\..\src\TestFramework.pas',
   TestFrameworkProxyIfaces in '..\..\src\TestFrameworkProxyIfaces.pas',

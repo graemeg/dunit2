@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<PersonalityInfo>
 		<Option>
@@ -125,7 +125,7 @@
 			<Directories Name="PackageDCPOutputDir"></Directories>
 			<Directories Name="SearchPath">..\..\src;..\..\Ref;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows</Directories>
 			<Directories Name="Packages">vcl;vclx;dbrtl;Rave65VCL;bdertl;rtl;vcldb;adortl;dbxcds;dbexpress;vclib;ibxpress;xmlrtl;vclactnband;inet;IntrawebDB_80_100;Intraweb_80_100;vclie;inetdbbde;inetdbxpress;IndyCore;IndySystem;dclOfficeXP;VclSmp;soaprtl;dsnap;IndyProtocols;teeui;teedb;tee;vcldbx;dsnapcon;websnap;webdsnap;esbpcs_base_rt_d10;esbpcs_base_db_rt_d10;esbpcs_calcs_rt_d10;esbpcs_calcs_db_rt_d10;esbpcs_dates_rt_d10;esbpcs_dates_db_rt_d10;esbpcs_stats_rt_d10;esbpcs_stats_db_rt_d10;jpmopencompd10;jpmopen_esbpcs_d10;esbpcs_xtras_rt_d10;esbpcs_xtras_db_rt_d10</Directories>
-			<Directories Name="Conditionals">FASTMM;SELFTEST;USE_JEDI_JCL;CONSOLE_TESTRUNNER</Directories>
+			<Directories Name="Conditionals">SELFTEST;CONSOLE_TESTRUNNER</Directories>
 			<Directories Name="DebugSourceDirs"></Directories>
 			<Directories Name="UsePackages">False</Directories>
 		</Directories>

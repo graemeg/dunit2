@@ -52,11 +52,7 @@
  *     prev click command).
  *)
 
-{$IFDEF LINUX}
-{$DEFINE DUNIT_CLX}
-{$ENDIF}
-
-{$I jedi.inc}
+{$I DUnit.inc}
 
 unit GUIActionRecorder;
 
@@ -99,7 +95,7 @@ type
 
   TMouseClickState = (mcsSingle, mcsDouble);
 
-  TGUIActionAbs = class abstract(TObject)
+  TGUIActionAbs = class {$IFDEF DELPHI2006_UP}abstract{$ENDIF} (TObject)
   private
     FControlName: string;
   protected

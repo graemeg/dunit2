@@ -26,7 +26,7 @@
 			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
 			<DCC_BplOutput>$(BDSCOMMONDIR)\Bpl</DCC_BplOutput>
 			<DCC_DcpOutput>_bin</DCC_DcpOutput>
-			<DCC_DependencyCheckOutputName>C:\Users\Public\Documents\RAD Studio\7.0\Bpl\DUnitTestInspector.bpl</DCC_DependencyCheckOutputName>
+			<DCC_DependencyCheckOutputName>C:\Documents and Settings\All Users\Documents\RAD Studio\7.0\Bpl\DUnitTestInspector.bpl</DCC_DependencyCheckOutputName>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DCC_Description>DUnit Test Inspector</DCC_Description>
 			<DCC_UnitSearchPath>_bin;..\..\externals\jcl\source\include;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>

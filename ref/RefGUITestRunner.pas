@@ -35,14 +35,10 @@
  *
  *)
 
-{$I jedi.inc}
-//TODO: Resolve XML changes introduced in D2010 - xdom dropped from source
-{$IFNDEF DELPHI2010_UP}
-  {$DEFINE XMLLISTENER}
-{$ENDIF}
-
+{$I DUnit.inc}
 
 unit RefGUITestRunner;
+
 interface
 
 uses
@@ -1222,7 +1218,7 @@ begin
   // These are not shown in display
   Item.SubItems.Add(Failure.FailedTest.ParentPath + '.');       // 3 full path to test method
   Item.SubItems.Add(Failure.thrownExceptionMessage);            // 4 unfiltered errormessage
-  {$IFDEF USE_JEDI_JCL}
+  {$IFDEF REPORT_STACK_TRACE}
     Item.SubItems.Add(Failure.StackTrace);                      // 5 stack trace if collected
   {$ENDIF}
 end;
@@ -1343,16 +1339,16 @@ begin
         Lines.Add(Status);
       end;
 
-{$IFDEF USE_JEDI_JCL}
-      if Item.SubItems[5] <> '' then
-      begin
-        Lines.Add('');
-        SelAttributes.Style := [fsBold];
-        Lines.Add('StackTrace');
-        SelAttributes.Style := [];
-        SelText := Item.SubItems[5];
-      end;
-{$ENDIF}
+      {$IFDEF REPORT_STACK_TRACE}
+        if Item.SubItems[5] <> '' then
+        begin
+          Lines.Add('');
+          SelAttributes.Style := [fsBold];
+          Lines.Add('StackTrace');
+          SelAttributes.Style := [];
+          SelText := Item.SubItems[5];
+        end;
+      {$ENDIF}
     end
 end;
 
@@ -1522,9 +1518,12 @@ begin
           ErrorMessageRTF.Lines.Add(FailureListView.Items[idy].SubItems[0]); //Exception
           ErrorMessageRTF.Lines.Add(FailureListView.Items[idy].SubItems[4]); //unfiltered error message
           ErrorMessageRTF.Lines.Add('at ' + FailureListView.Items[idy].SubItems[2]);
-          {$IFDEF USE_JEDI_JCL}
-            ErrorMessageRTF.Lines.Add(FailureListView.Items[idy].SubItems[5]);
-            ErrorMessageRTF.Lines.Add('');
+          {$IFDEF REPORT_STACK_TRACE}
+            if (Trim(FailureListView.Items[idy].SubItems[5]) <> '') then
+            begin
+              ErrorMessageRTF.Lines.Add(FailureListView.Items[idy].SubItems[5]);
+              ErrorMessageRTF.Lines.Add('');
+            end;
           {$ENDIF}
         end;
       end;

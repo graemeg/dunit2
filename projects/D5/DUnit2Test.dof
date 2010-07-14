@@ -45,7 +45,7 @@ PackageDLLOutputDir=
 PackageDCPOutputDir=
 SearchPath=..\..\src;..\..\Ref;..\..\tests;..\..\tests\Examples;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_windows
 Packages=vcl;rtl;vclx;indy;vclie;xmlrtl;inetdbbde;inet;inetdbxpress;dbrtl;soaprtl;dsnap;VclSmp;vcldb;dbexpress;dbxcds;inetdb;bdertl;vcldbx;adortl;teeui;teedb;tee;ibxpress;visualclx;visualdbclx;vclactnband;vclshlctrls;IntrawebDB_50_70;Intraweb_50_70;Rave50CLX;Rave50VCL;dclaxserver;madBasic_;CoolTrayIcon_D7plus;esbpcs_base_rt_d7;esbpcs_base_db_rt_d7;esbpcs_calcs_rt_d7;esbpcs_calcs_db_rt_d7;esbpcs_dates_rt_d7;esbpcs_dates_db_rt_d7;esbpcs_stats_rt_d7;esbpcs_stats_db_rt_d7;jpmopencompd7;jpmopen_esbpcs_d7;esbpcs_xtras_rt_d7;esbpcs_xtras_db_rt_d7;VirtualTreeView;TMSD7;InterceptedMemo;ReadOnlyComboBox;A406_R70
-Conditionals=FASTMM;SELFTEST;USE_JEDI_JCL
+Conditionals=SELFTEST
 DebugSourceDirs=
 UsePackages=0
 [Parameters]

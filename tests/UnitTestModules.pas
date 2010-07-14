@@ -34,11 +34,10 @@
  *******************************************************************************
 *)
 
+{$I DUnit.inc}
+
 {$IFNDEF SELFTEST}
-  '!!!Alert SELFTEST must be defined in project options conditionals'
-{$ENDIF}
-{$IFNDEF VER130}
-  {$WARN SYMBOL_PLATFORM OFF}
+  '!!!Alert SELFTEST must be defined'
 {$ENDIF}
 
 unit UnitTestModules;
@@ -47,9 +46,6 @@ interface
 uses
   TestFrameworkIfaces
   ,RefTestFramework
-  {$IFDEF USE_JEDI_JCL}
-  ,JclDebug
-  {$ENDIF}
   ;
 
 type

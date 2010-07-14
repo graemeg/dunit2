@@ -34,9 +34,7 @@
  *   Allow replay of a text script.
  *)
 
-{$IFDEF LINUX}
-{$DEFINE DUNIT_CLX}
-{$ENDIF}
+{$I DUnit.inc}
 
 unit GUIAutomation;
 

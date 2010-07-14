@@ -25,6 +25,7 @@ uses
 
 const
   cRegRootKey = HKEY_CURRENT_USER;
+{$IFDEF DELPHI7} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\Delphi7'; {$ENDIF}  // RINGN:Delphi 7 fix
 {$IFDEF DELPHI2007} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\Delphi2007'; {$ENDIF}
 {$IFDEF DELPHI2009} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\Delphi2009'; {$ENDIF}
 {$IFDEF DELPHI2010} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\Delphi2010'; {$ENDIF}

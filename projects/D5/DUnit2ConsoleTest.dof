@@ -45,7 +45,7 @@ PackageDLLOutputDir=
 PackageDCPOutputDir=
 SearchPath=..\..\src;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows
 Packages=Vcl50;Vclx50;VclSmp50;Qrpt50;Vcldb50;Vclbde50;ibevnt50;vcldbx50;TeeUI50;TeeDB50;Tee50;TeeQR50;VCLIB50;vclie50;Inetdb50;Inet50;NMFast50;dclocx50;dclaxserver50
-Conditionals=FASTMM;SELFTEST;USE_JEDI_JCL;CONSOLE_TESTRUNNER
+Conditionals=SELFTEST;CONSOLE_TESTRUNNER
 DebugSourceDirs=
 UsePackages=0
 [Parameters]

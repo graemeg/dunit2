@@ -382,7 +382,6 @@ object RefGUITestRunner: TRefGUITestRunner
           Align = alTop
           Columns = <
             item
-              Alignment = taRightJustify
               Caption = 'Tests'
               MaxWidth = 90
               MinWidth = 30

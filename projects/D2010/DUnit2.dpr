@@ -47,6 +47,8 @@ program DUnit2;
 {$APPTYPE CONSOLE}
 {$ENDIF}
 
+{$I DUnit.inc}
+
 uses
   {$IFDEF FASTMM} FastMM4, {$ENDIF}
   TestFrameworkIfaces in '..\..\src\TestFrameworkIfaces.pas',

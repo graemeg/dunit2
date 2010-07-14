@@ -42,8 +42,11 @@ program DUnit2Console;
 }
 
 {$APPTYPE CONSOLE}
+
+{$I DUnit.inc}
+
 {$IFDEF SELFTEST}
-  '!!!Alert SELFTEST must not be defined in project options conditionals'
+  '!!!Alert SELFTEST must not be defined'
 {$ENDIF}
 
 uses

@@ -33,23 +33,17 @@
  *
  *******************************************************************************
 *)
+
+{$I DUnit.inc}
+
 {$IFNDEF SELFTEST}
   '!!!Alert SELFTEST must be defined in project options conditionals'
 {$ENDIF}
 
-{$IFDEF CLR}
-  {$UNSAFECODE ON}
-  {$UNDEF FASTMM}
-{$ENDIF}
-{$IFNDEF VER130}
-  {$IFNDEF VER140}
-    {$WARN UNSAFE_CAST OFF}
-    {$WARN UNSAFE_CODE OFF}
-  {$ENDIF}  
-{$ENDIF}
-
 unit UnitTestFramework;
+
 interface
+
 uses
   {$IFDEF CLR}
     System.Reflection,
@@ -65,9 +59,6 @@ uses
     {$IFDEF COVERAGE}
     CheckOverrides,
     {$ENDIF}
-  {$ENDIF}
-  {$IFDEF USE_JEDI_JCL}
-    JclDebug,
   {$ENDIF}
   SysUtils,
   Classes;

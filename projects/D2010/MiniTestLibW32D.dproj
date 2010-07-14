@@ -22,12 +22,8 @@
 			<CfgParent>Base</CfgParent>
 			<Base>true</Base>
 		</PropertyGroup>
-		<PropertyGroup Condition="'$(Config)'=='NO_JEDI_JCL' or '$(Cfg_3)'!=''">
-			<Cfg_3>true</Cfg_3>
-			<CfgParent>Base</CfgParent>
-			<Base>true</Base>
-		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UnitSearchPath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<DCC_ExeOutput>_bin</DCC_ExeOutput>
 			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
 			<DCC_DependencyCheckOutputName>_bin\MiniTestLibW32D.dtl</DCC_DependencyCheckOutputName>
@@ -43,11 +39,10 @@
 			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
 			<DCC_ObjOutput>_dcu</DCC_ObjOutput>
 			<DCC_HppOutput>_dcu</DCC_HppOutput>
-			<DCC_UnitSearchPath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<DCC_ResourcePath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_ResourcePath)</DCC_ResourcePath>
 			<DCC_ObjPath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_ObjPath)</DCC_ObjPath>
 			<DCC_IncludePath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_IncludePath)</DCC_IncludePath>
-			<DCC_Define>FASTMM;USE_JEDI_JCL;RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
 			<Version>7.0</Version>
@@ -56,15 +51,10 @@
 			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
 			<DCC_ObjOutput>_dcu</DCC_ObjOutput>
 			<DCC_HppOutput>_dcu</DCC_HppOutput>
-			<DCC_UnitSearchPath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<DCC_ResourcePath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_ResourcePath)</DCC_ResourcePath>
 			<DCC_ObjPath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_ObjPath)</DCC_ObjPath>
 			<DCC_IncludePath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_IncludePath)</DCC_IncludePath>
-			<DCC_Define>FASTMM;USE_JEDI_JCL;DEBUG;$(DCC_Define)</DCC_Define>
-		</PropertyGroup>
-		<Import Project="No_JEDI_JCL.optset" Condition="'$(Cfg_3)'!='' And Exists('No_JEDI_JCL.optset')"/>
-		<PropertyGroup Condition="'$(Cfg_3)'!=''">
-			<CfgDependentOn>No_JEDI_JCL.optset</CfgDependentOn>
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
 		</PropertyGroup>
 		<ItemGroup>
 			<DelphiCompile Include="MiniTestLibW32D.dpr">
@@ -79,11 +69,6 @@
 			<DCCReference Include="..\..\tests\MiniTestSuite2.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
-			</BuildConfiguration>
-			<BuildConfiguration Include="NO_JEDI_JCL">
-				<Key>Cfg_3</Key>
-				<CfgParent>Base</CfgParent>
-				<DependentOn>No_JEDI_JCL.optset</DependentOn>
 			</BuildConfiguration>
 			<BuildConfiguration Include="Debug">
 				<Key>Cfg_2</Key>

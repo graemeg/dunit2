@@ -47,7 +47,7 @@ PackageDLLOutputDir=
 PackageDCPOutputDir=
 SearchPath=..\..\src;..\..\..\..\Externals\Fastmm;..\..\..\..\Externals\JCL_Common;..\..\..\..\Externals\JCL_Windows;..\..\..\..\Externals\JCL_Source
 Packages=vcl;rtl;vclx;VclSmp;vclshlctrls;dbrtl;adortl;vcldb;qrpt;bdertl;vcldbx;dsnap;cds;bdecds;teeui;teedb;tee;teeqr;ibxpress;visualclx;visualdbclx;vclie;xmlrtl;inet;inetdbbde;inetdbxpress;inetdb;nmfast;dbexpress;dbxcds;indy;dclaxserver;soaprtl
-Conditionals=FASTMM;USE_JEDI_JCL
+Conditionals=
 DebugSourceDirs=
 UsePackages=0
 [Parameters]

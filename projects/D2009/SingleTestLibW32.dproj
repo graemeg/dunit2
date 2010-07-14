@@ -1,4 +1,4 @@
-﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 		<PropertyGroup>
 			<ProjectGuid>{f21abaa5-2197-4703-b7b1-4a8d28eba776}</ProjectGuid>
 			<MainSource>SingleTestLibW32.dpr</MainSource>
@@ -47,7 +47,7 @@
 			<DCC_ResourcePath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_ResourcePath)</DCC_ResourcePath>
 			<DCC_ObjPath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_ObjPath)</DCC_ObjPath>
 			<DCC_IncludePath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_IncludePath)</DCC_IncludePath>
-			<DCC_Define>FASTMM;USE_JEDI_JCL;RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
 			<Version>7.0</Version>
@@ -60,7 +60,7 @@
 			<DCC_ResourcePath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_ResourcePath)</DCC_ResourcePath>
 			<DCC_ObjPath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_ObjPath)</DCC_ObjPath>
 			<DCC_IncludePath>..\..\src;..\..\tests;..\..\externals\fastmm;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\include;$(DCC_IncludePath)</DCC_IncludePath>
-			<DCC_Define>FASTMM;USE_JEDI_JCL;DEBUG;$(DCC_Define)</DCC_Define>
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_3)'!=''"/>
 		<ItemGroup>

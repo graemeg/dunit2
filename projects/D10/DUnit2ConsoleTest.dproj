@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{f2925245-a34c-47d2-b412-b7d6e21e116d}</ProjectGuid>
@@ -22,7 +22,7 @@
     <DCC_ResourcePath>..\..\src;..\..\Ref;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows</DCC_ResourcePath>
     <DCC_ObjPath>..\..\src;..\..\Ref;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows</DCC_ObjPath>
     <DCC_IncludePath>..\..\src;..\..\Ref;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows</DCC_IncludePath>
-    <DCC_Define>FASTMM;SELFTESTx;USE_JEDI_JCL;CONSOLE_TESTRUNNER;SELFTEST;RELEASE</DCC_Define>
+    <DCC_Define>CONSOLE_TESTRUNNER;SELFTEST;RELEASE</DCC_Define>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Version>7.0</Version>
@@ -35,7 +35,7 @@
     <DCC_ResourcePath>..\..\src;..\..\Ref;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows</DCC_ResourcePath>
     <DCC_ObjPath>..\..\src;..\..\Ref;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows</DCC_ObjPath>
     <DCC_IncludePath>..\..\src;..\..\Ref;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows</DCC_IncludePath>
-    <DCC_Define>FASTMM;SELFTESTx;USE_JEDI_JCL;CONSOLE_TESTRUNNER;SELFTEST;DEBUG</DCC_Define>
+    <DCC_Define>CONSOLE_TESTRUNNER;SELFTEST;DEBUG</DCC_Define>
     <DCC_Optimize>False</DCC_Optimize>
   </PropertyGroup>
   <ProjectExtensions>

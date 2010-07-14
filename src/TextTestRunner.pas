@@ -35,16 +35,8 @@
  *)
 
 unit TextTestRunner;
-{$IFDEF CLR}
-  {$UNDEF FASTMM}
-{$ENDIF}
 
-{$I jedi.inc}
-
-//TODO: Resolve XML changes introduced in D2010 - dropping of xdom in source
-{$IFNDEF DELPHI2010_UP}
-  {$DEFINE XMLLISTENER}
-{$ENDIF}
+{$I DUnit.inc}
 
 interface
 uses

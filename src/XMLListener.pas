@@ -2,12 +2,22 @@
   {$define ShowClass}
 {$endif}
 
+{$I DUnit.inc}
+
 unit XMLListener;
 interface
 uses
   Contnrs,
   TestFrameworkProxyIfaces,
+  {$IFDEF XDOM}
   xdom;   // Chosen because it does not drag in any other units e.g. TComponent
+  {$ENDIF}
+  {$IFDEF DKADOMCORE}
+  // Need "$(BDS)\Source\Win32\xml" to be added to the library path...
+  AdomCore_4_3
+  // The following is from "http://www.philo.de/xml/" - Both the 'adom' and 'utils' files are required.
+  {dkAdomCore};
+  {$ENDIF}
 
 type
 
@@ -177,6 +187,7 @@ end;
 constructor TXMLListener.Create(const ExePathFileName: string; const PIContent: string);
 var
   LDomElement: TDomElement;
+  LDomProcessingInstruction : TDomProcessingInstruction;
 begin
   inherited Create;
   FStack := TXMLStack.Create;
@@ -184,10 +195,30 @@ begin
   FAppName := ExtractFileName(ExePathFileName);
   FDocName := ChangeFileExt(FAppName, cxmlExt);
   FXMLDoc := TDOMDocument.create(nil);
+  {$IFDEF XDOM}
   FXMLDoc.Encoding := cEncoding;
+  {$ENDIF}
+  {$IFDEF DKADOMCORE}
+  FXMLDoc.InputEncoding := cEncoding;
+  FXMLDoc.XmlEncoding   := cEncoding;
+  {$ENDIF}
   if PIContent <> '' then
-    FXMLDoc.appendChild(FXMLDoc.createProcessingInstruction(cxmlStylesheet, PIContent));
+  begin
+    {$IFDEF XDOM}
+    LDomProcessingInstruction := FXMLDoc.createProcessingInstruction(cxmlStylesheet, PIContent);
+    {$ENDIF}
+    {$IFDEF DKADOMCORE}
+    LDomProcessingInstruction := TDomProcessingInstruction.Create(FXMLDoc, cxmlStylesheet);
+    LDomProcessingInstruction.Data := PIContent;
+    {$ENDIF}
+    FXMLDoc.appendChild(LDomProcessingInstruction);
+  end;
+  {$IFDEF XDOM}
   LDomElement := FXMLDoc.createElement(cTestResults);
+  {$ENDIF}
+  {$IFDEF DKADOMCORE}
+  LDomElement := TDomElement.Create(FXMLDoc, cTestResults);
+  {$ENDIF}
   FXMLDoc.appendChild(LDomElement);
   MakeElementCurrent(LDomElement);
   AppendLF;
@@ -198,13 +229,31 @@ destructor TXMLListener.Destroy;
 var
   Stream: TFileStream;
   S: string;
+  {$IFDEF DKADOMCORE}
+  DomToXmlParser    : TDomToXmlParser;
+  DomImplementation : TDomImplementation;
+  {$ENDIF}
 begin
+  {$IFDEF XDOM}
   S := FXMLDoc.code;
+  {$ENDIF}
+  {$IFDEF DKADOMCORE}
+  DomImplementation := TDomImplementation.Create(nil);
+  try
+    DomToXmlParser := TDomToXmlParser.Create(nil);
+    try
+      DomToXmlParser.DOMImpl := DomImplementation;
+      DomToXmlParser.WriteToString(FXMLDoc, cEncoding{FXMLDoc.XmlEncoding}, S);
+    finally
+      DomToXmlParser.Free;
+    end;
+  finally
+    DomImplementation.Free;
+  end;
+  {$ENDIF}
   Stream := TFileStream.Create(FAppPath + FDocName, fmCreate or fmOpenWrite);
   try
-{$WARN UNSAFE_CODE OFF}
-    Stream.Write(PChar(S)^, Length(S));
-{$WARN UNSAFE_CODE ON}
+    Stream.Write(Pointer(S)^, Length(S) * SizeOf(Char));  // RINGN: Unicode fix
   finally
     FreeAndNil(Stream);
   end;
@@ -233,33 +282,66 @@ end;
 {------------------- Functions that collect associated actions ----------------}
 
 procedure TXMLListener.AppendLF;
+var
+  LDomText : TDomText;
 begin
-  CurrentElement.appendChild(FXMLDoc.createTextNode(#10));
+  {$IFDEF XDOM}
+  LDomText := FXMLDoc.createTextNode(#10);
+  {$ENDIF}
+  {$IFDEF DKADOMCORE}
+  LDomText := TDomText.Create(FXMLDoc);
+  LDomText.Data := #10;
+  {$ENDIF}
+  CurrentElement.appendChild(LDomText);
 end;
 
 procedure TXMLListener.AppendElement(const AnElement: string);
 var
   LDomElement: TDomElement;
 begin
+  {$IFDEF XDOM}
   LDomElement := FXMLDoc.createElement(AnElement);
+  {$ENDIF}
+  {$IFDEF DKADOMCORE}
+  LDomElement := TDomElement.Create(FXMLDoc, AnElement);
+  {$ENDIF}
   CurrentElement.appendChild(LDomElement);
   AppendLF;
   MakeElementCurrent(LDomElement);
 end;
 
 procedure TXMLListener.AppendComment(const AComment: string);
+var
+  LDomComment : TDomComment;
 begin
-  CurrentElement.appendChild(FXMLDoc.CreateComment(AComment));
+  {$IFDEF XDOM}
+  LDomComment := FXMLDoc.CreateComment(AComment);
+  {$ENDIF}
+  {$IFDEF DKADOMCORE}
+  LDomComment := TDomComment.Create(FXMLDoc);
+  LDomComment.Data := AComment;
+  {$ENDIF}
+  CurrentElement.appendChild(LDomComment);
   AppendLF;
 end;
 
 procedure TXMLListener.AddResult(const ATitle: string; const AValue: string);
 var
   LElement: TDomElement;
+  LDomText : TDomText;
   E: Exception;
 begin
+  {$IFDEF XDOM}
   LElement := FXMLDoc.createElement(ATitle);
-  LElement.appendChild(FXMLDoc.createTextNode(UnEscapeUnknownText(AValue)));
+  LDomText := FXMLDoc.createTextNode(UnEscapeUnknownText(AValue));
+  {$ENDIF}
+  {$IFDEF DKADOMCORE}
+  LElement := TDomElement.Create(FXMLDoc, ATitle);
+  LDomText := TDomText.Create(FXMLDoc);
+  LDomText.Data := UnEscapeUnknownText(AValue);
+  {$ENDIF}
+
+  LElement.appendChild(LDomText);
   if (CurrentElement <> nil) then
   begin
     CurrentElement.appendChild(LElement);
@@ -277,17 +359,32 @@ procedure TXMLListener.AddNamedValue(const AnAttrib: TDomElement; const AName: s
 var
   LAttrib: TdomAttr;
 begin
+  {$IFDEF XDOM}
   LAttrib := FXMLDoc.createAttribute(AName);
   LAttrib.value := AValue;
+  {$ENDIF}
+  {$IFDEF DKADOMCORE}
+  LAttrib := TdomAttr.Create(FXMLDoc, AName, True);
+  LAttrib.NodeValue := AValue;
+  {$ENDIF}
   AnAttrib.setAttributeNode(LAttrib);
 end;
 
 procedure TXMLListener.AddNamedText(const ANode: TDomElement; const AName: string; const AMessage: string);
 var
   LDomElement: TDomElement;
+  LTDomText : TDomText;
 begin
+  {$IFDEF XDOM}
   LDomElement := FXMLDoc.createElement(AName);
-  LDomElement.appendChild(FXMLDoc.createTextNode(UnEscapeUnknownText(AMessage)));
+  LTDomText := FXMLDoc.createTextNode(UnEscapeUnknownText(AMessage));
+  {$ENDIF}
+  {$IFDEF DKADOMCORE}
+  LDomElement := TDomElement.Create(FXMLDoc, AName);
+  LTDomText := TDomText.Create(FXMLDoc);
+  LTDomText.Data := UnEscapeUnknownText(AMessage);
+  {$ENDIF}
+  LDomElement.appendChild(LTDomText);
   ANode.appendChild(LDomElement);
   AppendLF;
 end;
@@ -332,7 +429,12 @@ var
 
   procedure AddClassName(const AClassName: string);
   begin
+    {$IFDEF XDOM}
     LTestElement := FXMLDoc.createElement(AClassName);
+    {$ENDIF}
+    {$IFDEF DKADOMCORE}
+    LTestElement := TDomElement.Create(FXMLDoc, AClassName);
+    {$ENDIF}
     AddNamedValue(LTestElement, cName, UnEscapeUnknownText(Test.Name));
     CurrentElement.appendChild(LTestElement);
     MakeElementCurrent(LTestElement);
@@ -420,7 +522,12 @@ begin
 
   if Test.IsTestMethod then
   begin
+    {$IFDEF XDOM}
     LOKTest := FXMLDoc.createElement(cTest);
+    {$ENDIF}
+    {$IFDEF DKADOMCORE}
+    LOKTest := TDomElement.Create(FXMLDoc, cTest);
+    {$ENDIF}
     AddNamedValue(LOKTest, cName, UnEscapeUnknownText(Test.Name));
     AddNamedValue(LOKTest, cResult, cOK);
     AddNamedValue(LOKTest, cElapsedTime, PrecisionTimeToDateTimeStr(Test.ElapsedTestTime));
@@ -436,7 +543,12 @@ var
 begin
   if not Assigned(AnError) or (CurrentElement = nil) then
     Exit;
+  {$IFDEF XDOM}
   LBadTest := FXMLDoc.createElement(cTest);
+  {$ENDIF}
+  {$IFDEF DKADOMCORE}
+  LBadTest := TDomElement.Create(FXMLDoc, cTest);
+  {$ENDIF}
   AddNamedValue(LBadTest, cName, UnEscapeUnknownText(AnError.FailedTest.Name));
   AddNamedValue(LBadTest, cResult, AFault);
   AddNamedValue(LBadTest, cElapsedTime, PrecisionTimeToDateTimeStr(AnError.FailedTest.ElapsedTestTime));
@@ -466,5 +578,4 @@ begin
 end;
 
 end.
-
 

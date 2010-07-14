@@ -48,11 +48,14 @@ program DUnit2Test;
   {$APPTYPE CONSOLE}
 {$ENDIF}
 
+{$I DUnit.inc}
+
 {$IFNDEF SELFTEST}
-  !!!Alert. "SELFTEST" required in project conditionals
+  '!!!Alert SELFTEST must be defined'
 {$ENDIF}
 
 uses
+  {$IFDEF FASTMM} FastMM4, {$ENDIF}
   TestFrameworkIfaces in '..\..\src\TestFrameworkIfaces.pas',
   TestFramework in '..\..\src\TestFramework.pas',
   TestFrameworkProxyIfaces in '..\..\src\TestFrameworkProxyIfaces.pas',

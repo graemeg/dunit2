@@ -32,9 +32,7 @@
  *
  *)
 
-{$IFDEF LINUX}
-{$DEFINE DUNIT_CLX}
-{$ENDIF}
+{$I DUnit.inc}
 
 unit GUITesting;
 

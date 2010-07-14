@@ -1,4 +1,4 @@
-﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{f21abaa5-2197-4703-b7b1-4a8d28eba776}</ProjectGuid>
     <MainSource>MiniTestLibW32B.dpr</MainSource>
@@ -21,7 +21,7 @@
     <DCC_ResourcePath>..\..\src;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows;..\..\..\..\Externals\JCL_source</DCC_ResourcePath>
     <DCC_ObjPath>..\..\src;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows;..\..\..\..\Externals\JCL_source</DCC_ObjPath>
     <DCC_IncludePath>..\..\src;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows;..\..\..\..\Externals\JCL_source</DCC_IncludePath>
-    <DCC_Define>FASTMM;USE_JEDI_JCL;RELEASE</DCC_Define>
+    <DCC_Define>RELEASE</DCC_Define>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Version>7.0</Version>
@@ -34,7 +34,7 @@
     <DCC_ResourcePath>..\..\src;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows;..\..\..\..\Externals\JCL_source</DCC_ResourcePath>
     <DCC_ObjPath>..\..\src;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows;..\..\..\..\Externals\JCL_source</DCC_ObjPath>
     <DCC_IncludePath>..\..\src;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows;..\..\..\..\Externals\JCL_source</DCC_IncludePath>
-    <DCC_Define>FASTMM;USE_JEDI_JCL;DEBUG</DCC_Define>
+    <DCC_Define>DEBUG</DCC_Define>
   </PropertyGroup>
   <ProjectExtensions>
     <Borland.Personality>Delphi.Personality</Borland.Personality>

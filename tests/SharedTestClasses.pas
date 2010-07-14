@@ -34,13 +34,12 @@
  *******************************************************************************
 *)
 
-{$IFDEF CLR}
-  {$UNSAFECODE ON}
-  {$UNDEF FASTMM}
-{$ENDIF}
+{$I DUnit.inc}
 
 unit SharedTestClasses;
+
 interface
+
 uses
   {$IFDEF CLR}
     System.Reflection,
@@ -49,9 +48,6 @@ uses
     RefTestFramework,
   {$ELSE}
     TestFramework,
-  {$ENDIF}
-  {$IFDEF USE_JEDI_JCL}
-    JclDebug,
   {$ENDIF}
   SysUtils;
 

@@ -34,12 +34,12 @@
  *******************************************************************************
 *)
 
+{$I DUnit.inc}
+
 library MiniTestLibW32D;
 
 uses
-  {$IFDEF FASTMM}
-    FastMM4,
-  {$ENDIF}
+  {$IFDEF FASTMM} FastMM4, {$ENDIF}
   TestFrameworkIfaces      in '..\..\src\TestFrameworkIfaces.pas',
   TestListenerIface        in '..\..\src\TestListenerIface.pas',
   TestFramework            in '..\..\src\TestFramework.pas',

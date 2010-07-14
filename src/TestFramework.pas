@@ -34,17 +34,7 @@
  *******************************************************************************
 *)
 
-{$IFDEF CLR}
-  {$UNSAFECODE ON}
-  {$UNDEF FASTMM}
-{$ENDIF}
-{$IFNDEF VER130}
-  {$IFNDEF VER140}
-    {$WARN UNSAFE_CODE OFF}
-    {$WARN UNSAFE_CAST OFF}
-    {$WARN EXPLICIT_STRING_CAST OFF}
-  {$ENDIF}
-{$ENDIF}
+{$I DUnit.inc}
 
 unit TestFramework;
 
@@ -639,7 +629,7 @@ uses
   {$IFDEF FASTMM}
     FastMM4,
   {$ENDIF}
-{$IFDEF USE_JEDI_JCL}
+{$IFDEF JCL_STACK_TRACE}
   JclDebug,
 {$ENDIF}
   TypInfo,
@@ -2361,7 +2351,7 @@ function  TTestProc.Run(const CurrentTestCase: ITestCase;
                         const ExecControl: ITestExecControl): TExecutionStatus;
 var
   LMsg: string;
-  {$IFDEF USE_JEDI_JCL}
+  {$IFDEF JCL_STACK_TRACE}
   LTrackingStack: boolean;
   {$ENDIF}
 begin
@@ -2371,7 +2361,7 @@ begin
   try
     ExecControl.ExecutionCount := ExecControl.ExecutionCount + 1;
     CheckMethodIsNotEmpty(FMethod);
-    {$IFNDEF USE_JEDI_JCL}
+    {$IFNDEF JCL_STACK_TRACE}
     try
     {$ELSE}
       LTrackingStack := JclExceptionTrackingActive;
@@ -2404,7 +2394,7 @@ begin
     finally
       QueryPerformanceCounter(FStopTime);
       FElapsedTime := ElapsedTestTime;
-      {$IFDEF USE_JEDI_JCL}
+      {$IFDEF JCL_STACK_TRACE}
       {$IFNDEF CLR}
         if LTrackingStack then
           JclStartExceptionTracking // Does nothing if already running. Re-enables tracking
@@ -4335,7 +4325,7 @@ begin
 end;
 
 initialization
-{$IFDEF USE_JEDI_JCL}
+{$IFDEF JCL_STACK_TRACE}
   {$IFNDEF CLR}
   JclStartExceptionTracking; // First time use uses 24 bytes.
   JclStopExceptionTracking;

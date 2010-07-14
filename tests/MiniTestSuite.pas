@@ -38,9 +38,6 @@ unit MiniTestSuite;
 interface
 uses
   TestFramework
-  {$IFDEF USE_JEDI_JCL}
-  ,JclDebug
-  {$ENDIF}
   ;
 
 type

@@ -1,4 +1,4 @@
-﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{27728e98-eb9f-4ab1-a6e0-6d175f6aef37}</ProjectGuid>
     <MainSource>DUnit2Console.dpr</MainSource>
@@ -22,7 +22,7 @@
     <DCC_ResourcePath>..\..\src;..\..\Ref;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows</DCC_ResourcePath>
     <DCC_ObjPath>..\..\src;..\..\Ref;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows</DCC_ObjPath>
     <DCC_IncludePath>..\..\src;..\..\Ref;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows</DCC_IncludePath>
-    <DCC_Define>FASTMM;USE_JEDI_JCL;CONSOLE_TESTRUNNER;RELEASE</DCC_Define>
+    <DCC_Define>CONSOLE_TESTRUNNER;RELEASE</DCC_Define>
     <DCC_Description>GensDCUs</DCC_Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -37,7 +37,7 @@
     <DCC_ResourcePath>..\..\src;..\..\Ref;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows</DCC_ResourcePath>
     <DCC_ObjPath>..\..\src;..\..\Ref;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows</DCC_ObjPath>
     <DCC_IncludePath>..\..\src;..\..\Ref;..\..\tests;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows</DCC_IncludePath>
-    <DCC_Define>FASTMM;USE_JEDI_JCL;CONSOLE_TESTRUNNER;DEBUG</DCC_Define>
+    <DCC_Define>CONSOLE_TESTRUNNER;DEBUG</DCC_Define>
     <DCC_Description>GensDCUs</DCC_Description>
   </PropertyGroup>
   <ProjectExtensions>

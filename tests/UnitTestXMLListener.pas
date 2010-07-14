@@ -33,16 +33,13 @@
  *
  *******************************************************************************
 *)
-{$IFDEF VER180}
-//##  {$DEFINE FASTMM}
-{$ENDIF}
-{$IFDEF CLR}
-  {$UNSAFECODE ON}
-  {$UNDEF FASTMM}
-{$ENDIF}
+
+{$I DUnit.inc}
 
 unit UnitTestXMLListener;
+
 interface
+
 uses
   Classes,
   {$IFDEF CLR}
@@ -52,9 +49,6 @@ uses
     RefTestFramework,
   {$ELSE}
     TestFramework,
-  {$ENDIF}
-  {$IFDEF USE_JEDI_JCL}
-    JclDebug,
   {$ENDIF}
   TestFrameworkIfaces,
   TestFrameworkProxyIfaces;

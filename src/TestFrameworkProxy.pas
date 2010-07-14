@@ -34,14 +34,9 @@
  *******************************************************************************
 *)
 
-{$IFDEF CLR}
-  {$UNSAFECODE ON}
-  {$UNDEF FASTMM}
-{$ENDIF}
+{$I DUnit.inc}
+
 {$BOOLEVAL OFF}
-{$IFNDEF VER130}
-  {$WARN UNIT_PLATFORM OFF}
-{$ENDIF}
 
 unit TestFrameworkProxy;
 // This unit sits between the adapted GUITestRunner and TestFramework.
@@ -52,6 +47,7 @@ unit TestFrameworkProxy;
 // the treeview.
 
 interface
+
 uses
 {$IFDEF CLR}
   System.Reflection,
@@ -86,7 +82,11 @@ uses
   {$IFNDEF VER130}
   SHFolder,
   {$ENDIF}
-{$IFDEF USE_JEDI_JCL}
+{$IFDEF MADEXCEPT_STACK_TRACE}
+  madMapFile,
+  madStackTrace,
+{$ENDIF}
+{$IFDEF JCL_STACK_TRACE}
   JclDebug,
 {$ENDIF}
   SysUtils;
@@ -647,20 +647,33 @@ begin
 end;
 
 function PointerToLocationInfo(Addrs: IntPtr): string;
-{$IFDEF USE_JEDI_JCL}
+{$IFDEF REPORT_STACK_TRACE}
 var
-  _file,
-  _module,
-  _proc: String;
   _line: Integer;
+  {$IFDEF MADEXCEPT_STACK_TRACE}
+    _file,
+    _module,
+    _proc: AnsiString;
+    _procAddr : Pointer;
+  {$ENDIF}
+  {$IFDEF JCL_STACK_TRACE}
+    _file,
+    _module,
+    _proc: String;
+  {$ENDIF}
 {$ENDIF}
 begin
-  {$IFDEF USE_JEDI_JCL}
-    JclDebug.MapOfAddr(Addrs, _file, _module, _proc, _line);
+  {$IFDEF REPORT_STACK_TRACE}
+    {$IFDEF MADEXCEPT_STACK_TRACE}
+      madMapFile.GetMapFileInfos(Pointer(Addrs), _file, _module, _proc, _procAddr, _line);
+    {$ENDIF}
+    {$IFDEF JCL_STACK_TRACE}
+      JclDebug.MapOfAddr(Addrs, _file, _module, _proc, _line);
+    {$ENDIF}
     if _file <> '' then
       Result   := Format('%s:%d', [_file, _line])
     else
-      Result   := _module;
+      Result   := string(_module);
     if Trim(Result) = '' then
       Result := AddrsToStr(Addrs) + '  <no map file>';
   {$ELSE}
@@ -669,23 +682,8 @@ begin
 end;
 
 function PointerToAddressInfo(Addrs: IntPtr): string;
-{$IFDEF USE_JEDI_JCL}
-var
-  _file,
-  _module,
-  _proc: String;
-  _line: Integer;
-{$ENDIF}
 begin
-  {$IFDEF USE_JEDI_JCL}
-    Result := '$'+PtrToStr(Addrs);
-    JclDebug.MapOfAddr(Addrs, _file, _module, _proc, _line);
-    Result := Format(' <$%p>', [ Addrs]);
-    if Trim(Result) = '' then
-      Result := AddrsToStr(Addrs) + '  <no map file>';
-  {$ELSE}
-    Result := AddrsToStr(Addrs);
-  {$ENDIF}
+  Result := Format(' <$%p>', [ Addrs]);
 end;
 
 {-----------------------------------------------------------------------------}
@@ -702,7 +700,10 @@ var
 begin
   LTrace := TStringList.Create;
   try
-    {$IFDEF USE_JEDI_JCL}
+    {$IFDEF MADEXCEPT_STACK_TRACE}
+      LTrace.Text := string(madStackTrace.StackTrace(True, False, False, nil, Pointer(FThrownExceptionAddress), True));
+    {$ENDIF}
+    {$IFDEF JCL_STACK_TRACE}
       JclDebug.JclLastExceptStackListToStrings(LTrace, true);
     {$ENDIF}
     FStackTrace := LTrace.Text;
@@ -919,6 +920,11 @@ begin
   for i := FITestList.Count - 1 downto 0 do
   begin
     (FITestList.Items[i] as ITestProxy).ReleaseTests;
+  end;
+  if Assigned(FITest) then
+  begin
+    FITest.Proxy := nil;
+    FITest.ParentTestCase := nil;
   end;
   FITest := nil;
 end;

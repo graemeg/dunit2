@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<PersonalityInfo>
 		<Option>
@@ -125,7 +125,7 @@
 			<Directories Name="PackageDCPOutputDir"></Directories>
 			<Directories Name="SearchPath">..\..\src;..\..\ref;..\..\tests;..\..\tests\Examples;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_common;..\..\..\..\Externals\JCL_windows;D:\Program Files\Borland\BDS\4.0\source\ToolsAPIx;D:\Program Files\Borland\BDS\4.0\Demos\DelphiWin32\VCLWin32\Dockingx</Directories>
 			<Directories Name="Packages">vcl;vclx;dbrtl;Rave65VCL;bdertl;rtl;vcldb;adortl;dbxcds;dbexpress;vclib;ibxpress;xmlrtl;vclactnband;inet;IntrawebDB_80_100;Intraweb_80_100;vclie;inetdbbde;inetdbxpress;IndyCore;IndySystem;dclOfficeXP;VclSmp;soaprtl;dsnap;IndyProtocols;teeui;teedb;tee;vcldbx;dsnapcon;websnap;webdsnap</Directories>
-			<Directories Name="Conditionals">FASTMM;SELFTEST;USE_JEDI_JCL</Directories>
+			<Directories Name="Conditionals">SELFTEST</Directories>
 			<Directories Name="DebugSourceDirs"></Directories>
 			<Directories Name="UsePackages">False</Directories>
 		</Directories>

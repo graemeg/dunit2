@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{27728e98-eb9f-4ab1-a6e0-6d175f6aef37}</ProjectGuid>
@@ -20,7 +20,7 @@
     <DCC_ResourcePath>..\..\src;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_windows;..\..\..\..\Externals\JCL_common</DCC_ResourcePath>
     <DCC_ObjPath>..\..\src;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_windows;..\..\..\..\Externals\JCL_common</DCC_ObjPath>
     <DCC_IncludePath>..\..\src;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_windows;..\..\..\..\Externals\JCL_common</DCC_IncludePath>
-    <DCC_Define>FASTMM;USE_JEDI_JCL;RELEASE</DCC_Define>
+    <DCC_Define>RELEASE</DCC_Define>
     <DCC_Description>GensDCUs</DCC_Description>
     <DCC_UNSAFE_TYPE>True</DCC_UNSAFE_TYPE>
     <DCC_UNSAFE_CODE>True</DCC_UNSAFE_CODE>
@@ -38,7 +38,7 @@
     <DCC_ResourcePath>..\..\src;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_windows;..\..\..\..\Externals\JCL_common</DCC_ResourcePath>
     <DCC_ObjPath>..\..\src;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_windows;..\..\..\..\Externals\JCL_common</DCC_ObjPath>
     <DCC_IncludePath>..\..\src;..\..\..\..\Externals\FastMM;..\..\..\..\Externals\JCL_source;..\..\..\..\Externals\JCL_windows;..\..\..\..\Externals\JCL_common</DCC_IncludePath>
-    <DCC_Define>FASTMM;USE_JEDI_JCL;DEBUG</DCC_Define>
+    <DCC_Define>DEBUG</DCC_Define>
     <DCC_Description>GensDCUs</DCC_Description>
   </PropertyGroup>
   <ProjectExtensions>
