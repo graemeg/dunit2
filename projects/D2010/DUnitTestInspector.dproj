@@ -44,15 +44,12 @@
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
 			<DCC_DependencyCheckOutputName>_bin\DUnitTestInspector.bpl</DCC_DependencyCheckOutputName>
 			<Version>7.0</Version>
-			<DCC_UnitSearchPath>$(BDS)\source\ToolsAPI;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<DCC_ResourcePath>$(BDS)\source\ToolsAPI;$(DCC_ResourcePath)</DCC_ResourcePath>
 			<DCC_ObjPath>$(BDS)\source\ToolsAPI;$(DCC_ObjPath)</DCC_ObjPath>
 			<DCC_IncludePath>$(BDS)\source\ToolsAPI;$(DCC_IncludePath)</DCC_IncludePath>
-			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
 			<DCC_ObjOutput>_dcu</DCC_ObjOutput>
 			<DCC_HppOutput>_dcu</DCC_HppOutput>
-			<DCC_BplOutput>_bin</DCC_BplOutput>
-			<DCC_DcpOutput>_bin</DCC_DcpOutput>
+			<DCC_BplOutput>.\_bin</DCC_BplOutput>
 		</PropertyGroup>
 		<ProjectExtensions>
 			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
