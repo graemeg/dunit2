@@ -33,9 +33,9 @@
  *
  *******************************************************************************
 *)
-{$IFDEF CLR}
-  {$UNDEF FASTMM}
-{$ENDIF}
+
+{$I DUnit.inc}
+
 unit ProjectsManager;
 
 interface

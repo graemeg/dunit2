@@ -34,6 +34,8 @@
  *******************************************************************************
 *)
 
+{$I DUnit.inc}
+
 unit TestFrameworkIfaces;
 interface
 uses

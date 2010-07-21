@@ -34,6 +34,8 @@
  *******************************************************************************
 *)
 
+{$I DUnit.inc}
+
 unit TestFrameworkProxyIfaces;
 // This unit sits between a modified GUITestRunner and the new DUnit2 TestFramework. It provides an
 // interface to make the new TestFrameWork look and appear to behave like the old TestFramework.
