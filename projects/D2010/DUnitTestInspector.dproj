@@ -23,13 +23,13 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
-			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
+			<DCC_DcuOutput>.\_dcu</DCC_DcuOutput>
 			<DCC_BplOutput>$(BDSCOMMONDIR)\Bpl</DCC_BplOutput>
-			<DCC_DcpOutput>_bin</DCC_DcpOutput>
+			<DCC_DcpOutput>.\_bin</DCC_DcpOutput>
 			<DCC_DependencyCheckOutputName>..\..\..\..\..\..\..\All Users\Documents\RAD Studio\7.0\Bpl\DUnitTestInspector.bpl</DCC_DependencyCheckOutputName>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DCC_Description>DUnit Test Inspector</DCC_Description>
-			<DCC_UnitSearchPath>_bin;..\..\externals\jcl\source\include;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_UnitSearchPath>.\_bin;..\..\externals\jcl\source\include;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<GenPackage>true</GenPackage>
 			<GenDll>true</GenDll>
 			<DesignOnlyPackage>true</DesignOnlyPackage>
@@ -106,6 +106,11 @@
 			<DelphiCompile Include="DUnitTestInspector.dpk">
 				<MainSource>MainSource</MainSource>
 			</DelphiCompile>
+			<DCCReference Include="rtl.dcp"/>
+			<DCCReference Include="designide.dcp"/>
+			<DCCReference Include="OTAUtils.dcp"/>
+			<DCCReference Include="..\..\src\plugin.testInspector\main.pas"/>
+			<DCCReference Include="..\..\src\watchFile.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

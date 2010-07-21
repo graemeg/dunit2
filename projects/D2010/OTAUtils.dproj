@@ -24,7 +24,7 @@
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
 			<DCC_UnitSearchPath>..\..\externals\jcl\source\include;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
-			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
+			<DCC_DcuOutput>.\_dcu</DCC_DcuOutput>
 			<DCC_BplOutput>$(BDSCOMMONDIR)\Bpl</DCC_BplOutput>
 			<DCC_DependencyCheckOutputName>..\..\..\..\..\..\..\All Users\Documents\RAD Studio\7.0\Bpl\OTAUtils.bpl</DCC_DependencyCheckOutputName>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
@@ -35,7 +35,7 @@
 			<DCC_Description>EPC Open Tools API utilities</DCC_Description>
 			<DCC_WriteableConstants>true</DCC_WriteableConstants>
 			<DCC_OutputNeverBuildDcps>true</DCC_OutputNeverBuildDcps>
-			<DCC_DcpOutput>_bin</DCC_DcpOutput>
+			<DCC_DcpOutput>.\_bin</DCC_DcpOutput>
 			<GenDll>true</GenDll>
 			<DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
 			<DCC_DebugInformation>false</DCC_DebugInformation>
