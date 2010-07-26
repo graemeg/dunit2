@@ -1,8 +1,5 @@
 if (%1)==() goto exit
 
-del /Q %1\_bin\*.exe
-del /Q %1\_bin\*.bpl
-del /Q %1\_bin\*.dcp
-del /Q %1\_dcu\*.dcu
+for %%i in (%1\_bin\*.exe,%1\_bin\*.bpl,%1\_bin\*.dcp,%1\_dcu\*.dcu) do if exist %%i del /Q %%i
 
 :exit
