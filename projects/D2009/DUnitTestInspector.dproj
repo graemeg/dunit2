@@ -23,9 +23,9 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
-			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
-			<DCC_BplOutput>_bin</DCC_BplOutput>
-			<DCC_DcpOutput>_bin</DCC_DcpOutput>
+			<DCC_DcuOutput>.\_dcu</DCC_DcuOutput>
+			<DCC_BplOutput>.\_bin</DCC_BplOutput>
+			<DCC_DcpOutput>.\_bin</DCC_DcpOutput>
 			<DCC_DependencyCheckOutputName>_bin\DUnitTestInspector.bpl</DCC_DependencyCheckOutputName>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DCC_Description>DUnit Test Inspector</DCC_Description>

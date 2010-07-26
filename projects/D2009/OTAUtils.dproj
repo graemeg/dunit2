@@ -24,8 +24,8 @@
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
 			<DCC_UnitSearchPath>..\..\externals\jcl\source\include;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
-			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
-			<DCC_BplOutput>_bin</DCC_BplOutput>
+			<DCC_DcuOutput>.\_dcu</DCC_DcuOutput>
+			<DCC_BplOutput>.\_bin</DCC_BplOutput>
 			<DCC_DependencyCheckOutputName>_bin\OTAUtils.bpl</DCC_DependencyCheckOutputName>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DesignOnlyPackage>false</DesignOnlyPackage>
@@ -35,7 +35,7 @@
 			<DCC_Description>EPC Open Tools API utilities</DCC_Description>
 			<DCC_WriteableConstants>true</DCC_WriteableConstants>
 			<DCC_OutputNeverBuildDcps>true</DCC_OutputNeverBuildDcps>
-			<DCC_DcpOutput>_bin</DCC_DcpOutput>
+			<DCC_DcpOutput>.\_bin</DCC_DcpOutput>
 			<GenDll>true</GenDll>
 			<DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
 			<DCC_DebugInformation>false</DCC_DebugInformation>
