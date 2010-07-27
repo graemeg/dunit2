@@ -42,8 +42,6 @@
 			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
-			<DCC_BplOutput>$(BDSCOMMONDIR)\Bpl</DCC_BplOutput>
-			<DCC_DependencyCheckOutputName>C:\Users\Public\Documents\RAD Studio\7.0\Bpl\DUnitTestInspector.bpl</DCC_DependencyCheckOutputName>
 			<Version>7.0</Version>
 			<DCC_ResourcePath>$(BDS)\source\ToolsAPI;$(DCC_ResourcePath)</DCC_ResourcePath>
 			<DCC_ObjPath>$(BDS)\source\ToolsAPI;$(DCC_ObjPath)</DCC_ObjPath>
