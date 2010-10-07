@@ -204,6 +204,7 @@ implementation
 
 uses
    SysUtils
+  ,Types
   ;
 
 var

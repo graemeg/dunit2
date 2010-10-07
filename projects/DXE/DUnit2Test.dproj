@@ -1,0 +1,159 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{27728e98-eb9f-4ab1-a6e0-6d175f6aef37}</ProjectGuid>
+			<MainSource>DUnit2Test.dpr</MainSource>
+			<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<DCC_DependencyCheckOutputName>DUnit2Test.exe</DCC_DependencyCheckOutputName>
+			<ProjectVersion>12.2</ProjectVersion>
+			<Config Condition="'$(Config)'==''">Release</Config>
+			<Base>True</Base>
+			<Platform>Win32</Platform>
+			<AppType>Console</AppType>
+			<FrameworkType>None</FrameworkType>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<DCC_Define>SELFTEST;$(DCC_Define)</DCC_Define>
+			<DCC_UnitSearchPath>$(BDS)\Source\Win32\xml;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;..\..\externals\fastmm;..\..\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_ExeOutput>_bin</DCC_ExeOutput>
+			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
+			<DCC_DependencyCheckOutputName>_bin\DUnit2Test.exe</DCC_DependencyCheckOutputName>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<Version>7.0</Version>
+			<DCC_DebugInformation>False</DCC_DebugInformation>
+			<DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+			<DCC_GenerateStackFrames>True</DCC_GenerateStackFrames>
+			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+			<DCC_MapFile>3</DCC_MapFile>
+			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
+			<DCC_ObjOutput>_dcu</DCC_ObjOutput>
+			<DCC_HppOutput>_dcu</DCC_HppOutput>
+			<DCC_ResourcePath>..\..\src;..\..\Ref;..\..\tests;..\..\tests\Examples;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;$(DCC_ResourcePath)</DCC_ResourcePath>
+			<DCC_ObjPath>..\..\src;..\..\Ref;..\..\tests;..\..\tests\Examples;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;$(DCC_ObjPath)</DCC_ObjPath>
+			<DCC_IncludePath>..\..\src;..\..\Ref;..\..\tests;..\..\tests\Examples;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;$(DCC_IncludePath)</DCC_IncludePath>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+			<DCC_UNIT_PLATFORM>False</DCC_UNIT_PLATFORM>
+			<DCC_UNSAFE_TYPE>True</DCC_UNSAFE_TYPE>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<Version>7.0</Version>
+			<DCC_GenerateStackFrames>True</DCC_GenerateStackFrames>
+			<DCC_MapFile>3</DCC_MapFile>
+			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
+			<DCC_ObjOutput>_dcu</DCC_ObjOutput>
+			<DCC_HppOutput>_dcu</DCC_HppOutput>
+			<DCC_ResourcePath>..\..\src;..\..\Ref;..\..\tests;..\..\tests\Examples;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;$(DCC_ResourcePath)</DCC_ResourcePath>
+			<DCC_ObjPath>..\..\src;..\..\Ref;..\..\tests;..\..\tests\Examples;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;$(DCC_ObjPath)</DCC_ObjPath>
+			<DCC_IncludePath>..\..\src;..\..\Ref;..\..\tests;..\..\tests\Examples;..\..\externals\fastmm;..\..\externals\jcl\source\include;..\..\externals\jcl\source\common;..\..\externals\jcl\source\windows;$(DCC_IncludePath)</DCC_IncludePath>
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+			<DCC_UNSAFE_TYPE>True</DCC_UNSAFE_TYPE>
+		</PropertyGroup>
+		<ItemGroup>
+			<DelphiCompile Include="DUnit2Test.dpr">
+				<MainSource>MainSource</MainSource>
+			</DelphiCompile>
+			<DCCReference Include="..\..\src\TestFrameworkIfaces.pas"/>
+			<DCCReference Include="..\..\src\TestFramework.pas"/>
+			<DCCReference Include="..\..\src\TestFrameworkProxyIfaces.pas"/>
+			<DCCReference Include="..\..\src\TestListenerIface.pas"/>
+			<DCCReference Include="..\..\src\ProjectsManagerIface.pas"/>
+			<DCCReference Include="..\..\src\ProjectsManager.pas"/>
+			<DCCReference Include="..\..\src\TestFrameworkProxy.pas"/>
+			<DCCReference Include="..\..\Ref\RefTestFrameworkProxy.pas"/>
+			<DCCReference Include="..\..\Ref\RefTestFramework.pas"/>
+			<DCCReference Include="..\..\Ref\RefProjectsManager.pas"/>
+			<DCCReference Include="..\..\Ref\RefGUITestRunner.pas"/>
+			<DCCReference Include="..\..\tests\UnitTestFramework.pas"/>
+			<DCCReference Include="..\..\tests\UnitTestFrameworkProxy.pas"/>
+			<DCCReference Include="..\..\tests\SharedTestClasses.pas"/>
+			<DCCReference Include="..\..\src\TestExtensions.pas"/>
+			<DCCReference Include="..\..\src\TextTestRunner.pas"/>
+			<DCCReference Include="..\..\src\TestModules.pas"/>
+			<DCCReference Include="..\..\src\GUITesting.pas"/>
+			<DCCReference Include="..\..\src\XPVistaSupport.pas"/>
+			<DCCReference Include="..\..\tests\UnitTestModules.pas"/>
+			<DCCReference Include="..\..\tests\DLLSingleTest.pas"/>
+			<DCCReference Include="..\..\tests\MiniTestSuite2.pas"/>
+			<DCCReference Include="..\..\tests\MiniTestSuite.pas"/>
+			<DCCReference Include="..\..\tests\UnitSingleTest.pas"/>
+			<DCCReference Include="..\..\tests\UnitTestGUITesting.pas">
+				<Form>TestForm</Form>
+			</DCCReference>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')" Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\8.0\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\8.0\UserTools.proj"/>
+		<ProjectExtensions>
+			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Delphi.Personality>
+					<Parameters/>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">10</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1033</VersionInfo>
+						<VersionInfo Name="CodePage">1252</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">10.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Source>
+						<Source Name="MainSource">DUnit2Test.dpr</Source>
+					</Source>
+					<Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\dcloffice2k100.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\dclofficexp100.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+					</Excluded_Packages>
+				</Delphi.Personality>
+				<ModelSupport>False</ModelSupport>
+				<Platforms>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

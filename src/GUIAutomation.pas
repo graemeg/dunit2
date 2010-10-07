@@ -190,6 +190,7 @@ implementation
 {$IF COMPILERVERSION >= 11} // D2007
 uses
   Dialogs
+  ,Types
   ;
 {$IFEND}
 

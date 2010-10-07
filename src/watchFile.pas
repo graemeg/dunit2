@@ -29,6 +29,7 @@ const
 {$IFDEF DELPHI2007} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\Delphi2007'; {$ENDIF}
 {$IFDEF DELPHI2009} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\Delphi2009'; {$ENDIF}
 {$IFDEF DELPHI2010} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\Delphi2010'; {$ENDIF}
+{$IFDEF DELPHIXE} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\DelphiXE'; {$ENDIF}
   cRegWatchFile = 'WatchFile';
   cWatchFileSection = 'FilesToOpen';
 
