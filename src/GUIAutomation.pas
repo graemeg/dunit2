@@ -121,7 +121,9 @@ type
   public
     constructor Create;
     function  FindControl(const AName: string; Addrs :Pointer = nil): TControl;                      overload;
+{$IFDEF DELPHI2009_UP}
     procedure ThreadedExecute(AProc: TThreadProcedure);
+{$ENDIF DELPHI2009_UP}
     function  FindControl(Comp: TComponent; const CtlName: string; Addrs :Pointer = nil): TControl; overload;
 
     // Control (VCL or other) under mouse cursor, position is relative to GUI
@@ -206,6 +208,7 @@ type
     class procedure SyncMessages;
   end;
 
+{$IFDEF DELPHI2009_UP}
   // Ability to run code in a separate thread. Required for GUI testing
   // so that code doesn't block with modal windows.
   TGUITestThread = class(TThread)
@@ -217,6 +220,7 @@ type
   public
     constructor Create(AProc: TThreadProcedure; CreateSuspended: Boolean);
   end;
+{$ENDIF DELPHI2009_UP}
 
 // assertions are always on so we can check for own consistency
 {$ASSERTIONS ON}
@@ -248,6 +252,7 @@ end;
 
 { TGUITestThread }
 
+{$IFDEF DELPHI2009_UP}
 constructor TGUITestThread.Create(AProc: TThreadProcedure;
   CreateSuspended: Boolean);
 begin
@@ -275,6 +280,7 @@ begin
   if Assigned(FatalException) then
     raise FatalException;
 end;
+{$ENDIF DELPHI2009_UP}
 
 { TGUIAutomation }
 
@@ -300,6 +306,7 @@ begin
   Sleep(AInterval);
 end;
 
+{$IFDEF DELPHI2009_UP}
 procedure TGUIAutomation.ThreadedExecute(AProc: TThreadProcedure);
 var
   LThread: TThread;
@@ -312,6 +319,7 @@ begin
   end;
   SyncMessages;
 end;
+{$ENDIF DELPHI2009_UP}
 
 function TGUIAutomation.FindControl(Comp: TComponent; const CtlName: string; Addrs :Pointer): TControl;
 

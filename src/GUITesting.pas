@@ -75,7 +75,9 @@ type
     procedure SetUpOnce; override;
     procedure SetUp; override;
     procedure TearDown; override;
+{$IFDEF DELPHI2009_UP}
     procedure ThreadedExecute(AProc: TThreadProcedure);
+{$ENDIF DELPHI2009_UP}
     function  GetGUI: TControl;
     procedure SetGUI(const AValue: TControl);
     procedure ShowGUI;
@@ -150,10 +152,12 @@ begin
   inherited;
 end;
 
+{$IFDEF DELPHI2009_UP}
 procedure TGUITestCase.ThreadedExecute(AProc: TThreadProcedure);
 begin
   FAutomation.ThreadedExecute(AProc);
 end;
+{$ENDIF DELPHI2009_UP}
 
 procedure TGUITestCase.GetContinueExecution(var AContinueExecution: boolean);
 begin

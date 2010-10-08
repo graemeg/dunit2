@@ -48,6 +48,8 @@ program DUnit2Test;
 {$APPTYPE CONSOLE}
 {$ENDIF}
 
+{$I DUnit.inc}
+
 {$IFNDEF SELFTEST}
   !!!Alert. "SELFTEST" required in project conditionals
 {$ENDIF}

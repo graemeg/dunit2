@@ -279,7 +279,6 @@ procedure TTestMemPropPassReports.TearDownOnce;
 begin
   FreeAndNil(ObjA);
 end;
-{$ENDIF}
 
 { TTestAllowedLeakReports }
 
@@ -329,7 +328,6 @@ begin
   Check(Assigned(ObjA), 'Should be assigned');
 end;
 
-
 { TTestSetUpLeakReportDisable }
 
 procedure TTestSetUpLeakReportDisable.SetUp;
@@ -347,6 +345,7 @@ begin
   IgnoresMemoryLeakInSetUpTearDown := False;
   Check(Assigned(ObjA), 'Should be assigned');
 end;
+{$ENDIF}
 
 { TTestMissingCheckWarningReport }
 
