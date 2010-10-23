@@ -53,6 +53,8 @@
 			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_DependencyCheckOutputName>C:\Users\Public\Documents\RAD Studio\6.0\bpl\OTAUtils.bpl</DCC_DependencyCheckOutputName>
+			<DCC_BplOutput>$(BDSCOMMONDIR)\bpl</DCC_BplOutput>
 			<BRCC_IncludePath>..;$(BRCC_IncludePath)</BRCC_IncludePath>
 			<DCC_DebugDCUs>true</DCC_DebugDCUs>
 			<Version>7.0</Version>
