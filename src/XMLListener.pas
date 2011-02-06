@@ -13,10 +13,9 @@ uses
   xdom;   // Chosen because it does not drag in any other units e.g. TComponent
   {$ENDIF}
   {$IFDEF DKADOMCORE}
-  // Need "$(BDS)\Source\Win32\xml" to be added to the library path...
-  AdomCore_4_3
   // The following is from "http://www.philo.de/xml/" - Both the 'adom' and 'utils' files are required.
-  {dkAdomCore};
+  // Need "\externals\adom" to be added to the project search path
+  dkAdomCore_4_3;
   {$ENDIF}
 
 type

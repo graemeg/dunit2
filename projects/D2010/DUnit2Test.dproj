@@ -24,7 +24,7 @@
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
 			<DCC_Define>SELFTEST;$(DCC_Define)</DCC_Define>
-			<DCC_UnitSearchPath>$(BDS)\Source\Win32\xml;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;..\..\externals\fastmm;..\..\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_UnitSearchPath>..\..\src;..\..\externals\jcl\source\include;..\..\externals\jcl\source\windows;..\..\externals\jcl\source\common;..\..\externals\fastmm;..\..\externals\adom;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<DCC_ExeOutput>_bin</DCC_ExeOutput>
 			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
 			<DCC_DependencyCheckOutputName>_bin\DUnit2Test.exe</DCC_DependencyCheckOutputName>
