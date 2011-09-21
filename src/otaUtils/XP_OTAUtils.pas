@@ -91,6 +91,7 @@ procedure DebugMessageFmt(const AMessageFormat: string;
 {$ENDIF}
 
 function GetIDEEnvironmentOptions(const AOutputFilePath: string): boolean;
+function GetEnvVarValue(const VarName: string): string;
 function WriteToFile(const AText: string; const AFilePath: string): boolean;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -697,6 +698,26 @@ begin
     on E: EInOutError do ;  // swallow file errors
   end;
 
+end;
+
+// http://www.delphidabbler.com/articles?article=6#getenvvarvalue
+function GetEnvVarValue(const VarName: string): string;
+var
+  BufSize: Integer;  // buffer size required for value
+begin
+  // Get required buffer size (inc. terminal #0)
+  BufSize := GetEnvironmentVariable(
+    PChar(VarName), nil, 0);
+  if BufSize > 0 then
+  begin
+    // Read env var value into result string
+    SetLength(Result, BufSize - 1);
+    GetEnvironmentVariable(PChar(VarName),
+      PChar(Result), BufSize);
+  end
+  else
+    // No such environment variable
+    Result := '';
 end;
 
 function OpenFileInIDE(const AFilePath: string; const ALineNumber: integer): boolean;

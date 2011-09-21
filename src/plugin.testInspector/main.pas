@@ -29,8 +29,7 @@ type
   private
     FTimer: TTimer;
     FDestroyed: boolean;
-    FIDENotifier: IOTAIDENotifier;
-    function DoInitiateTimer(var ATimer: TTimer;
+    function InitialiseTimer(var ATimer: TTimer;
       const ATimerEvent: TNotifyEvent;
       const AFrequencyMSec: integer = cWatchFileInspectionFrequencyMSec): boolean;
     procedure TimerEvent(Sender: TObject);
@@ -41,25 +40,9 @@ type
     function GetName: string; override;
     procedure Destroyed; override;
 
-    procedure InitiateTimer;
 
   public
     constructor Create;
-    destructor Destroy; override;
-  end;
-
-  TIDENotifier = class (TXP_OTANotifier, IOTAIDENotifier)
-  private
-    FDUnitTestInspector: TDUnitTestInspector;
-    FNotifierIndex: integer;
-  protected
-    procedure FileNotification(NotifyCode: TOTAFileNotification;
-      const FileName: string; var Cancel: Boolean);
-    procedure BeforeCompile(const Project: IOTAProject; var Cancel: Boolean); overload;
-    procedure AfterCompile(Succeeded: Boolean); overload;
-    procedure Destroyed; override;
-  public
-    constructor Create(const ADUnitTestInspector: TDUnitTestInspector);
     destructor Destroy; override;
   end;
 
@@ -105,9 +88,7 @@ end;
 constructor TDUnitTestInspector.Create;
 begin
   inherited Create;
-  // register notifier to listen for IDE DesktopLoad event and initiate timer
-  // at that point.
-  FIDENotifier := TIDENotifier.Create(self);
+  InitialiseTimer(FTimer, TimerEvent);
 end;
 
 destructor TDUnitTestInspector.Destroy;
@@ -133,12 +114,7 @@ begin
   Result := cPluginName;
 end;
 
-procedure TDUnitTestInspector.InitiateTimer;
-begin
-  DoInitiateTimer(FTimer, TimerEvent);
-end;
-
-function TDUnitTestInspector.DoInitiateTimer(var ATimer: TTimer;
+function TDUnitTestInspector.InitialiseTimer(var ATimer: TTimer;
   const ATimerEvent: TNotifyEvent; const AFrequencyMSec: integer): boolean;
 begin
   Result := false;
@@ -208,64 +184,6 @@ begin
     LFilesToOpen.Free;
   end;
 
-end;
-
-{ TIDENotifier }
-
-procedure TIDENotifier.AfterCompile(Succeeded: Boolean);
-begin
-  // do nothing
-end;
-
-procedure TIDENotifier.BeforeCompile(const Project: IOTAProject;
-  var Cancel: Boolean);
-begin
-  // do nothing
-end;
-
-constructor TIDENotifier.Create(const ADUnitTestInspector: TDUnitTestInspector);
-var
-  Services50: IOTAServices50;
-begin
-  inherited Create;
-  FDUnitTestInspector := ADUnitTestInspector;
-  FNotifierIndex := -1;
-  if SysUtils.Supports(BorlandIDEServices, IOTAServices50, Services50) then
-    FNotifierIndex := Services50.AddNotifier(self);
-end;
-
-destructor TIDENotifier.Destroy;
-begin
-  Destroyed;
-  inherited;
-end;
-
-
-procedure TIDENotifier.Destroyed;
-var
-  Services50: IOTAServices50;
-begin
-  //  Clean up the notifier
-  if (FNotifierIndex >= 0) and
-    SysUtils.Supports(BorlandIDEServices, IOTAServices50, Services50) then
-  begin
-    Services50.RemoveNotifier(FNotifierIndex);
-    FNotifierIndex := -1;
-    FDUnitTestInspector := nil;
-  end;
-end;
-
-
-procedure TIDENotifier.FileNotification(NotifyCode: TOTAFileNotification;
-  const FileName: string; var Cancel: Boolean);
-begin
-  case NotifyCode of
-    ofnDefaultDesktopLoad, ofnProjectDesktopLoad:
-    begin
-      if Assigned(FDUnitTestInspector) then
-        FDUnitTestInspector.InitiateTimer;
-    end;
-  end;
 end;
 
 end.
