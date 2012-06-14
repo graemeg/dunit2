@@ -2,12 +2,28 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define PluginName "DUnitTestInspector"
-#define VersionNumber "0.3"
+#define VersionNumber "0.4"
 #define MyAppPublisher "DUnit project group"
 
 #define PluginIDEDescription "DUnit Test Inspector"
 
 #define ProductKey "Software\DunitTestInspector"
+
+#define DXE2ProductKey "Software\DUnitTestInspector\DelphiXE2"
+#define DXE2KnownPackageKey "Software\Embarcadero\BDS\9.0\Known Packages"
+#define DXE2DisabledPackageKey "Software\Embarcadero\BDS\9.0\Disabled Packages"
+#define DXE2WatchFolder "{userappdata}\DUnitTestInspector\DelphiXE2"
+#define DXE2WatchPath "{userappdata}\DUnitTestInspector\DelphiXE2\watchFile"
+#define DXE2KnownPackageFolder "{commondocs}\RAD Studio\9.0\Bpl"
+#define DXE2SourceBinariesFolder "{src}\..\DXE2\_bin"
+
+#define DXEProductKey "Software\DUnitTestInspector\DelphiXE"
+#define DXEKnownPackageKey "Software\Embarcadero\BDS\8.0\Known Packages"
+#define DXEDisabledPackageKey "Software\Embarcadero\BDS\8.0\Disabled Packages"
+#define DXEWatchFolder "{userappdata}\DUnitTestInspector\DelphiXE"
+#define DXEWatchPath "{userappdata}\DUnitTestInspector\DelphiXE\watchFile"
+#define DXEKnownPackageFolder "{commondocs}\RAD Studio\8.0\Bpl"
+#define DXESourceBinariesFolder "{src}\..\DXE\_bin"
 
 #define D2010ProductKey "Software\DUnitTestInspector\Delphi2010"
 #define D2010KnownPackageKey "Software\CodeGear\BDS\7.0\Known Packages"
@@ -40,12 +56,22 @@ SolidCompression=yes
 Name: english; MessagesFile: compiler:Default.isl
 
 [Dirs]
+; Delphi XE2
+Name: {#DXE2WatchFolder}; Languages: ; Flags: uninsalwaysuninstall; Components: DelphiXE2
+; Delphi XE
+Name: {#DXEWatchFolder}; Languages: ; Flags: uninsalwaysuninstall; Components: DelphiXE
 ; Delphi 2010
 Name: {#D2010WatchFolder}; Languages: ; Flags: uninsalwaysuninstall; Components: Delphi2010
 ; Delphi 2009
 Name: {#D2009WatchFolder}; Languages: ; Flags: uninsalwaysuninstall; Components: Delphi2009
 
 [Files]
+; Delphi XE2
+Source: {#DXE2SourceBinariesFolder}\DUnitTestInspector.bpl; DestDir: {#DXE2KnownPackageFolder}; Flags: ignoreversion external; Components: DelphiXE2
+Source: {#DXE2SourceBinariesFolder}\OTAUtils.bpl; DestDir: {#DXE2KnownPackageFolder}; Flags: ignoreversion external; Components: DelphiXE2
+; Delphi XE
+Source: {#DXESourceBinariesFolder}\DUnitTestInspector.bpl; DestDir: {#DXEKnownPackageFolder}; Flags: ignoreversion external; Components: DelphiXE
+Source: {#DXESourceBinariesFolder}\OTAUtils.bpl; DestDir: {#DXEKnownPackageFolder}; Flags: ignoreversion external; Components: DelphiXE
 ; Delphi 2010
 Source: {#D2010SourceBinariesFolder}\DUnitTestInspector.bpl; DestDir: {#D2010KnownPackageFolder}; Flags: ignoreversion external; Components: Delphi2010
 Source: {#D2010SourceBinariesFolder}\OTAUtils.bpl; DestDir: {#D2010KnownPackageFolder}; Flags: ignoreversion external; Components: Delphi2010
@@ -57,6 +83,14 @@ Source: {#D2009SourceBinariesFolder}\OTAUtils.bpl; DestDir: {#D2009KnownPackageF
 [Registry]
 Root: HKCU; Subkey: {#ProductKey}; ValueType: none; Flags: uninsdeletekeyifempty
 
+; Delphi XE2
+Root: HKCU; Subkey: {#DXE2ProductKey}; ValueType: string; ValueName: WatchFile; ValueData: {#DXE2WatchPath}; Flags: uninsdeletekey; Languages: ; Components: DelphiXE2
+Root: HKCU; Subkey: {#DXE2KnownPackageKey}; ValueType: string; ValueName: {#DXE2KnownPackageFolder}\DUnitTestInspector.bpl; ValueData: {#PluginIDEDescription}; Languages: ; Flags: uninsdeletevalue dontcreatekey; Components: DelphiXE2
+Root: HKCU; Subkey: {#DXE2DisabledPackageKey}; ValueType: none; ValueName: {#DXE2KnownPackageFolder}\DUnitTestInspector.bpl; Flags: uninsdeletevalue deletevalue; Components: DelphiXE2
+; Delphi XE
+Root: HKCU; Subkey: {#DXEProductKey}; ValueType: string; ValueName: WatchFile; ValueData: {#DXEWatchPath}; Flags: uninsdeletekey; Languages: ; Components: DelphiXE
+Root: HKCU; Subkey: {#DXEKnownPackageKey}; ValueType: string; ValueName: {#DXEKnownPackageFolder}\DUnitTestInspector.bpl; ValueData: {#PluginIDEDescription}; Languages: ; Flags: uninsdeletevalue dontcreatekey; Components: DelphiXE
+Root: HKCU; Subkey: {#DXEDisabledPackageKey}; ValueType: none; ValueName: {#DXEKnownPackageFolder}\DUnitTestInspector.bpl; Flags: uninsdeletevalue deletevalue; Components: DelphiXE
 ; Delphi 2010
 Root: HKCU; Subkey: {#D2010ProductKey}; ValueType: string; ValueName: WatchFile; ValueData: {#D2010WatchPath}; Flags: uninsdeletekey; Languages: ; Components: Delphi2010
 Root: HKCU; Subkey: {#D2010KnownPackageKey}; ValueType: string; ValueName: {#D2010KnownPackageFolder}\DUnitTestInspector.bpl; ValueData: {#PluginIDEDescription}; Languages: ; Flags: uninsdeletevalue dontcreatekey; Components: Delphi2010
@@ -70,5 +104,7 @@ Root: HKCU; Subkey: {#D2009DisabledPackageKey}; ValueType: none; ValueName: {#D2
 Name: {group}\{cm:UninstallProgram,{#PluginName}}; Filename: {uninstallexe}
 
 [Components]
+Name: DelphiXE2; Description: Install wizard in Delphi XE2 IDE; Flags: checkablealone; Types: custom compact full
+Name: DelphiXE; Description: Install wizard in Delphi XE IDE; Flags: checkablealone; Types: custom compact full
 Name: Delphi2010; Description: Install wizard in Delphi 2010 IDE; Flags: checkablealone; Types: custom compact full
 Name: Delphi2009; Description: Install wizard in Delphi 2009 IDE; Flags: checkablealone; Types: custom compact full
