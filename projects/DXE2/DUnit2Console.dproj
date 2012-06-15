@@ -50,7 +50,7 @@
 			<DCC_DependencyCheckOutputName>_bin\DUnit2Console.exe</DCC_DependencyCheckOutputName>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base_Win32)'!=''">
-			<DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+			<DCC_Namespace>Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
 			<Debugger_SymbolSourcePath>E:\DUnit2\Branches\ModITestCase\Project\ModelSupport_DUnit2Test;$(Debugger_SymbolSourcePath)</Debugger_SymbolSourcePath>
 			<VerInfo_Locale>1033</VerInfo_Locale>
 			<Debugger_CWD>E:\DUnit2\Branches\ModITestCase\Project</Debugger_CWD>
@@ -89,7 +89,7 @@
 			<DCC_Description>GensDCUs</DCC_Description>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-			<Manifest_File>None</Manifest_File>
+			<DCC_UnitSearchPath>..\..\externals\jcl\source\include\jedi;..\..\externals\fastmm;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 		</PropertyGroup>
 		<ItemGroup>
 			<DelphiCompile Include="$(MainSource)">

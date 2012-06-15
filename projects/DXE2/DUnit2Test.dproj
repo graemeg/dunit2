@@ -98,6 +98,7 @@
 			<DCC_UNSAFE_TYPE>True</DCC_UNSAFE_TYPE>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+			<DCC_UnitSearchPath>..\..\externals\jcl\source\include\jedi;..\..\externals\fastmm;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
 		</PropertyGroup>
 		<ItemGroup>

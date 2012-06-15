@@ -50,100 +50,100 @@
 			<MSBuild Projects="SingleTestLibW32.dproj"/>
 		</Target>
 		<Target Name="SingleTestLibW32:Clean">
-			<MSBuild Targets="Clean" Projects="SingleTestLibW32.dproj"/>
+			<MSBuild Projects="SingleTestLibW32.dproj" Targets="Clean"/>
 		</Target>
 		<Target Name="SingleTestLibW32:Make">
-			<MSBuild Targets="Make" Projects="SingleTestLibW32.dproj"/>
+			<MSBuild Projects="SingleTestLibW32.dproj" Targets="Make"/>
 		</Target>
 		<Target Name="MiniTestLibW32A">
 			<MSBuild Projects="MiniTestLibW32A.dproj"/>
 		</Target>
 		<Target Name="MiniTestLibW32A:Clean">
-			<MSBuild Targets="Clean" Projects="MiniTestLibW32A.dproj"/>
+			<MSBuild Projects="MiniTestLibW32A.dproj" Targets="Clean"/>
 		</Target>
 		<Target Name="MiniTestLibW32A:Make">
-			<MSBuild Targets="Make" Projects="MiniTestLibW32A.dproj"/>
+			<MSBuild Projects="MiniTestLibW32A.dproj" Targets="Make"/>
 		</Target>
 		<Target Name="MiniTestLibW32B">
 			<MSBuild Projects="MiniTestLibW32B.dproj"/>
 		</Target>
 		<Target Name="MiniTestLibW32B:Clean">
-			<MSBuild Targets="Clean" Projects="MiniTestLibW32B.dproj"/>
+			<MSBuild Projects="MiniTestLibW32B.dproj" Targets="Clean"/>
 		</Target>
 		<Target Name="MiniTestLibW32B:Make">
-			<MSBuild Targets="Make" Projects="MiniTestLibW32B.dproj"/>
+			<MSBuild Projects="MiniTestLibW32B.dproj" Targets="Make"/>
 		</Target>
 		<Target Name="MiniTestLibW32C">
 			<MSBuild Projects="MiniTestLibW32C.dproj"/>
 		</Target>
 		<Target Name="MiniTestLibW32C:Clean">
-			<MSBuild Targets="Clean" Projects="MiniTestLibW32C.dproj"/>
+			<MSBuild Projects="MiniTestLibW32C.dproj" Targets="Clean"/>
 		</Target>
 		<Target Name="MiniTestLibW32C:Make">
-			<MSBuild Targets="Make" Projects="MiniTestLibW32C.dproj"/>
+			<MSBuild Projects="MiniTestLibW32C.dproj" Targets="Make"/>
 		</Target>
 		<Target Name="MiniTestLibW32D">
 			<MSBuild Projects="MiniTestLibW32D.dproj"/>
 		</Target>
 		<Target Name="MiniTestLibW32D:Clean">
-			<MSBuild Targets="Clean" Projects="MiniTestLibW32D.dproj"/>
+			<MSBuild Projects="MiniTestLibW32D.dproj" Targets="Clean"/>
 		</Target>
 		<Target Name="MiniTestLibW32D:Make">
-			<MSBuild Targets="Make" Projects="MiniTestLibW32D.dproj"/>
+			<MSBuild Projects="MiniTestLibW32D.dproj" Targets="Make"/>
 		</Target>
 		<Target Name="OTAUtils">
 			<MSBuild Projects="OTAUtils.dproj"/>
 		</Target>
 		<Target Name="OTAUtils:Clean">
-			<MSBuild Targets="Clean" Projects="OTAUtils.dproj"/>
+			<MSBuild Projects="OTAUtils.dproj" Targets="Clean"/>
 		</Target>
 		<Target Name="OTAUtils:Make">
-			<MSBuild Targets="Make" Projects="OTAUtils.dproj"/>
+			<MSBuild Projects="OTAUtils.dproj" Targets="Make"/>
 		</Target>
 		<Target Name="DUnitTestInspector">
 			<MSBuild Projects="DUnitTestInspector.dproj"/>
 		</Target>
 		<Target Name="DUnitTestInspector:Clean">
-			<MSBuild Targets="Clean" Projects="DUnitTestInspector.dproj"/>
+			<MSBuild Projects="DUnitTestInspector.dproj" Targets="Clean"/>
 		</Target>
 		<Target Name="DUnitTestInspector:Make">
-			<MSBuild Targets="Make" Projects="DUnitTestInspector.dproj"/>
+			<MSBuild Projects="DUnitTestInspector.dproj" Targets="Make"/>
 		</Target>
 		<Target Name="DUnit2">
 			<MSBuild Projects="DUnit2.dproj"/>
 		</Target>
 		<Target Name="DUnit2:Clean">
-			<MSBuild Targets="Clean" Projects="DUnit2.dproj"/>
+			<MSBuild Projects="DUnit2.dproj" Targets="Clean"/>
 		</Target>
 		<Target Name="DUnit2:Make">
-			<MSBuild Targets="Make" Projects="DUnit2.dproj"/>
+			<MSBuild Projects="DUnit2.dproj" Targets="Make"/>
 		</Target>
 		<Target Name="DUnit2Console">
 			<MSBuild Projects="DUnit2Console.dproj"/>
 		</Target>
 		<Target Name="DUnit2Console:Clean">
-			<MSBuild Targets="Clean" Projects="DUnit2Console.dproj"/>
+			<MSBuild Projects="DUnit2Console.dproj" Targets="Clean"/>
 		</Target>
 		<Target Name="DUnit2Console:Make">
-			<MSBuild Targets="Make" Projects="DUnit2Console.dproj"/>
+			<MSBuild Projects="DUnit2Console.dproj" Targets="Make"/>
 		</Target>
 		<Target Name="DUnit2ConsoleTest">
 			<MSBuild Projects="DUnit2ConsoleTest.dproj"/>
 		</Target>
 		<Target Name="DUnit2ConsoleTest:Clean">
-			<MSBuild Targets="Clean" Projects="DUnit2ConsoleTest.dproj"/>
+			<MSBuild Projects="DUnit2ConsoleTest.dproj" Targets="Clean"/>
 		</Target>
 		<Target Name="DUnit2ConsoleTest:Make">
-			<MSBuild Targets="Make" Projects="DUnit2ConsoleTest.dproj"/>
+			<MSBuild Projects="DUnit2ConsoleTest.dproj" Targets="Make"/>
 		</Target>
 		<Target Name="DUnit2Test">
 			<MSBuild Projects="DUnit2Test.dproj"/>
 		</Target>
 		<Target Name="DUnit2Test:Clean">
-			<MSBuild Targets="Clean" Projects="DUnit2Test.dproj"/>
+			<MSBuild Projects="DUnit2Test.dproj" Targets="Clean"/>
 		</Target>
 		<Target Name="DUnit2Test:Make">
-			<MSBuild Targets="Make" Projects="DUnit2Test.dproj"/>
+			<MSBuild Projects="DUnit2Test.dproj" Targets="Make"/>
 		</Target>
 		<Target Name="Build">
 			<CallTarget Targets="SingleTestLibW32;MiniTestLibW32A;MiniTestLibW32B;MiniTestLibW32C;MiniTestLibW32D;OTAUtils;DUnitTestInspector;DUnit2;DUnit2Console;DUnit2ConsoleTest;DUnit2Test"/>
@@ -154,5 +154,5 @@
 		<Target Name="Make">
 			<CallTarget Targets="SingleTestLibW32:Make;MiniTestLibW32A:Make;MiniTestLibW32B:Make;MiniTestLibW32C:Make;MiniTestLibW32D:Make;OTAUtils:Make;DUnitTestInspector:Make;DUnit2:Make;DUnit2Console:Make;DUnit2ConsoleTest:Make;DUnit2Test:Make"/>
 		</Target>
-		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
 	</Project>
