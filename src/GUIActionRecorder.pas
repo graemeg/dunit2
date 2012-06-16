@@ -242,7 +242,8 @@ begin
 end;
 
 function ProcessGetMessageProcHook(AnCode: Integer;
-  AwParam: WPARAM; AlParam: LPARAM): Integer; stdcall;
+//  AwParam: WPARAM; AlParam: LPARAM): Integer; stdcall;
+  AwParam: WPARAM; AlParam: LPARAM): nativeint; stdcall;
 var
   LMsg: PMsg;
   LStopRecording: boolean;
