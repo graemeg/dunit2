@@ -572,7 +572,7 @@ begin
     end;
 
     // add project folder to search path
-    ASearchPaths.Insert(0, ProjectFolder);
+    ASearchPaths.Insert(0, IncludeTrailingPathDelimiter(ProjectFolder));
     Result := true;
   end;
 
