@@ -5,18 +5,25 @@
 {$I DUnit.inc}
 
 unit XMLListener;
+
 interface
+
 uses
-  Contnrs,
-  TestFrameworkProxyIfaces,
+  Contnrs
+  ,TestFrameworkProxyIfaces
   {$IFDEF XDOM}
-  xdom;   // Chosen because it does not drag in any other units e.g. TComponent
+  ,xdom   // Chosen because it does not drag in any other units e.g. TComponent
   {$ENDIF}
   {$IFDEF DKADOMCORE}
   // The following is from "http://www.philo.de/xml/" - Both the 'adom' and 'utils' files are required.
   // Need "\externals\adom" to be added to the project search path
-  dkAdomCore_4_3;
-  {$ENDIF}
+  {$IFDEF DELPHIXE2_UP}
+  ,Xml.Internal.AdomCore_4_3
+  {$ELSE}
+  ,dkAdomCore_4_3
+  {$ENDIF DELPHIXE2_UP}
+  {$ENDIF DKADOMCORE}
+  ;
 
 type
 

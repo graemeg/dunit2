@@ -39,10 +39,10 @@
 //------------------------------------------------------------------------------
 // User-configurable options
 //------------------------------------------------------------------------------
-{$DEFINE XMLLISTENER}
+{.$DEFINE XMLLISTENER}
 // Stack traces. Zero or one can be defined.
 // Include a stack trace using JCL
-{$DEFINE JCL_STACK_TRACE}
+{.$DEFINE JCL_STACK_TRACE}
 // Include a stack trace using madExcept
 {.$DEFINE MADEXCEPT_STACK_TRACE}
 // FastMM memory manager
