@@ -80,7 +80,7 @@ type
 {$ENDIF DELPHI2009_UP}
     function  GetGUI: TControl;
     procedure SetGUI(const AValue: TControl);
-    procedure ShowGUI;
+    procedure ShowGUI; virtual;
     procedure Show(OnOff :boolean = true); overload;
     procedure Hide; overload;
     function  GetFocused :TControl;
@@ -103,6 +103,16 @@ type
     constructor Create; override;
     destructor  Destroy; override;
   end;
+
+{$IFDEF DELPHI2009_UP}
+  TGUITestCase<T: TControl> = class(TGUITestCase)
+  protected
+    function  GetGUI: T;
+    procedure SetGUI(const AValue: T);
+
+    property GUI :T read GetGUI write SetGUI;
+  end;
+{$ENDIF DELPHI2009_UP}
 
 
 implementation
@@ -172,6 +182,8 @@ end;
 procedure TGUITestCase.SetGUI(const AValue: TControl);
 begin
   FGUI := AValue;
+  if FGUI is TWinControl then
+  GGUIActionRecorder.GUI := FGUI as TWinControl;
 end;
 
 function TGUITestCase.GetRecording: Boolean;
@@ -306,6 +318,22 @@ procedure TGUITestCase.CheckVisible;
 begin
   CheckVisible(GUI, CallerAddr);
 end;
+
+{ TGUITestCase<T> }
+
+{$IFDEF DELPHI2009_UP}
+function TGUITestCase<T>.GetGUI: T;
+begin
+  result := (inherited GetGUI) as T;
+end;
+{$ENDIF DELPHI2009_UP}
+
+{$IFDEF DELPHI2009_UP}
+procedure TGUITestCase<T>.SetGUI(const AValue: T);
+begin
+  inherited SetGUI(AValue);
+end;
+{$ENDIF DELPHI2009_UP}
 
 end.
 
