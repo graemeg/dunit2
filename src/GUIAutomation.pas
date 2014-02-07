@@ -40,9 +40,6 @@ unit GUIAutomation;
 
 interface
 uses
-  TestFramework,
-  TestFrameworkIfaces,
-
 {$IFDEF LINUX}
   Types,
 {$ELSE}
@@ -192,12 +189,14 @@ const
 
 implementation
 
-{$IF COMPILERVERSION >= 11} // D2007
 uses
+{$IF COMPILERVERSION >= 11} // D2007
   Dialogs
   ,Types
-  ;
+  ,
 {$IFEND}
+  TestUtils
+  ;
 
 type
   // Provide a non-blocking call to Application.ProcessMessages.

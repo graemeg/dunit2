@@ -119,6 +119,7 @@ implementation
 
 uses
   GUIActionRecorder
+  ,TestUtils
   ;
 
 // assertions are always on so we can check for own consistency
