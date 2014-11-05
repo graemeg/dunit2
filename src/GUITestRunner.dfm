@@ -69,21 +69,20 @@ object GUITestRunner: TGUITestRunner
       TabOrder = 0
       object ResultsSplitter: TSplitter
         Left = 0
-        Top = 363
+        Top = 318
         Width = 497
         Height = 5
         Cursor = crVSplit
         Align = alBottom
         Color = clBtnFace
         ParentColor = False
-        ExplicitTop = 196
-        ExplicitWidth = 462
+        ExplicitTop = 322
       end
       object TreePanel: TPanel
         Left = 0
         Top = 0
         Width = 497
-        Height = 363
+        Height = 318
         Align = alClient
         BevelOuter = bvNone
         BorderWidth = 2
@@ -94,7 +93,7 @@ object GUITestRunner: TGUITestRunner
           Left = 2
           Top = 57
           Width = 493
-          Height = 304
+          Height = 259
           Hint = 'Hierarchy of test cases. Checked test cases will be run.'
           Align = alClient
           HideSelection = False
@@ -288,9 +287,9 @@ object GUITestRunner: TGUITestRunner
       end
       object ResultsPanel: TPanel
         Left = 0
-        Top = 368
+        Top = 323
         Width = 497
-        Height = 174
+        Height = 219
         Align = alBottom
         BevelOuter = bvNone
         BorderWidth = 2
@@ -301,7 +300,7 @@ object GUITestRunner: TGUITestRunner
           Left = 2
           Top = 2
           Width = 493
-          Height = 46
+          Height = 71
           Align = alTop
           BevelOuter = bvLowered
           BorderWidth = 4
@@ -309,10 +308,10 @@ object GUITestRunner: TGUITestRunner
           TabOrder = 0
           object TopProgressPanel: TPanel
             Left = 5
-            Top = 5
+            Top = 23
             Width = 483
-            Height = 18
-            Align = alTop
+            Height = 23
+            Align = alClient
             BevelOuter = bvNone
             BorderWidth = 2
             ParentColor = True
@@ -321,9 +320,10 @@ object GUITestRunner: TGUITestRunner
               Left = 62
               Top = 2
               Width = 419
-              Height = 14
+              Height = 19
               Hint = 'Shows the proportion of tests run'
               Align = alClient
+              BorderWidth = 2
               Step = 1
               TabOrder = 1
             end
@@ -331,7 +331,7 @@ object GUITestRunner: TGUITestRunner
               Left = 2
               Top = 2
               Width = 60
-              Height = 14
+              Height = 19
               Align = alLeft
               Alignment = taRightJustify
               BevelOuter = bvNone
@@ -342,10 +342,10 @@ object GUITestRunner: TGUITestRunner
           end
           object ScorePanel: TPanel
             Left = 5
-            Top = 23
+            Top = 46
             Width = 483
-            Height = 18
-            Align = alClient
+            Height = 20
+            Align = alBottom
             BevelOuter = bvNone
             BorderWidth = 2
             ParentColor = True
@@ -354,18 +354,20 @@ object GUITestRunner: TGUITestRunner
               Left = 425
               Top = 2
               Width = 56
-              Height = 14
+              Height = 16
               Align = alRight
               Alignment = taRightJustify
               AutoSize = False
               Caption = 'Progress'
-              ExplicitLeft = 390
+              ExplicitLeft = 431
+              ExplicitTop = 3
+              ExplicitHeight = 36
             end
             object ScoreBar: TProgressBar
               Left = 62
               Top = 2
               Width = 363
-              Height = 14
+              Height = 16
               Hint = 'Shows the proportion of successful tests'
               Align = alClient
               BorderWidth = 2
@@ -376,7 +378,7 @@ object GUITestRunner: TGUITestRunner
               Left = 2
               Top = 2
               Width = 60
-              Height = 14
+              Height = 16
               Align = alLeft
               Alignment = taRightJustify
               BevelOuter = bvNone
@@ -385,12 +387,61 @@ object GUITestRunner: TGUITestRunner
               TabOrder = 0
             end
           end
+          object BreadCrumbPanel: TPanel
+            Left = 5
+            Top = 5
+            Width = 483
+            Height = 18
+            Align = alTop
+            BevelOuter = bvNone
+            BorderWidth = 2
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Pitch = fpVariable
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 2
+            object BreadcrumbsLabel: TLabel
+              Left = 62
+              Top = 2
+              Width = 419
+              Height = 14
+              Align = alClient
+              AutoSize = False
+              EllipsisPosition = epEndEllipsis
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Pitch = fpVariable
+              Font.Style = [fsBold]
+              ParentFont = False
+              Layout = tlCenter
+              ExplicitLeft = 68
+              ExplicitTop = 0
+              ExplicitHeight = 11
+            end
+            object pnlCurrentLabel: TPanel
+              Left = 2
+              Top = 2
+              Width = 60
+              Height = 14
+              Align = alLeft
+              Alignment = taRightJustify
+              BevelOuter = bvNone
+              Caption = 'Current: '
+              ParentColor = True
+              TabOrder = 0
+            end
+          end
         end
         object ResultsView: TListView
           Left = 2
-          Top = 48
+          Top = 73
           Width = 493
-          Height = 47
+          Height = 45
           Hint = 'Shows statistics about the current/last run'
           Align = alTop
           Columns = <
@@ -446,9 +497,9 @@ object GUITestRunner: TGUITestRunner
         end
         object FailureListView: TListView
           Left = 2
-          Top = 95
+          Top = 118
           Width = 493
-          Height = 77
+          Height = 99
           Hint = 'Shows the list of failed tests'
           Align = alClient
           Columns = <
@@ -802,7 +853,7 @@ object GUITestRunner: TGUITestRunner
     Left = 280
     Top = 60
     Bitmap = {
-      494C010109000E00040010001000FFFFFF00FF10FFFFFFFFFFFFFFFF424D3600
+      494C010109000D00080010001000FFFFFF00FF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -1260,6 +1311,14 @@ object GUITestRunner: TGUITestRunner
       ShortCut = 16430
       OnExecute = DeselectAllActionExecute
     end
+    object DeselectPassedAction: TAction
+      Category = 'TestTree'
+      Caption = 'D&eselect Passed'
+      Hint = 'Deselect passed tests'
+      ImageIndex = 24
+      ShortCut = 8238
+      OnExecute = DeselectPassedActionExecute
+    end
     object Alt_S_StopAction: TAction
       Category = 'Commands'
       Caption = '&Stop'
@@ -1375,9 +1434,10 @@ object GUITestRunner: TGUITestRunner
     end
     object RunFromHereAction: TAction
       Category = 'TestTree'
-      Caption = 'Run from here'
+      Caption = 'Run fro&m here'
       Hint = 'Run checked tests from the selected test'
       ImageIndex = 22
+      ShortCut = 8311
       OnExecute = RunFromHereActionExecute
       OnUpdate = RunFromHereActionUpdate
     end
@@ -1386,6 +1446,7 @@ object GUITestRunner: TGUITestRunner
       Caption = 'Record GUI actions for selected test'
       Hint = 'Record GUI actions for currently selection test'
       ImageIndex = 23
+      ShortCut = 121
       OnExecute = RecordSelectedTestActionExecute
       OnUpdate = RecordSelectedTestActionUpdate
     end
@@ -1526,6 +1587,9 @@ object GUITestRunner: TGUITestRunner
       object DeselectAllItem: TMenuItem
         Action = DeselectAllAction
       end
+      object DeselectPassedItem: TMenuItem
+        Action = DeselectPassedAction
+      end
       object SelectFailedItem: TMenuItem
         Action = SelectFailedAction
       end
@@ -1659,6 +1723,7 @@ object GUITestRunner: TGUITestRunner
     end
   end
   object pmTestTree: TPopupMenu
+    Images = ActionsImages
     OnPopup = pmTestTreePopup
     Left = 176
     Top = 96
@@ -1680,6 +1745,9 @@ object GUITestRunner: TGUITestRunner
     end
     object pmiSelectFailed: TMenuItem
       Action = SelectFailedAction
+    end
+    object pmiDeselectPassed: TMenuItem
+      Action = DeselectPassedAction
     end
     object N1: TMenuItem
       Caption = '-'
@@ -1758,7 +1826,7 @@ object GUITestRunner: TGUITestRunner
     Left = 176
     Top = 61
     Bitmap = {
-      494C010118001D00040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010119001D00040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000007000000001002000000000000070
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1769,6 +1837,7 @@ object GUITestRunner: TGUITestRunner
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      000000000000FA00FA0000000000FA00FA000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1776,6 +1845,7 @@ object GUITestRunner: TGUITestRunner
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000FA00FA000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1783,6 +1853,7 @@ object GUITestRunner: TGUITestRunner
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      000000000000FA00FA00FA00FA00000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1807,6 +1878,7 @@ object GUITestRunner: TGUITestRunner
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      000000FF4C0000FF4C0000FF4C00000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1814,6 +1886,7 @@ object GUITestRunner: TGUITestRunner
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      000000FF4C0000FF4C0000FF4C00000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1821,6 +1894,7 @@ object GUITestRunner: TGUITestRunner
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      000000FF4C0000FF4C0000FF4C00000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1843,6 +1917,7 @@ object GUITestRunner: TGUITestRunner
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000FF4C0000FF4C0000FF4C000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1850,6 +1925,7 @@ object GUITestRunner: TGUITestRunner
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000FF4C0000FF4C0000FF4C000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1857,15 +1933,7 @@ object GUITestRunner: TGUITestRunner
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000FF4C0000FF4C0000FF4C000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2658,11 +2726,11 @@ object GUITestRunner: TGUITestRunner
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000000000000000000000000000424D3E000000000000003E000000
       2800000040000000700000000100010000000000800300000000000000000000
-      000000000000000000000000FFFFFF0000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000000000FFBF8000FFFFFFFFFF3F0000E007FFFF
+      000000000000000000000000FFFFFF00F07F000000000000F07F000000000000
+      507F000000000000F07F000000000000707F000000000000FFE0000000000000
+      7FE0000000000000FD400000000000007FE0000000000000FDE0000000000000
+      707F000000000000F07F000000000000507F000000000000F07F000000000000
+      707F000000000000FFFF000000000000FFBF8000FFFFFFFFFF3F0000E007FFFF
       CE030000E007FFFF8E0300008007801F273300008007800F67B3000080078007
       F3F3000080038003F3F3000080018001FBF3000080018001FFF3000080038001
       FFFF000080078001175B0000800780037ADB0000801F80071DDB0000801F800F
@@ -2754,7 +2822,7 @@ object GUITestRunner: TGUITestRunner
     Left = 352
     Top = 108
     Bitmap = {
-      494C010102000400040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000500040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
