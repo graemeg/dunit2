@@ -106,8 +106,11 @@ implementation
 
 {$IFDEF MSWINDOWS}
 uses
-  Graphics,
-  pngimage;
+  Graphics
+  {$IFDEF DELPHIXE}
+  ,TypeHelpers
+  {$ENDIF}
+  ,pngimage;
 {$ENDIF}
 
 function FindControlInstance(const AComp: TComponent;
@@ -441,6 +444,8 @@ end;
 
 {$IFDEF MSWINDOWS}
 function GetTopmostWindowProc(AHwnd: HWND; ALParam: LPARAM): BOOL; stdcall;
+type
+  PINT_PTR = ^INT_PTR;
 var
   LdwProcessId: DWORD;
   LClassName: string;

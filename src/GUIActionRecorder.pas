@@ -371,6 +371,9 @@ uses
 // Debugging
   ,tiLog
 }
+  {$IFDEF DELPHIXE}
+  ,TypeHelpers
+  {$ENDIF}
   ;
 
 var
@@ -647,14 +650,14 @@ var
           break;
         end;
   end;
-  
+
   procedure _PrependName(const AName: string);
   begin
     if AHeirarchicalName <> '' then
       AHeirarchicalName := CChildControlNameToken + AHeirarchicalName;
     AHeirarchicalName := AName + AHeirarchicalName;
   end;
-  
+
 begin
   AHeirarchicalName := '';
 
