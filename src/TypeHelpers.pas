@@ -26,6 +26,11 @@ type
     property  Height: Integer read GetHeight write SetHeight;
   end;
 
+  TPointHelper = record helper for TPoint
+  public
+    function Distance(APoint: TPoint): Extended;
+  end;
+
 implementation
 
 { TRectHelper }
@@ -64,6 +69,13 @@ end;
 procedure TRectHelper.SetWidth(const AWidth: Integer);
 begin
   right := left + AWidth;
+end;
+
+{ TPointHelper }
+
+function TPointHelper.Distance(APoint: TPoint): Extended;
+begin
+  Result := sqrt(sqr(APoint.X - X) + sqr(APoint.Y - Y)); // convert to Extended to prevent integer overflows
 end;
 
 end.

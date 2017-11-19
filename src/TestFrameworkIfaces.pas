@@ -53,7 +53,6 @@ type
     ExceptClass = class of Exception;
     TExceptTestMethod = string;
   {$ELSE}
-    IntPtr = Pointer;
     TExceptTestMethod = procedure of object;
   {$ENDIF}
 
@@ -262,7 +261,7 @@ type
     function  UpdateOnFail(const ATest: ITest;
                            const NewStatus: TExecutionStatus;
                            const Excpt: Exception;
-                           const Addrs: IntPtr): TExecutionStatus;
+                           const Addrs: Pointer): TExecutionStatus;
     function  get_CheckCalled: boolean;
     procedure set_CheckCalled(const Value: boolean);
     property  CheckCalled: boolean read get_CheckCalled write set_CheckCalled;

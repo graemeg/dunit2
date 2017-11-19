@@ -319,6 +319,9 @@ uses
   ,Menus
   ,CommCtrl
 {$ENDIF}
+  {$IFDEF DELPHIXE}
+  ,TypeHelpers
+  {$ENDIF}
   ,GUIUtils
   ;
 

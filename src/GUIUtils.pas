@@ -46,8 +46,6 @@ uses
   SysUtils,
   Classes;
 
-const
-  rcs_id: string = '#(@)$Id: GUIUtils.pas,v 1.35 2010/05/04 09:55:00 jarrodh Exp $';
 
   // Control Names
   // -------------

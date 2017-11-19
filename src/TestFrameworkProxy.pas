@@ -67,7 +67,7 @@ function  GetDUnitRegistryKey: string;
 procedure ClearRegistry;
 function  GetTestResult: TTestResult;
 function  RunTest(Suite: ITestProxy; const Listeners: array of ITestListener): TTestResult; overload;
-function  PointerToLocationInfo(Addrs: {$ifndef CLR} TestFrameworkIfaces. {$endif} IntPtr): string;
+function  PointerToLocationInfo(Addrs: Pointer): string;
 
 {==============================================================================}
 implementation
@@ -633,12 +633,12 @@ begin
 end;
 
 {-----------------------------------------------------------------------------}
-function PtrToStr(P: IntPtr): string;
+function PtrToStr(P: Pointer): string;
 begin
    Result := Format('%p', [P])
 end;
 
-function AddrsToStr(Addrs: IntPtr): string;
+function AddrsToStr(Addrs: Pointer): string;
 begin
   if Assigned(Addrs) then
     Result := '$'+PtrToStr(Addrs)
@@ -646,7 +646,7 @@ begin
     Result := 'n/a';
 end;
 
-function PointerToLocationInfo(Addrs: IntPtr): string;
+function PointerToLocationInfo(Addrs: Pointer): string;
 {$IFDEF REPORT_STACK_TRACE}
 var
   _line: Integer;
@@ -681,7 +681,7 @@ begin
   {$ENDIF}
 end;
 
-function PointerToAddressInfo(Addrs: IntPtr): string;
+function PointerToAddressInfo(Addrs: Pointer): string;
 begin
   Result := Format(' <$%p>', [ Addrs]);
 end;
@@ -691,7 +691,7 @@ end;
 
 function TITestFailure.AddressInfo: string;
 begin
-  Result := PointerToAddressInfo(IntPtr(ThrownExceptionAddress));
+  Result := PointerToAddressInfo(Pointer(ThrownExceptionAddress));
 end;
 
 procedure TITestFailure.CaptureStackTrace;
@@ -739,7 +739,7 @@ end;
 
 function TITestFailure.LocationInfo: string;
 begin
-  Result := PointerToLocationInfo(IntPtr(ThrownExceptionAddress));
+  Result := PointerToLocationInfo(Pointer(ThrownExceptionAddress));
 end;
 
 function TITestFailure.StackTrace: string;

@@ -216,12 +216,12 @@ type
     function  UpdateOnFail(const ATest: ITest;
                            const NewStatus: TExecutionStatus;
                            const Excpt: Exception;
-                           const Addrs: IntPtr): TExecutionStatus;
+                           const Addrs: Pointer): TExecutionStatus;
     function  UpdateOnError(const ATest: ITest;
                             const NewStatus: TExecutionStatus;
                             const ExceptnMsg: string;
                             const Excpt: Exception;
-                            const Addrs: IntPtr): TExecutionStatus;
+                            const Addrs: Pointer): TExecutionStatus;
     function  GetStatus: string;
     procedure Status(const Value: string);
     function  get_Proxy: IInterface;
@@ -1215,7 +1215,7 @@ begin
                                                   LMemErrorMessage);
           try
             LExcept := EPostTestFailure.Create(LMemErrorMessage);
-            Result := FTestOwner.UpdateOnFail(FTest, _Failed, LExcept, IntPtr(FTest.ErrorAddress));
+            Result := FTestOwner.UpdateOnFail(FTest, _Failed, LExcept, Pointer(FTest.ErrorAddress));
           finally
             FreeAndNil(LExcept);
           end
@@ -2491,7 +2491,7 @@ function TTestProc.UpdateOnError(const ATest: ITest;
                                  const NewStatus: TExecutionStatus;
                                  const ExceptnMsg: string;
                                  const Excpt: Exception;
-                                 const Addrs: IntPtr): TExecutionStatus;
+                                 const Addrs: Pointer): TExecutionStatus;
 begin
   ATest.ErrorMessage := ExceptnMsg;
   {$IFNDEF CLR}
@@ -2507,7 +2507,7 @@ end;
 function TTestProc.UpdateOnFail(const ATest: ITest;
                                 const NewStatus: TExecutionStatus;
                                 const Excpt: Exception;
-                                const Addrs: IntPtr): TExecutionStatus;
+                                const Addrs: Pointer): TExecutionStatus;
 begin
   ATest.ErrorMessage := Excpt.Message;
   {$IFNDEF CLR}
