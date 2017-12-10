@@ -27,19 +27,18 @@
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
 			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
-			<DCC_UnitSearchPath>..\..\externals\jcl\source\include;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
-			<DCC_DcuOutput>.\_dcu</DCC_DcuOutput>
-			<DCC_BplOutput>.\_bin</DCC_BplOutput>
+			<DCC_UnitSearchPath>..\..\externals\jedi\;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_DcuOutput>_dcu</DCC_DcuOutput>
+			<DCC_BplOutput>_bin</DCC_BplOutput>
 			<DCC_DependencyCheckOutputName>_bin\OTAUtils.bpl</DCC_DependencyCheckOutputName>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
-			<DesignOnlyPackage>false</DesignOnlyPackage>
 			<RuntimeOnlyPackage>true</RuntimeOnlyPackage>
 			<DCC_RangeChecking>true</DCC_RangeChecking>
 			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
 			<DCC_Description>EPC Open Tools API utilities</DCC_Description>
 			<DCC_WriteableConstants>true</DCC_WriteableConstants>
 			<DCC_OutputNeverBuildDcps>true</DCC_OutputNeverBuildDcps>
-			<DCC_DcpOutput>.\_bin</DCC_DcpOutput>
+			<DCC_DcpOutput>_bin</DCC_DcpOutput>
 			<GenDll>true</GenDll>
 			<DCC_IntegerOverflowCheck>true</DCC_IntegerOverflowCheck>
 			<DCC_DebugInformation>false</DCC_DebugInformation>
