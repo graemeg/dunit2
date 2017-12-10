@@ -102,14 +102,16 @@ const
 
 implementation
 
-{$IFDEF MSWINDOWS}
 uses
-  Graphics
-  {$IFDEF DELPHIXE}
-  ,TypeHelpers
+  Types // resolves Delphi compiler hint H2443 (inline functions)
+  {$IFDEF MSWINDOWS}
+  ,Graphics
+    {$IFDEF DELPHIXE}
+    ,TypeHelpers
+    {$ENDIF}
+  ,pngimage
   {$ENDIF}
-  ,pngimage;
-{$ENDIF}
+  ;
 
 function FindControlInstance(const AComp: TComponent;
   const AControlName: string): TControl;
