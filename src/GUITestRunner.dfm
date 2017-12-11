@@ -55,8 +55,6 @@ object GUITestRunner: TGUITestRunner
       Constraints.MinHeight = 6
       ParentColor = False
       OnMoved = ErrorBoxSplitterMoved
-      ExplicitTop = 377
-      ExplicitWidth = 462
     end
     object TopPanel: TPanel
       Left = 2
@@ -76,7 +74,6 @@ object GUITestRunner: TGUITestRunner
         Align = alBottom
         Color = clBtnFace
         ParentColor = False
-        ExplicitTop = 322
       end
       object TreePanel: TPanel
         Left = 0
@@ -359,9 +356,6 @@ object GUITestRunner: TGUITestRunner
               Alignment = taRightJustify
               AutoSize = False
               Caption = 'Progress'
-              ExplicitLeft = 431
-              ExplicitTop = 3
-              ExplicitHeight = 36
             end
             object ScoreBar: TProgressBar
               Left = 62
@@ -419,9 +413,6 @@ object GUITestRunner: TGUITestRunner
               Font.Style = [fsBold]
               ParentFont = False
               Layout = tlCenter
-              ExplicitLeft = 68
-              ExplicitTop = 0
-              ExplicitHeight = 11
             end
             object pnlCurrentLabel: TPanel
               Left = 2

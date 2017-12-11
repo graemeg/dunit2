@@ -31,7 +31,6 @@ object frmMain: TfrmMain
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False
-    ExplicitTop = 507
   end
   object Label3: TLabel
     Left = 8

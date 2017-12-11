@@ -53,8 +53,6 @@ object RefGUITestRunner: TRefGUITestRunner
       Constraints.MinHeight = 6
       ParentColor = False
       OnMoved = ErrorBoxSplitterMoved
-      ExplicitTop = 377
-      ExplicitWidth = 462
     end
     object TopPanel: TPanel
       Left = 2
@@ -74,8 +72,6 @@ object RefGUITestRunner: TRefGUITestRunner
         Align = alBottom
         Color = clBtnFace
         ParentColor = False
-        ExplicitTop = 196
-        ExplicitWidth = 462
       end
       object TreePanel: TPanel
         Left = 0
@@ -346,7 +342,6 @@ object RefGUITestRunner: TRefGUITestRunner
               Alignment = taRightJustify
               AutoSize = False
               Caption = 'Progress'
-              ExplicitLeft = 390
             end
             object ScoreBar: TProgressBar
               Left = 62
