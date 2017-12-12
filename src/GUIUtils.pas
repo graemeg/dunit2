@@ -109,7 +109,7 @@ uses
     {$IFDEF DELPHIXE}
     ,TypeHelpers
     {$ENDIF}
-  ,pngimage
+  ,{$IFDEF DelphiXE2_UP}Vcl.Imaging.pngimage{$ELSE}pngimage{$ENDIF}
   {$ENDIF}
   ;
 

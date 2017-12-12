@@ -34,7 +34,12 @@ const
 {$IFDEF DELPHIXE3} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\DelphiXE3'; {$ENDIF}
 {$IFDEF DELPHIXE4} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\DelphiXE4'; {$ENDIF}
 {$IFDEF DELPHIXE5} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\DelphiXE5'; {$ENDIF}
-{$IFDEF DELPHIXE10} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\DelphiXE10'; {$ENDIF}
+{$IFDEF DELPHIXE6} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\DELPHIXE6'; {$ENDIF}
+{$IFDEF DELPHIXE7} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\DELPHIXE7'; {$ENDIF}
+{$IFDEF DELPHIXE8} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\DELPHIXE8'; {$ENDIF}
+{$IFDEF DELPHIX_SEATTLE} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\DELPHIX_SEATTLE'; {$ENDIF}
+{$IFDEF DELPHIX_BERLIN} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\DELPHIX_BERLIN'; {$ENDIF}
+{$IFDEF DELPHIX_TOKYO} cRegPluginKey = 'SOFTWARE\DUnitTestInspector\DELPHIX_TOKYO'; {$ENDIF}
 
   cRegWatchFile = 'WatchFile';
   cWatchFileSection = 'FilesToOpen';

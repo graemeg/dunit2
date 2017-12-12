@@ -1,0 +1,158 @@
+	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{908b0a71-77e0-4230-9610-e85df3765acf}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="projects\D10Berlin\SingleTestLibW32.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="projects\D10Berlin\MiniTestLibW32A.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="projects\D10Berlin\MiniTestLibW32B.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="projects\D10Berlin\MiniTestLibW32C.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="projects\D10Berlin\MiniTestLibW32D.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="projects\D10Berlin\OTAUtils.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="projects\D10Berlin\DUnitTestInspector.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="projects\D10Berlin\DUnit2.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="projects\D10Berlin\DUnit2Console.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="projects\D10Berlin\DUnit2ConsoleTest.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="projects\D10Berlin\DUnit2Test.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<BorlandProject>
+					<Default.Personality/>
+				</BorlandProject>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="SingleTestLibW32">
+			<MSBuild Projects="projects\D10Berlin\SingleTestLibW32.dproj"/>
+		</Target>
+		<Target Name="SingleTestLibW32:Clean">
+			<MSBuild Projects="projects\D10Berlin\SingleTestLibW32.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="SingleTestLibW32:Make">
+			<MSBuild Projects="projects\D10Berlin\SingleTestLibW32.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="MiniTestLibW32A">
+			<MSBuild Projects="projects\D10Berlin\MiniTestLibW32A.dproj"/>
+		</Target>
+		<Target Name="MiniTestLibW32A:Clean">
+			<MSBuild Projects="projects\D10Berlin\MiniTestLibW32A.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="MiniTestLibW32A:Make">
+			<MSBuild Projects="projects\D10Berlin\MiniTestLibW32A.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="MiniTestLibW32B">
+			<MSBuild Projects="projects\D10Berlin\MiniTestLibW32B.dproj"/>
+		</Target>
+		<Target Name="MiniTestLibW32B:Clean">
+			<MSBuild Projects="projects\D10Berlin\MiniTestLibW32B.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="MiniTestLibW32B:Make">
+			<MSBuild Projects="projects\D10Berlin\MiniTestLibW32B.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="MiniTestLibW32C">
+			<MSBuild Projects="projects\D10Berlin\MiniTestLibW32C.dproj"/>
+		</Target>
+		<Target Name="MiniTestLibW32C:Clean">
+			<MSBuild Projects="projects\D10Berlin\MiniTestLibW32C.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="MiniTestLibW32C:Make">
+			<MSBuild Projects="projects\D10Berlin\MiniTestLibW32C.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="MiniTestLibW32D">
+			<MSBuild Projects="projects\D10Berlin\MiniTestLibW32D.dproj"/>
+		</Target>
+		<Target Name="MiniTestLibW32D:Clean">
+			<MSBuild Projects="projects\D10Berlin\MiniTestLibW32D.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="MiniTestLibW32D:Make">
+			<MSBuild Projects="projects\D10Berlin\MiniTestLibW32D.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="OTAUtils">
+			<MSBuild Projects="projects\D10Berlin\OTAUtils.dproj"/>
+		</Target>
+		<Target Name="OTAUtils:Clean">
+			<MSBuild Projects="projects\D10Berlin\OTAUtils.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="OTAUtils:Make">
+			<MSBuild Projects="projects\D10Berlin\OTAUtils.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="DUnitTestInspector">
+			<MSBuild Projects="projects\D10Berlin\DUnitTestInspector.dproj"/>
+		</Target>
+		<Target Name="DUnitTestInspector:Clean">
+			<MSBuild Projects="projects\D10Berlin\DUnitTestInspector.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="DUnitTestInspector:Make">
+			<MSBuild Projects="projects\D10Berlin\DUnitTestInspector.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="DUnit2">
+			<MSBuild Projects="projects\D10Berlin\DUnit2.dproj"/>
+		</Target>
+		<Target Name="DUnit2:Clean">
+			<MSBuild Projects="projects\D10Berlin\DUnit2.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="DUnit2:Make">
+			<MSBuild Projects="projects\D10Berlin\DUnit2.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="DUnit2Console">
+			<MSBuild Projects="projects\D10Berlin\DUnit2Console.dproj"/>
+		</Target>
+		<Target Name="DUnit2Console:Clean">
+			<MSBuild Projects="projects\D10Berlin\DUnit2Console.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="DUnit2Console:Make">
+			<MSBuild Projects="projects\D10Berlin\DUnit2Console.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="DUnit2ConsoleTest">
+			<MSBuild Projects="projects\D10Berlin\DUnit2ConsoleTest.dproj"/>
+		</Target>
+		<Target Name="DUnit2ConsoleTest:Clean">
+			<MSBuild Projects="projects\D10Berlin\DUnit2ConsoleTest.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="DUnit2ConsoleTest:Make">
+			<MSBuild Projects="projects\D10Berlin\DUnit2ConsoleTest.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="DUnit2Test">
+			<MSBuild Projects="projects\D10Berlin\DUnit2Test.dproj"/>
+		</Target>
+		<Target Name="DUnit2Test:Clean">
+			<MSBuild Projects="projects\D10Berlin\DUnit2Test.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="DUnit2Test:Make">
+			<MSBuild Projects="projects\D10Berlin\DUnit2Test.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="SingleTestLibW32;MiniTestLibW32A;MiniTestLibW32B;MiniTestLibW32C;MiniTestLibW32D;OTAUtils;DUnitTestInspector;DUnit2;DUnit2Console;DUnit2ConsoleTest;DUnit2Test"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="SingleTestLibW32:Clean;MiniTestLibW32A:Clean;MiniTestLibW32B:Clean;MiniTestLibW32C:Clean;MiniTestLibW32D:Clean;OTAUtils:Clean;DUnitTestInspector:Clean;DUnit2:Clean;DUnit2Console:Clean;DUnit2ConsoleTest:Clean;DUnit2Test:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="SingleTestLibW32:Make;MiniTestLibW32A:Make;MiniTestLibW32B:Make;MiniTestLibW32C:Make;MiniTestLibW32D:Make;OTAUtils:Make;DUnitTestInspector:Make;DUnit2:Make;DUnit2Console:Make;DUnit2ConsoleTest:Make;DUnit2Test:Make"/>
+		</Target>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
+	</Project>
