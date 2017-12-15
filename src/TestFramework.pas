@@ -640,6 +640,7 @@ uses
 {$IFDEF JCL_STACK_TRACE}
   JclDebug,
 {$ENDIF}
+  Rtti,
   TypInfo,
   Windows,
   Math,
@@ -1291,8 +1292,12 @@ var
 var
   table: ^TMethodTable;
   AName:  ^ShortString;
-  i, J:  Integer;
+  i, J, L:  Integer;
+  LContext: TRttiContext;
   LClass: TClass;
+  T: TRttiType;
+  Methods: TArray<TRttiMethod>;
+  LMethod: TRttiMethod;
 {$ENDIF}
 
 begin
@@ -1310,6 +1315,26 @@ begin
       FMethodNameList[L-1] := Methods[i].Name;
     end;
 {$ELSE}
+  LContext := TRttiContext.Create;
+  T := LContext.GetType(AClass);
+//  T := AClass.ClassInfo;
+//  Methods := T.GetMethods();
+  L := 0;
+  SetLength(FMethodNameList, L);
+  for LMethod in T.GetMethods() do
+//  for i := 0 to Length(Methods)-1 do
+  begin
+    if LMethod.Visibility = mvPublished then
+    begin
+      L := L + 1;
+      SetLength(FMethodNameList, L);
+      FMethodNameList[L-1] := LMethod.Name;
+    end;
+  end;
+
+  LContext.Free;
+
+(*
   table := nil;
   LClass := AClass;
   while LClass <> nil do
@@ -1340,6 +1365,7 @@ begin
     end;
     LClass := LClass.ClassParent;
   end;
+  *)
 {$ENDIF}
 end;
 
