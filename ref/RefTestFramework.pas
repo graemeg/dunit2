@@ -614,7 +614,7 @@ function  RegisterProject(const AProject: ITestProject): Integer; overload;
 function  RegisterProject(const AName: string;
                           const AProject: ITestProject): Integer; overload;
 procedure UnRegisterProjectManager;
-function  CallerAddr: Pointer; {$IFNDEF CLR} assembler; {$ENDIF}
+
 
 {$BOOLEVAL OFF}
 {==============================================================================}
@@ -636,7 +636,8 @@ uses
   Math,
   ProjectsManagerIface,
   RefProjectsManager,
-  TestListenerIface;
+  TestListenerIface,
+  TestUtils;
 
 {$STACKFRAMES ON} // Required to retrieve caller's address
 
@@ -2177,35 +2178,6 @@ begin
     Result := true;
   end
 end;
-
-function CallerAddr: Pointer; {$IFNDEF CLR} assembler; {$ENDIF}
-{$IFDEF CLR}
-begin
-  Result := nil;
-end;
-{$ELSE}
-const
-  CallerIP = $4;
-asm
-   mov   eax, ebp
-   call  IsBadPointer
-   test  eax,eax
-   jne   @@Error
-
-   mov   eax, [ebp].CallerIP
-   sub   eax, 5   // 5 bytes for call
-
-   push  eax
-   call  IsBadPointer
-   test  eax,eax
-   pop   eax
-   je    @@Finish
-
-@@Error:
-   xor eax, eax
-@@Finish:
-end;
-{$ENDIF}
 
 function TTestProc.get_ExecStatus: TExecutionStatus;
 begin
