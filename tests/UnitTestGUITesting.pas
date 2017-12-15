@@ -138,7 +138,7 @@ type
     procedure RunEmptySuite;
     procedure RunSuccessSuite;
     procedure RunFailureSuite;
-    {$IFDEF WIN32}
+    {$IFDEF MSWINDOWS}
     procedure TestStatus;
     {$ENDIF}
     procedure TestRunSelectedTestWithDecorator;
@@ -640,7 +640,7 @@ end;
 
 procedure TGUITestRunnerTests.TestStatus;
 const
-{$IFDEF WIN32}
+{$IFDEF MSWINDOWS}
   constLineDelim = #13#10;
 {$ENDIF}
 {$IFDEF LINUX}
