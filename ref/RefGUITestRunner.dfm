@@ -2706,4 +2706,9 @@ object RefGUITestRunner: TRefGUITestRunner
       0001000100000000000100010000000000000000000000000000000000000000
       000000000000}
   end
+  object ApplicationEvents1: TApplicationEvents
+    OnIdle = ApplicationEvents1Idle
+    Left = 40
+    Top = 112
+  end
 end

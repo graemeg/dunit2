@@ -46,7 +46,7 @@ uses
   ComCtrls, ExtCtrls, StdCtrls, ImgList, Buttons, Menus, ActnList,
   IniFiles, ToolWin,
   TestFrameworkProxyIfaces,
-  GUISearchPanel, GUISearchController;
+  GUISearchPanel, GUISearchController, System.Actions, Vcl.AppEvnts;
 
 type
   {: Function type used by the TDUnitDialog.ApplyToTests method
@@ -230,6 +230,7 @@ type
     ShowWarnedTestToolButton: TToolButton;
     SearchBasePanel: TPanel;
     SearchImages: TImageList;
+    ApplicationEvents1: TApplicationEvents;
     procedure FormCreate(Sender: TObject);
     procedure TestTreeClick(Sender: TObject);
     procedure FailureListViewSelectItem(Sender: TObject; Item: TListItem;
@@ -327,6 +328,7 @@ type
     procedure EnableWarningsActionExecute(Sender: TObject);
     procedure FailureListViewDblClick(Sender: TObject);
     procedure ErrorMessageRTFDblClick(Sender: TObject);
+    procedure ApplicationEvents1Idle(Sender: TObject; var Done: Boolean);
 
   private
     FSuite:         ITestProxy;
@@ -604,7 +606,6 @@ procedure TRefGUITestRunner.InitResultsView;
 var
   totalTests: TListItem;
   i: integer;
-
 begin
   ResultsView.Items.Clear;
   totalTests := ResultsView.Items.Add;
@@ -1676,6 +1677,11 @@ function TRefGUITestRunner.ExcludeTest(Test: ITestProxy): boolean;
 begin
   Test.Excluded := True;
   result := true;
+end;
+
+procedure TRefGUITestRunner.ApplicationEvents1Idle(Sender: TObject; var Done: Boolean);
+begin
+  Done := not FRunning and assigned(Suite) and (TotalTestsCount > 0);
 end;
 
 procedure TRefGUITestRunner.ApplyToTests(root :TTreeNode; const func :TTestFunc);
