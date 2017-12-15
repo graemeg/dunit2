@@ -24,7 +24,7 @@ package DUnitTestInspector;
 {$MINENUMSIZE 1}
 {$IMAGEBASE $400000}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'DUnit Test Inspector'}
+{$DESCRIPTION 'DUnit2 Test Inspector'}
 {$DESIGNONLY}
 {$IMPLICITBUILD ON}
 
