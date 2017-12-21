@@ -1,4 +1,3 @@
-{#(@)$Id$ }
 {  DUnit: An XTreme testing framework for Delphi programs. }
 (*
  * The contents of this file are subject to the Mozilla Public
@@ -34,13 +33,13 @@
  *******************************************************************************
 *)
 
+unit UnitTestFramework;
+
 {$I DUnit.inc}
 
 {$IFNDEF SELFTEST}
   '!!!Alert SELFTEST must be defined in project options conditionals'
 {$ENDIF}
-
-unit UnitTestFramework;
 
 interface
 
@@ -64,8 +63,6 @@ uses
   Classes;
 
 type
-{------------------------------------------------------------------------------}
-  {ITestProc section }
 
   TTestITestProc = class(TTestCase)
   private
@@ -132,9 +129,6 @@ type
     {$IFDEF CLR}[Test]{$ENDIF}
     procedure TestTestProcCreatesNamed;
   end;
-
-{------------------------------------------------------------------------------}
-  { ITestCase section }
 
   TTestITestCaseExists = class(TTestCase)
   private
@@ -203,7 +197,6 @@ type
   TTestParentPathPopulatesTests = class(TTestCase)
   private
     FTestCase1: ITestCase1;
-
   protected
     procedure SetUp;    override;
     procedure TearDown; override;
@@ -219,7 +212,6 @@ type
     FTestCase1: ITestCase1;
     FAnExecControl: ITestExecControl;
     FTestProject: ITestProject;
-
   protected
     procedure SetUp;    override;
     procedure TearDown; override;
@@ -443,7 +435,6 @@ type
   TTwoPassesFollowsCheckExit = class(TTestCase)
     procedure MethodHasPassingChecks;
   end;
-  { TTestCheckExitBehaviour }
 
   TTestCheckExitBehaviour = class(TTestCase)
   private
@@ -452,8 +443,7 @@ type
     FStatusMsg: string;
     FTestProject: ITestProject;
     FErrorMsg: string;
-    procedure StatusMsgUpdater(const ATest: ITest;
-                               const AStatusMsg: string);
+    procedure StatusMsgUpdater(const ATest: ITest; const AStatusMsg: string);
     procedure ExecStatusUpdater(const ATest: ITest);
   protected
     procedure SetUp; override;
@@ -560,9 +550,6 @@ type
     {$IFDEF CLR}[Test]{$ENDIF}
     procedure TestCanDisableRunTest;
   end;
-
-{------------------------------------------------------}
-  { ITestSuite section }
 
   TTestITestSuiteExists = class(TTestCase)
   private
@@ -697,8 +684,6 @@ type
     procedure TestChangedParentPathPropogatesParentPath;
   end;
 
-{------------------------------------------------------------------------------}
-  { ITestProject section }
 
   TTestITestProjectExists = class(TTestCase)
   private
@@ -787,9 +772,9 @@ type
   end;
 
   TStatusRecord = record
-                    ExecStatus: TExecutionStatus;
-                    AName: string;
-                  end;
+    ExecStatus: TExecutionStatus;
+    AName: string;
+  end;
 
   TTestITestCanRunProject = class(TTestCase)
   private
@@ -841,7 +826,7 @@ type
     procedure TestPMLevelMultiProjectCounts;
   end;
 
-{------------------------------------------------------}
+
   TTestCallToFail = class(TTestCase)
   published
     {$IFDEF CLR}[Test]{$ENDIF}
@@ -854,7 +839,6 @@ type
     procedure TestCallFailNotSame;
   end;
 
-{ TTestITestHandlesFailCalls }
 
   TTestTestCaseHandlesFailCalls = class(TTestCase)
   private
@@ -868,7 +852,7 @@ type
     procedure TestITestCaseFailCalls;
   end;
 
-{------------------------------------------------------}
+
   TTestCallToHalt = class(TTestCase)
   published
     {$IFDEF CLR}[Test]{$ENDIF}
@@ -891,7 +875,6 @@ type
     procedure TestITestCaseHalts;
   end;
 
-{------------------------------------------------------}
 {$IFNDEF CLR}
   TTestEmptyTest = class(TTestCase)
   published
@@ -911,7 +894,7 @@ type
   end;
 {$ENDIF}
 
-{------------------------------------------------------}
+
   TTestCheckNotCalled = class(TTestCase)
   published
     {$IFDEF CLR}[Test]{$ENDIF}
@@ -932,7 +915,7 @@ type
     procedure TestITestCheckNotCalled;
   end;
 
-{------------------------------------------------------}
+
   TTestUnknownExceptHandled = class(TTestCase)
   published
     {$IFDEF CLR}[Test]{$ENDIF}
@@ -985,7 +968,7 @@ type
     procedure TestITestHandlesMissingExpectedExcept;
   end;
 
-{------------------------------------------------------}
+
   TTestExceptInDoSetup = class(TTestCase)
   protected
     procedure SetUpOnce; override;
@@ -1207,7 +1190,7 @@ type
     procedure TestITestExceptionInSetUpAndTearDown;
   end;
 
-{------------------------------------------------------}
+
   TTestGens2Errors = class(TTestCase)
   published
     {$IFDEF CLR}[Test]{$ENDIF}
@@ -1302,7 +1285,7 @@ type
     procedure VerifyTestsBreakOnException;
   end;
 
-{------------------------------------------------------}
+
   TTestFullTestCaseCalled = class(TTestCase)
   private
     FSetupOnceCalled: boolean;
@@ -1315,7 +1298,7 @@ type
     procedure TestExecutesNamedMethodSetup;
   end;
 
-{------------------------------------------------------}
+
   TTestCreateNamedTest = class(TTestCase)
   private
     FTestProject: ITestProject;
@@ -1332,7 +1315,7 @@ type
     procedure TestCanExecuteNamedMethodSetup;
   end;
 
-{------------- Used in type checking tests ------------}
+{ Used in type checking tests }
   TTypeA = class(TObject)
   end;
 
@@ -1373,7 +1356,7 @@ type
     procedure ActualIsNil;
   end;
 
-{------------------------------------------------------}
+
   TObjectA = class(TObject);
   TObjectB = class(TObject);
 
@@ -1881,8 +1864,6 @@ type
     procedure VerifyDecoratedTestsFlagErrorsInPeripheryProcs;
   end;
 
-
-  { TTestDecoratesTest }
 
   TTestDecoratesTest = class(TTestDecorator)
   // Note there is no execute method required;

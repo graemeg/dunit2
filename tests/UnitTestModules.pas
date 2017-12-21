@@ -1,4 +1,3 @@
-{#(@)$Id$ }
 {  DUnit: An XTreme testing framework for Delphi programs. }
 (*
  * The contents of this file are subject to the Mozilla Public
@@ -34,15 +33,16 @@
  *******************************************************************************
 *)
 
+unit UnitTestModules;
+
 {$I DUnit.inc}
 
 {$IFNDEF SELFTEST}
   '!!!Alert SELFTEST must be defined'
 {$ENDIF}
 
-unit UnitTestModules;
-
 interface
+
 uses
   TestFrameworkIfaces
   ,RefTestFramework

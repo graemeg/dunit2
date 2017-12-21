@@ -1,4 +1,3 @@
-{ $Id$ }
 {: DUnit: An XTreme testing framework for Delphi programs.
    @author  The DUnit Group.
 }
@@ -35,9 +34,9 @@
  *
  *)
 
-{$I DUnit.inc}
-
 unit RefGUITestRunner;
+
+{$I DUnit.inc}
 
 interface
 
@@ -46,7 +45,8 @@ uses
   ComCtrls, ExtCtrls, StdCtrls, ImgList, Buttons, Menus, ActnList,
   IniFiles, ToolWin,
   TestFrameworkProxyIfaces,
-  GUISearchPanel, GUISearchController, System.Actions, Vcl.AppEvnts;
+  GUISearchPanel, GUISearchController, System.Actions, Vcl.AppEvnts,
+  System.ImageList;
 
 type
   {: Function type used by the TDUnitDialog.ApplyToTests method

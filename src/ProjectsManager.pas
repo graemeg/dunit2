@@ -1,4 +1,3 @@
-{#(@)$Id$ }
 {  DUnit: An XTreme testing framework for Delphi programs. }
 (*
  * The contents of this file are subject to the Mozilla Public
@@ -34,11 +33,12 @@
  *******************************************************************************
 *)
 
-{$I DUnit.inc}
-
 unit ProjectsManager;
 
+{$I DUnit.inc}
+
 interface
+
 uses
   Classes,
   ProjectsManagerIface,

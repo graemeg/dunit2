@@ -1,9 +1,6 @@
-{ $Id$ }
 {: DUnit: An XTreme testing framework for Delphi programs.
    @author  The DUnit Group.
-   @version $Revision$
 }
-{#(@)$Id$ }
 {  DUnit: An XTreme testing framework for Delphi programs. }
 (*
  * The contents of this file are subject to the Mozilla Public
@@ -40,13 +37,13 @@
 *)
 unit TestModules;
 
+{$I DUnit.inc}
+
 interface
+
 uses
   Windows,
   TestFrameworkIFaces;
-
-const
-  rcs_id :string = '#(@)$Id$';
 
 type
   TModuleRecord = record
@@ -130,4 +127,5 @@ initialization
 
 finalization
   UnloadTestModules;
+
 end.

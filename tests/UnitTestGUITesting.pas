@@ -1,7 +1,5 @@
-{ #(@)$Id$ }
 {: DUnit: An XTreme testing framework for Delphi programs.
    @author  The DUnit Group.
-   @version $Revision$ uberto 08/03/2001
 }
 (*
  * The contents of this file are subject to the Mozilla Public
@@ -33,11 +31,12 @@
  *
  *)
 
-{$I DUnit.inc}
-
 unit UnitTestGUITesting;
 
+{$I DUnit.inc}
+
 interface
+
 uses
   TestFrameworkProxyIfaces,
   GUITesting,
@@ -57,10 +56,8 @@ folder and rebuild all projects. [Alt+P Alt+U]
   SysUtils,
   Classes;
 
-const
-  rcs_id: string = '#(@)$Id$';
-
 type
+
   TDunitDialogCracker = class(TGUITestRunner);
 
   { This form is used to test some of the methods in TGUITestCase }

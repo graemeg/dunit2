@@ -1,4 +1,3 @@
-{#(@)$Id$ }
 {  DUnit: An XTreme testing framework for Delphi programs. }
 (*
  * The contents of this file are subject to the Mozilla Public
@@ -34,10 +33,6 @@
  *******************************************************************************
 *)
 
-{$I DUnit.inc}
-
-{$BOOLEVAL OFF}
-
 unit TestFrameworkProxy;
 // This unit sits between the adapted GUITestRunner and TestFramework.
 // It provides an interface to look and behave like the original TestFramework.
@@ -45,6 +40,9 @@ unit TestFrameworkProxy;
 // introduced to interface directly with with a new TestRunner TestFramework.
 // This "Proxy" unit re-creates the Tests structure currently accessed by
 // the treeview.
+
+{$I DUnit.inc}
+{$BOOLEVAL OFF}
 
 interface
 

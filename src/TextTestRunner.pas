@@ -1,7 +1,5 @@
-{ $Id$ }
 {: DUnit: An XTreme testing framework for Delphi programs.
    @author  The DUnit Group.
-   @version $Revision$
 }
 (*
  * The contents of this file are subject to the Mozilla Public
@@ -39,12 +37,10 @@ unit TextTestRunner;
 {$I DUnit.inc}
 
 interface
+
 uses
   Classes,
   TestFrameworkProxyIfaces;
-
-const
-  rcs_id :string = '#(@)$Id$';
 
 type
   TRunnerExitBehavior = (

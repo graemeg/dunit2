@@ -1,4 +1,3 @@
-{#(@)$Id$ }
 {  DUnit: An XTreme testing framework for Delphi programs. }
 (*
  * The contents of this file are subject to the Mozilla Public
@@ -34,15 +33,15 @@
  *******************************************************************************
 *)
 
-{$I DUnit.inc}
-
 unit TestFramework;
 
+{$I DUnit.inc}
 
 { The following is for C++ Support }
 (*$HPPEMIT '#pragma link "dunitrtl.lib"' *)
 
 interface
+
 uses
 {$IFDEF CLR}  System.Reflection, System.Diagnostics, System.IO,{$ENDIF}
   TestFrameworkIfaces,

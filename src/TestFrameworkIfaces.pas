@@ -1,4 +1,3 @@
-{#(@)$Id$ }
 {  DUnit: An XTreme testing framework for Delphi programs. }
 (*
  * The contents of this file are subject to the Mozilla Public
@@ -34,10 +33,12 @@
  *******************************************************************************
 *)
 
+unit TestFrameworkIfaces;
+
 {$I DUnit.inc}
 
-unit TestFrameworkIfaces;
 interface
+
 uses
 {$IFDEF CLR}System.Reflection,{$ENDIF}
   Classes,
