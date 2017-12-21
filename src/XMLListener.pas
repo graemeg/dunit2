@@ -108,7 +108,7 @@ const
   cWarning              = 'Warning';
   cOK                   = 'OK';
   cTitle                = 'Title';
-  cTitleText            = 'Dunit2 XML test report';
+  cTitleText            = 'DUnit2 XML test report';
   cGeneratedBy          = 'Generated using DUnit2 on ';
   cEncoding             = 'UTF-8';
   cTestSuite            = 'TestSuite';
@@ -200,7 +200,7 @@ begin
   FAppPath := ExtractFilePath(ExePathFileName);
   FAppName := ExtractFileName(ExePathFileName);
   FDocName := ChangeFileExt(FAppName, cxmlExt);
-  FXMLDoc := TDOMDocument.create(nil);
+  FXMLDoc := TDOMDocument.Create(nil);
   {$IFDEF XDOM}
   FXMLDoc.Encoding := cEncoding;
   {$ENDIF}
@@ -220,12 +220,12 @@ begin
     FXMLDoc.appendChild(LDomProcessingInstruction);
   end;
   {$IFDEF XDOM}
-  LDomElement := FXMLDoc.createElement(cTestResults);
+  LDomElement := FXMLDoc.CreateElement(cTestResults);
   {$ENDIF}
   {$IFDEF DKADOMCORE}
   LDomElement := TDomElement.Create(FXMLDoc, cTestResults);
   {$ENDIF}
-  FXMLDoc.appendChild(LDomElement);
+  FXMLDoc.AppendChild(LDomElement);
   MakeElementCurrent(LDomElement);
   AppendLF;
   AppendComment(cGeneratedBy + FormatDateTime(cyyyymmddhhmmss, Now));
