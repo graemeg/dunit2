@@ -45,8 +45,7 @@ uses
   ComCtrls, ExtCtrls, StdCtrls, ImgList, Buttons, Menus, ActnList,
   IniFiles, ToolWin,
   TestFrameworkProxyIfaces,
-  GUISearchPanel, GUISearchController, BreadCrumbs, System.Actions,
-  System.ImageList;
+  GUISearchPanel, GUISearchController, BreadCrumbs, System.Actions;
 
 type
 

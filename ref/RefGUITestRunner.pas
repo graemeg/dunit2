@@ -45,8 +45,7 @@ uses
   ComCtrls, ExtCtrls, StdCtrls, ImgList, Buttons, Menus, ActnList,
   IniFiles, ToolWin,
   TestFrameworkProxyIfaces,
-  GUISearchPanel, GUISearchController, System.Actions, Vcl.AppEvnts,
-  System.ImageList;
+  GUISearchPanel, GUISearchController, System.Actions, Vcl.AppEvnts;
 
 type
   {: Function type used by the TDUnitDialog.ApplyToTests method
