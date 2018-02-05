@@ -321,6 +321,7 @@ object GUITestRunner: TGUITestRunner
               Hint = 'Shows the proportion of tests run'
               Align = alClient
               BorderWidth = 2
+              Smooth = True
               Step = 1
               TabOrder = 1
             end
