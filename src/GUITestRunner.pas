@@ -56,6 +56,7 @@ type
   TTestFunc = function (item :ITestProxy):Boolean of object;
 
   TGUITestRunner = class(TForm, ITestListener, ITestListenerX)
+  {$region ' UI Designer generated components '}
     StateImages: TImageList;
     RunImages: TImageList;
     DialogActions: TActionList;
@@ -94,7 +95,6 @@ type
     pnlProgresslabel: TPanel;
     ScorePanel: TPanel;
     ScoreLabel: TPanel;
-    ScoreBar: TProgressBar;
     pmTestTree: TPopupMenu;
     pmiSelectAll: TMenuItem;
     pmiDeselectAll: TMenuItem;
@@ -247,6 +247,8 @@ type
     DeselectPassedAction: TAction;
     DeselectPassedItem: TMenuItem;
     pmiDeselectPassed: TMenuItem;
+    ScoreBar: TPaintBox;
+    {$endregion}
     procedure FormCreate(Sender: TObject);
     procedure TestTreeClick(Sender: TObject);
     procedure FailureListViewSelectItem(Sender: TObject; Item: TListItem;
@@ -350,9 +352,8 @@ type
     procedure RecordSelectedTestActionExecute(Sender: TObject);
     procedure RecordSelectedTestActionUpdate(Sender: TObject);
     procedure RecordSelectedTestAltActionExecute(Sender: TObject);
-    procedure RecordSelectedTestItem1DrawItem(Sender: TObject; ACanvas: TCanvas;
-      ARect: TRect; Selected: Boolean);
-
+    procedure RecordSelectedTestItem1DrawItem(Sender: TObject; ACanvas: TCanvas; ARect: TRect; Selected: Boolean);
+    procedure ScoreBarPaint(Sender: TObject);
   private
     FSuite:         ITestProxy;
     FTestResult:    TTestResult;
@@ -379,6 +380,9 @@ type
     FSP: TGUISearchPanel;
     FSearchController: TGUISearchController;
     FBreadCrumbs: IBreadCrumbs;
+    barColor: TColor;
+    barMax: Integer;  // related to ScoreBar
+    barPosition: Integer;  // related to ScoreBar
     procedure ResetProgress;
     procedure MenuLooksInactive(ACanvas: TCanvas; ARect: TRect; Selected: Boolean;
       ATitle: string; TitlePosn: UINT; PtyOveridesGUI: boolean);
@@ -529,9 +533,6 @@ uses
 
 {$BOOLEVAL OFF}  // Required or you'll get an AV
 {$R *.DFM}
-
-type
-  TProgressBarCrack = class(TProgressBar);
 
 const
   {: Section of the dunit.ini file where GUI information will be stored }
@@ -730,8 +731,7 @@ begin
   FBreadCrumbs.Clear;
   FTotalTime := 0;
   UpdateStatus(True);
-  TProgressBarCrack(ScoreBar).Color := clOK;
-  TProgressBarCrack(ScoreBar).RecreateWnd;
+  barColor := clOK;
   ClearStatusMessage;
 end;
 
@@ -818,8 +818,7 @@ begin
   FTestFailed := True;
   ListItem := AddFailureItem(Failure);
   ListItem.ImageIndex := imgERROR;
-  TProgressBarCrack(ScoreBar).Color := clERROR;
-  TProgressBarCrack(ScoreBar).RecreateWnd;
+  barColor := clERROR;
   SetTreeNodeImage(TestToNode(Failure.failedTest), imgERROR);
   UpdateStatus(True);
 end;
@@ -833,8 +832,7 @@ begin
   ListItem.ImageIndex := imgFAILED;
   if TestResult.ErrorCount = 0 then //Dont override higher priority error colour
   begin
-    TProgressBarCrack(ScoreBar).Color := clFAILURE;
-    TProgressBarCrack(ScoreBar).RecreateWnd;
+    barColor := clFAILURE;
   end;
   SetTreeNodeImage(TestToNode(Failure.failedTest), imgFAILED);
   UpdateStatus(True);
@@ -1174,14 +1172,15 @@ begin
       Results.SubItems[siTotalTestTime] := FormatElapsedTime(FTotalTime);
       with TestResult do
       begin
-        ScoreBar.Position  := TestNumber - (FailureCount + ErrorCount);
+        barPosition := TestNumber - (FailureCount + ErrorCount);
         ProgressBar.Position := TestNumber;
+        ScoreBar.Invalidate;
 
         // There is a possibility for zero tests
         if (TestNumber = 0) and (TotalTestsCount = 0) then
           LbProgress.Caption := '100%'
         else
-          LbProgress.Caption := IntToStr((100 * ScoreBar.Position) div ScoreBar.Max) + '%';
+          LbProgress.Caption := IntToStr((100 * barPosition) div barMax) + '%';
       end;
       if (TestNumber < TotalTestsCount) then
       begin
@@ -1215,9 +1214,8 @@ end;
 
 procedure TGUITestRunner.ResetProgress;
 begin
-  TProgressBarCrack(ScoreBar).ParentColor := True;
-  TProgressBarCrack(ScoreBar).RecreateWnd;
-  ScoreBar.Position := 0;
+  barColor := clOK;
+  barPosition := 0;
   ProgressBar.Position := 0;
   LbProgress.Caption := '';
 end;
@@ -1439,7 +1437,7 @@ begin
   else
     ProgressBar.Max:= 10000;
 
-  ScoreBar.Max := ProgressBar.Max;
+  barMax := ProgressBar.Max;
 
   for i := 0 to TestTree.Items.Count - 1 do
   begin
@@ -2544,7 +2542,7 @@ begin
   SetUp;
   ListSelectedTests;
   ProgressBar.Max := FSelectedTestCount;
-  ScoreBar.Max    := FSelectedTestCount;
+  barMax := FSelectedTestCount;
   HoldOptions(True);
   try
     RunTheTest(Suite);
@@ -2711,7 +2709,7 @@ begin
   SetUp;
   ListTestsFromHere;
   ProgressBar.Max := FSelectedTestCount;
-  ScoreBar.Max    := FSelectedTestCount;
+  barMax := FSelectedTestCount;
   HoldOptions(True);
   try
     RunTheTest(Suite);
@@ -3077,6 +3075,32 @@ procedure TGUITestRunner.TestCaseIgnoreSetUpTearDownLeaksMenuItemDrawItem(
 begin
   MenuLooksInactive(ACanvas, ARect, Selected, FIgnoreLeakStr,
     DT_LEFT, FIgnoreSetUpTearDownLeakPtyOverridden);
+end;
+
+procedure TGUITestRunner.ScoreBarPaint(Sender: TObject);
+//var
+//  OldStyle: TBrushStyle;
+begin
+  with (Sender as TPaintBox) do
+  begin
+    Canvas.Lock;
+    Canvas.Brush.Color := clSilver;
+    Canvas.Rectangle(0, 0, Width, Height);
+    Canvas.Font.Color := clWhite;
+    if TotalTestsCount <> 0 then
+    begin
+      if Assigned(TestResult) and (TestResult.FailureCount + TestResult.ErrorCount = 0) then
+        barColor := clOK;
+      Canvas.Brush.Color := barColor;
+      Canvas.Rectangle(0, 0, round(barPosition / (barMax) * Width), Height);
+      { Only needed if we wanted to overlay text on the progress bar. }
+//      OldStyle := Canvas.Brush.Style;
+//      Canvas.Brush.Style := bsClear;
+//      Canvas.Textout(10, 10,  msg);
+//      Canvas.Brush.Style := OldStyle;
+    end;
+    Canvas.UnLock;
+  end;
 end;
 
 procedure TGUITestRunner.pmTestTreePopup(Sender: TObject);

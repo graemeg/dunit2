@@ -358,16 +358,14 @@ object GUITestRunner: TGUITestRunner
               AutoSize = False
               Caption = 'Progress'
             end
-            object ScoreBar: TProgressBar
+            object ScoreBar: TPaintBox
               Left = 62
               Top = 2
               Width = 363
               Height = 16
               Hint = 'Shows the proportion of successful tests'
               Align = alClient
-              BorderWidth = 2
-              Step = 1
-              TabOrder = 1
+              OnPaint = ScoreBarPaint
             end
             object ScoreLabel: TPanel
               Left = 2
