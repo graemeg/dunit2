@@ -523,7 +523,7 @@ uses
   TestListenerIface,
   TestFrameworkIfaces,
   Registry,
-  XPVistaSupport,
+  WindowsUtils,
   SysUtils,
   Clipbrd,
   Math,
@@ -842,7 +842,7 @@ function TGUITestRunner.IniFileName: string;
 const
   TEST_INI_FILE = 'dunit.ini';
 begin
-  result := LocalAppDataPath  + TEST_INI_FILE;
+  result := GetAppConfigDir  + TEST_INI_FILE;
 end;
 
 procedure TGUITestRunner.LoadFormPlacement;
@@ -2100,7 +2100,7 @@ begin
     try
       {$IFDEF XMLLISTENER}
       TestResult.AddListener(
-        TXMLListener.Create(LocalAppDataPath + Suite.Name
+        TXMLListener.Create(GetAppConfigDir + Suite.Name
           {, 'type="text/xsl" href="fpcunit2.xsl"'}));
       {$ENDIF}
       TestResult.addListener(self);

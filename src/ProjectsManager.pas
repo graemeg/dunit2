@@ -90,7 +90,7 @@ uses
   {$IFDEF VER130}
     D5Support,
   {$ENDIF}
-  XPVistaSupport,
+  WindowsUtils,
   TestFramework;
 
 var
@@ -397,7 +397,7 @@ begin
   else
     LFileName := ExtractFileName(FileName);
 
-  LFinalPathFileName := LocalAppDataPath + LFileName;
+  LFinalPathFileName := GetAppConfigDir + LFileName;
 {$IFNDEF LINUX}
   if useRegistry then
     f := TRegistryIniFile.Create(DUnitRegistryKey + LFileName)
@@ -432,7 +432,7 @@ begin
   else
     LFileName := ExtractFileName(FileName);
 
-  LFinalPathFileName := LocalAppDataPath + LFileName;
+  LFinalPathFileName := GetAppConfigDir + LFileName;
 {$IFNDEF LINUX}
   if useRegistry then
     f := TRegistryIniFile.Create(DUnitRegistryKey + FileName)

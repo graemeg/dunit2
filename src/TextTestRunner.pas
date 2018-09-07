@@ -124,7 +124,7 @@ uses
   {$IFDEF XMLLISTENER}
     XMLListener,
   {$ENDIF}
-  XPVistaSupport,
+  WindowsUtils,
   SysUtils;
 
 const
@@ -134,7 +134,7 @@ class function TTextTestListener.IniFileName: string;
 const
   TEST_INI_FILE = 'dunit.ini';
 begin
-  result := LocalAppDataPath + TEST_INI_FILE;
+  result := GetAppConfigDir + TEST_INI_FILE;
 end;
 
 procedure TTextTestListener.AddSuccess(Test: ITestProxy);
@@ -416,7 +416,7 @@ begin
     try
     Suite.LoadConfiguration(TTextTestListener.IniFileName, False, True);
       Result := RunTest(Suite,[TTextTestListener.Create
-      {$IFDEF XMLLISTENER}, TXMLListener.Create(LocalAppDataPath + Suite.Name{, 'type="text/xsl" href="fpcunit2.xsl"'}) {$ENDIF}]);
+      {$IFDEF XMLLISTENER}, TXMLListener.Create(GetAppConfigDir + Suite.Name{, 'type="text/xsl" href="fpcunit2.xsl"'}) {$ENDIF}]);
     finally
       Result.ReleaseListeners;
       Suite.ReleaseTests;
