@@ -1,13 +1,14 @@
-Dunit2 ReadMe.
+DUnit2 ReadMe
+=============
 
-Dunit2 is designed to improve upon Dunit V9.3 while maintaining a reasonable
+DUnit2 is designed to improve upon Dunit V9.3 while maintaining a reasonable
 degree of compatibility.
 
-The project is still --work-in-progress so changes can occur regularly--
+The project is still work-in-progress, so changes can occur regularly.
 
 
-Brief outline of major changes. 
-
+Brief outline of major changes
+------------------------------
 TestFrameworks.pas has largely been re-written.
 Several key service routines have been retained.
 TAbstractTest has been superceeded.
@@ -21,8 +22,8 @@ FastMM4Options.inc has been modified so FastMM4 should to be included in
 projects to pick up these changes. 
 
 
-Effect of changes.
-
+Effect of changes
+-----------------
 TTestCase constructors and destructors only execute once per TTestCase
 registration, not once per published test method registration.
 Speed of execution for repeat tests is considerably improved.
@@ -39,8 +40,8 @@ the constructor currently does not take a string parameter and the
 variable definition should be changed to "ITestCase" from TTestCase. 
 
 
-Dunit self testing.
-
+Dunit self testing
+------------------
 For unit test registration Dunit2 employs a Singleton class "IProjectManager" 
 which is itself extensively unit tested and released after many tests. 
 Consequently unit self-tests need to be conducted on a duplicate subset of files.
@@ -56,8 +57,8 @@ Testing under different computer loads may invoke an occasional test
 timing error. These are insignificant in the overall scheme of things.
 
 
-Files.
-
+Files
+-----
 The accompanying files are spread through several folders.
 "src" contains the usual suspects.
 "tests" contains the new suite of unit tests.
@@ -74,9 +75,12 @@ JCL_Common and
 JCL_Windows. 
 
 
-Dunit2 Detailed Description.
+Dunit2 Detailed Description
+---------------------------
+For an overview of Dunit2 design aims, new functionality and progress see:
 
-For an overview of Dunit2 design aims, new functionality and progress see:-
-http://members.optusnet.com.au/mcnabp/index.html
-and follow the links.
+   https://graemeg.github.io/dunit2/
 
+You can also visit the original website of Peter McNab at:
+
+   http://members.optusnet.com.au/mcnabp/index.html
